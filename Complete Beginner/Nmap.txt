@@ -1,0 +1,120 @@
+Proper enumeration before any exploitation attempt
+Draw Landscape - establish which services are running - map.
+1. Port Scanning - necessary for making mulitple network requests (START WITH A PORT SCAN)
+every computer has a total of 65535 available ports;
+HTTP: port 80
+HTTPS: port 443
+Windows NETBIOS: port 139
+SMB: port 445
+* ports can be altered, so it is important to perform appropriate enumeration on the target
+nmap will connect to each port to determine status (open,closed or filtered(firewall))
+
+2. nmap switches
+scan all ports: -p-
+activate script from the nmap scripting library: --script
+activate all scripts from "vuln" catagory: --script=vuln
+scan range: -p200-2000
+scan specific: -p 80
+change timing template(increase scan run) - higher speeds are noisier: -T5
+aggressive mode: -A
+save results in grepable format: -oG
+save results in normal format: -oN
+save results in three major formats: -oA
+verbosity(level 2): -vv
+detect version of services running on target: -sV
+detect OS the target is running on: -O
+UDP scan: -sU
+Syn scan: -sS
+
+3. Scan Types
+most common:
+I. TCP(-sT)
+II. SYN(-sS)
+III. UDP(-sU)
+
+less common: 
+TCP Null scans(-sN)
+TCP FIN scans(-sF)
+TCP Xmas Scan(-sX)
+
+4. TCP Connect Scans
+-Three way handshake
+RFC 793
+- If connection is closed - SYN sent by client, Reset is sent back by target (nmap responds with port closed)
+- If connection is open - SYN sent by client, SYN/ACK sent back by target (nmap responds with port open)
+- If connection is open, the target could be hidden behind a firewall, client doesnt recieve anything back. The target can also be configured to send Reset TCP packet.
+
+5. SYN Scans
+-half-open scans or stealth scans
+1. Client -> SYN -> Target
+2. Target -> SYN/ACK -> Client
+3. Client -> RST -> Target
+-uses: bypass older intrusion detection systems which look for Three way handshake  (not full proof)
+-SYN scans are logged by APPs listening on open ports
+-faster than TCP Connect scan
+Disadvantages:
+-require sudo permissions (privilege only the root user has access to)
+-unstable services are brought down by SYN scans
+-no sudo access - nmap defaults to TCP
+
+6. UDP Scans
+-stateless: rather than initiating a connnection with a back and forth, UDP connections send data packets without regard if packets arrived or not (eg. Video Sharing)
+-lack of ACK - difficult to scan/slower
+-Open Port: open/filtered(no response), open(response)
+-Closed Port: ICMP(ping) packet: port is unreachable
+-since UDP scans are slow: good practice is to run --top-ports <number>
+eg. nmap -sU --top-ports 10 <target> - will scan 10 most commonly used UDP ports
+
+7. NULL, FIN, Xmas
+-stealthier
+NULL: TCP request sent with no flags
+FIN: Request sent with FIN flag(usually used to gracefully close an active connection), closed respon should be RST 
+Xmas: send malformed TCP packet and expects a RST for closed ports, Flags(PSH, URG, FIN) give it the apperance of blinking christmas tree when viewed as packet capture in wireshark. Open Port: no response to malfored packet. RFC 793 - mandates network hosts respond to malfored packets with RST TCP packet for closed ports. (default response of RST TCP - shows all ports closed).
+
+Firewalls - drop incoming TCP packets to blocked ports which have the SYN flag set. By sending requests that don't contain SYN flag, effectively bypass this firewall. Modern IDS can identify this.
+
+8. ICMP Network Scanning
+-Nmap "ping sweep" - black box assignment - get network structure (see which IP addresses contain active hosts)
+- When it receives a resposne, it marks the ip address that responded as alive(not always accurate)
+
+How would you perform a ping sweep on the 172.16.x.x network (Netmask: 255.255.0.0) using Nmap? (CIDR notation - The CIDR notation for a Class B network with a default netmask is /16)
+nmap -sn 172.16.0.0/16
+
+9. Nmap Scripting Engine (NSE) - Lua Programming Language - scanning for vulnerabilites, automating exploits 
+safe: wont affect target
+intrusive: not safe: likely affect the target
+vuln: scan for vulnerabilites
+exploit: attempt to exploit a vulnerability
+Auth: Attempt to bypass authentication fo rrunning services (log into an FTP server anonymously)
+brute: attempt to bruteforce credentials for running services
+discovery: attempt to query running services for further information about the network
+
+10. NSE Scripts: 
+11. Search for install scritps
+/usr/share/nmap/scripts/script.db
+grep "xyz" == *xyz*
+12. Install new scritps
+eg. sudo wget -O /usr/share/nmap/scripts/<script-name>.nse https://svn.nmap.org/nmap/scripts/<script-name>.nse nmap --script-updatedb
+
+13. Firewall evasion
+-Pn: tells Nmap to not bother pinging the host before scanning it. Always treat host as alive. Always scan before pinging. Disadvantage: takes too long. Nmap can use ARP to determine host activity (local network)
+-f: fragmetn the packet(split into smaller pieces) less likely to be detected by firewall or IDS
+--mtu <number>:accepts max transmission unit size (multiple of 8)
+--scan-delay <time>ms: delay b/n packet sending. (avoid time based firewalls)
+--badsum: gen invalid checksum for packets (used to determine the presence of a firewall/IDS)
+
+exercise
+1. Xmas scan on the first 999 ports of the target
+=> nmap -sX -p1-999 10.10.102.58
+
+2. TCP SYN scan on the first 5000 ports of the target
+=> nmap -sS -p1-5000 -vv 10.10.102.58
+
+3. Deploy the ftp-anon script against the box. Can Nmap login successfully to the FTP server on port21?
+
+
+***WIRESHARK ROOM***
+
+
+ 
+

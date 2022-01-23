@@ -1,0 +1,40 @@
+Debug Console:
+Breakpoint: introduce a stop in js code at specified line(click on line number and it will turn blue)
+Network: in and out traffic from webapp
+Favicon: small icon displayed in the browser's address bar or tab
+ get the framework (ref: https://wiki.owasp.org/index.php/OWASP_favicon_database)
+
+user@machine$ curl https://static-labs.tryhackme.cloud/sites/favicon/images/favicon.ico | md5sum
+
+Sitemap.xml - gives a list of every file the website owner wishes to be listed on a search engine. specifies last modificaiton and priority
+
+HTTP Headers - webserver software, possible programming/scripting language in use.
+curl [address] -v
+
+OSINT - open source intel
+filters to search google
+site:[site-name] - return results from the specified web address
+inurl:[search word] - return results with specified word in url
+filetype:[file type] - returns results which are patricular file extension
+intitle: [search word] - returns results that contain the specified word in the title
+***GOOGLE HACKING - wiki***
+
+Wappalyzer - online tool and browser ext helps id what technologies a website using (framewords, CMS, Payment processors)
+
+Wayback machine - historical archive of websites that dates back to 90s. helps uncover old pages that may still be active
+
+Github - source code 
+
+S3 Buckets - storage service provided by AWS allows to save files and static web content in cloud accessible over HTTP and HTTPS. Owners set permission: public, private and writable. Incorrect configuration
+http(s)://{name}.s3.amazonaws.com
+
+Automated Discovery - using tools rather than manual discovery using wordlists
+wordlists - text files with long list of words (relavent) used as search parameter. 
+
+user@machine$ ffuf -w /usr/share/wordlists/SecLists/Discovery/Web-Content/common.txt -u http://10.10.81.67/FUZZ
+
+user@machine$ dirb http://10.10.81.67/ /usr/share/wordlists/SecLists/Discovery/Web-Content/common.txt
+
+user@machine$ gobuster dir --url http://10.10.81.67/ -w /usr/share/wordlists/SecLists/Discovery/Web-Content/common.txt
+
+ 

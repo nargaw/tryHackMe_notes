@@ -1,0 +1,56 @@
+Web Fundementals
+-How web works.
+1. DNS Request is made (turns https://www.google.com into an IP address)
+2. HTTP verb GET request content (CSS, images, JavaScript loaded as seperate GET requests)
+-most requests now are HTTPS (encrypted) TLS
+-HTTP runs on port 80 (if open - can be exploited)
+-HTTPS runs on port 443
+
+3.HTTP verbs (9 different)
+GET - retrieve content
+POST - send data to web server (add comment or perform login)
+eg. GET /index.html
+-cookies are sent in the request headers
+body of request
+post = content that is sent to the server
+
+Responses
+100-199: Information
+200-299: Success
+300-399: Redirect
+400-499: Client error
+500-599: Server error
+
+response for GET request is json.
+
+4. Cookies
+-small bits of data stored in your browser
+-personalized ads
+-sent with HTTP request headers
+-Track data accross site
+-cookies have a name, value, and expiry date and a path 
+-cookies are set by the server, can be set by javaScript inside browser
+When logged in a web app issues a session token, allows server to identify and differentiate current user from other users. (stealing someone else's session token can allow impersonation)
+Manipulating cookies
+-can view and modify cookies
+-can create your own cookies
+
+curl (cURL) - get requests on specified url
+-X: specify the request type (POST, GET)
+--data: specify data to POST
+doesn't store cookies
+-can manually send cookies from cURL ***LOOK UP HOW TO SEND COOKIES cURL***
+
+GET
+eg: curl -X GET http://10.10.10.10/xyz
+
+POST:
+eg: curl -X POST --data flag http://10.10.10.10/xyz
+
+GET COOKIE
+eg: curl -c - http://10.10.10.10/xyz
+-c: output cookie value
+
+SET COOKIE
+eg: curl -v --cookie xyz=abc http://10.10.10.10/def
+-v: verbose

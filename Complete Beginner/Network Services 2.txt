@@ -1,0 +1,144 @@
+NFS = Network File System - allows remote easy access to files by mouting all or a portion of a file system on a server. Privileged users can access these files. Access to files using parameters (file handle, name, user ID, group ID). Request-Response Protocol(RPC)
+Using NFS - can transfer files between windows and non-windows os
+
+Enumeration - process which establishes an active connection to the target hosts to discover potential attack vectors in the system, that can be used for further exploitation of the system
+
+nfs-common: package with various programs
+-showmount and mount.nfs -
+port scan: nmap -A -p-
+-directory is need to access shared content by the host server
+sudo mount -t nfs IP:share /tmp/mount/ -nolock
+Tag	Function
+sudo:	Run as root
+mount:	Execute the mount command
+-t nfs:	Type of device to mount, then specifying that it's NFS
+IP:share: The IP Address of the NFS server, and the name of the share we wish to mount
+-nolock	Specifies not to use NLM locking
+
+1. scan ports: 
+nmap -A -p- [IP]
+2. look for service (NFS)
+3. find visible NFS share
+/usr/sbin/showmount -e [IP]
+4. mount share on local machine
+mkdir /tmp/mount
+sudo mount -t nfs IP:share /tmp/mount/ -nolock
+5. access the files
+6. copy files
+cp [file] /Directory
+7. change permission to 600 
+chmod 600 [file]
+
+Exploit NFS
+Esclate privilieges - have higher access
+Root Squashing is enabled = prevents anyone connecting to NFS share from having root access to the NFS volume
+Remote users assigned "nfsnobody" - least local privileges
+If this is turned off, it allows creating of SUID bit files - allows remote access to the connected system
+
+SUID - files can be run with the permissions of the file(s) owner/group.
+Method to gain root shell
+    NFS Access ->
+
+        Gain Low Privilege Shell ->
+
+            Upload Bash Executable to the NFS share ->
+
+                Set SUID Permissions Through NFS Due To Misconfigured Root Squash ->
+
+                    Login through SSH ->
+
+                        Execute SUID Bit Bash Executable ->
+
+                            ROOT ACCESS
+
+
+s = letter used to set SUID bit set using chmod
+sudo chmod +s
+
+
+
+SMTP: Simple Mail Transfer Protocol - POP/IMAP - send outgoing mail and retrive incoming mail
+-verifies who is sending emails through SMTP
+-Sends outgoing mail
+-If mail can't be delivered it send the message back to the sender
+
+POP - post office protocol - simplistic - downloads mail from server
+IMAP - internet message access protocol - synchronize current inbox with new mail
+=> responsible for transfer of email between client and mail server
+
+SMTP - acts as a sorting facility - directed to recipient
+USER => SMTP SERVER (Handshake) => WIDER INTERNET => POP/IMAP SERVER => RECIPIENT
+SMTP server = 25
+SMTP server sends the email to the SMTP queue if the recipient's server is unavailable
+
+Enumerating Server details
+stmp_version - module in MetaSploit to scan a range of ip addresses and determine the version of mail servers it encounters
+VRFY = confirms names of valid users
+EXPN = reveals actual address of user's aliases and lists of email
+stmp_enum - module in MetaSploit takes range of hosts to scan and a wordlist containing usernames to enum
+msfconsole : start metasploit
+search smtp_version : to get full module name
+use [num] : select module
+options : to see list of options to navigate
+set RHOSTS [remote IP]:
+search smtp_enum: full module of smtp_enum
+set USER_FILE [dictionary] : set file 
+set RHOSTS [remote IP] : Ip to reference
+run: return the username
+
+Exploiting SMTP
+need: User name & type of smtp server and OS 
+brute force the password: using hydra
+hydra -t 16 -l USERNAME -P /usr/share/wordlists/rockyou.txt -vV 10.10.218.143 ssh
+SECTION	FUNCTION
+hydra	Runs the hydra tool
+-t 16
+Number of parallel connections per target
+-l [user]	Points to the user who's account you're trying to compromise
+-P [path to dictionary]	Points to the file containing the list of possible passwords
+-vV
+Sets verbose mode to very verbose, shows the login+pass combination for each attempt
+[machine IP]	The IP address of the target machine
+ssh / protocol	Sets the protocol
+
+Understanding MySQL
+-a relational database management system (RDBMS) based on Structured Query Language(SQL)
+-database is simply a persistent, organized collecion of structured data
+RDBMS - each table relates in someway to each others primary key and other key factors
+SQL - Client-Server model communicate using SQL
+Server handles all detabase instructions like creating, editing and accessing data. 
+1. MySQL creates a DB for storing and manipulating data
+2. Clients make requests by making specific statements in SQL
+3. The server respons to client with requested information
+
+Enumerating MySQL
+1. port scan find port running MySQL
+nmap -F -A [ip]
+2. install mysql client
+sudo apt install default-mysql-client
+3. log into mysql
+mysql -h [IP] -u [username] -p
+4. enter password
+5. launch metasploit
+msfconsole
+6. search for mysql_sql module
+7. set USERNAME/PASSWORD/RHOSTS
+set USERNAME [user]
+set PASSWORD [password]
+set RHOSTS [IP]
+run
+8. set SQL to show databases
+set SQL Show databases
+9 run to see databses
+run
+
+Exploiting MySQL
+Schema: synonymous with database in MySQL SQL syntax, Oracle = schema is part of a database owned by a single user
+Hashes: product of cyptographic algorith to run a variable length input into a fixed length output
+
+ 
+
+
+
+
+

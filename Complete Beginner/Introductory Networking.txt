@@ -1,0 +1,62 @@
+OSI Model (open systems interconnection)
+
+Application: provide networking options to programs to transmit data
+|| -> Data
+Presentation: translates data into a standardised format
+|| -> Data
+Session: sets up a session with network
+|| -> Data
+Transport: TCP (transmission control protocol - sustained ) and UDP (user datagram protocol - speed)
+|| -> Data segments/ Datagrams
+Network: destination of request - figures out the best route IPV4
+|| -> Data packets
+Data Link: Add MAC address from Network Interface Card unique. physical address used to identify destination
+|| -> Data frames
+Physical: Hardware
+   -> Data Bits
+
+Encapsulation
+Information containing details specific to the layer in question is added on the start of the transmission - increase security and integrity.
+
+De-encapsulation
+reverse of Encapsulation. stripping off the added information as it goes
+
+TCP/IP model (Transmission Control Protocol / Internet Protocol) - control the flow of data and how data packets are addressed and sent
+-four layers version of OSI
+1. Application (Application, Presentation, Session)
+2. Transport (Transport)
+3. Internet (Network)
+4. Network Interface (Data Link, Physical)
+
+-Three-way handshake-
+I. SYN - synchronise - computer sends request to remote server to initialzie a connection
+II. SYN/ACK - synchronise/acknowledgement - Remote server responds with acknowledgment and syn bit
+III. ACK - computer returns acknowledegment
+
+Networking Tools - Ping
+ping <target> - used to test whether a connection to a remote resource is possible
+ICMP protocol - network layer of OSI model, Internet layer of TCP/IP
+used to determine the IP address of a server hosting a website
+
+Networking Tools - Traceroute
+traceroute <destination> - used to map the path your request takes a it heads to the target machine
+requests go through various servers, traceroute allows to see each of the connections (intermediate steps)
+Windows(tracert) - ICMP network OSI, Internet TCP/IP - UDP
+
+Networking Tools - whois
+whois <domain> - get a list of available info about domain registration
+get information such as data validation, registrar, registration date, exp date, last update date, status, servers etc
+
+Networking Tools - Dig
+dig <domain> @<dns-server-ip> - allows for manual query recursive DNS servers - used to troubleshoot network
+Answer section - returns answer with IP address for the domain queried
+TTL - time to live of queried DNA record - when to stop considering the record as valid - request data again past the date (seconds)
+1. Request made by computer
+2. computer checks local cache for IP 
+3. send request to recursive DNS server (stored in router)
+4. send request to root name server - get the closest server to request
+5. Top-level domain - split into extensions .com vs .co.uk (keep track of level down)
+6. Authoritative name servers - store DNS records
+7. Request sent back to computer
+
+CISCO SELF STUDY GUIDE BY STEVE MCQUERRY***
