@@ -1,0 +1,29 @@
+//ssh
+1. ssh username@10.10.10.10
+2. password
+//flags and switches - extend behavior of commands
+--help - list possible options
+man - manual
+man ls - manual page of ls command open documentation
+-a - all folders
+touch - create file
+mkdir - create folder
+cp - copy (existing file, new file when copying)
+mv - move (existing file, new file when copying)
+rm - remove, -R remove directory
+file - determine type file 
+nano - see contents of a file
+-l - ten column determine read, write and execute(file owner, group owner, all other users)
+su - substitute user
+su -l - simulate login environment of user
+ls -l - see owners
+/etc - system file stored by os
+**sudoers file list of user that can make sudo command***
+/var/logs - logs stored here
+/root - home directory of user
+/tmp - temporary - important
+
+
+
+
+

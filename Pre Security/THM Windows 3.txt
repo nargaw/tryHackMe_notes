@@ -1,0 +1,24 @@
+Windows Update - update system
+Patch Tuesday - 2nd tuesday of every month
+cmd: control /name Microsoft.WindowsUpdate
+
+Windows Security - Tools to protect device and data
+Virus & threat protection: quick scan, full scan, custom scan
+
+Firewall & network protection
+Domain - networks the host sys can authenticate
+Private - private profile designated private or home networks
+Public - Wi-fi,shops,airports etc
+
+Microsoft Defender smartscreen
+Exploit protection
+
+Device security
+Memory integrity - prevents attacks from inserting malicious code into high-security processes
+Security processor - hardware based security (TPM - Trusted Platform Module)
+
+Bitlocker - data protection used with TPM
+
+Volume Shadow COpy Service (VSS) - create restore points, perform system restore, configure restore settings, delete restore points
+
+LIVING OFF THE LAND***

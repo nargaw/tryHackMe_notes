@@ -1,0 +1,52 @@
+MSConfig - advanced troubleshooting, diagnose startup issues
+boot: boot opt for os
+services: all services configured for system regardless of their state
+tools: tools to configure os
+
+user configuration panel
+UAC - user access control, settings can be turned off
+
+Computer Management
+Task Scheduler: autonomous tasks - run app, script on a schedule
+Event Viewer: allows to view events 
+Types of events: Error, warning, information, success audit, failure audit
+windows logs: Application, security(logon attempts),system,  customlog
+
+WINDOWS EVENT LOG ROOM ***
+
+
+Shared folder - folders users can connect to
+Local users and groups
+Performance - CPU disk, network, memory
+Performance Monitor - real time or log file performance data
+Device Manager - configure hardware
+Storage - Disk Management - tasks: setup new drive, extend partition, shrink partition, assign letter drive
+Services and Applications -  Routing and Remote Access server, Services, Windows management instrumentation
+
+System Information - Msinfo32.exe
+Hardware Resources - HW info
+Components - List of HW installed on the PC
+Software Environment
+Environment Variables => Control Panel > System and Security > System > Advanced system settings > Environment Variables OR Settings > System > About > system info > Advanced system settings > Environment Variables.
+
+Resource Monitor - resmon.exe
+CPU, Memory, DISK, Network
+
+command prompt
+hostname: computer name
+whoami: logged-in user
+ipconfig: ip address
+ipconfig /?: help manual for ipconfig
+cls: clear console
+netstat: protocol stats and current TCP/IP
+https://ss64.com/nt/***
+
+Windows Registry - central hierarchical database used to store info for conifguration of system
+regedt32.exe
+-profiles for each user, application installed, property sheet setting and application icons, hardware, ports being used
+
+
+
+
+
+

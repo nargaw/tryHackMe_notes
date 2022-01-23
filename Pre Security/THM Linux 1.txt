@@ -1,0 +1,23 @@
+//entry
+echo - log
+whoami - user output
+//file system navigation
+ls - list directory
+ls "xxx" - list directory in "xxx"
+cd - change directory
+cd .. - go up one directory
+ctrl + l - clear screen
+cat - show contents of file
+pwd - print working directory -  whereami
+//search for files
+***find room
+find - -name *.txt - find files with .txt file
+grep "81.143.211.90" access.log - find entries with related ip address only
+//operators
+& - execute in the background
+&& - command1 && command2 
+> - output redirect to channel - overwrites
+>> - append the redirected channel
+
+
+

@@ -1,0 +1,53 @@
+nano filename - edit file content
+^ - ctrl
+***VIM ROOM
+***FIND ROOM
+download files 
+wget address.txt
+files transferring from host-scp(SSH)
+scp - secure copy
+wget - transfer files
+
+python3 -m http.server -setup python web server
+wget http://10.10.120.10:8000/file.txt - download file
+
+processes 101
+ps - list running processes
+ps aux - system processes
+top - statistics refresh every 10 seconds
+kill id# - end process
+SIGTERM - allow clean up tasks
+SIGKILL - kill process don't do clean up
+SIGSTOP - stop/suspend process
+systemd - system boot
+systemctl - system control
+systemctl option service
+systemctl start apache2 - start apache2 server
+options: start stop enable disable (enable - bootup system)
+states: background and foreground
+& - run in the background
+ctrl + z: force into the background doesn't consume terminal
+fg - bring background back into the foreground
+
+automation 101
+cron - min/hour/dayofmonth/month/dayofweek and command
+* - all
+
+software repos
+/etc/apt ls - apt repository 
+add-apt-repository - add additional repo
+GPG privacy guard keys - safety check by the developer
+apt remove [software] - remove software
+
+logs
+located in /var/log
+
+explore:
+FIND COMMAND ROOM
+BASH SCRIPTING ROOM
+CAT REGEX ROOM
+UPDOG
+
+
+
+	

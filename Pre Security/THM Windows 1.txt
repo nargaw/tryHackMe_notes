@@ -1,0 +1,29 @@
+NTFS - new technology file system (before FAT16/FAT32 and HPFS)
+NTFS can restore from log file (not possible with FAT)
+	-support large files
+	-set specific permissions on folders and files
+	-folder compression
+	-Encryption(encryption file system - EFS)
+NTFS Access:
+full control, modify, read & exe, list folder contents, read, write
+$DATA - data stream allows files to contain more than one stream of data - can view this on powershell (malware writers have used ADS - alternate data streams to hide data)
+
+windows\system32 folder
+%windir% - system environment virable for window directory
+system32 - folder with critical files for OS
+ eg- Taskmgr.exe runs when Task Manager is launched
+
+user accounts,profiles and permissions
+two types: Admin and standard user
+Admin - modify users(add, delete,settings)
+Standard - can only make changes to the folders and files attributed to the user
+run lusrmgr.msc - manage local user and group
+user assigned to group inherits permissions of the group (can be assigned multiple groups)
+
+user account control (UAC) - password is prompted for standard user for privileges
+task manager shortcut - ctrl+shift+esc
+Explore core windows processes room ***
+
+
+
+
