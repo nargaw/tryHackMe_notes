@@ -1,0 +1,74 @@
+IDOR - Insecure Direct Object Reference (type of access control vuln)
+-user input is not validated properly
+
+eg: original: http://online-service.thm/profile?user_id=1305
+    change:   http://online-service.thm/profile?user_id=1000
+
+changing the last value allows the access to another account
+
+IDORS in encoded IDs
+Raw data encoded before passing data from page to page - most common Base64
+encoded data ===>decode==> raw data ===>tamper with raw data ===> encode==> encoded data ===> send to server
+
+Hashed IDs
+-most common md5
+
+unpredictable IDs: use two accounts and swap the id numbers between them - goal is to see the other user's conent using their id number while logged in.
+
+IDORs may not always be present in address bar, could be loaded via an AJAX request or inside JavaScript file. 
+
+DevTools => Network (refresh page) => change the value of id to gain access to another account
+
+File Inclusion - Local File Inclusion(LFI), Remote File Inclusion (RFI), and Directory traversal.
+User to access files from a webserver
+	http://webapp.thm/get.php?file=userCV.pdf
+poor input validation - file inclusion vulns (user inputs need to be sanitised and validated before exec)
+RCE - remote access execution (if attacked can write files to the server /tmp directory)
+
+Path Traversal aka Directory Traversal - a web vuln allows attacker to read OS resources(local files on server) - aka ../ attack. Attacker takes adv of moving the directory one step up using the double dots
+- ../../ until root and /etc/passwd file
+different linux directories
+Location	Description
+/etc/issue: contains a message or system identification to be printed before the login prompt.
+/etc/profile: controls system-wide default variables, such as Export variables, File creation mask (umask), Terminal types, Mail messages to indicate when new mail has arrived
+/proc/version: specifies the version of the Linux kernel
+/etc/passwd: has all registered user that has access to a system
+/etc/shadow: contains information about the system's users' passwords
+/root/.bash_history: contains the history commands for root user
+/var/log/dmessage: contains global system messages, including the messages that are logged during system startup
+/var/mail/root: all emails for root user
+/root/.ssh/id_rsa: Private SSH keys for a root or any known valid user on the server
+/var/log/apache2/access.log: the accessed requests for Apache  webserver
+C:\boot.ini: contains the boot options for computers with BIOS firmware
+
+Local File Inclusion - LFI
+developer lack of security awareness. 
+-only directory the user needs must be specified, input validation is needed 
+NULL BYTE - %00(0x00) = disregard whatever comes after NULL BYTE
+bypass filter - cd . - stays in the current directory
+file_get_contents function allows directory traversal
+if there is a filter for ../ in PHP(we can do ....//....//) - only removes the first part leaving ../../
+if forced to include directory (eg THM-profile/)
+	THM-profile/../../../../etc/passwd
+
+Remote File Inclusion - RFI
+RFI - technique to include remote files into vulnerable app. Utilizes improperly sanitized user input. Allows user to inject an external URL into include.
+Requirement allow_url_fopen: on.
+Allow RCE, Sensitive information Disclosure, Cross-site scripting (xss) and Denial of service (Dos)
+Attacker server injects into client server.
+1. Attacker request a file from attackers server (stopped with input validation)
+2. Client server requests file from attacker's server
+3. attacker's server serves file to client server
+4. Client server accepts injected file and executes it
+5. attacker gets result of execution within the page
+-start a file server using python3 http.server
+
+Prevent file inclusion vulns
+1. Updated software
+2. Turn off PHP errors with important info
+3. WAF (web app firewall)
+4. turn off PHP features that allow file inclusion (allow_url_fopen & allow_url_include)
+5.allow only PHP wrappers that are in need
+6. never trust user input (sanitize appropriately)
+7. Implement whitelisting for file names and locations as well as blacklisting
+ 

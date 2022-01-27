@@ -1,0 +1,110 @@
+Nmap (network mapper) - efficient tool to discover which systems are up and what services are running on these systems
+-map networks, id live hosts, discover running services
+-port scanning offline systems wastes time and creates unnecessary noise on the network
+-nmap automates and makes scanning efficient
+-has scripting engine to extend functionality
+
+-A network segment is a group of computers connected using a shared medium (ethernet switch or wifi access point)
+-subnet with /16, 255.255.0.0 can have 65 thousand hosts
+-subnet with /24, 255.255.255.0 can have 250 hosts
+
+-If connected to the same subnet, scanner can rely on ARP (Address Resolution Protocol) to discover live hosts
+-ARP query: aims to get the hardware address (MAC address) communication over link-layer becomes possible
+-ARP queries are not routed and cannot cross the subnet router
+-ARP link-layer protocol
+-ARP packets are bound to their subnet
+
+Enumerating Targets
+-target: IP, website
+-range: IP.15-20
+subnet: Machine_IP/30
+input file for list of targets: nmap -iL list.txt
+check list of host Nmap will scan: nmap -sL TARGETS
+no DNS resolution: -n
+
+Discovering Live Hosts
+-OSI Model
+1. Physical Layer & 2. Data Link Layer - ARP, Ethernet(802.3), WiFi(802.11), DSL, Bluetooth
+3. Network Layer - IPv4, IPv6, ICMP, IPsec
+4. Transport Layer - TCP, UDP
+5. Session Layer & 6. Presentation Layer & 7. Application Layer - HTTP, HTTPS, SMTP, POP3, IMAP, SSH, FTP, SNMP, Telnet, RDP,..
+
+ARP: sends a frame to broadcast address on a network segment asking a specific IP address to respond by providing its MAC address
+
+ICMP: Type 8(Echo) and Type 0 (Echo Reply)
+
+TCP/UDP: send a specially-crafted packet to common TCP or UDP ports to check if target responds (efficient when ICMP Echo is blocked)
+
+Nmap host discovery using ARP
+1. privileged user tries to scan targets on local network(ethernet), Nmap uses ARP requests
+2. privileged user tries to scan targets outside of local network, Nmap uses ICMP echo requests, TCP ACK to port 80, TCP SYN to port 443, and ICMP timestamp request
+3. Unprivileged user tries to scan targets outside of local network, Nmap uses TCP 3-way handshake by sending SYN packets to ports 80 and 443
+
+discover live hosts without port-scanning: nmap -sn [target IP]
+scan local networks without port-scanning: nmap -PR -sn [target IP]
+-PR: ARP scan
+
+
+ICMP 
+-ping(ICMP type 8 echo)
+-ping reply (IMCP type 0)
+-not alway reliable
+-blocked by many firewalls (by default)
+option (-PE): ICMP echo request
+(-sn): no port scan
+eg: nmap -PE -sn [TARGET]
+-doesn't reveal MAC address unless on the same subnet
+-Time stamp request (ICMP type 13) (-PP)
+-Time stamp reply (ICMP type 14)
+-check address mask query (ICMP type 17) (-PM)
+-address mask reply(ICMP type 18)
+eg: nmap -PM -sn [TARGET]
+
+TCP SYN Ping
+-Three way handshake
+1. Syn (port 80 by default)
+2. Syn, Ack (open response - synchronize / acknowledge) (closed response - Reset)
+3. Ack (acknowledge)
+- (-PS): TCP syn ping followed by port number
+-PS21-25: ports 21-25
+-PS80,443,8080: ports 80, 443, 8080
+eg: nmap -PS -sn [target]
+
+TCP ACK ping
+-must be running nmap as a privileged user
+-default port 80
+- (-PA): TCP ACK followed by port number
+-PA21-25: ports 21-25
+-PA80,443,8080: ports 80, 443, 8080
+eg: sudo nmap -PA -sn [target]
+
+UDP ping
+-UDP packet to open port is not expected to respond with any reply
+- (-PU): UDP ping.
+eg: nmap -PU -sn [Target]
+
+Masscan
+-aggressive with rate of packets generated
+eg: masscan [Target] --top-ports 100
+
+Reverse-DNS Lookup
+- (-R) to query the DNS server even for offline hosts
+- (-n) to skip this step
+-specific DNS server: --dns-servers [DNS_SERVER]
+
+Scan Type	                   Example Command
+ARP Scan               ->	sudo nmap -PR -sn MACHINE_IP/24
+ICMP Echo Scan         ->	sudo nmap -PE -sn MACHINE_IP/24
+ICMP Timestamp Scan    ->	sudo nmap -PP -sn MACHINE_IP/24
+ICMP Address Mask Scan -> 	sudo nmap -PM -sn MACHINE_IP/24
+TCP SYN Ping Scan      ->	sudo nmap -PS22,80,443 -sn MACHINE_IP/30
+TCP ACK Ping Scan      ->	sudo nmap -PA22,80,443 -sn MACHINE_IP/30
+UDP Ping Scan	       ->       sudo nmap -PU53,161,162 -sn MACHINE_IP/30
+
+Option	Purpose
+-n   ->	no DNS lookup
+-R   ->	reverse-DNS lookup for all hosts
+-sn  ->	host discovery only
+
+
+
