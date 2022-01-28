@@ -1,0 +1,38 @@
+-TCP port or UDP port is used to identify a network service running on the host
+-HTTP server binds TCP port 80 by default - HTTP
+-HTTP server supports SSL/TLS, TCP port 443 - HTTPS
+-ports can be reconfigured
+
+-open ports: service listening on that port
+-closed ports: no service listening on that port
+
+-firewall might block packets for an open port making it appear closed
+-open: service is listening
+-closed: no service is listening, port is accessible(reachable & not blocked by firewall or other programs)
+-filtered: nmap cant determine if port is open or closed because it is not accessible (packets are blocked)
+-unfiltered: nmap cannot determine if port is open or closed, port is accessible (ACK scan)
+-open|filtered: nmap cannot determine if port is open or filtered
+-closed|filtered: nmap cannot determine if port is closed or filtered
+
+UDP port 53 - DNS
+TCP port 22 - SSH
+Nmap port states - 6
+
+TCP flags
+-TCP header is the first 24 bytes of a TCP segment
+1. URG: urgent flag - incoming data is urgent - processed immediately without consideration
+2. ACK: acknowledgement flag - acknowledgment number is significant - receipt of TCP segment
+3. PSH: push flag - ask TCP to pass the data to the application promptly
+4. RST: reset flag - reset the connection
+5. SYN: synchronize flag - initiate TCP 3-way handshake
+6. FIN: finished flag - sender has no more data to send
+
+TCP 3-way handshake
+ --> SYN -->
+<-- SYN, ACK <--
+--> ACK -->
+
+
+
+
+
