@@ -32,7 +32,48 @@ TCP 3-way handshake
 <-- SYN, ACK <--
 --> ACK -->
 
+-unprivileged users are limited to connect scan '-sT'
+-default mode is SYN scan - requires root or sudoer
+-SYN scan tears down connection once response is received, decrease chances of scan being logged 
+-'-sS' option - doesn't need a 3-way handshake
 
+UDP - connectionless protocol
+-can not guarantee a service listening on a UDP port would respond to sent packets
+-if UDP packet is sent to a closed port, an ICMP port unreachable error (type 3) is returned
+-'-sU'
+-can be combined with another TCP scan
+eg: nmap -sU -F -v [IP]
+-ports can be specfied or range given
+eg: -p22,80,443
+eg: -p1-1025 (inclusive)
+eg: -p- (scan all ports)
+eg: -F --top-ports 10 (scan the ten most common ports)
+-control scan timing
+eg: -T<0-5>
+0: paranoid
+1: sneaky
+2: polite
+3: normal
+4: aggressive
+5: insane
+
+-probing parallelization using --min-parallelism <numprobes> * --max-parallelism <numprobes>
+eg: --min-parallelism=64
+
+Port Scan Type		Example Command
+TCP Connect Scan	nmap -sT 10.10.249.10
+TCP SYN Scan		sudo nmap -sS 10.10.249.10
+UDP Scan		sudo nmap -sU 10.10.249.10
+
+Option				Purpose
+-p-			all ports
+-p1-1023		scan ports 1 to 1023
+-F			100 most common ports
+-r			scan ports in consecutive order
+-T<0-5>			-T0 being the slowest and T5 the fastest
+--max-rate 50		rate <= 50 packets/sec
+--min-rate 15		rate >= 15 packets/sec
+--min-parallelism 100	at least 100 probes in parallel
 
 
 
