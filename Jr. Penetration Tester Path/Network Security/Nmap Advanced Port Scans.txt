@@ -1,0 +1,66 @@
+1. Null Scan
+-all six flag bits are set to zero
+- '-sN'
+- will not trigger any response when it reaches an open por
+-lack of reply: open or firewall is blocking packet
+-RST response packet: port is closed
+-requires root previleges
+eg: sudo nmap -sN [target IP]
+
+2. Fin Scan
+-sends TCP packet with the FIN flag set
+-'-sF'
+-doesn't know if port is open
+-RST response: port is closed
+-root previleges
+eg: sudo nmap -sF [target IP]
+
+3. Xmas Scan
+-FIN, PSH and URG flags simultaneously
+-'-sX'
+-eg: sudo nmap -sX [target IP]
+-efficient when scanning a target behind a stateless(non-stateful) firewall.
+
+4. TCP Maimon Scan
+-FIN, ACK bits are set, shoudl send an RST as response
+-'-sM'
+-most systems respond with RST regardless of TCP port is open or not
+eg: sudo nmap -sM [target IP]
+
+5. TCP ACK Scan
+-ACK flag set
+-'-sA'
+-responds with RST regardless of the state of the port
+-behaviour happens bc TCP packet with ACK flag set should be sent only in response to a received TCP packet
+-shows which ports are not blocked by firewall
+eg: sudo nmap -sA [target IP]
+
+6. Window Scan
+-Similar to ACK scan but it examines the TCP window field of the RST packets returned
+-'-sW'
+-reveal open port
+eg: sudo nmap -sW [target IP]
+
+7. Custom Scan
+-set custom flags
+-'--scanflags'
+eg: sudo nmap --scanflags FLAGS [target IP]
+ALL FLAGS: URGACKPSHRSTSYNFIN
+
+Spoofing and Decoys
+-scan target systems using soofed IP address and even a spoofed MAC address
+eg: sudo nmap -S [spoofed IP] [target IP]
+-reponse sent to the spoofed IP
+-important for attacker to monitor the network traffic to analyze replies
+1. attacker sends a packet with spoofed source IP address to the target machine
+2. target machine replies to the spoofed IP address destination
+3. attacker captures reply to analyze open ports
+-specify network interfacing using -e
+-explicitly disable ping scan -Pn
+eg: nmap -e NET_INTERFACE -Pn -S SPOOFED_IP TARGET_IP
+-if on the same subnet, abel to spoof MAC address (same Ethernet or Wifi network)
+Decoy: make the scan appear to be coming from many IP addresses
+-'-D'
+eg: nmap -D DECOY1,ME,DECOY2 [target IP] 
+
+
