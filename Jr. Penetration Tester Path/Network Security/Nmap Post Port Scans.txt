@@ -1,0 +1,71 @@
+1. Service Detection 
+-probe available port to detect the running service
+- '-sV' collect and determine service and version information for the open ports
+-control intesity with '--version-intensity LEVEL' Level (0-lightest, 9-most complete)
+- '-sV' will force nmap to proceed with TCP 3-way handshake, -sS is not possible
+-requires root privileges
+eg: sudo nmap -sV --version-intensity [LEVEL] [Target IP]
+
+2. OS detection
+-nmap detect the OS
+- '-O'
+eg: nmap -sS -O [Target IP]
+-virtualization, OS version may be distorted
+
+3. Traceroute
+-find routers between attacker and target
+- '--traceroute': linux and macOS
+- 'tracert': MS windows
+-standard starts with TTL (time to live) keeps increasing until it reaches target
+-Nmap traceroute starts with packet of high TTL and keeps decreasing
+
+4. Nmap Scripting Engine (NSE)
+-script is a piece of code that does not need to be compiled
+-remains in its original human-readable form and does not need to be converted to machine language
+-Lua Interpreter - allows nmap to execute nmap scripts written in Lua Language
+-nmap default installation contains close to 600 scripts
+-run scripts in default category '--script=default' or '-sC'
+-default includes auth,broadcast,brute,default, discovery, dos,explit,external,fuzzer, intrusive, malware, safe, version, and vuln
+
+Script Category			Description
+auth				Authentication related scripts
+broadcast			Discover hosts by sending broadcast messages
+brute				Performs brute-force password auditing against logins
+default				Default scripts, same as -sC
+discovery			Retrieve accessible information, such as database tables and DNS names
+dos				Detects servers vulnerable to Denial of Service (DoS)
+exploit				Attempts to exploit various vulnerable services
+external			Checks using a third-party service, such as Geoplugin and Virustotal
+fuzzer				Launch fuzzing attacks
+intrusive			Intrusive scripts such as brute-force attacks and exploitation
+malware				Scans for backdoors
+safe				Safe scripts that won’t crash the target
+version				Retrieve service versions
+vuln				Checks for vulnerabilities or exploit vulnerable services
+
+-specifiy script by name '--script "SCRIPT-NAME"' or '--script "ftp*"'
+
+5. Saving the Output
+-Three formats(Normal, Grepable, XML) --also script kiddie (hard to search output)
+A. Normal - similar to output on the screen
+- '-oN [File Name]'
+B. Grepable - grep - Global Regular Expression Printer - efficient filtering
+- '-oG [File Name]'
+C. XML - convenient to process output in other programs
+- '-oX [File Name]'
+- ALL types '-oA [File Name]'
+
+Summary
+Option			Meaning
+-sV			determine service/version info on open ports
+-sV --version-light	try the most likely probes (2)
+-sV --version-all	try all available probes (9)
+-O			detect OS
+--traceroute		run traceroute to target
+--script=SCRIPTS	Nmap scripts to run
+-sC or --script=default	run default scripts
+-A			equivalent to -sV -O -sC --traceroute
+-oN			save output in normal format
+-oG			save output in grepable format
+-oX			save output in XML format
+-oA			save output in normal, XML and Grepable formats
