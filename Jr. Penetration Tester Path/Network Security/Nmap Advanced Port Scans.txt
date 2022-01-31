@@ -63,4 +63,62 @@ Decoy: make the scan appear to be coming from many IP addresses
 -'-D'
 eg: nmap -D DECOY1,ME,DECOY2 [target IP] 
 
+Fragmented Packets
+1.Firewall - software or hardware that permits packets to pass through or block them
+-traditional firewall - inspects at least, IP header and transport layer header
+-sophisticated firewall - examine data carried by transport layer
+2.IDS - intrusion detection system - inspects for select behavioral patterns or specific content signatures
+-raises alert when a malicious rule is met
+-inspects IP header and transport layer header, inspect data contents in transport layer for malicious patterns
+-smaller packets have advantage to prevent firewall/IDS
+3.Fragmented Packtes
+-Nmap provides option '-f' to fragment packets
+-IP data divided into 8 bytes or less
+- '-ff' divided into 16 byte 
+-change the default value '--mtu'
+1 byte = 8 bits
+-increase size of packets to make them look innocuous --data-length NUM (NUM - number of bytes to append to packets)
+
+Idle/Zombie Scan
+-requires an idle system connected to the network that can communicate with
+-nmap makes each probe appear it's comming from idle host
+-check idle host to see if it received any response to the spoofed probe
+-check IP identification value in the IP header
+eg: nmap -sI [ZOMBIE_IP] [MACHINE_IP]
+1. trigger the idle host to respond so it can record the current IP ID on the idle host
+2. send SYN packets to a TCP port on the target (packets should be spoofed to appear its coming from idle host IP)
+3. Trigger idle machine again to respond to compare the new IP ID with the one received earlier
+
+Getting More Details
+- '--reason' nmap provides more details regarding its reasoning and conclusions
+- '-v' verbose output
+- '-vv' more verbose output
+- '-d' debugging details (extend beyond a single screen)
+- '-dd' more debugging details
+
+Port Scan Type			Example Command
+TCP Null Scan			sudo nmap -sN 10.10.13.3
+TCP FIN Scan			sudo nmap -sF 10.10.13.3
+TCP Xmas Scan			sudo nmap -sX 10.10.13.3
+TCP Maimon Scan			sudo nmap -sM 10.10.13.3
+TCP ACK Scan			sudo nmap -sA 10.10.13.3
+TCP Window Scan			sudo nmap -sW 10.10.13.3
+Custom TCP Scan			sudo nmap --scanflags URGACKPSHRSTSYNFIN 10.10.13.3
+Spoofed Source IP		sudo nmap -S SPOOFED_IP 10.10.13.3
+Spoofed MAC Address		--spoof-mac SPOOFED_MAC
+Decoy Scan			nmap -D DECOY_IP,ME 10.10.13.3
+Idle (Zombie) Scan		sudo nmap -sI ZOMBIE_IP 10.10.13.3
+Fragment IP data into 8 bytes	-f
+Fragment IP data into 16 bytes	-ff
+
+Option				Purpose
+--source-port PORT_NUM  	specify source port number
+--data-length NUM		append random data to reach given length
+
+Option			Purpose
+--reason		explains how Nmap made its conclusion
+-v			verbose
+-vv			very verbose
+-d			debugging
+-dd			more details for debugging
 
