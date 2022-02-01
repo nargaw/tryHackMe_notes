@@ -1,0 +1,15 @@
+1. Telnet: application layer protocol used to connect to a virtual terminal of another computer
+-access console to run programs, start batch processes and perform system admin tasks remotely
+-login using username and password
+-not encrypted
+-uses telnet protocol to listen for incoming connections on port 23
+eg: telnet [IP]
+-not reliable for access to remote system bc all data is sent in clear text
+
+2. HTTP: protocol used to transfer web pages. 
+-connects to the webserver and uses HTTP to request HTML pages and images, submit forms, upload files etc
+-sends and receives data as cleartext (not encrypted)
+-need HTTP server(webserver) and an HTTP client (web browser) to use HTTP protocol
+-Three Popular HTTP servers (Apache, Internet Information Services(IIS), Nginx)
+-Web browsers (Chrome, Edge, Firefox, Safari)
+
