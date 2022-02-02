@@ -13,3 +13,44 @@ eg: telnet [IP]
 -Three Popular HTTP servers (Apache, Internet Information Services(IIS), Nginx)
 -Web browsers (Chrome, Edge, Firefox, Safari)
 
+3. FTP: File Transfer Protocol
+-created to make transfer of files between different computers efficient
+-sends and receives data as cleartext
+-default port 21
+1. connect to an FTP server using Telnet client
+2. provide user and pass
+usefull commands:
+- 'STAT' - provide some added information
+- 'SYST' - shows the system type of the target
+- 'PASV' - switches mode to passive
+- 'TYPE A' - switches file transfer to ASCII
+- 'TYPE I' - switches file transfer mode to binary
+Active mode - data is sent over a separate channel originating from the FTP server's port 20
+Passive mode - data is sent over a separate channel originating from an FTP client's port above port 1023
+After logged in:
+'ftp>' - execute various commands
+'ls' - list files
+'get [FILE NAME]' - client and server extablish another channel for file transfer
+
+4. SMTP: Simple Mail Transfer Protocol
+-Email system can be used to allow local users to exchange emails with each other without access to the internet
+-multiple components
+1. Mail Submmision Agent (MSA) - has email to be sent, connects to MUA to send message, checks for errors before passing to MTA
+2. Mail Transfer Agent (MTA) - send the emamil message to MTA of the recipient 
+3. Mail Delivery Agent (MDA) - passed to MDA to deliver to email client
+4. Mail User Agent (MUA) - agent send the mail
+Two protocols
+1. Simple Mail Transfer Protocol (SMTP)
+2. Post Office Protocol Version 3 (POP3) or Internet Message Access Protocol (IMAP)
+SMTP - communicate using an MTA server
+-cleartext
+-default port 25 by default
+steps: 
+1. telnet [IP] 25
+2. helo [hostname]
+3. mail from: 
+4. rcpt to:
+5. data 
+6. -ENTER '.' Enter to send
+
+
