@@ -53,4 +53,37 @@ steps:
 5. data 
 6. -ENTER '.' Enter to send
 
+5. Post Office Protocol 3 (POP3)
+-used to download email messages from a mail delivery agent (MDA)
+-default port 110
+-steps:
+1. telnet [IP] 110
+2. USER [username]
+3. PASS [password]
+4. 'STAT'
+--reply +OK nn mm--
+nn: number of email messages in the inbox
+mm: size of the inbox in octates (byte)
+5. 'LIST'
+-list of messages on server-
+6. 'RETR [number]' 
+--retrive message from list--
 
+6. Internet Message Access Protocol (IMAP)
+-more synchronized than POP3
+-keep email syncronized across multiple devices and mail clients
+-default port: 143
+-IMAP requires each command to be preceded by a random string to be able to track the reply, c1, c2, etc
+-List mail folders: 'LIST "" "*"'
+-steps: 
+1. telnet [IP] 143
+2. c1 LOGIN [username] [password]
+3. c2 LIST "" "*"
+
+Protocol	TCP Port	Application(s)	Data Security
+FTP		21		File Transfer	Cleartext
+HTTP		80		Worldwide Web	Cleartext
+IMAP		143		Email (MDA)	Cleartext
+POP3		110		Email (MDA)	Cleartext
+SMTP		25		Email (MTA)	Cleartext
+Telnet		23		Remote Access	Cleartext
