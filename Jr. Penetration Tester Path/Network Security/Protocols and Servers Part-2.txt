@@ -1,0 +1,126 @@
+Attack Vectors of Telnet, HTTP, FTP, SMTP, POP3, IMAP
+CIA - DEFENSE
+C-Confidentiality: keeping contents of the communications accessible to the intended parties
+I-Integrity: assure data sent is accurate, consistent and complete when reaching its destination
+A-Availablitity: accessible when needed
+DAD - OFFENSE
+D-Disclosure: Leak data to unintended parties
+A-Alteration: inaccurate, inconsistent, incomplete upon arrival at destination
+D-Destruction: unaccessible when needed
+
+1. Sniffing Attack
+-a network packet capture tool
+-cleartext can be captured by third party
+-Programs available to capture network packets
+a. Tcpdump: cli
+b. Wireshark: gui
+c. Tshark: cli alternative to wireshark
+
+eg: sudo tcpdump port 23 -A - telnet traffic capture
+
+2. Man-in-the-middle (MITM) attack
+-attacker is in the middle of connection between victim and legitimate destiniation
+-HTTP susceptible to MITM attack 
+-tools used
+a. Ettercap
+b. Bettercap
+-can also affect other cleartext protocols FTP, SMTP, POP3
+-mitigation requires cryptography
+
+3. Transport Layer Security (TLS)
+-SSL - secure sockets layer - online shopping and sending payment information
+-TLS - 1999 - more secure
+-introduced in the presentation layer of ISO/OSI model
+-data will be in an encrypted format instead of original form
+-portocols and default ports and secure protocols:
+
+Protocol	Default Port	Secured Protocol	Default Port with TLS
+HTTP		80		HTTPS			443
+FTP		21		FTPS			990
+SMTP		25		SMTPS			465
+POP3		110		POP3S			995
+IMAP		143		IMAPS			993
+
+-HTTPS requires additional step to encrypt the traffic
+1. establish TCP connection
+2. establish SSL/TLS connection
+3. send HTTP requests to the webserver
+
+SSL Handshake (RFC 6101)
+-proper handshake
+1. client sends ClientHello to server
+2. server responds with ServerHello with certificate if authenticated (id self signed by third party), might send additional information necessary to generate master key.ServerHelloDone
+3. client responds with ClientKeyExchange - required to generate masterkey, switches to use encryption and informs the server of the ChangeCipherSpec message
+4. Server switches to use encryption and returns ChangeCipherSpec finished 
+
+-web browser will check certificate automatically
+DNS -> secure -> DoT port 853
+
+4. SSH
+-secure shell - created to provide a secure way for remote system admin
+-default port 22
+-using cryptography
+1. confirm identity of the remote server
+2. Exchanged messages are encrypted and can only be decrypted by intended recipient
+3. Both sides can detect any modification in messages
+-SSH listens on port 22 by default
+-authenticate using username and password
+-private and public key
+eg: ssh [username]@[IP address]
+
+-can transfer files using SCP (secure copy protocol)
+eg: scp [username]@[IP]:/directory/file.xyz ~
+~: copy to the root of the home directory of the currently logged-in user
+also the same: scp [file] [username]@[IP]:/directory/
+
+-ssh can be secured using FTPS protocol using port 990
+
+5. Passwork Attack
+-Authentication
+1. Password and PIN code - KNOW
+2. SIM Card, RFID card, USB dongle - HAVE
+3. Fingerprint and Iris - ARE
+
+password attackes
+1. Guessing: knowledge of target, pet name and date of birth year
+2. Dictionary: attempts to guess from dictionary or wordlist
+3. Brute Force: exhaustive and time consuming search for all possible characters
+
+THC Hydra: supports many protocols: FTP, POP3, IMAP, SMTP, SSH
+eg: hydra -l username -P wordlist.txt server service
+- '-l username': -l precede username
+- '-p wordlist.txt': -p precede wordlist
+- server: host IP
+- service: indicates service to be launched
+eg: hydra -l mark -P /usr/share/wordlists/rockyou.txt 10.10.127.204 ftp
+-additional arguments
+- '-s PORT': specify a non-default port for the service in question
+- '-V' or '-vV': verbose or very verbose
+- '-t n': n is th enumber of parallel connections to the target
+- '-d': debugging
+ctrl+c to end process when pw is found
+
+Mitigation
+-enforce minimum complexity
+-account lockout after number of failed attempts
+-throttling authentication attempts
+-use CAPTCHA (Completely Automated Public Turing test to tell computers and humans apart)
+-reuire public certificate for authentication
+-two factor authentication
+
+Common protocols
+Protocol	TCP Port	Application(s)			Data Security
+FTP		21		File Transfer			Cleartext
+FTPS		990		File Transfer			Encrypted
+HTTP		80		Worldwide Web			Cleartext
+HTTPS		443		Worldwide Web			Encrypted
+IMAP		143		Email (MDA)			Cleartext
+IMAPS		993		Email (MDA)			Encrypted
+POP3		110		Email (MDA)			Cleartext
+POP3S		995		Email (MDA)			Encrypted
+SFTP		22		File Transfer			Encrypted
+SSH		22		Remote Access/File Transfer	Encrypted
+SMTP		25		Email (MTA)			Cleartext
+SMTPS		465		Email (MTA)			Encrypted
+Telnet		23		Remote Access			Cleartext
+ 
