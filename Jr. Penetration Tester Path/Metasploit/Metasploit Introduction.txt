@@ -1,0 +1,11 @@
+Metasploit: widely used exploitation framework.
+-powerfull tool that can support all phases of a penetration testing engagement
+-two versions:
+1. Metasploit Pro: commercial version (automation and management with GUI)
+2. Metasploit Framework: open-source in CLI
+-set of tools for information gathering, scanning, exploitation, exploit development, post-exploitation and more
+-main components:
+1. msfconsole: main command line interface
+2. modules: supporting modules such as exploits, scanners, payloads etc
+3. tools: stand-alone tools that will help vulnerability research, vulnerability assessment, or pen testing (msfvenom, pattern_create and patter_offset)
+
