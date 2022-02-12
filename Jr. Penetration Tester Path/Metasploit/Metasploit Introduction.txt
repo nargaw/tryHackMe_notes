@@ -25,7 +25,7 @@ modules and categories
 3. Stages: downloaded by stager, use larger sized payloads
 
 run metasploit
-1. msfconsole - msf6 command line 
+msfconsole - msf6 command line 
 -can be used just like a regular command-line shell
 -does not support output redirection
 -autocomplete
@@ -33,3 +33,34 @@ run metasploit
 -'show' command followed by module type (auxiliary, payload, exploit, etc.)
 -'back' command
 -'info' command
+
+Working with Modules
+-Can not use metasploit commands on regular command prompt
+-msfconsole prompt: msf5 or msf6 is the msfconsole prompt
+-context prompt: use a module and set command to chose it, can use context-specific commands
+-meterpreter prompt: important payload, means a meterpreter agent was loaded to the target system and connected back to attacker
+-shell on a target system: once exploit is complete, access to command shell on target system is achieved - regular command line
+
+Common Parameters
+RHOSTS: "remote host" - IP of target system
+RPORT: "remote port" - port of target system
+PAYLOAD: payload to be used with the exploit
+LHOST: "local host" - IP of attacking system
+LPORT: "local port" - port used for reverse shell to connect back to
+SESSION: each connect established to the target system using Metasploit
+
+'unset' command: clear any parameter value
+'unset all' : clear all parameters
+'setg': set values that will be used for all modules
+'set': set values for current module
+'exploit' command:  launch module
+'run' command: an alias for exploit command
+'check' option will check if target system is vulnerable without exploiting it
+'background': background the session propmpt and go back to msfconsole prompt
+ctrl + z: background sesssions
+'sessions -i': interact with any session, followed by the desired session number
+
+ 
+
+
+
