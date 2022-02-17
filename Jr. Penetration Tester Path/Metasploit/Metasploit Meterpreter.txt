@@ -1,4 +1,17 @@
-Two categories (single and staged)
+Meterpreter - metasploit payload that supports the pen test process
+Runs on a target system (not installed)
+-runs in memory and does not write itself to the disk on the target
+-avoid antivirus detection
+-avoid detection by network-based IPS (intrusion prevention system) and IDS (intrusion detection system)
+Process ID (PID) - 'getpid' command : returns the process ID with which Meterpreter is running
+-All processes running in linux or windows will have a unique ID number
+'ps' command: list processes running on the target system
+DLLs (Dynamic-Link Libraries)
+Meterpreter will establish an encrypted TLS communication channel with the attacker's system
+
+Two categories: 
+1. Inline(single) - sent in a single step (all sent together -larger size)
+2. Staged - initial stager and request the rest of the payload (smaller inital payload size)
 
 see Meterpreter versions using msfvenom
 'msfvenom --list payloads | grep meterpreter'
