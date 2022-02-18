@@ -1,0 +1,51 @@
+-Shells - used when interfacing with a Command Line Interface environment (CLI).
+eg. bash or sh - linux, cmd.exe - windows
+-remote server to gain command line access to server = reverse shell
+-open up a port on server which is able to connect to in order to execute further commands = bind shell
+
+Tools
+-Netcat: 'swiss army knife' of networking
+-banner grabbing, receive shells and connect to remote ports to bind shells
+-unstable, easy to lose
+
+-Socat: netcat on steroids
+-more stable
+-syntax is more difficult
+-rarely installed by default
+
+Metasploit- multi/handler
+-auxiliary/multi/handler - metasploit framework like socat and netcat, used to receive reverse shells
+-only way to interact with a meterpreter shell, easiest way to handle staged payloads
+Msfvenom: gen payloads on the fly
+
+Types of Shell
+1. Reverse Shells - the target is forced to execute code from the attacking computer remotely.
+-set up a listener to receive a connection
+-good way to bypass firewall rules(prevent from connecting to arbitrary ports on target)
+-need to configure attacker network to accept the shell
+
+2. Bind Shells - code executed on the target is used to start a listener attached to a shell directly on the target
+-connect to the port the code has oppened and obtain RCE
+-may be prevented by firewalls protecting the target 
+-does not require any network configuration
+
+Interactive vs non-Interactive shells
+-Interactive: Powershell, Bash, Zsh, sh or any other CLI env
+-Interactive shells allow for interaction with programs after execution
+
+-Non-Interactive: limited to using programs which do not require user interaction in order to run properly
+-majority of simple reverse and bind shells are non-interactive, tricky exploit.
+
+Netcat
+-reverse shells
+1. start a netcat listener using linux
+'nc -lvnp <port-number>'
+-l: listener
+-v: verbose output
+-n: not to resolve host names (use DNS)
+-p: port specification ( use well-known port number 80, 443, 53 - get past firewall)
+
+-bind shells: there is a listener already to be slected by attacker
+'nc <target-ip> <chosen-port>'
+
+ 
