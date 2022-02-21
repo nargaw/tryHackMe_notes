@@ -1,0 +1,46 @@
+Privilege Escalation - going from a lower permission account to a higher permission one
+-exploitation of a vulnerability, design flaw or configuration oversight in an OS or APP to gain unathorized access to resources that are usually restricted from the users
+-Privilege Escalation allows:
+1. Resetting passwords
+2. Bypass access controls to compromise protected data
+3. Editing software configurations
+4. Enabling persistence
+5. Changing the privilege of existing users
+6. Execute any admin command
+
+Enumeration - first step taken after gaining access, important step post-compromise phase
+'hostname' - command returns hostname of the target machine
+'uname -a' - print system information detail about kernel, useful for potential kernel vulns
+'/proc/version' - info about the target system processes
+'/etc/issue' - file contains info about the OS, can be eaily customized or changed
+'ps' - see running processes on linux system
+-1. PID: Process ID
+-2. TTY: Terminal type used by user
+-3. Time: Amount of CPU time used by process
+-4. CMD: command or executable running
+'ps -a': view all running processes
+'ps axjf': view process tree
+'ps aux': will show processes for all users
+-a: all users
+-u: display the user that launced the process
+-x: show processes that are not attached to a terminal
+'env': show environmental variables
+'sudo -l: list all commands the user can run using 'sudo'
+'ls': list files in current directory
+'ls -la': list all files including hidden files in current directory
+'id <user>': provide a general overview of the user's privilege level
+'cat /etc/passwd': discover users on the system
+'cat /etc/passwd | cut -d ":" -f 1": easily list all users and ignore other parts
+'history': look at earlier commands 
+'ifconfig': information about the network interfaces (eth0, tun0, and tun1)
+'ip route': see network route
+'netstat': gather information on existing connections
+'netstat -a': shows all listening ports and established connections
+'netstat -at': list TCP protocols
+'netstat -au': list UDP protocols
+'netstat -l': list ports in 'listening' mode. Ports are open and ready to accept incoming connection
+'netstat -lt': list ports in 'listening' mode using TCP protocol
+'netstat -s': list network usage statistics by protocol (-t: TCP, -u: UDP)
+'netstat -tp': list connections with service name and PID (-l: listening ports)
+'netstat -i': shows interface stats
+'netstat -ano': -a = display all sockets, -n: do not resolve names, -o: display timers
