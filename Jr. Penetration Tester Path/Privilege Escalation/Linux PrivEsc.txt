@@ -70,3 +70,19 @@ find development tools and supported languages:
 'find / -name python*'
 'find / -name gcc*'
 'find / -perm -u=s -type f 2>/dev/null': find files with SUID bit, which allows us to run the file with a higher privilege than the current user
+
+Automated Enumeration Tools - linux enumeration tools with Github Repositories
+LinPeas: https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS
+LinEnum: https://github.com/rebootuser/LinEnum
+LES (Linux Exploit Suggester): https://github.com/mzet-/linux-exploit-suggester
+Linux Smart Enumeration: https://github.com/diego-treitos/linux-smart-enumeration
+Linux Priv Checker: https://github.com/linted/linuxprivchecker
+
+Kernel Exploits
+-privEsc ideally leads to root privileges
+-achieved by exploting an existing vuln or accessing another user account that has higher privileges
+-rely on misconfigurations and lax permissions
+-methodology
+1. Id the Kernel version
+2. search and find an exploit code 
+3. Run the exploit
