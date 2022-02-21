@@ -24,6 +24,7 @@ Enumeration - first step taken after gaining access, important step post-comprom
 -a: all users
 -u: display the user that launced the process
 -x: show processes that are not attached to a terminal
+
 'env': show environmental variables
 'sudo -l: list all commands the user can run using 'sudo'
 'ls': list files in current directory
@@ -34,6 +35,7 @@ Enumeration - first step taken after gaining access, important step post-comprom
 'history': look at earlier commands 
 'ifconfig': information about the network interfaces (eth0, tun0, and tun1)
 'ip route': see network route
+
 'netstat': gather information on existing connections
 'netstat -a': shows all listening ports and established connections
 'netstat -at': list TCP protocols
@@ -44,3 +46,27 @@ Enumeration - first step taken after gaining access, important step post-comprom
 'netstat -tp': list connections with service name and PID (-l: listening ports)
 'netstat -i': shows interface stats
 'netstat -ano': -a = display all sockets, -n: do not resolve names, -o: display timers
+
+find command - searching the target system for important information and potential privilege escalation vectors 
+'find . -name <filename>.txt' find the file named <filename> in the current directory
+'find /home -name <filename>.txt': find file named <filename> in the /home directory
+'find / -type d -name config': find the directory named config under "/"
+'find / -type f -perm 0777': find files with the 777 permissions(files readable, writable and executable by all users)
+'find / -perm a=x':find executable files
+'find /home -user frank': find all files for user "frank" under "/home"
+'find / -mtime 10': find files modified in the last 10 days
+'find / -atime 10': find files accessed in the last 10 days
+'find / -cmin -60': find files changed in the last hour 
+'find / -amin -60': find files accessed in the last hour
+'find / -size 50M': find files with a 50 MB size
+
+folders and files that can be written to or executed from:
+1. 'find / -writable -type d 2>/dev/null'
+2. 'find / -perm -222 -type d 2>/dev/null'
+3. 'find / -perm -o w -type d 2>/dev/null'
+'find / -perm -o x -type d 2>/dev/null': find world executable folders
+find development tools and supported languages:
+'find / -name perl*'
+'find / -name python*'
+'find / -name gcc*'
+'find / -perm -u=s -type f 2>/dev/null': find files with SUID bit, which allows us to run the file with a higher privilege than the current user
