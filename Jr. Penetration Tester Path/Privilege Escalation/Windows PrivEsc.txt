@@ -1,0 +1,60 @@
+Windows system user privilege levels:
+1. admin(local): user with the most privileges
+2. standard(local): access computer but only perform limited tasks; Can not make permanent or essential changes to the system
+3. guest: access to the system but not defined as a user
+4. standard(domain):active directory allows orgs to manage users. May have local admin privileges
+5. admin(domain): most privileged user. can edit, create and delete other users throughout the organization's domain
+
+Windows and its services use the "SYSTEM" acount to perform their tasks. 
+Windows allows the grouping of users to facilitate their management
+
+PrivEsc:
+A. enumerate the current user's privileges and resources it can access
+B. If antivirus allows, run an automated  enumeration script such as winPEAS or PowerUp.ps1
+C. Different approach, checklist: https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md
+
+User enumeration
+'whoami /priv' - current user's privileges
+'net users' - list users
+'net user <username>' - list details of a user
+'qwinsta' - other users logged in simultaneously
+
+System Info enumeration
+'systeminfo' - overview of the target system
+'systeminfo | findstr /B /C:"OS Name" /C:"OS Version" /C:"Host Name"' - returns OS name and version and host name
+
+Search for files
+'findstr <str>' - search for string
+'findstr /si password *.txt' - search for string "password" in current director and all subdirectories ending with .txt
+other extensions: .xml, .ini, .config, .xls
+
+Patch Level - microsoft releases regular pathes and updates, a missing critical patch can be easy to exploit
+'wmic qfe get Caption,Description,HotFixID,InstalledOn'
+WMI - windows management instrumentation, manage operations  on windows
+
+Network connections
+'netstat -ano' - list all listening ports
+-a: all active connections and listening ports on the system
+-n: prevent name resolution, do not attempt to resolve names using DNS
+-o: display the process ID
+
+Scheduled Tasks - identify tasks run at predefined times and privileges associated 
+'schtasks' - used to query scheduled tasks
+'schtasks /query /fo LIST /v'
+
+Drivers
+-additional software instaled to allow OS to interact with an external device
+-printers, web cams, keyboards, and USB sticks 
+-drivers may not be updated as frequently
+-potential vector for priv esc
+'driverquery' - list drivers installed on the system
+
+Antivirus
+-antivirus software will not detect presence if the system is accessed without a trojan
+-check for antivirus before running scripts or other tools
+-two approches:
+1. Look for antivirus specifically
+2. list all running services
+-default antivirus installed on windows - Windows Defender 'windefend'
+'sc query windefend' - search for windows defender => approch #1
+'sc queryex type=service' - list all service (overwhelming output) => approch #2
