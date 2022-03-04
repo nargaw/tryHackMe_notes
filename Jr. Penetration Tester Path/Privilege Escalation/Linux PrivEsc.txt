@@ -154,8 +154,17 @@ Cron Jobs
 -stored as crontabs
 -any user can read the file keeping system-wide cron jobs under '/etc/crontab'
 backup.sh - configured to run every minute
--launch a reverse shell:
-1. 
+
+PATH
+-if a folder for the user has a write permission located in the path, an applicaition in the path could be hijacked to run a script and increase privileges
+echo $PATH
+
+NFS
+-Network file sharing: configuration is kept in '/etc/exports' file. 
+-the file is created during the NFS server installation and can usually be read by users
+-critical element: "no_root_squash" - default NFS will change the root user to nfsnobody and strip any file from operating with root privileges
+- 'no_root_squash' is present on a writable share, it is possible to create an executable with SUID bit set and run it on the target system
+
 
 
 
