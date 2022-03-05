@@ -58,3 +58,39 @@ Antivirus
 -default antivirus installed on windows - Windows Defender 'windefend'
 'sc query windefend' - search for windows defender => approch #1
 'sc queryex type=service' - list all service (overwhelming output) => approch #2
+
+-------------------------------------------------------------------------------
+
+Enumeration Tools
+1. WinPEAS - enumerate target sys to uncover privEsc paths.
+-.bat script or executable
+-detected by windefend and disabled
+-redirect output to a file: winpeas.exe > outputfile.txt
+2. PowerUp - powershell script that searches common privEsc on the target sys
+-'Invoke-AllChecks' option will perform all possible checks
+'powershell.exe -nop -exec bypass'
+'Import-Module .\PowerUp.ps1'
+'Invoke-AllChecks'
+3. Windows Exploit Suggester - python script
+'windows-exploit-suggester.py -update' - update database before running
+'windows-exploit-suggester.py --database 2021-09-21-mssb.xls --systeminfo sysinfo_output.txt'
+4. Metasploit
+'multi/recon/local_exploit_suggester'
+
+--------------------------------------------------------------------------------
+
+Vulnerable Software
+-can provide various privEsc opportunities
+'wmic product get name,version,vendor'  - list software installed on system
+-wmic product maynot return all the installed programs so run 'wmic service list brief' to see list of all processes
+-list running processes: 'wmic service list brief | findstr "Running"'
+
+--------------------------------------------------------------------------------
+
+DLL Hijacking
+-effective technique to inject code into an application
+-dll files support the main function of the .exe file
+-execuable files that can not be run directly but launched by other applications
+
+
+
