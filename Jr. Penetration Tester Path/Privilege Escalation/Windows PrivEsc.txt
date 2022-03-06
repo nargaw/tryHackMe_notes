@@ -91,6 +91,70 @@ DLL Hijacking
 -effective technique to inject code into an application
 -dll files support the main function of the .exe file
 -execuable files that can not be run directly but launched by other applications
+-need and exe file to run dll script
 
+Intro to DLL files
+-a single dll file can be used by many exe files or can be dedicated to a single exe
+-any app can have its own dll files or call windows dll files
+-missing dll file does not always result in an error
+-dll hijacking - replace a legitimate dll file with a malicious dll file that will be called by the exe and run
 
+manipulating dll files
+-replace an existing file or creating a file in the location where the application is looking for it
+
+SafeDllSearchMode - enabled, search order:
+1. directory from which app loaded
+2. sys directory use GetSystemDirectory function to get path to directory
+3. 16-bit sys direcotry, no function to obtain path, need to search
+4. Windows directory. use GetWindowsDirectory function to get  path to directory
+5. current directory
+6. directories listed in env variable. specified by 'App Paths' registry key
+
+SafeDllSearchMode - disabled, search order:
+1. directory from which app loaded
+2. current directory
+3. sys directory
+4. 16-bit sys directory
+5. windows directory
+6. directories listed in env variable
+
+Finding DLL hijacking vulns
+-Process Monitor (ProcMon), require admin privileges
+
+Creating malicious DLL file
+-example skeleton:
+
+#include <windows.h>
+
+BOOL WINAPI DllMain (HANDLE hDll, DWORD dwReason, LPVOID lpReserved) {
+    if (dwReason == DLL_PROCESS_ATTACH) {
+        system("cmd.exe /k whoami > C:\\Temp\\dll.txt");
+        ExitProcess(0);
+    }
+    return TRUE;
+}
+
+-boilerplate executes whoami and saves it as a dll.txt file
+-mingw compiler can be used to generate the DLL file with command:
+x86_64-w64-mingw32-gcc windows_dll.c -shared -o outpull.dll
+-install mingw compiler: apt install gcc-mingw-w64-x86-64
+-move the dll file after compiled to the target folder
+
+-----------------------------------------------------------------------------------
+
+Unquoted service path
+-when a service starts in win, the OS has to find and run an exe file
+-if path is written between quotes, windows will go to exact location to launch the service.exe
+-if path is not written between quotes, windows will look for the shortest possible path
+-place a executable in a location the service is looking for an executable
+
+-list services running on system
+'wmic service get name,displayname,pathname,startmode'
+
+-check binary path of this service
+'sc qc <service>'sc 
+
+-check for privileges on folder path
+
+------------------------------------------------------------------------------------
 
