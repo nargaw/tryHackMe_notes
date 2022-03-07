@@ -1,0 +1,34 @@
+Django - high-level Python web framework that enables rapid development of sevure and maintainable websites
+-automatically compiles HTML code
+-one of the most secure developing frameworks(resits SQL injections and XSS)
+
+---------------------------------------------------
+
+Getting started
+-Python3 
+'pip3 install Django'
+specify a version 'pip3 install Django==2.2.12'
+-make directory of project files and navigate with command prompt
+'django-admin startproject <project name>'
+'python3 manage.py migrate'  - configure new files
+manage.py - command line utility to interact with the Django project, useful in creating web-apps, managing databases, most importantly running the server
+-basic syntax: python3 manage.py {command}
+
+runserver - deploys website on the server
+-allows instant changes on the website without restarting server
+-run project on local network: 'python3 manage.py runserver 0.0.0.0:8000'
+
+createsuperuser - create an admin account from Django web admin panel
+-access the panel at IP:8000/admin
+
+startapp - initalize an app for the project
+-can have infinite number of apps
+syntax: 'python3 manage.py startapp {app_name}'
+
+--------------------------------------------------------------------------------
+
+Creating a website
+1. 'python3 manage.py startapp newApp' - start new app
+2. add app name to settings.py in 'INSTALLED_APPS'
+3. include path of app to urls.py in 'urlpatterns'
+4. migrate changes 'python3 manage.py migrate'
