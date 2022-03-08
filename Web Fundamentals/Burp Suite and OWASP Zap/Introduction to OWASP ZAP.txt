@@ -1,0 +1,54 @@
+OWASP Zap is security testing framework like Burp Suite. 
+-robust enumeration tool for testing web applications
+Benefits:
+-free and opensource
+-automated web application scan
+-web spidering: passively build a website map with spidering
+-uthrottled intruder: bruteforce login pages within OWASP
+-automatic interception without switching between windows
+
+-----------------------------------------------------------------------------
+
+Perform automated scan
+-performs both passive and automated scans to build a sitemap and detect vulns
+-Traditional Spider: passive scan that enumerates links and directories of the website. Builds a website index without brute-forcing. Quieter but not as comprehensive as bruteforce.
+-Ajax Spider: integrates ZAP with crawler of AJAX rich sites called Crawljax.
+
+-----------------------------------------------------------------------------
+
+Manual Scanning
+-Tools > Options > Local Proxies > Address: 127.0.0.1
+-Tools > Options > Dynamic SSL Certificates > Save 
+-Browser Settings > Certificates > import certificate
+-Browser Settings > Proxies > set address and port
+
+-----------------------------------------------------------------------------
+
+Brute-force Directories
+-can use a wordlist attack and directory bruteforce through ZAP
+-Tools > Options > Forced Browse > Add custom forced browser file
+-Sites > Attack > Forced Broswe Site
+-Add wordlist to List > Start
+
+-----------------------------------------------------------------------------
+
+Bruteforce Web Login
+-GET:brute(...) > Attack > Fuzz..
+-select the fuzz location
+-add wordlist
+-start fuzzer
+
+----------------------------------------------------------------------------
+
+ZAP Extensions
+-Manage Add-Ons > Marketplace > select > install selected
+-Add > Scripts > enable script
+
+----------------------------------------------------------------------------
+
+Further Reading
+Desktop eManuel: https://www.zaproxy.org/docs/desktop/ui/
+
+OWASP ZAP Forums: https://groups.google.com/forum/#!forum/zaproxy-users 
+
+ZAP in Ten: https://www.alldaydevops.com/zap-in-ten
