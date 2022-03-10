@@ -1,0 +1,31 @@
+Local file inclusion - vulnerability that is exploited when a user input contains a certain path to the file which might be present on the server and will be included in the output.
+-used to read files containing sensetive and confidential data from the vulnerable system
+-cause is improper sanitization of user input
+-Input sanitization is checking input and only allowing expected values to be passed
+
+------------------------------------------------------------------------------------
+
+Getting user access
+-use parameter on URL 'https://tryhackme.com/?file=robots.txt'
+-'file' = parameter
+-'robots.txt' = value that is passed
+-attacker can use LFI to read files from system
+-can give information such as passwords/SSH keys
+
+../../../../etc/passwd - find users
+../../../../etc/shadow - hash for user password
+
+interesting files to checkout:  https://github.com/cyberheartmi9/PayloadsAllTheThings/tree/master/File%20Inclusion%20-%20Path%20Traversal#basic-lfi-null-byte-double-encoding-and-other-tricks
+
+use hashcat to crack the hash: 
+hashcat -m 1800 <hash> <password list>
+
+-------------------------------------------------------------------------------------
+
+Escalating privileges to root
+-find a vector that can be exploited to gain root access
+-a vector could be a binary with special permission or a cronjob with improper configuration
+
+sudo -l
+sudo journalctl
+!/bin/bash
