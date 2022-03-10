@@ -1,0 +1,3 @@
+Dictionary Attack - use of an existing dictionary of common username/password combinations to find the correct combination
+-use tools such as Hydra or Medusa
+-use burp suite: capture login request and then use intruder to perform attack
