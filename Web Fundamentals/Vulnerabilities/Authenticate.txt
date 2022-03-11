@@ -1,3 +1,41 @@
 Dictionary Attack - use of an existing dictionary of common username/password combinations to find the correct combination
 -use tools such as Hydra or Medusa
 -use burp suite: capture login request and then use intruder to perform attack
+
+-start capture on burp suite
+-go to login site: enter test user and pass
+-send capture to intruder
+-change user to jack
+-go to payload and add password list
+-start attack (different length)
+
+------------------------------------------------------------------------------
+
+Re-registration
+-developer forgets to sanitize the input(username & password)
+-vulnerable to SQL injection
+-if ther is an 'admin' account we can reregister with ' admin' to get a new user with the same rights as normal admin
+
+------------------------------------------------------------------------------
+
+
+Json Web Token (JWT)
+-commonly used authorization
+-cookie generated using HMAC hashing or public/private keys
+-JSON format (after decoding)
+
+1. Header: algorithm used and type of token
+{ "alg": "HS256", "typ": "JWT"}
+alg: HMAC, RSA, SHA256
+
+2. Payload: access given to the certain user etc
+-vary from website to website
+
+3. Signature:  used to make sure the integrity of the data was maintained while transferring it from a user's computer to the server and back
+
+Exploitation
+-misconfiguration
+-find the secret used for encrypting the JWT token
+-low privilege user can get JWT token, decode token and edit header to use alg value to none to remove the encryption
+
+Practical
