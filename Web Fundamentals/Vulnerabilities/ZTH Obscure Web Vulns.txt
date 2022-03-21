@@ -61,6 +61,10 @@ Json Web Token - secure method of authentication
 
 -------------------------------------------------------------------------------
 
-JWT manual exploitation
+XXE 
+
+-applications using XML document to do an action
+-improper hangling of XML can lead to XML External Entity Injection (XXE)
+-add an entity that has value of /etc/passwd
 
 
