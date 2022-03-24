@@ -1,0 +1,41 @@
+IDOR: Insecure Direct Object Reference: act of exploiting a misconfiguration in the way user input is handled to access resources that are hidden
+
+IDOR Exploitation: change the url parameter to access another page
+
+http://example.com/note.php?note=1 
+
+change note=1 to note=0
+
+--------------------------------------------------------------------------------
+
+Forced Browsing: art of using logic to find resources on the website that would not normally be able to access
+
+Forced Browsing manual exploitation: changing directory to access another file
+
+http://example.com/user1/note.txt
+
+change user1 to admin
+
+http://example.com/admin/note.txt
+
+access note of admin
+
+Forced Browsing Automatic exploitation: using wfuzz
+pip3 install wfuzz
+
+wfuzz flags:
+-c: Shows the output in color
+-z: Specifies what will replace FUZZ in the request. For example -z file,big.txt will read through all the lines of big.txt and replace FUZZ with
+--hc: Don't show certain http response codes
+--hl: Don't show a certain amount of lines in the response
+--hh: Don't show a certain amount of words
+
+wfuzz -c -z file,wordlist.txt http://example.com/FUZZ/note.txt
+
+---------------------------------------------------------------------------------
+
+API bypassing: 
+
+Enter commands because API does not varify or sanitize input
+
+wfuzz -c -z file,wordlist.txt --hw 0 example:80/api.php?FUZZ=flag.txt
