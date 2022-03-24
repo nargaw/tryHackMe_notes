@@ -1,0 +1,9 @@
+SSRF: Server side request forgery.
+-An attacker can make further HTTP request through the server
+-make use of vulnerability to communicate with any internal services on the server's network 
+-Process:
+1. attacker finds an SSRF vulnerability on a website
+2. Firewall allows all requests to the website
+3. attacker exploits the SSRF vuln by forcing the webserver to request data from database
+4. Firewall allows the request because it is coming from the webserver and not the attacker
+
