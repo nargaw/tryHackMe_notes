@@ -1,0 +1,29 @@
+File uploads can open up severe vulnerabilities in the server can lead to RCE, unrestricted access to server, deface or alter content
+-could potentially also use server to host/serve illegal content or leak sensitive information 
+
+https://tryhackme.com/room/ccpentesting
+
+Enumeration
+-check if client-side filtering is being applied
+-scan with gobuster
+-use burpsuite and wappalyser
+-if server-side filtering, need to guess what the filter is looking for, change based on error messages
+
+Overwriting existing files: 
+1. enumerate and find the src of image
+2. upload an image with the same name
+
+Remote Code Execution:
+-written in the same language as the backend of the website (PHP, Python Django, Javascript Node.js)
+-use webshells and reverse shells
+-webshell if file length limit has been imposed on uploads
+1. gobuster scan
+gobuster dir -u http://example.com -w wordlist.txt
+2. write a webshell
+-PHP code takes GET parameter and executes it as a system command and echoes oupt to the screen
+<?php
+	echo system($_GET["cmd"]);
+?>
+3. reverse shells:
+-netcat listener
+nc -lvnp 1234  
