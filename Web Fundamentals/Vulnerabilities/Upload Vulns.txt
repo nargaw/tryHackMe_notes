@@ -26,4 +26,23 @@ gobuster dir -u http://example.com -w wordlist.txt
 ?>
 3. reverse shells:
 -netcat listener
-nc -lvnp 1234  
+nc -lvnp 1234
+
+Filtering
+1. client-side: running in the user's web browser
+-javascript traditionally
+-filtering occurs before the file is even uploaded to the server
+-easy to bypas because it runs on the clients computer
+-by itself is highly insecure
+2. server-side: running on the server
+-PHP traditionally, ASP, C#, Node.js, Python, Ruby on Rails... others
+-more difficult to bypass
+-use payload that conforms to the filters in place but allows the execution of code
+Extension validation: identify contents of a file. used by MS windows. Blacklist and whitelist certain extensions
+File Type filtering: verify the contents of a file are acceptable to upload
+	MIME validation: Multiputpose Internet Mail Extension - types are used as an identifier for files - 			checks extension, easy to bypass
+	Magic Number Validation: file is a string of bytes at the very beginning of the file content; 		        certain types of file have certain hex values that can be stopped
+File Length Filtering: prevent huge files from being uploaded so uploaded shells must be below the maximum
+File Name filtering: files uploaded to the server should be unique; check if there is a file name already exists on the server and return an error; file name sanitized to remove "bad characters" and control characters ";" and unicode characters
+File Content filtering: scan full contents of an uploaded file to ensure its not spoofing its extension, MIME or magic number
+
