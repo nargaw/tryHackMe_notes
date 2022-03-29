@@ -53,5 +53,8 @@ Bypassing Client-side Filtering
 4. Send file directly to the upload point: using tool like curl post data directly to the page that contais the code for handling the file upload
 'curl -X POST -F "submit:<value>" -F "<file-parameter>:@<path-to-file>" <site>'
 
-
-
+Bypassing Server-side Filtering: File Extensions
+-code is hidden in the server
+-.php and .phtm - blacklisted; Could be bypassed by .php3, .php4, .php5, .php7, .phps, .php-s, .pht and .phar
+-enumerated to find which file extensions are accepted or rejected
+-filtering function may look for only the first period; if .jpg is accepted and .php is rejected, could be bypassed by shell.jpg.php
