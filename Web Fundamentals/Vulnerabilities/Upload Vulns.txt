@@ -46,3 +46,12 @@ File Length Filtering: prevent huge files from being uploaded so uploaded shells
 File Name filtering: files uploaded to the server should be unique; check if there is a file name already exists on the server and return an error; file name sanitized to remove "bad characters" and control characters ";" and unicode characters
 File Content filtering: scan full contents of an uploaded file to ensure its not spoofing its extension, MIME or magic number
 
+Bypassing Client-side Filtering
+1. Turn off javascript in the browser: works if site doesn't require javascript in order to provide basic functionality
+2. Intercept and modify incoming page: using burpsuite intercept incoming web page and strip out js filter
+3. Intercept and modify file upload: intercept file upload after it's accepted by the filter
+4. Send file directly to the upload point: using tool like curl post data directly to the page that contais the code for handling the file upload
+'curl -X POST -F "submit:<value>" -F "<file-parameter>:@<path-to-file>" <site>'
+
+
+
