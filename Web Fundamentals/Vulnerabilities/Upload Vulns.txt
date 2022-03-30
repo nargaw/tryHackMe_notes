@@ -58,3 +58,21 @@ Bypassing Server-side Filtering: File Extensions
 -.php and .phtm - blacklisted; Could be bypassed by .php3, .php4, .php5, .php7, .phps, .php-s, .pht and .phar
 -enumerated to find which file extensions are accepted or rejected
 -filtering function may look for only the first period; if .jpg is accepted and .php is rejected, could be bypassed by shell.jpg.php
+
+Bypassing Server-side Filtering: Magic Numbers
+-magic numbers are more accurate identifier of files
+-string of hex digits (first thing in a file)
+-strings are compared against a whitelist or a blacklist
+-more effective on PHP based webservers
+-list of file signatures https://en.wikipedia.org/wiki/List_of_file_signatures
+use hexedit to change the signuture hex value
+
+Example Methodology
+-1. using wappalyzer to look for indicator of what languages and frameworks the web application might have been built with (not 100% accurate but a good start). Use burpsuite to intercept response and look for 'server' or 'x-powered-by'
+-2. look and find an upload page. look for clinet side scripts to bypass any client-side filters
+-3. attempt innocent file upload, to see how file is accessed. use tools such as Gobuster. -x switch -x php,txt,html look for specific extension
+-4. attempt a malicious file upload
+-5. upload invalid extension. if accepted extension is using blacklist, if rejected it is using whitelist
+-6. try original innocent file with changed magic number
+-7. change the MIME type 
+-8. Enumerate file length filters
