@@ -1,0 +1,38 @@
+Cookies
+-HTTP Cookies is a small packet of data sent from a website and stored on user's computer by the user's web browser
+-intended to remember things such as login information, items in shopping car or language preferences
+-Advertisers can track cookies to identify sites previously visited
+-Can view and dynamically update cookies directly in the browser by pressing F12 or Dev tools -> Application -> Cookies
+
+HTTP Headers
+-lets a client and server pass information with a HTTP request or response
+-names and values are separated by a single colon and are intergral part of the HTTP protocol
+-GET: request data from a server
+-POST: send data to a server
+-intercept traffic with BurpSuite or use
+curl -D header.txt "http://10.10.10.10"
+cat header.txt
+
+Enumeration and FTP
+-scan machine using nmap
+-access the FTP service using reusable credentials
+nmap 10.10.10.10 -v
+ftp 10.10.10.10
+name: xyz
+password: abcd
+ftp> cd files
+ftp> get flag3.txt
+
+Gobuster
+-fast directory discovery tool
+-brute-force URI (directories and files)
+-use wordlist
+gobuster dir -u http://10.10.10.10 -w wordlist.txt
+
+SQL injection
+-code injection technique that manipules an SQL query 
+-destory database, reveal all database data or gain authentication
+
+RCE and Linux
+-combine commands together 
+cd ../; ls; cat flag5.txt
