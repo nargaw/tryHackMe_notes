@@ -1,0 +1,31 @@
+gobuster-scan directory
+gobuster dir -u http://10.10.10.10 -w wordlist.txt
+
+hydra-bruteforce password
+hydra -l user -P wordlist.txt -f 10.10.10.10 http-get /directory/
+
+nmap-scan ports
+nmap 10.10.10.10 -v
+
+curl-get service running on a specific port
+curl -s http://10.10.10.10:1234
+
+nikto-examine web server to find potential problems and security vulns
+nikto -h http://10.10.10.10:1234/directory/html -id "user:password"
+
+nikto-port 80 scan
+nikto -h http://10.10.10.10
+
+metasploit-run exploit
+msfconsole -q
+use exploit/xyz
+show options
+set RHOST 'target IP'
+set RPORT 'target Port'
+set HttpUsername 'user'
+set HttpPassword 'password'
+run
+
+
+
+
