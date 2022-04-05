@@ -1,0 +1,12 @@
+Reconnaissance: walking through an application - turn on burpsuite, turn intercept mode off and browse the site
+
+SQL injection: attacker enters a malicious or malformed query to either retrieve or tamper data from a database
+Command Injection: web apps take input or user-controlled data and run them as system commands. An attacker can tamper data to execute their own commands
+Email Injection: security vuln that allows malicious users to send email messages without prior auth by the email server
+
+1. SQL injection
+"' or 1=1--"
+' => will close the brackets in the SQL query
+or => will return true if either side of it is true
+1=1 => is always true, the whole statement is true - tells server the email is valid and to log into as user id 0 (admin)
+-- => comment out data
