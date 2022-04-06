@@ -1,0 +1,12 @@
+Install
+Add Certificate
+Overview
+Proxy: allows us to funnel traffic through Burp Suite
+Target: scope of project. used to create a site map of the application being tested
+Intruder: fuzzing to credential stuffing and more
+Repeater: repeat requests with or without modification, precursor to fuzzing 
+Sequencer: analyzes the randomness present in parts of the web app, commonly used for testing session cookies
+Decoder: allows us to perform various transforms on pieces of data. Vary from decoding/encoding to various bases or url encoding
+Comparer: Compare different responses 
+Extender: allow for additional components such as tool integrations, additional scan definitions and more
+Scanner: Automated web vuln scanner, to highlight areas for further manual investigation
