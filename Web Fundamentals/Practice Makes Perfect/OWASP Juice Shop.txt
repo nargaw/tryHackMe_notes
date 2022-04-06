@@ -4,9 +4,43 @@ SQL injection: attacker enters a malicious or malformed query to either retrieve
 Command Injection: web apps take input or user-controlled data and run them as system commands. An attacker can tamper data to execute their own commands
 Email Injection: security vuln that allows malicious users to send email messages without prior auth by the email server
 
-1. SQL injection
+SQL injection
 "' or 1=1--"
 ' => will close the brackets in the SQL query
 or => will return true if either side of it is true
 1=1 => is always true, the whole statement is true - tells server the email is valid and to log into as user id 0 (admin)
 -- => comment out data
+
+
+Exploiting Authentication
+-weak passwords in high privilegd accounts
+-forgotten password pages
+
+Bruteforce the admin account password
+-start BurpSuite
+-go to login page
+-capture login send to intruder
+-set positions
+-add payload wordlist
+-start attack
+-successful request will return "200 OK"
+
+Reset password
+-osint to gain answer to security question
+
+Access Confidential Document
+-access misconfigured web app to find open information
+
+Poison Null Byte
+-%00
+-by placing a null character in the string at a certain byte, the string will tell the server to terminate at that point, nulling the rest of the string
+
+Privilege Esc
+-Horizontal: user can perform an action or access data of another user with the same level of permissions
+-Vertical: user can perform an action or access data of another user with higher level of permissions
+
+XXS (Cross-site scripting)
+-allows attacker to run javascript in web applications
+-DOM (Special): DOM XSS - uses HTML env to execute malicious javascript
+-Persistent(Server-side): js is run when the server loads the page containing it. occurs when server does not sanitize the user data when uploaded to the page (common in blog posts)
+-Reflected(Client-side): js is run on client-side end of the web application. (common when the server doesn't sanitize search data)
