@@ -1,0 +1,42 @@
+OWASP TOP 10
+
+1. Injection
+SQL Injection: user controlled input is passed to SQL quieries used by attacker to manipulate outcome of queries
+Command Injection: user input passed to system commands, used by attacker to execute arbitary system commands on application servers
+
+possibilites:
+attacker can access, modify and delete information. 
+attacker can steal sensetive information 
+
+defence:
+allow list: input is compared to list of safe input or characters
+stripping input: characters are removed before being processed
+
+Active Command Injection: returns a response
+Blind Command Injection: doesn't return a response
+
+commands to try:
+Linux: whoami, id, ifconfig/ip addr, uname -a, ps -ef
+Windows: whoami, ver, ipconfig, tasklist, netstat -an
+
+user's shell: getent passwd user
+version of ubuntu running: lsb_release -a
+print out MOTD (message of the day): cat /etc/update-motd.d/00-header
+
+2. Broken Authentication
+Authentication and session management
+-allow users to gain access to web apps by varifying their identities
+-most common is user and pass mechanism
+-if correct, server provides the user with a session cookie
+-A session cookie: web servers use HTTP(s) to communicate which is stateless. Server knows who is sending what data. Server keeps track of users actions
+-attacker can find flaw in authentication mechanism and gain access to other users' accounts
+Brute force attacks: use brute force to guess user and pass
+Weak credentials: can be accessed without brute forcing and without multiple attempts
+Weak session cookies: How server keeps track of users, predictable values allows attacker to set their own session cookies and access users' accounts
+
+Mitigations:
+-Enforce strong password policy
+-Ensure app enforces automatic lockout to prevent brute forcing
+-Implement multi factor auth 
+
+
