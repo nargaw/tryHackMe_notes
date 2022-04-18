@@ -39,4 +39,33 @@ Mitigations:
 -Ensure app enforces automatic lockout to prevent brute forcing
 -Implement multi factor auth 
 
-
+3. Sensitive Data Exposure
+4. XML External Entitiy
+-attacker abuses feauters of XML parsers or data
+-attacker interacts with backend or external systems, allow attacker to read files on the system
+-DOS, SSRF
+I. in-band: attacker can receive an immediate response to XXE Payload
+II. out-of-band: no immediate response from the web application and attacker has to reflect the output of their XXE payload to some other file or their own folder
+XML: eXtensible Markup Language - defines set rules for encoding documents in a format both human and machine readable
+XML uses
+-platform-independent and programming language independent
+-data can be changed at any point without affecting data presentation
+-allows validation using DTD and Schema - ensures doc free from any syntax error
+-simplifies data sharing between systems
+XML syntax:
+-Prolog: <?xml version="1.0" encoding="UTF-8"?>
+-root element
+<?xml version="1.0" encoding="UTF-8"?>
+<mail>
+   <to>falcon</to>
+   <from>feast</from>
+   <subject>About XXE</subject>
+   <text>Teach about XXE</text>
+</mail>
+-<mail> is the root element
+-<to>,<from>,<subject>,<text> - children elements
+-xml is case sensitive
+-attribute and attribute value:
+<text category="message">Here is a message</text>
+category = attribute name
+message = attribute value
