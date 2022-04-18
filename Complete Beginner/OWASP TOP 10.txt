@@ -69,3 +69,13 @@ XML syntax:
 <text category="message">Here is a message</text>
 category = attribute name
 message = attribute value
+DTD:
+-Document type definition
+-defines the structure and legal elements and attributes of an xml doc
+!DOCTYPE note: defines a root element
+!ELEMENT note: defines the root contain these elements
+!ELEMENT to: defines the 'to' element 
+!ELEMENT from: defines the 'from' element
+!ELEMENT heading: defines the heading element
+!ELEMENT body: defines the body
+#PCDATA: parseable character data
