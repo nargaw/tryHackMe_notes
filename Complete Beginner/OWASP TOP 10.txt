@@ -79,3 +79,39 @@ DTD:
 !ELEMENT heading: defines the heading element
 !ELEMENT body: defines the body
 #PCDATA: parseable character data
+
+XML External Entity
+<!DOCTYPE replace [<!ENTITY name "xxx"> ]>
+<userInfo>
+<firstName>bob</firstName>
+<lastName>jones</lastName>
+</userInfo>
+
+<?xml version="1.0"?>
+<!DOCTYPE root [<!ENTITY read SYSTEM 'file:///etc/passwd'>]>
+<root>&read;</root>
+
+/home/falcon/.ssh/id_rsa
+
+5. Broken Access Control
+-regular visitor being able to access protected pages
+-non admin visitor accessing admin pages
+-IDOR (Insecure Direct Reference) act of exploiting a misconfiguration in the way user input is handled to access resource that an attacker is not able to access
+
+6. Security Misconfiguration
+-Poorly configured permissions on cloud services(S3 buckets)
+-unnecessary features enabled
+-default accounts with unchanged passwords
+-Error messages that are overly detailed that allow attacker to gain information about the system
+-not using HTTP security headers
+
+7. XSS Cross-site scripting
+-injection that can allow an attacker to execute malicious scripts and have it execute on a victim's machine
+Stored XSS - malicious string originates from the website's database (unsanitised user input)
+Reflected XSS - malicious payload is part of vicitms request to the website (attacker tricks victim into clicking a url)
+DOM-Based XSS - Programs can change the document structure of DOM
+XSS Payloads:
+popups: (<script>alert("hello world")</script>)
+write: (document.write)
+keylogger: log keystrokes of a user
+port scanner: local port scanner
