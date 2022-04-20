@@ -115,3 +115,11 @@ popups: (<script>alert("hello world")</script>)
 write: (document.write)
 keylogger: log keystrokes of a user
 port scanner: local port scanner
+
+8. Insecure Deserialization
+-untrusted dat is used to abuse the logic of an application
+-replacing data processed by an application with malicious code
+-can result in DOS to RCE
+-low exploitability: no reliable tool/framework
+-as dangerous as the attacker's skill permits
+-apps that fetch or store data are vulnerable: E-commerce sites, Forums, APIs, Application Runtimes(Tomcat, Jenkins, Jboss..)
