@@ -1,0 +1,22 @@
+Key Terms
+Plaintext: Data before encryption or hashing, often text but could be photo or other file
+Encoding: a form of data representation like base64 or hexadecimal. Immediately reversible
+Hash: output of a hash function
+Brute Force: attacking cyptography by trying every combination of values from a given list
+Cyptanalysis: attacking cryptography by fiding a weakness in the underlying maths
+
+Hash Function
+-Impossible or extremely difficult to go back from output back to input
+-takes data of any size
+-creates a summary of data
+-output is a fixed size
+-good hashing function are fast to compute and slow to reverse
+-small change in input results in extremely different result in output
+-pw verification uses hashing
+
+Hash Collision
+-when 2 different inputs give the same output
+-Pigeonhole effect is given there are a set number of different outputs, if there are more inputs than outputs, some inputs must give the same output
+-MD5 and SHA1 are technically insecure due to hash collisions separately
+-MD5 collision: https://www.mscs.dal.ca/~selinger/md5collision/
+-SHA1 collision: https://shattered.io/
