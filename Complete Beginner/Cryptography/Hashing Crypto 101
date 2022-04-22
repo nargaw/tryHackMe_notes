@@ -43,9 +43,16 @@ Password Cracking
 -hashcat best run on host, can be run from powershell
 -John the ripper uses CPU so works in a VM out of the box
 -never use --force becaue it produces false results
-
 1. analyze hash to find the hash type
 2. hashcat help grep the type of hash to get the code
 3. hashcat -m [code] [hash] [pwlist]
-
 use https://hashes.com/en/decrypt/hash
+
+Hashing for Integrity checking
+-used for checking files haven't been changed
+-if a single bit changes, hash changes by a lot
+-if two pictures have the same hash, they are the same picture
+Hmacs
+-method of using cryptographic hashing function to verify the authenticity and integrity of data
+-used to ensure the person who created the HMAC is who they say they are (Authenticity)
+-and messages hasn't been corrupted (Integrity)
