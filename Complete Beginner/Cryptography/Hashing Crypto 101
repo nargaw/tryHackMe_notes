@@ -20,3 +20,23 @@ Hash Collision
 -MD5 and SHA1 are technically insecure due to hash collisions separately
 -MD5 collision: https://www.mscs.dal.ca/~selinger/md5collision/
 -SHA1 collision: https://shattered.io/
+
+Hashing uses
+-data integrity
+-pw verification
+-if two users have the same pw, the hash will return the same output
+-rainbow tables are used to crack hashes
+-protect against rainbow tables by salting passwords
+
+Recognising password hashes
+-hash in web app, md5 
+-unix style pw have prefix $format$rounds$salt$hash
+-windows pw, NTLM
+-Linux pw, stored in /etc/shadow (normally only readable by root)
+-windows stores in SAM (tools like mimikatz help to dump hashes)
+$1$ - md5crypt, cisco and older linux/unix systems
+$2$, $2a$, $2b$, $2x$, $2y$ - Bcrypt (web apps)
+$6$ - sha512 crypt (default for linux/unix systems)
+
+Password Cracking
+-
