@@ -39,4 +39,13 @@ $2$, $2a$, $2b$, $2x$, $2y$ - Bcrypt (web apps)
 $6$ - sha512 crypt (default for linux/unix systems)
 
 Password Cracking
--
+-GPUs useful in mutliple math hash functions
+-hashcat best run on host, can be run from powershell
+-John the ripper uses CPU so works in a VM out of the box
+-never use --force becaue it produces false results
+
+1. analyze hash to find the hash type
+2. hashcat help grep the type of hash to get the code
+3. hashcat -m [code] [hash] [pwlist]
+
+use https://hashes.com/en/decrypt/hash
