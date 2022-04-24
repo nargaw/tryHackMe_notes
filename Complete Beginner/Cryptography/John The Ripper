@@ -1,0 +1,16 @@
+John The Ripper
+-Versatile hash cracking tool
+
+Hashes
+-a hash is a way of tracking a piece of data of any length and representing it in another form that is a fixed length
+-popular hashing algorithms: MD4, MD5, SHA1 and NTLM
+
+Hashes seure
+-designed to operate one way; cannot be reversed using just the output given
+-P vs NP (https://en.wikipedia.org/wiki/P_versus_NP_problem)
+
+John the Ripper -> hashes a dictionary of values and compares the hashes and compares it to the hash being cracked to find a match
+-dictionary attack
+
+Setup
+-sudo apt install john
