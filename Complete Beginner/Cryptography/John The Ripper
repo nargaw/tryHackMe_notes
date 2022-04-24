@@ -14,3 +14,22 @@ John the Ripper -> hashes a dictionary of values and compares the hashes and com
 
 Setup
 -sudo apt install john
+-most popular version: Jumbo John
+
+Wordlists
+-List of values to hash
+-good collection: https://github.com/danielmiessler/SecLists
+-rockyou.txt - popular password wordlist
+
+Cracking basic hashes
+-Syntax
+john [options] [path to file]
+
+-hash identification 
+1. https://hashes.com/en/tools/hash_identifier
+2. https://gitlab.com/kalilinux/packages/hash-identifier/-/tree/kali/master
+
+-Format-specific cracking
+john --format=[format] --wordlist=[path to wordlist] [path to file]
+-md5 have to be prefixed with 'raw-'
+eg: john --format=raw-md5 --wordlist=/usr/share/wordlists/rockyou.txt hash_to_crack.txt
