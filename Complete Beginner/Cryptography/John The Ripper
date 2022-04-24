@@ -33,3 +33,80 @@ john [options] [path to file]
 john --format=[format] --wordlist=[path to wordlist] [path to file]
 -md5 have to be prefixed with 'raw-'
 eg: john --format=raw-md5 --wordlist=/usr/share/wordlists/rockyou.txt hash_to_crack.txt
+
+Cracking Windows Authentication Hashes
+-Authentication hashes are hashed versions of passwords that are stored by operating systems, possible to crack using brute-force
+-privileged user to access authentication hashes
+
+NTHash / NTLM
+-format used by moder windows OS
+-referred to as NTLM "New Technology LM"
+-hashes can be aquired by dumping SAM database using tool Mimikatz or from Active directory database
+-format=NT
+john --format=NT --wordlist=rockyou.txt hash.txt
+
+Cracking /etc/shadow Hashes
+-/etc/shadow file is file on linux machines where password hashes are stored
+-file only accessible by root user
+-unshadowing: uses the unshadow tool
+-/etc/password file is needed
+unshadow [passwd] [shadow]
+eg: unshadow local_passwd local_shadow > unshadowed.txt
+Cracking: feed output from unshadow to john
+--format=sha512crypt
+john --wordlist=rockyou.txt --format=sha512crypt unshadowed.txt
+
+Single Crack Mode
+-john uses only information provided in the username to workout possible passwords heuristically
+-slightly chaning letters and numbers contained within the username
+-word mangling: john builds its own dictionary based on the information that it has been fed
+-exploit poor password usage based on username or service logging into
+-GECOS fields: fields split into parts by ":"
+-using single crack mode
+eg: john --single --format=[format] [hash file]
+-cracking hashes in single crack mode - prepend the hash with the username the hash belongs to
+eg: mike:1efee03cdcb96d90ad48ccc7b8666033
+
+Custom Rules
+-define custome rules for single crack mode
+-custom rules defined in john.conf
+-/etc/john/john.conf
+-/opt/john/john.conf
+wiki: https://www.openwall.com/john/doc/RULES.shtml
+-use a regex style pattern match to define where in the word will be modified
+c: capitalize first letter
+Az: append to the end of the word
+[0-9]: numbers 0-9
+[0]: only 0
+[A-z]: both upper and lowercase
+[A-Z]: only uppercase
+[a-z]: only lowercase
+[a]: only a
+[!$%@]: symbols !$%@
+if password guess is Password!1
+cAz"[0-9] [!$%@]"
+eg: --rule=Password
+
+Cracking password protected zip files
+-use zip2john tool to convert the zip file into a hash format that john is able to understand
+eg: zip2john [options] [zip file] > [output file]
+[option] - set specific checksum options
+-cracking: feed into john
+john --wordlist=rockyou.txt zip_hash.txt
+
+Cracking password protected rar archives
+-use rar2john tool to convert the rar file into hash format
+eg: rar2john [rar file] > [output file]
+cracking: feed into john
+john --wordlist=rockyou.txt rar_hash.txt
+
+Cracking SSH keys with John
+-private key, id_rsa is used as an authentication key to login to a remote machine over ssh
+-we can use john to crack password authentication over ssh using key
+-ssh2john: used to convert id_rsa private key into hash format
+-can be found at /opt/ssh2john.py or
+eg: python /usr/share/john/ssh2john.py
+ssh2john [id_rsa file] > [output file]
+cracking: feed into john
+john --wordlist=rockyou.txt id_rsa_hash.txt
+
