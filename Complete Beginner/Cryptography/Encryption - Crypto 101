@@ -28,4 +28,10 @@ x % 5 = 4
 
 Types of Encryption
 1. Symmetric: uses the same key to encrypt and decrypt the data
--DES
+-DES: 56 bits long - broken
+-AES: 128 and 256 bit long
+2. Asymmetric: uses a pair of keys, one to encrypt and the other to decrypt, private and public keys
+-RSA - 2048 to 4096 bit keys
+-Elliptic Curve
+*private keys need to be private
+Triple DES - result of the attempt to make DES more secure so that it could be used for longer
