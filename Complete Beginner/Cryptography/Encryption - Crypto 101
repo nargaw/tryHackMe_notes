@@ -35,3 +35,17 @@ Types of Encryption
 -Elliptic Curve
 *private keys need to be private
 Triple DES - result of the attempt to make DES more secure so that it could be used for longer
+
+RSA - Rivest Shamir Adleman
+-mathematically difficult problem of working out the factors of a large number
+-difficult to figure out what two prime numbers multiply to make a certain value (prime factor)
+-tools used to breaking encryption based on RSA (https://github.com/Ganapati/RsaCtfTool) (https://github.com/ius/rsatool)
+-Variable: p, q, m, n, e, d, c
+p & q: large prime numbers
+n: product of p & q
+n + e: public key
+n + d: private key
+m: message in plain text
+c: cipher text (encrypted text)
+-Blog post further math: https://muirlandoracle.co.uk/2020/01/29/rsa-encryption/
+
