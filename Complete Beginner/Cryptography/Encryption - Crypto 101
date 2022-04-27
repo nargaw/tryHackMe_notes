@@ -76,3 +76,28 @@ SSH Authentication
 -'authorized_keys' - file in the directory holds public keys that are allowed to access the server if key auth is enabled
 -To use private SSH key, permission must be set up correcly otherwise, SSH client will ignore the file with a warning
 eg: ssh -i [key] [user]@[hostIP]
+-ssh2john to turn rsa_key to hash to feed into john
+python ssh2john.py rsa_key > hash
+john --wordlist=rockyou.txt --format=ssh hash
+
+Diffie Hellman Key Exchange
+-key exchange allows 2 people/parties to establish a set of common cryptographic keys without an observer being able to get these keys
+-Alice(A) and Bob(B) want to communicate, they have a common material C
+-Alice and Bob will combine their secrets with the common material and form AC and BC
+-Send to eachother, combined they both have ABC (key used to communicate)
+-video explanation: https://www.youtube.com/watch?v=NmM9HA2MQGI
+
+PGP,GPG and AES
+-PGP: Pretty Good Privacy: software that implements encrption for encrypting files, performing digital signing and more
+-GPG: (GnuPG): Open source implementation of PGP from the GNU project
+-PGP/GPG: private keys can be protected with passphrases
+-Cracking can be done using gpg2john and feed into john the ripper
+-AES: Rijnndael - Advance Encryption Standard - replacement for DES(short key) - provides longer keys
+-Video explanation of AES: https://www.youtube.com/watch?v=O4xNJsjtN6E
+
+Future - Quantum Computers and Encryption
+-Asymmetric and Quantum: quantum computers can possibly easily break current encryption algorithms
+-Current Recommendations: RSA-3072 for Asymmetric Encryption and AES-256 or better for Symmetric encryption
+-Cryptography Apocalypse by Roger A. Grimes
+
+
