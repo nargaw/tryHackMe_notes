@@ -49,3 +49,30 @@ m: message in plain text
 c: cipher text (encrypted text)
 -Blog post further math: https://muirlandoracle.co.uk/2020/01/29/rsa-encryption/
 
+Asymmetric Cryptography
+-common use is to exchange keys for symmetric encryption
+-slower
+-symmetric encryption key, server's public key and server's private key
+-asymmetric cryptography used only once, fast private communication achieved
+-done using digital signitures and certificates
+
+Digital Signatures
+-way to prove authenticity of files
+-proff of who created or modified files
+-signatures performed using private key
+-Certificates: used in HTTPS
+-web browser knows it's talking to the right server using certificates
+-chain of trust starting with root CA (Certificate Authority)
+-Root CAs say they trust the organization
+-How CAs work https://robertheaton.com/2014/03/27/how-does-https-actually-work/
+
+SSH Authentication
+-SSH is authenticated using usernames and passwords
+-SSH can be configured with key authentication instead (uses private and public keys)
+-'ssh-keygen' program used to generate pairs of keys 
+-Private SSH keys = passwords
+-SSH key can be decrypted by using tool such as John the Ripper to find the passphrase
+-found in ~/.ssh folder
+-'authorized_keys' - file in the directory holds public keys that are allowed to access the server if key auth is enabled
+-To use private SSH key, permission must be set up correcly otherwise, SSH client will ignore the file with a warning
+eg: ssh -i [key] [user]@[hostIP]
