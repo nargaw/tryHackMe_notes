@@ -1,0 +1,17 @@
+Privilege Escalation
+-going from lower permission to a higher permission
+-exploit a design flaw or configuration 
+Uses: 
+-Reset passwords
+-Bypass access controls to compromise protected data
+-Edit software configs
+-Enable persistence
+-Change privilege of users
+
+Direction of privilege Esc:
+1. Horizontal: expand reach over the compromised system, take over different user with the same privilege level
+-inherit files and access 
+2. Vertical: attempt to gain higher privileges or access with an existing account 
+-hijacking an account with admin or root privileges
+
+Enumeration
