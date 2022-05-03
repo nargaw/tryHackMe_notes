@@ -15,3 +15,14 @@ Direction of privilege Esc:
 -hijacking an account with admin or root privileges
 
 Enumeration
+-LinEnum: simple bash script that performs commmon commands related to privilege escalation
+-how to get linEnum on target machine
+1. start python web server using "python3 -m http.server 8000"
+2. use wget on the target machine with local IP 
+3. change the file executable using "chmod +x [file.sh]"
+-running LinEnum
+-run script
+-LinEnum output sections:
+read/write sensitive files: look at permission to look sensitive files
+SUID files: (set owner user ID up to execution) - special permission that runds with permissions of whoever owns it
+Crontab contents: schedule commands at a specific time
