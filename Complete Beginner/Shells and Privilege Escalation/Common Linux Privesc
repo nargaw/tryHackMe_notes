@@ -26,3 +26,49 @@ Enumeration
 read/write sensitive files: look at permission to look sensitive files
 SUID files: (set owner user ID up to execution) - special permission that runds with permissions of whoever owns it
 Crontab contents: schedule commands at a specific time
+
+-Practical
+-shells
+cat /etc/shells
+-cron
+cat /etc/crontab
+-critical files
+cat /etc/passwd
+
+Abusing SUID/GUID Files
+-SUID =  run file with the permissions of the owner/group
+-privileges (rwx-rxw-rwx) user, group, others - read, write, execute'
+-maximum number is 7
+-extra bit 4: SUID (user)
+-extra bit 2: SGID (group)
+Finding SUID binaries
+find / -perm -u=s -type f 2>/dev/null
+find - initiates the find command
+/ - searches the whole file system
+-perm - searches for files with specific permissions
+-u=s - any of the permission bits mode are set for the file, symbolic modes accepted
+-type f - only search for files
+2>/dev/null - suppresses errors
+
+Exploiting Writable /etc/passwd
+-/etc/passwd: stores user account information 
+-plain text file
+-useful info: userId, groupId, home directory, shell and more
+-general read permission
+-root/superuser write access
+-fields are separated by a ':'
+1. username
+2. password: x  indicates encrypted passwords stored in /etc/shadow file
+3. user ID (UID): each user is assigned a user ID (1-99: pedefined accounts)(100- 999: reserved by system for admin and sys accounts/groups)
+4. Group ID (GID): primary group ID (stored in /etc/group/file)
+5. User ID info: add extra information about users - name, phone number etc
+6. Home directory: absolute path to the directory the user will be in when logged
+7. Command/shell: absoulte path of a command or shell (/bin/bash)
+Exploit: change pw hash, set UID, set GID, Shell to root etc
+
+Practical
+openssl passwd -1 -salt [salt] [password]
+username:passwordhash:0:0:root:/root:/bin/bash
+
+Escaping Vi Editor
+-sudo -l: 
