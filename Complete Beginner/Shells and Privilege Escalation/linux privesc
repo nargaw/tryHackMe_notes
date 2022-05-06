@@ -1,0 +1,6 @@
+view contents of hidden history files in the user's home direcotry
+
+cat ~/.*history | less
+
+Kernel Exploit
+-Dirty COW
