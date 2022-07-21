@@ -1,0 +1,14 @@
+Fake bank account enumeration
+gobuster -u http://Ip -w wordlist.txt dir
+-u: website to scan
+-w: wordlist to use
+
+results:
+/images
+/bank-transfer
+
+go to /bank-transfer
+transfer $2000 to specified accout
+
+back to home page
+flag
