@@ -1,0 +1,9 @@
+SIEM (Security information and Event Management) - gathers security-related information and events from various sources and presents them via one system
+
+suspicious activity form IP: 143.110.250.149 to port 22
+
+AbuseIPDB and Cisco Talos Intelligence - perform a reputation and location check for the IP address
+
+Esclate to SOC Team Lead and Block IP 
+
+Flag
