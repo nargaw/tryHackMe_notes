@@ -1,0 +1,40 @@
+1. Prevent intrusions
+2. Detect intrusions when they occur and respond effectively
+
+Tasks:
+1. Awareness: protect against various types of attacks
+2. Doumentation and management of assets: manage and protect devices and systems
+3. Updating and Patching: ensure devices are updated and patched for any known vulns
+4. Set up preventative measures: setup firewall and intrusion systems
+5. Set up logging and monitoring devices: detection of malicious activity 
+
+SOC (Security Operation Center)
+-team of cyber security professionals that monitor the network and its systems to detect malicious events
+-Areas of interest: vulnerabilites, policy violations, unauthorized activity, network intrusions
+
+Threat intelligence
+-information gathered about actual and potential enemies
+-a threat: any action that can disrupt or adversely affect a system
+-purpose: achieve a threat-informed defense
+-advesaries vary depending on the company or target
+-data is gathered, processed and analyzed 
+
+DFIR (Digital Forensics and Incident Response)
+Digital Forensics: analysis of evidence of an attack and attackers in areas such as intellectual property theft, cyber espionage, possession of unauthorized content
+-file system: system storage, installed programs, created files, partially overwritten files and deleted files
+-system memory: information stored in memory without being saved to the disk
+-system logs: look of evidence in system log files
+-network logs: evidence stored in network packets
+
+Incident Response: following a data breach or cyber attack, this methodology is used to reduce damage and recover in the shortest time possible
+Four major phases of incident response
+1. Preparation: team trained to handle incidents
+2. Detection and Analysis: use resources and tools to access severity of incident
+3. Containtement: stop incident from affecting other systems, eliminate cause and recover affected systems
+4. Post-Incident Activity: report is produced and lessons are learned for future incidents
+
+Malware Analysis
+-Malicious software: Viruses, Trojan Horse, Ransomware
+-Malware analysis: learn about malicious software
+1. static analysis: inspect the malicious program without running it 
+2. dynamic analysis: inspect the malicious program by running in it in a controlled environment
