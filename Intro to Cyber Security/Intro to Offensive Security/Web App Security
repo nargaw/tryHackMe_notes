@@ -1,0 +1,23 @@
+What do you need to access a web application: browser
+
+Web App security risks
+
+1. Identification and Authentication Failure
+-allowing multiple log in attempts (brute force)
+-allowing week passwords (easy to guess)
+-storing passwords in plain text
+
+2. Broken Access Control
+-failing to apply the priciple of least privilege (giving more acces to users than they need)
+-being able to view or modify another account
+-being able to view pages without authentication
+
+3. Injection
+-insertion of malicious code as input (poor sanitization of input)
+
+4. Cryptographic failures
+-lack of encryption (sending datat in clear text - HTTP instead of HTTPS)
+-weak cryptographic algorithm
+
+Practical Examples of Web App Security
+-IDOR: Insecure direct object references
