@@ -1,0 +1,39 @@
+most common: MS windows, MacOS, iOS, Android, Chrome OS and LInux
+
+Software: Programs and Operating System
+Hardware: CPU, memory storage, screen, keyboard, etc
+
+OS layer between hardware and applications/programs
+Android: 39.4%
+Windows: 32.1%
+iOS: 17.6%
+OSX: 6.7%
+Other: 1.7%
+
+Security Protects CIA
+1. Confidentiality: ensure secret and private files are only available for intended users
+2. Integiry: files are not tampered during storage or transfer
+3. Availability: information can be accessed by intended users at any time
+
+Weaknesses targeted by malicious users
+1. Authentication and weak passwords 
+2. Weak file permissions
+3. Malicious programs
+
+100,000 most common passwords: https://www.ncsc.gov.uk/blog-post/passwords-passwords-everywhere
+
+ssh johnny@10.10.10.10
+abc123
+
+history
+-su - root
+-happyHack!NG
+
+su root
+happyHack!NG
+
+cd /root
+cat flag.txt
+
+
+
