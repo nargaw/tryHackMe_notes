@@ -1,0 +1,27 @@
+Security Operations Center (SOC): team of IT security professionals tasked with monitoring a company's network and systems
+-monitor 24 hours a day
+1. Find Vulns on the network
+2. Detect Unauthorized activity
+3. Discover policy violations
+4. Detect intrusions
+5. Support incident response
+
+Data Sources:
+1. Server logs: mail server, web server and comain controllers. successful and failed login attempts
+2. DNS activity: DNS query is logged that could be gatherd by OC
+3. Firewall logs: control network packets entering and leaving network
+4. DHCP logs: dynamic host configuration protocol - assigning IP address to systems
+
+SIEM - security information and event management: aggregates data from different sources so SOC can efficently correlate data and respond to attacks
+
+SOC services:
+1. monitor security posture
+2. Vulnerability management
+3. Malware analysis
+4. Intrusion detection
+5. Reporting
+
+Proactive services:
+1. Network security monitoring
+2. Threat hunting
+3. Threat intelligence
