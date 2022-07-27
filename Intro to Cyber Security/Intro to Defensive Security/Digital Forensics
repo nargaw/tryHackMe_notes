@@ -1,0 +1,39 @@
+Forensics: investigation of crimes and establish facts
+Digital Forensics: investigation of crimes in digital devices and media
+eg: smartphone, digital camera, usb flash memory, tablet etc
+
+Two types:
+1. Public sector investigations: Government and law enforcement agencies
+2. Private sector investigations: corporate, in-house or outsourced triggered by corporate policy violations
+
+Steps:
+1. Acquire Evidence: collecttions of digital devices (special handling to privent damage)
+2. Establish Chain of custody: forms that authorize invesigators to acces evidence and prevent tampering
+3. Secure evidence: evidence needs to be retained without damage or tampering
+4. Transport to Forensic lab for further analysis
+
+Forensic lab procedures:
+1. Creating copy of evidence without damaging orginal evidence
+2. return orginal evidence for secure containment
+3. Analyze copy of evidence at forensic workstation
+
+Practical Digital Forensics
+
+cd /root/Rooms/introdigitalforensics
+ls
+
+document metadata
+sudo apt install poppler-utils
+pdfinfo ransom-letter.pdf
+result: creator, producer, modDate, filesize etc
+
+Photo EXIF Data
+EXIF: Exchangable image file format
+-metadata saved to images
+cmd tool: exiftool
+sudo apt installl libimage-exiftool-perl
+exiftool Image.jpg
+
+Gps: 51 deg 30' 51.90" N, 0 deg 5' 38.73" W
+Camera model name: Canon EOS R6
+
