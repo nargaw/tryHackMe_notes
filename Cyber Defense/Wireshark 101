@@ -1,0 +1,16 @@
+Wireshark: tool used for creating and analyzing PCAPs(network packet capture files) 
+
+Installation: https://www.wireshark.org/download.html and follow directions
+also: apt install wireshark 
+
+Overview: 
+Important information:
+-Packet Number
+-Time
+-Source
+-Destination
+-Protocol
+-Length
+-Packet Info
+
+Color Codes packets in order of danger level as well as protocol to spot anomalies quickly
