@@ -14,3 +14,77 @@ Important information:
 -Packet Info
 
 Color Codes packets in order of danger level as well as protocol to spot anomalies quickly
+
+-------------------------------------------------------------------------------
+
+Collection Method Overview
+-Check correct capturing of traffic
+-Check that computer can handle packets and size of network
+-Check there is enough disk space to store data
+
+Network Taps
+-vampire tap: hardware to tap wire and intercept traffic as it comes across
+-Throwing star LAN Tap: an inline network tap, replicates packets as they pass the tap
+
+Mac Floods
+-actively sniffing packets
+-stress the switch and fill the CAM table
+-CAM table will not accept new MAC addresses if table is filled 
+-switch will send out packets to all ports of the switch
+
+ARP Poisoning
+-actively sniff packets
+-redirect traffic from the host(s) to the machine being monitored
+-will not stress network like MAC flooding
+
+-----------------------------------------------------------------------------------
+
+Filtering Captures
+
+Packet filtering - sift through very large number of packets
+
+1. and: and/&&
+2. or: or/||
+3. equals: eq/==
+4. not equal: ne/!=
+5. greater than: gt/>
+6. less than: lt/<
+
+also contains, matches, bitwise_and operators
+further reading: https://www.wireshark.org/docs/wsug_html_chunked/ChWorkBuildDisplayFilterSection.html
+
+Basic Filtering
+-service or protocol, dot, what is filtered (MAC, SRC, protocol etc)
+-filter by IP: ip.addr = <IP address>
+-filter by source and distance: ip.src == <SRC IP Address> and ip.dst == <DST IP Address>
+-filter by TCP protocols: tcp.port eq <PORT #> or <Protcol Name>
+-filter by UDP protocols: udp.port eq <PORT #> or <Protcol Name>
+
+--------------------------------------------------------------------------------------------
+
+Packet Dissection
+Physical, Data Link, Network, Transport, Session, Presentation, Application
+Double click on packet in capture to open its details
+
+5-7 layers based on OSI model
+
+Layer 1: Physical Layer: capture length in bits and bytes, time of arrival etc
+Layer 2: Data layer: source and destination MAC addresses
+Layer 3: Network Layer: IPv4 addresses
+Layer 4: Transport: UDP/TCP with source and destination ports
+Layer 5: Application: HTTP, FTP, SMB etc
+
+--------------------------------------------------------------------------------------------
+
+ARP Overview
+
+-ARP: Address Resolution Protocol - Layer 2 protocol used to connect IP to MAC Addresses
+-contain Request(1) and Response(2) messages
+-wireshark will identify it as intel_78 - unidentified source
+view > Name Resolution > Resolve Physical Addresses (checked)
+-double click packet number > Address Resolution Protocol
+-important info: Opcode, Sender MAC address, Sender IP address
+
+---------------------------------------------------------------------------------------------
+
+
