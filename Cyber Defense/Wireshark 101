@@ -88,3 +88,66 @@ view > Name Resolution > Resolve Physical Addresses (checked)
 ---------------------------------------------------------------------------------------------
 
 
+ICMP Overview
+-ICMP: Internet Control Message Protocol
+-analyze various nodes on a network
+-used with ping and traceroute
+-IETF documentation: https://tools.ietf.org/html/rfc792
+-Traffic Overview: packet details for a ping request packet
+Type (8): Request
+Type (0): Reply
+-important info: timestamp and data (typically random)
+
+
+----------------------------------------------------------------------------------------------
+
+TCP Traffic
+-TCP: Transmission Control Protocol 
+-handles the delivery of packets including sequencing and errors
+-IETF TCP documentation: https://tools.ietf.org/html/rfc793
+-can be used with RSA NEtwitness and NetworkMiner to filter out and further analyze the captures
+Acknowldegment number (0): the port was not open
+
+---------------------------------------------------------------------------------------------
+
+DNS Traffic
+-DNS: Domain Name service protocol
+-used to resolve names with IP addresses
+-IETF documentation: https://www.ietf.org/rfc/rfc1035.txt
+-Query-Response, DNS-Servers Only, UDP
+
+----------------------------------------------------------------------------------------------
+
+HTTP Traffic
+-HTTP: Hypertext Transfer Protocol
+-used to send GET and POST requests to a web server to receive things like webpages
+-used to Identify SQLi, Web Shells and other web-related attack vectors
+-IETF documentation: https://www.ietf.org/rfc/rfc2616.txt
+-important info: host, user-agent, requested URI and response
+-Statistics > Protocol Hierarchy - organize protocols by percentage of packets and bytes + other info
+-Statistics > Endpoints - oragnize endpoints and IPS
+
+----------------------------------------------------------------------------------------------
+
+HTTPS Traffic
+-HTTPS: Hypertext Transfer Protocol Secure
+-Traffic Overview
+1. Client and server agree on a protocol version
+2. Client and server select a cryptographic algorithm
+3. Client and server can authenticate to each other
+4. Creates a secure tunnel with a public key
+Load an RSA Key 
+Edit > Preferences > Protocols > TLS > [+]
+
+---------------------------------------------------------------------------------------------
+
+Wireshark Documentation: https://www.wireshark.org/docs/
+
+More: https://wiki.wireshark.org/SampleCaptures
+Case: 001 PCAP Analysis: https://dfirmadness.com/case-001-pcap-analysis/
+Additional Room: https://tryhackme.com/room/overpass2hacked
+
+
+
+
+
