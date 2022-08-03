@@ -15,3 +15,30 @@ TTP: tactics, technique and procedure
 ----------------------------------------------------------------------------------------------------------------------------------
 
 ATTACK Framework
+
+https://attack.mitre.org/
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+CAR - Cyber Analytics Repository
+-developed based on MITRE ATT&CK adversary model
+-validated and well-explained analytics
+
+eg. Scheduled Task  - File Access
+-pseudocode provided by CAR
+
+EQL - Event Query Language https://eql.readthedocs.io/en/latest/
+-utilized to query, parse and organize Sysmon event data
+
+https://github.com/mitre-attack/bzar - Bro/Zeek
+
+---------------------------------------------------------------------------------------------
+
+Mitre Engage
+
+-Adversary Engagement Approach
+-Cyber Denial: prevent adversary's ability to conduct their operations
+-Cyber Deception: intentially plant artifacts to mislead the adversary
+
+Starter Kit: https://engage.mitre.org/starter-kit/
+
