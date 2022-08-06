@@ -1,0 +1,16 @@
+Yet Another Ridiculous Acronym (haha)
+
+-identifies information based on binary and texual patterns such as hexadecimal and strings contained within a file
+-Malwares use strings (eg. Ransomeware: bitcoin wallet for payments, Botnet: Ip for Command and Control center)
+
+base16  numbering system yara can detect: hex
+"Enter your Name": string
+
+------------------------------------------------------------------------------------------------------------------------------
+
+sudo apt install yara
+
+------------------------------------------------------------------------------------------------------------------------------
+
+cmnatic ssh@IP
+pw: yararules!
