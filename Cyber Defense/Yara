@@ -14,3 +14,21 @@ sudo apt install yara
 
 cmnatic ssh@IP
 pw: yararules!
+
+Connect
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+Yara Rules
+
+requires two arguments
+1. rule file
+2. name of file,dirctory or process Id
+
+eg: yara myrule.yar someDirectory
+
+nano  myfirstrule.yar
+
+rule examplerule {
+  condition: true
+}
