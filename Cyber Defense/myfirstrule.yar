@@ -1,0 +1,3 @@
+rule examplerule {
+  condition: true
+}
