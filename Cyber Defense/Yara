@@ -32,3 +32,27 @@ nano  myfirstrule.yar
 rule examplerule {
   condition: true
 }
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+yara conditions: https://yara.readthedocs.io/en/stable/writingrules.html
+
+meta: reserved for descriptive information by the author of the rule 
+-does not influence the rule itself 
+-similar to commenting the code 
+-useful to summarize the rule
+
+strings: use strings to search for a specific text or hexadecimal in files or programs
+-search a directory for all files containing "Hello World!"
+rule helloWorld_checker {
+  strings: 
+      $hello_world = "Hello World!"
+      
+  condition:
+      $hello_world
+}
+-string needs to be specific (case sensitive)
+
+conditions: 
+
+
