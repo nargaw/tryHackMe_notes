@@ -47,12 +47,46 @@ strings: use strings to search for a specific text or hexadecimal in files or pr
 rule helloWorld_checker {
   strings: 
       $hello_world = "Hello World!"
-      
+      $hello_world_lowercase = "hello world"
+      $hello_world_uppercase = "HELLO WORLD"
   condition:
-      $hello_world
+      any of them
 }
 -string needs to be specific (case sensitive)
 
 conditions: 
+-less than or equal to: <=
+-more than or equal to: >=
+-not equal to : !=
+-true
+-any of them
+
+Combining keywords
+-and, not, or
+eg:and keyword checks for both conditions (both conditions must be true)
+
+rule helloworld_textfile_checker {
+  strings: 
+      $hello_world = "Hello World!"
+      $txt_file = ".txt"
+  condition:
+      $hello_world and $txt_file
+}
+
+--------------------------------------------------------------------------------------------
+
+Yara Modules
+
+Integrating with other libraries
+-Cuckoo sandbox: https://cuckoosandbox.org/
+-Python's PE Module: https://pypi.org/project/pefile/
+
+Cuckoo
+-Cuckoo sandbox: is an automated malware analysis environment
+-allows the generation of Yara rules based upon behavior discovered from cuckoo sandbox
+
+python PE
+-creates yara rules from the various section and elements of the Windows Portable Executable (PE) structure
+-examining a PE file's contents is an essential technique in malware analysis (cryptography or wormnig can be largely identified without rev eng or execution of the sample)
 
 
