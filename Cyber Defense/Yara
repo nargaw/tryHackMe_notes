@@ -89,4 +89,36 @@ python PE
 -creates yara rules from the various section and elements of the Windows Portable Executable (PE) structure
 -examining a PE file's contents is an essential technique in malware analysis (cryptography or wormnig can be largely identified without rev eng or execution of the sample)
 
+-----------------------------------------------------------------------------------------------------
+
+Yara Tools
+
+GitHub resources: https://github.com/InQuest/awesome-yara
+
+LOKI
+-free open source Indicator of Compromise(IOC) scanner created by Florian Roth
+-4 methods (IOC check file name, yara rule check, hash check, c2 back connect check)
+download link: https://github.com/Neo23x0/Loki/releases
+
+THOR
+-created by Florian Roth
+-can scan throttling to limit exhausting CPU resources
+download link: https://www.nextron-systems.com/thor-lite/
+-geared towards corporate customers (THOR lite - free version)
+
+FENRIR
+-created by Florian Roth
+-bash script
+
+YAYA
+-manage multiple yara rule repositories for automation
+
+----------------------------------------------------------------------------------------------
+
+LOKI
+
+-
+
+
+
 
