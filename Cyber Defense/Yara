@@ -113,11 +113,19 @@ FENRIR
 YAYA
 -manage multiple yara rule repositories for automation
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+string count 
+
+strings <file name> | wc -l
+
+yarGen
+
+eg: python3 yarGen.py -m /home/cmnatic/suspicious-files/file2 --excludegood -o /home/cmnatic/suspicious-files/file2.yar
+-m: is the path to the files you want to generate rules for
+--excludegood: force to exclude all goodware strings (these are strings found in legitimate software and can increase false positives)
+-o: location & name you want to output the Yara rule
 ----------------------------------------------------------------------------------------------
-
-LOKI
-
--
 
 
 
