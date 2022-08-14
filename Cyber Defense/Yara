@@ -127,6 +127,10 @@ eg: python3 yarGen.py -m /home/cmnatic/suspicious-files/file2 --excludegood -o /
 -o: location & name you want to output the Yara rule
 ----------------------------------------------------------------------------------------------
 
+Valhalla
+-online yara feed that boosts detection capabilites with thousands of high-quality YARA rules
+-Virus total
+
 
 
 
