@@ -1,0 +1,63 @@
+ISACs: INformation Sharing and Analysis Centers
+-used to share and exchange various indicators of compromise (IOCs)
+-IOCs can be MD5s, IPs, YARA rules and more
+
+-----------------------------------------------------------------------------
+
+APT: Advanced persistent threat (threat group or nation-state group)
+-engages in long-term attacks
+-use of zero-day exploits
+
+TTP: tactics, techniques and procedures
+-Tactic: goal or objective
+-Technique: how goal or objective is achieved
+-Procedure: how technique is executed
+
+TI: threat intelligence
+-all collected information on adversaries and TTPs
+
+---------------------------------------------------------------------------------
+
+Threat Intelligence
+-used to provide information about threat landscape
+-adversaries and their TTPs
+-data must be analyzed to be considered threat intelligence
+
+Three Types:
+1. Strategic: Assist senior management in making informed decisions
+2. Tactical: Interacts with TTps and attack models to identify adversary attack patterns
+3. Operational: Interact with IOCs and how adversaries operationalize
+
+-----------------------------------------------------------------------------------------
+
+ISACs
+-can be community-centered or vendor-specific
+-include CTI from threat actors and mitigation information in the form of IOCs, YARA rules etc
+-Lists of ISACs:
+US-CERT: https://us-cert.cisa.gov/
+AlienVaultOTX: https://otx.alienvault.com/
+ThreatConnect: https://threatconnect.com/
+MISP: https://www.misp-project.org/
+
+------------------------------------------------------------------------------------------
+
+Threat Connect
+-information and new developments within cybersec and threat landscape
+-tactical type of threat intelligence
+-not free
+
+-------------------------------------------------------------------------------------------
+
+AlienVault OTX
+-exchange for community maintained threat intelligence
+-pulses to crate trackers for various categories
+-free
+
+----------------------------------------------------------------------------------------------
+Using OTX to gather Threat Intelligence
+-Pulse overview: consits of description, tags, indicator types (hash,YARA, IP, domain, etc), threat infrastructure (country of origin)
+-not all pulses are legit and may contain inaccurate information
+-Pulse description: description, ref tags, malware families, ATT&CK IDs
+-Indicator overview: brief stat representation of indicators
+-Indicators: contain all indicator information (Type, indicator, Added, Active, Related Pulses, Extra information)
+
