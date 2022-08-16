@@ -61,3 +61,13 @@ Using OTX to gather Threat Intelligence
 -Indicator overview: brief stat representation of indicators
 -Indicators: contain all indicator information (Type, indicator, Added, Active, Related Pulses, Extra information)
 
+---------------------------------------------------------------------------------------------------
+
+IOC
+
+user: Jon
+Pass: alqfna22
+
+xfreerdp /u:Jon /p:alqfna22 /v:10.10.10.10
+
+
