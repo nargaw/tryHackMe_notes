@@ -1,0 +1,36 @@
+ZeroLogon Vulnerability
+
+CVE-2020-1472
+-zero to admin in approximately one minute
+-statistics based attack that abuses a feature within MS-NRPC (Microsoft NetLogon Remote protocol)
+-critical authentication component of Active directory that handles authentication for user and machine accounts
+-initalization vector of ComputeNetlogonCredential set to all zeros instead of a random string
+-when an attacker sends a message only containing zeros with the IV of zero there is 1-256 chance the ciphertext will be zero
+
+Machine accounts
+-have no predefined acount lockout attempts
+-64+ character alpha numeric password used to secure them
+-Mimikatz can be used to dump the machine account password
+
+-machine accounts often hold system level privileges 
+-secretsdump.py - password dumping untility like mimikatz - dumps passwords within the domain
+
+kill-chain:
+Zero Logon to bypass Domain controller's authentication of machine account -> run Secretsdump.py -> crack/pass Domain Admin Hashes
+
+Analyzing the MS-NRPC Logon Process
+Authentication to NRPC (netlogon remote protocol)
+1. Client creates a NetrServerReqChallenge (contains Domain Controller, Target Device, Nonce(16 bytes of zero))
+2. Server recieves the NetrServerReqChallenge, Server generates Nonce(Server Challenge) sends back to client
+3. Client computes NetLogon with Server Challenge provided
+-params:
+a. custom binding handle
+b. account name
+c. secure channel type
+d. computer name
+e. client credential string
+f. negotiation flags
+4. server recieves NetrServerAuthentication request and compute same request, server sends the required info back to client
+*at this point: zero logon vuln
+-3 and 4 are repeated to get the same computation b/n server and client 1-256
+5. Server calculates the same value, client will re-verify, session key aggrement used for encrypted communication 
