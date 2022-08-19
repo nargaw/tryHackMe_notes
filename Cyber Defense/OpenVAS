@@ -1,0 +1,29 @@
+OpenVAS: application used to scan endpoints and web applications to identify and detect vulnerabilites
+Sections:
+-Vulnerability/Information feed: base-line for testing against systems
+-Back-End: conducts vulnerbility scanning and processing data 
+-Front-End: OpenVAS in browser
+
+----------------------------------------------
+
+Installation
+-may require configuration
+-Kali/OpenVAS repo: https://www.agix.com.au/installing-openvas-on-kali-in-2020/
+-source: https://github.com/greenbone/openvas-scanner/blob/master/INSTALL.md
+-docker: (easiest option)
+apt install docker.io
+docker run -d -p 443:443 --name openvas mikesplain/openvas
+
+navigate to https://127.0.0.1
+user: admin
+pass: admin
+
+--------------------------------------------------
+
+config
+-set IP address or hostname (127.0.0.1)
+
+--------------------------------------------------
+
+Scanning
+-create a task
