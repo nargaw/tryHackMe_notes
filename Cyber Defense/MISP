@@ -1,0 +1,83 @@
+MISP - Malware information sharing platform
+
+MISP(Malware information sharing platform): open-source threat information that facilitates the collection, storage and distribution of threat intelligence and IOC
+-open source
+
+Use cases:
+1. malware reverse engineering: understand how different malware familiess function
+2. security investigations
+3. intelligence analysis
+4. law enforcement: support forensic investigations
+5. risk analysis: research new threats
+6. fraud analysis
+
+Supports:
+1. IOC database
+2. Automatic correlation
+3. Data sharing
+4. Import & export features
+5. Event graph
+6. API support
+
+Terms: 
+Events: Collection of contextually linked information.
+Attributes: Individual data points associated with an event, such as network or system indicators.
+Objects: Custom attribute compositions.
+Object References: Relationships between different objects.
+Sightings: Time-specific occurrences of a given data point or attribute detected to provide more credibility.
+Tags: Labels attached to events/attributes.
+Taxonomies: Classification libraries are used to tag, classify and organise information.
+Galaxies: Knowledge base items used to label events/attributes.
+Indicators: Pieces of information that can detect suspicious or malicious cyber activity.
+
+-----------------------------------------------------------------------------------------------------
+
+Use: 
+-launch machine
+-login
+
+Event management
+-create all malware investigation correlations by providing descriptions and attributes
+-Event creation, populating events with attributes and attachments, publishing
+-distrubution options: 4
+-user role to publish events: organisation admin
+
+------------------------------------------------------------------------------------------
+
+Feeds
+-resources that contain indicators that can be imported into MISP
+-feeds provide analysts and orgs with continuously updated info on threats and adversaries
+
+Taxonomies
+-classifying information based on standard features or attributes
+-three parts
+1. namespace: defines the tag's property to be used
+2. predicate: specifies the property attached to the data
+3. value: numerical or text details to map the property
+
+Tagging
+-allows for effective sharing of threat information b/n users, communities and organizations.
+-must-have tags:
+1. traffic light protocol: colour schema to guide how intelligence can be shared
+2. confidence: provides and indication as to whether or not the data being shared is high quality and vetted
+3. origin: source of information, automation or manual investigation
+4. permissible actions protocol: advanced classification that indicates how data can be used 
+
+-----------------------------------------------------------------------------------
+
+Home > search > PupyRAT
+
+-event ID: 1146
+-adversary gaining 'remote access' into organisations
+-IP of C&C server: 89.107.62.39
+-attack group known to use this form of attack: magic hound
+-osint:certainty='50'
+
+----------------------------------------------------------------------------------
+Additional Resources
+
+MISP book: https://www.circl.lu/doc/misp/
+MISP github: https://github.com/MISP/
+training: https://www.youtube.com/watch?v=aM7czPsQyaI https://www.youtube.com/watch?v=Jqp8CVHtNVk
+
+
