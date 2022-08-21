@@ -1,0 +1,49 @@
+xfreerdp /u:administrator /p:letmein123! /v:10.10.10.10
+
+Task Manager: build in GUI based windows utility
+-allows users to see what is running on the windows system
+-information on resource usage
+
+Task manager
+5 tabs: Processes, Performance, Users, Details, Services
+
+Processes Types:
+-Apps
+-Background Processes
+-Windows processes
+Columns of processes
+-Publisher: name of the author
+-PID: process identifier number (unique identifier when program starts)
+-command line: full command used to launch process
+-CPU: ammount of CPU used
+-Memory: amount of physical working memory used by process
+
+Details:
+-add image path name
+-add command line
+-match PID with type of process with image path and command line, look for anomalies
+
+Process Hacker
+-System Process: ID 4 open in kernel mode
+user mode: process provides application with their own virtual address space
+-each application runs in isolation 
+-crash only affects that specific application
+-one application can not alter the data of another
+Kernel mode: a single virtual address space
+-a kernal mode driver is not isolated from other drivers
+-can compromise other driver data
+-crash affects the entire OS
+
+-properties:
+-verified Microsoft Windows
+-parent
+
+System > smss.exe
+-Session Manager Subsystem: responsible for creating new sessions
+-starts the kernel mode(win32k.sys) and user mode (winsrv.dll) of windows subsystem
+-smss.exe starts csrss.exe(windows subsystem) and wininit.exe in session 0
+-crss.exe and winlogon.exe for session 1 - user session
+
+Two processes does smss.exe start in session 1: csrss.exe, winlogon.exe
+
+Process Explorer
