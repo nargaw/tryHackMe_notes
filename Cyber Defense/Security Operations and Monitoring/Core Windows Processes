@@ -46,4 +46,105 @@ System > smss.exe
 
 Two processes does smss.exe start in session 1: csrss.exe, winlogon.exe
 
+csrss.exe(client server runtime process): user-mode side of Windows subsystem
+-critical
+-if terminated results in system failure
+-responsible for Win32 console window and process thread creation and deletion
+(csrsrv.dll, basesrv.dll, and winsrv.dll)
+
+-process which had PID 384 and PID 488? smss.exe
+
+-----------------------------------------------------
+
+Windows initialization process: wininit.exe - responsible for launching services.exe(service control manager)
+and local security authority (lsass.exe) and credential guard and key guard (lsaiso.exe)
+-cricial windows process that runs in the background
+What is unusual?
+-An actual parent process. (smss.exe calls this process and self-terminates)
+-Image file path other than C:\Windows\System32
+-Subtle misspellings to hide rogue process in plain sight
+-Multiple running instances
+-Not running as SYSTEM
+
+----------------------------------------------------------
+
+service control manager (SCM) - services.exe
+-responsible for handling system services
+-loading services
+-starting and ending services
+-maintains a database that can be queried using Windows built-in utility 'sc.exe'
+-loads device drivers marked as auto-satrt into memory
+-uses Last Known Good Configuration (HKLM\System\Select\LastKnownGood)
+-parent to (svchost.exe, spoolsv.exe, msmpeng.exe, dllhost.exe)
+What is unusual?
+-parent process other than wininit.exe
+-Image file path other than C:\Windows\System32
+-subtle misspellings
+-multiple running instances
+-not running as system
+
+--------------------------------------------------------------------
+
+Service host - svchost.exe
+-responsible for hosting managing windows services
+-implemented as DLLs
+-DLL to implement is stored in the registry for the service under the parameters subkey in ServiceDLL
+HKLM\SYSTEM\CurrentControlSet\Services\SERVICE NAME\Parameters
+
+services > properties > binary path
+-key idenifier -k 
+-legitimate svchost.exe process
+-k paramerter is for grouping simi;ar service to share the same process
+-design implemented to reduce resouce consumption
+
+svchost.exe will always have multiple running processes
+-adversaries create malware to masquerade as this process and hide amongst the legitimate svchost.exe processes
+-another tactic is to install/call a malicious service (DLL)
+-svchost.exe abuse: https://www.hexacorn.com/blog/2015/12/18/the-typographical-and-homomorphic-abuse-of-svchost-exe-and-other-popular-file-names/
+
+Normal: runs from C:\Windows\System32\svchost.exe
+
+Unusual:
+-parent process other than services.exe
+-image file path other than C:\Windows\System32
+-subitle misspellings
+-absence of the -k parameter
+
+-----------------------------------------------------------------------
+
+lsass.exe
+-local security authority subsystem service (LSASS)
+-responsible for enforcing the security policy on the system
+-verifies user log in 
+-handles password changes
+-creates user tokens
+-also writes to the Windows Security Log
+-creates token for SAM(Security Account Manager), AD (Active Directory), and NETLOGON
+Registry Editor: HKLM\System\CurrentControlSet\Control\Lsa
+-another process targeted by tools such as mimikatz
+-mimikatz: used to dump credentials or mimic process to hide in plain sight
+LSASS: https://yungchou.wordpress.com/2016/03/14/an-introduction-of-windows-10-credential-guard/
+
+Normal:
+-System32\lsass.exe
+-parent: wininit.exe
+-1 instance
+-user account: Local system
+-starts within seconds of boot time
+
+Unusual:
+-parent other than wininit.exe
+-file path other than C:\Windows\System32
+-subtle misspelling
+-multiple instances
+-not running as system
+
+
+
+
+
+
+
+
+
 Process Explorer
