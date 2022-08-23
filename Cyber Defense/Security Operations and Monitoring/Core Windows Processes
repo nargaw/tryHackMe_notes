@@ -139,12 +139,43 @@ Unusual:
 -multiple instances
 -not running as system
 
+-------------------------------------------------------------------------------------------------------
 
+winlogon.exe
+-responsible for handling the secure attention sequence (SAS)
+-Alt+ctrl+del
+-responsible for loading user profiles, loading user's NTUSER.DAT into HKCU via userinit.exe loads the user's shell
+-Registry Editor: Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon
+Normal:
+-C:\Windows\system32\
+-parent process not provided but created by smss.exe
+-one or more instances
+-local system
+-start within seconds of boot time
+Unusual:
+-An actual parent process
+-image file path other than C:\Windows\system32
+-subtle misspellings
+-not running as system
+-shell value in registry other than explorer.exe
 
+------------------------------------------------------------------------------------------------------------
 
+explorer.exe
+-gives the user access to their folders and files
+-gives functionality to features such as start menu, taskbar, etc
+-Winlogon runs userinit.exe which launches the value - HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\Shell
+-userinit.exe exits after spawning explorer.exe (parent process is non-existent)
+-maybe many child processes for explorer.exe
+Normal:
+-C:\Windows\Explorer.EXE
+-created by userinit.exe and exits
+-one or more instances per interactively logged-in user
+Unusual:
+-actual parent process
+-image file other than C:\Windows
+-running as an unknown user
+-subtle misspelling to hide rogue process in plain sight
+-outbound TCP/IP connections: explorer.exe > properties > TCP/IP
 
-
-
-
-
-Process Explorer
+Process Explorer - great tool
