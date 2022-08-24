@@ -7,3 +7,49 @@ Sysinternals
 4. Security Utilities
 5. System Information
 6. Miscellaneous
+
+
+-----------------------------------------------------------------
+
+install sysinternals suite
+
+powershell
+get-service webclient
+start-service webclient
+control.exe /name Microsoft.NetworkAndSharingCenter > Advanced sharing > Turn on network Discovery
+powershell
+Install-WindowsFeature WebDAV-Redirector -Restart
+Get-WindowsFeature WebDAV-Redirector | Format-Table -Autosize
+
+Command line:
+\\live.sysinternals.com\tools\procmon.exe
+
+What service needs to be enabled on the local host to interact with live.sysinternals.com? Webclient
+
+-----------------------------------------------------------------------
+
+Sigcheck
+-command-line utility that shows file version number, timestamp information, digital signature details
+-check for unsigned files in C:\Windows\System32
+sigcheck -u -e C:\Windows\System32 -accepteula
+-u: shows files that are unknown by virusTotal or have non-zero detection, unsigned files
+-e: scan executable images only regardless of their extension
+
+Streams
+NTFS: new technology file system, every file has at least one data stream ($DATA) 
+-ADS: alternate data streams allows files to contain more than one stream of data
+-Windows explorer doesn't natively display ADS to the user
+-Malware writers have used ADS to hide data in an endpoint but not all its users are malicious
+
+SDelete
+-commandline utility that take a number of options and allows the user to delete one or more files and/or directories or to cleanse the free space on a logical disk
+-Secure Delete 
+-DOD 5220.22-M Wipe Method
+1. zero - verifies the write
+2. one - verifies the write
+3. writes a random character and verifies the write
+-used by Adversaries in Data Destruction, Indicator Removal on Host:File Deletion
+
+stream file.txt
+file.txt:ads.txt
+answer: I am hiding in this stream
