@@ -53,3 +53,47 @@ SDelete
 stream file.txt
 file.txt:ads.txt
 answer: I am hiding in this stream
+
+-------------------------------------------------------------------------------------------------------------
+
+TCPView
+-Windows program that shows detailed listing of all TCP and UDP endpoints on your system
+-Tcpvcon: command-line version with same functionality
+-Resource Monitor tool has simliar functionality - built in utility on Windows
+-command-line: resmon
+
+tcpview -accepteula
+52.152.110.14 - Microsoft Corporation
+
+------------------------------------------------------------------------------------------------------------
+
+Autoruns
+-shows what programs are configured to run during system bootup or login
+-Autoruns reports explorer shell extensions, toolbars, browser helper objects, winlogon notification, auto-start services and more
+-Good tool to search for any malicious entries
+
+ProcDump
+-command-line utility that monitors an application of CPU spikes and generating crash dumps during spike
+
+Process Explorer
+-consists of two sub-windows
+-Top: list of currenlty active processes, names of owning accounts
+-Bottom: handle-mode - handles that the process selected. DLL-mode - dlls and memory-mapped files that the process has loaded
+-check TCP/IP tab to see Remote address
+-look up IP using WHOIS
+-can verify signatures using ProcExp
+
+Process Monitor
+-command-line: procmon -accepteula
+-advanced monitoring tool for windows
+-Guide to configure procmon: https://adamtheautomator.com/procmon/
+
+PsExec
+-light-weight telnet-replacement that allows the execution of processes on other systems
+-interactive command-prompts on remote systems
+-remote-enabling tools like IpConfig
+-additional info: https://docs.microsoft.com/en-us/sysinternals/downloads/psexec
+
+command-line: autoruns -accepteula
+Image Hijacks tab > taskmgr.exe
+updated value: C:\TOOLS\SYSINT\PROCEXP.EXE
