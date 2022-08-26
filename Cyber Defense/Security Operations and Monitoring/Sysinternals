@@ -97,3 +97,48 @@ PsExec
 command-line: autoruns -accepteula
 Image Hijacks tab > taskmgr.exe
 updated value: C:\TOOLS\SYSINT\PROCEXP.EXE
+
+----------------------------------------------------------------------------------------------------
+
+Sysmon
+-Windows system service and driver
+-resident across system reboots to monitor and log system activity to the windows event log
+-uses Windows Event Collection (SIEM)
+-sysmon room: https://tryhackme.com/room/sysmon
+
+-----------------------------------------------------------------------------------------------------
+
+WinObj
+-a 32-bit windows NT program
+-uses native Windows NT API (Provided by NTDLL.DLL) to access and display information on the NT Object Manager's name space
+-Session 0 - OS session, Session 1 - User session
+-more info: https://docs.microsoft.com/en-us/sysinternals/downloads/system-information
+
+----------------------------------------------------------------------------------------------------------
+
+BgInfo
+-displays relevant information about a windows computer on the desktop background
+-computer name, IP, service pack version and more
+more: https://docs.microsoft.com/en-us/sysinternals/downloads/bginfo
+
+RegJump
+-command-line applet take a registry path and makes a Regedit open to the path
+regjump -accepteula
+regjump HKLM\System\CurrentControlSet\Services\WebClient -accepteula
+
+Strings
+-scans the file passed to it for UNICODE (or ASCII) strings of a default length of 3 or more UNICODE (or ASCII) characters
+-example strings used to search within ZoomIt binary for any strings containing the word 'zoom'
+PS C:\Tools\sysint> strings .\ZoomIt.exe | findstr /i zoom*
+full path to .pdb file: C:\agent\_work\112\s\Win32\Release\ZoomIt.pdb
+
+-------------------------------------------------------------------------------------------------------------
+
+additional Info:
+
+Mark's Blog - https://docs.microsoft.com/en-us/archive/blogs/markrussinovich/
+Windows Blog Archive - https://techcommunity.microsoft.com/t5/windows-blog-archive/bg-p/Windows-Blog-Archive/label-name/Mark%20Russinovich
+License to Kill: Malware Hunting with Sysinternals Tools - https://www.youtube.com/watch?v=A_TPZxuTzBU
+Malware Hunting with Mark Russinovich and the Sysinternals Tools - https://www.youtube.com/watch?v=vW8eAqZyWeo
+
+
