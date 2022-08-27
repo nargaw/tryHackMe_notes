@@ -1,0 +1,39 @@
+Event Logs - record events taking place in the execution of a system 
+-provide audit trail
+-sys admins, IT techs, desktop engineers etc
+-the OS writes messages to these logs
+-SIEMs (Security Information and Event Management) - Splunk and Elastic
+-SIEMs query the log of multiple machines
+
+-Linux: Syslog (logging system)
+
+xfreerdp /u:administrator /p:blueT3aming! /v:[IP]
+
+-----------------------------------------------------------------------------------
+
+Event Viewer
+-stored in binary format with a .evt or .evtx 
+-C:\Windows\System32\winevt\Logs
+-three ways to acces event logs
+1. Event Viewer (GUI-based application)
+2. Wevtutil.exe (CLI)
+3. Get-WinEvent (PowerShell cmdlet)
+
+right click start menu > event viewer
+cmd > eventvwr.msc
+Panes
+1. left: hierarchical tree listing of the event log 
+2. Middle: general overview and summary or the events specific to a selected provider
+3. right: actions pane
+
+Types of logs
+1. Error - loss of data or loss of functionality (servicie fails to load during start up)
+2. Warning - indication of possible future problems (low disk space)
+3. Information - description of successful operation of an application, driver or service
+4. Success Audit - security access attempt that is successful
+5. Failure Audit - security access attempt that is a failure
+
+middle pane: level, date and time, source, event ID, task category
+
+
+
