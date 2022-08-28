@@ -35,5 +35,35 @@ Types of logs
 
 middle pane: level, date and time, source, event ID, task category
 
+---------------------------------------------------------------------------------------------
+
+Wevtutil.exe
+-enables to retrieve information about event logs and publishers
+-commands are used to install, uninstall event manifests
+-run queries 
+-export, archive and clear logs
+
+wevtutil.exe /?
+-help files
+-example under Usage
+-ep(enum-publishers): command
+
+wevtutil COMMAND [ARGUMENT [ARGUMENT] ...] [/OPTION:VALUE [/OPTION:VALUE] ...]
+
+wevtutil COMMAND /?
+-information specific to commands
+eg: wevtutil qe /?
+-query events
+
+wevtutil el | Measure-Object: 1071
+wevtutil qe /?
+-Read events from an event log, log file or using structured query
+-path to a log file: /lf:true
+-value for /q: xpath query
+wevtutil qe Application /c:3 /rd:true /f:text
+log name: Application
+/rd: event read direction
+/c: maximum number of events to read
+
 
 
