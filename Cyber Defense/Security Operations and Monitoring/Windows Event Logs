@@ -80,3 +80,29 @@ Get-WinEvent -LogName Application | Where-Object {$_.ProviderName -Match 'WLMS'}
 -key/value pairs
 -semi colon omitted if key value pairs are on separate lines
 Get-WinEvent -FilterHashtable @{LogName='Microsoft-Windows-PowerShell/Operational'; ID=4104} | Select-Object -Property Message | Select-String -Pattern 'SecureString'
+
+specify number of events: -MaxEvents
+filter hashtable informational: 4
+
+-------------------------------------------------------------------------------------------------------------
+XPath
+-XML Path Language
+-created by W3C
+-start with '*' or 'Event'
+-wevtutil and Get-WinEvent support XPath queries as event filters
+-Event Viewer > > Details > XML View
+example: 
+Get-WinEvent -LogName Application -FilterXPath '*/system/EventID=100'
+wevtutil.exe qe Application /q:*/System[EventID=100] /f:text /c:1
+-can query using provider name
+Get-WinEvent -LogName Application -FilterXPath '*/System/EventID=101 and */System/Provider[@Name="WLMS"]'
+Get-WinEvent -LogName Application -FilterXPath '*/System/Provider[@Name="WLMS"] and */System/TimeCreated[@SystemTime="2020-12-15T01:09:08.940277500Z"]'
+Get-WinEvent -LogName Security -FilterXPath '*/EventData/Data[@Name="TargetUserName"]="Sam" and */System/EventID=4720'
+Get-WinEvent -LogName Security -FilterXPath '*/EventData/Data[@Name="TargetUserName"]="Sam" and */System/EventID=4724'
+
+---------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
