@@ -102,7 +102,30 @@ Get-WinEvent -LogName Security -FilterXPath '*/EventData/Data[@Name="TargetUserN
 
 ---------------------------------------------------------------------------------------------------------------------------
 
+Event IDs
 
+Windows Logging Cheat Sheet: https://static1.squarespace.com/static/552092d5e4b0661088167e5c/t/580595db9f745688bc7477f6/1476761074992/Windows+Logging+Cheat+Sheet_ver_Oct_2016.pdf
+-success & failed logons
+-account change
+-new service installed
+-use account changes 
+
+Spotting the Adversary with Windows Event Log Monitoring: https://apps.nsa.gov/iaarchive/library/reports/spotting-the-adversary-with-windows-event-log-monitoring.cfm
+-click on "Get File"
+
+MITRE ATT&CK: list of event IDs to monitor
+
+more Info:
+About Logging Windows: https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_logging_windows?view=powershell-7.1
+Greater visibility through powershell logging: https://www.fireeye.com/blog/threat-research/2016/02/greater_visibilityt.html
+Configure Powershell logging to see Powershell anomolies like splunk UBA: https://docs.splunk.com/Documentation/UBA/5.0.4/GetDataIn/AddPowerShell
+
+-------------------------------------------------------------------------------------------------
+
+
+EVTX Attack Samples: https://github.com/sbousseaden/EVTX-ATTACK-SAMPLES
+PowerShell <3 the blue team: https://devblogs.microsoft.com/powershell/powershell-the-blue-team/
+Tampering with Windows Event Tracing: Background, Offense, and Defense
 
 
 
