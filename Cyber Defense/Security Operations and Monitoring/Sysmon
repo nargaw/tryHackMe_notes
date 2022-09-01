@@ -1,0 +1,50 @@
+Sysmon: System Monitor
+-remains resident across system reboots to monitor and log system activity to the windows event log
+-detailed info about process creation, newtwork connections and changes to file creation time
+-SIEM: identify malicious or anomalous activity and understand how intruders and malware operate on network
+-starts in windows boot process
+-stored: Appications and Services Logs/Microsoft/Windows/Sysmon/Operational
+
+Sysmon config
+-requires a config file to tell the binary how to analyze the events that it is receiving
+-example: https://github.com/SwiftOnSecurity/sysmon-config
+-24 different types of Event IDs
+-excludes normal events
+
+Event ID 1: Process Creation
+-look for any created processes
+-look for known suspicious processes or processes with typos
+-use CommandLine and Image XML tags
+Event ID 3: Network Connection
+-look for events that occured remotely
+-look for files and sources of suspicious binaries and opened ports
+-use Image and DestinationPort XML tags
+Event ID 7: Image Loaded
+-look ofr DLLs loaded by processes
+-useful for DLL injection and DLL hijacking attacks
+-use image, signed, imageLoaded and signature XML tags
+Event ID 8: Create Remote Thread
+-monitor for processes injecting code into other processes
+-used by legitimate tasks and apps 
+-could also be used by malware to hide malicious activity
+-use SourceImage, TargetImage, StartAddress and StartFunction XML tags
+Event ID 11: File Created
+-logs events when files are created or overwritten the endpoint
+-use TargetFileName XML tags
+Event ID 12/13/14: Registry Event
+-look for modifications to the registry
+-eg: malicious activity - persistence and credential abuse
+-use TargetObject XML tags
+Event ID 15: FileCreateStreamHash
+-look for an alternate data stream
+-used to hide malware
+-use TargetFilename XML tags
+Event ID 22: DNS Event
+-log all DNS queries and events for analysis
+-exclude all trusted domains
+-look for DNS anomalies
+-use QueryName XML tags
+
+--------------------------------------------------------------------------------------------
+
+Installing and Preparing Sysmon
