@@ -48,3 +48,9 @@ Event ID 22: DNS Event
 --------------------------------------------------------------------------------------------
 
 Installing and Preparing Sysmon
+PowerShell command: Download-SysInternalsTools C:\Sysinternals
+config SwiftOn Security: https://github.com/SwiftOnSecurity/sysmon-config
+config ION-Storm: https://github.com/ion-storm/sysmon-config/blob/develop/sysmonconfig-export.xml
+
+Starting Sysmon
+Sysmon.exe -accepteula -i sysmonconfig-export.xml
