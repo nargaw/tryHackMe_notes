@@ -54,3 +54,17 @@ config ION-Storm: https://github.com/ion-storm/sysmon-config/blob/develop/sysmon
 
 Starting Sysmon
 Sysmon.exe -accepteula -i sysmonconfig-export.xml
+
+
+-------------------------------------------------------------------------------------------
+
+Cutting out the noise
+
+-Normal activity - 'noise' needs to be filtered out with Sysmon
+-focus on suspicious activites
+-use of ample and efficient configuration file to do the heavy lifting
+
+Best practices
+-Excluding events is better than including events
+-CLI offeres better control: use Get-WinEvent or wevutil.exe
+-Know your environment before implementation- understanding what is suspicious to better craft rules
