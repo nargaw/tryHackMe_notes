@@ -68,3 +68,16 @@ Best practices
 -Excluding events is better than including events
 -CLI offeres better control: use Get-WinEvent or wevutil.exe
 -Know your environment before implementation- understanding what is suspicious to better craft rules
+
+Filtering events with Event Viewer
+-filtering with EventID and Keywords
+Filter menu > Filter Current Log
+
+Filtering Events with Powershell
+-Get-WinEvent along with XPath queries
+-wevutil.exe
+-filter by Event Id: */System/EventID=<ID>
+-filter by XML Attribute/Name: */EventData/Data[@Name="<XML Attribute/Name>"]
+-filter by Event Data: */EventData/Data=<Data>
+
+example: Get-WinEvent -Path <Path to Log> -FilterXPath '*/System/EventID=3 and */EventData/Data[@Name="DestinationPort"] and */EventData/Data=4444'
