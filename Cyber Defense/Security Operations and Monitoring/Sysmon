@@ -81,3 +81,15 @@ Filtering Events with Powershell
 -filter by Event Data: */EventData/Data=<Data>
 
 example: Get-WinEvent -Path <Path to Log> -FilterXPath '*/System/EventID=3 and */EventData/Data[@Name="DestinationPort"] and */EventData/Data=4444'
+
+------------------------------------------------------------------------------------------------------------
+
+Hunting Metasploit
+-commonly used exploit framework
+-default metasploit port is 4444
+
+Get-WinEvent -Path  <Path to Log> -FilterXPath '*/System/EventID=3 and */EventData/Data[@Name="DestinationPort"] and */EventData/Data=4444'
+-filter for eventId 3 (network connection)
+-and port number 4444
+
+
