@@ -92,4 +92,27 @@ Get-WinEvent -Path  <Path to Log> -FilterXPath '*/System/EventID=3 and */EventDa
 -filter for eventId 3 (network connection)
 -and port number 4444
 
+--------------------------------------------------------------------------------------------------------
+
+Detecting Mimikatz
+-mimikatz is commonly used to dump credentials from memory along with other windows post-exploitation activity
+-dumping LSASS
+
+Get-WinEvent -Path <Path to log> -FilterXPath '*/System/EventID=10 and */EventData/Data[@Name="TargetImage"] and */EventData/Data="C:\Windows\System32\lsass.exe"'
+
+-------------------------------------------------------------------------------------------------------------------------
+
+Hunting Malware
+-RATs: Remote Access Trojans - gain remote access to a machine. Come with anti-virus detection evasion. 
+-RATs use client-server model (Xeexe and Quasar)
+
+Get-WinEvent -Path <Path to Log> -FilterXPath '*/System/EventID=3 and */EventData/Data[@Name="DestinationPort"] and */EventData/Data=<Port>'
+
+--------------------------------------------------------------------------------------------------------------------------
+
+Hunting persistence
+-Persistence: used by attackers to maintain access to a machine once it is compromised
+-registery modification and modification of startup scripts
+
+
 
