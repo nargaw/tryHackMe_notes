@@ -114,5 +114,25 @@ Hunting persistence
 -Persistence: used by attackers to maintain access to a machine once it is compromised
 -registery modification and modification of startup scripts
 
+-----------------------------------------------------------------------------------------------------------------------
 
+Detecting Evasion Techniques
+ -Alternate Data streams
+ -Masquerading
+ -Packing/Compression
+ -Recompiling
+ -Obfuscation
+ -Anti-Reversing
+ 
+ -Hunting Alternate Data Streams: 
+ -Event ID: 15
+ -hash and log any NTFS streams that are included within the Sysmon configuration file
+
+-Detecting Remote Threads
+-use windows API "CreateRemoteThread" - accessed using "OpenThread" and "ResumeThread"
+-used in multiple evasion techniques including DLL injection, Thread Hijacking and Process Hollowing
+
+-Detecting Evasion Techniques with Powershell
+-use Get-WinEvent along with XPath by filtering event ID 15
+Get-WinEvent -Path <Path to Log> -FilterXPath '*/System/EventID=15'
 
