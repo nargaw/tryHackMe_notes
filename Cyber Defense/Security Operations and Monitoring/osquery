@@ -1,0 +1,16 @@
+Osquery is an open-source tool created by Facebook. 
+-query an endpoint or multiple endpoints using SQL syntax. 
+-can be installed on multiple platforms: Windows, Linux, MacOS and FreeBSD
+
+>osqueryi
+>.help
+-displays the help menu
+
+>.tables process
+-list all the available tables associated with processes
+
+>.schema table_name
+-list a table's schema
+
+'--enable_foreign'
+-check schema for another OS
