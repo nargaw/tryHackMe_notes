@@ -14,3 +14,37 @@ Osquery is an open-source tool created by Facebook.
 
 '--enable_foreign'
 -check schema for another OS
+
+.show
+-Osquery version
+-SQlite version
+-default output mode
+
+.mode line
+-show one value per line
+
+.exit, .quit
+-exit Osqueryi
+
+---------------------------------------------------------------------------------------------
+
+Schema Documentation
+
+What table would you query to get the version of osquery installed on the windows endpoint?
+.mode line
+select * from  osquery_info;
+
+How many tables are there for this version of osquery(4.6.0)?
+266
+
+How many of the tables are compatible with windows?
+96
+
+How many are compatible with Linux?
+155
+
+What is the first table listed that is compatible with both Linux and Windows?
+arp_cache
+
+
+
