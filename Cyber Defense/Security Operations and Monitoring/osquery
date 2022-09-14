@@ -46,5 +46,51 @@ How many are compatible with Linux?
 What is the first table listed that is compatible with both Linux and Windows?
 arp_cache
 
+--------------------------------------------------------------------------------------
+
+Creating Queries
+-Osquery: is superset of SQLite
+-start with 'SELECT' statement
+-Osquery only queries information, no updating or deleting any information/data
+-SQL statements such as 'UPDATE' and 'DELETE' are possible only if creating run-time tables(views) or using an extension(if supported)
+-also include a 'FROM' clause and end with semicolon';'
+eg query:
+SELECT * FROM processes; //select all from processes
+SELECT pid, name, path FROM processes; //select specific sections from processes
+
+-count() function can be used to get exactly how many
+eg: SELECT count(*) FROM processes;
+
+-'WHERE' clause to narrow down list of returned results based on specified criteria
+eg: SELECT pid, name, path FROM processes WHERE name='lsass.exe';
+
+-other filtering options 
+= [equal]
+<>  [not equal]
+>, >= [greater than, greater than or equal to]
+<, <= [less than or less than or equal to] 
+BETWEEN [between a range]
+LIKE [pattern wildcard searches]
+% [wildcard, multiple characters]
+_ [wildcard, one character]
+
+-pattern matching
+%: match all files and folders for one level
+%%: match all files and folders recursively
+%abc: match all within-level ending with "abc"
+abc%: match all within-level starting with "abc"
+
+What is the query to show the username field from the users table where the username is 3 characters long and ends with 'en'?
+SELECT username FROM users WHERE username like '%en';
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Kolide Fleet
+-can query multiple endpoints from kolide fleet UI
+-follow steps
+-login in
+
+
+
 
 
