@@ -91,6 +91,65 @@ Kolide Fleet
 -login in
 
 
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Osquery Extensions
+-Anyone can create extensions for osquery
+-documentation: https://osquery.readthedocs.io/en/latest/deployment/extensions/
+https://github.com/polylogyx/osq-ext-bin: 25 features
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+Current_value for kernel.osrelease?
+SELECT * FROM kernel_info;
+-4.4.0-17763-Microsoft
+
+UID for bravo user?
+SELECT username, uid FROM users WHERE username='bravo';
+-1002
+
+One of the users performed a 'Binary Padding' attack. What was the target file in the attack?
+SELECT * FROM  shell_history;
+-notsus
+
+What is the hash value for this file?
+ls
+md5sum notsus
+-3df6a21c6d0c554719cffa6ee2ae0df7
+
+Check all file hashes in the home direcotry for each user. one file will not show any hashes. Which file is that?
+SELECT * FROM hash WHERE path='/home/tryhackme' AND directory='/home/tryhackme';
+-fleet.zip
+
+There is a file that is categorized as malicious in one of the home directories. Query the Yara table to find this file. Use the sigfile which is saved in '/var/osquery/yara/scanner.yara'. Which file is it?
+SELECT * FROM yara WHERE path="/home/%%" AND sigfile="/var/osquery/yara/scanner.yara";
+-notes
+
+what were the 'matches'?
+-eicar_regex:0,$eicar_substring:1b
+
+Scan the file from Q#3 with the same Yara file. What is the entry for 'strings'?
+$eicar_substring:1b
+
+-------------------------------------------------------------------------------------------
+
+Windows OSquery
+
+Description for the Windows Defender Service?
+SELECT name,description FROM services WHERE name LIKE "WinD%"
+-Helps protect users from malware and other potentially unwanted software
+
+Another security agent?
+SELECT name FROM programs;
+-AlienVault Agent
+
+required with win_event_log_data?
+-Source
+
+
+
+
+
 
 
 
