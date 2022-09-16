@@ -146,6 +146,21 @@ SELECT name FROM programs;
 required with win_event_log_data?
 -Source
 
+SELECT count(*) FROM win_event_log_channels;
+1076
+
+Schema for win_event_log_data
+CREATE TABLE win_event_log_data(`time` BIGINT, `datetime` TEXT, `source` TEXT, `provider_name` TEXT, `provider_guid` TEXT, `eventid` INTEGER, `task` INTEGER, `level` INTEGER, `keywords` BIGINT, `data` TEXT, `eid` TEXT)
+
+The previous file scanned on the Linux endpoint with Yara is on the Windows endpoint.  What date/time was this file first detected? (Answer format: YYYY-MM-DD HH:MM:SS)
+-https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-antivirus/troubleshoot-microsoft-defender-antivirus
+-look for error 1116
+SELECT datetime from win_event_log_data WHERE source = "Microsoft-Windows-Windows Defender/Operation" and eventid=1116;
+-2021-04-01T00:50:44
+
+What is the query to find the first Sysmon event? Select only the event id, order by date/time, and limit the output to only 1 entry.
+SELECT eventid FROM win_event_log_data WHERE source="Microsoft-Windows-Sysmon/Operational" order by datetime limit 1;
+
 
 
 
