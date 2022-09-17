@@ -1,0 +1,34 @@
+SIEM - Security Information and Event Management
+-a software solution that provides a central location to collect log data from multiple sources within your environment
+-three critical capabilites:
+1. Treat detection
+2. Investigation
+3. Time to respond
+-other features: basic security monitoring, advanced threat detection, forensics and incident response, log collection, normalization, notification and alerts, security incident detection, threat response workflow
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Splunk enterprise
+-Bar
+1. Messages: system-level messages
+2. Settings: configure Splunk instance
+3. Activity: review progress of jobs
+4. Help: misc info and tutorials
+5. Find: search
+
+Documentation: https://docs.splunk.com/Documentation/Splunk/8.1.2/SearchTutorial/NavigatingSplunk
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Splunk Apps
+1. Search and Reporting
+-Search App: enter splunk queries
+
+more apps: Splunk Apps
+-can also upload apps
+
+Docu: https://docs.splunk.com/Documentation/Splunk/8.1.2/Admin/Managingappobjects
+
+Folder name: TA-microsoft-sysmon
+version: 10.6.2
+
