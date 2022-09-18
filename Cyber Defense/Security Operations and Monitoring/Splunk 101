@@ -32,3 +32,29 @@ Docu: https://docs.splunk.com/Documentation/Splunk/8.1.2/Admin/Managingappobject
 Folder name: TA-microsoft-sysmon
 version: 10.6.2
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Adding Data
+-can ingest any data
+-data is processed and transformed into a series of individual events
+-sources can be event logs, website logs, firewall logs, etc
+
+Docu: https://docs.splunk.com/Documentation/Splunk/8.1.2/Data/Getstartedwithgettingdatain#Use_apps_to_get_data_in
+
+Add Data > upload > tutorial.zip
+-109,864
+
+--------------------------------------------------------------------------------------------------
+
+Splunk Queries
+
+search: source="tutorialdata.zip:*" "failed password"
+sourcetype: -www1/secure
+
+Patterns > look for last username
+-myuan
+
+search: source="tutorialdata.zip:*" "failed password" "myuan"
+-16
+
+
