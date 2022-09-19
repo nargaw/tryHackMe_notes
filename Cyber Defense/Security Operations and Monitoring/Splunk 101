@@ -57,4 +57,38 @@ Patterns > look for last username
 search: source="tutorialdata.zip:*" "failed password" "myuan"
 -16
 
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Sigma Rules
+-provide structured form to describe detection methods and allow the to be shareable
+-written in YAML (human friendly data serialization standard for all programming languages)
+-sigma repo has signatures in the rules folder. Sigmac - sigma converter - located in the tools folder can generate a specific SIEM rule
+ex:
+./sigmac -t splunk -c tools/config/generic/sysmon.yml ./rules/windows/process_creation/win_susp_whoami.yml
+-online version: uncoder.io
+-uncoder.io > select 'sigma:APT29' > convert to Splunk >
+source="WinEventLog:*" AND CommandLine="*-noni -ep bypass $*"
+
+Use the Github Sigma repo. What is the Splunk query for 'CACTUSTORCH Remote Thread Creation'?
+-sigma-public/rules/windows/sysmon/sysmon_cactustorch.yml
+source="WinEventLog:*" AND ((SourceImage="*\\System32\\cscript.exe" OR SourceImage="*\\System32\\wscript.exe" OR SourceImage="*\\System32\\mshta.exe" OR SourceImage="*\\winword.exe" OR SourceImage="*\\excel.exe") AND TargetImage="*\\SysWOW64\\*" AND NOT StartModule="*")
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Dashboards and visualizations
+docu: https://docs.splunk.com/Documentation/Splunk/8.1.2/Viz/Visualizationreference
+
+What is the highest EventID?
+11
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+Alerts
+-enables monitoring and responding to specific events
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+More
+-Regex: https://docs.splunk.com/Documentation/Splunk/8.1.2/Knowledge/AboutSplunkregularexpressions
+-Splunk fundamentals training + certification: https://www.splunk.com/en_us/training/courses/
 
