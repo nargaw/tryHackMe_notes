@@ -1,0 +1,11 @@
+GitHub BOTSv2: https://github.com/splunk/botsv2
+
+SPL (Splunk Search Processing Langauage) 
+-command metadata used for searching info found in Data summary with specific index
+eg metadata command:
+| metadata type=sourcetypes index=botsv2 | eval firstTime=strftime(firstTime,"%Y-%m-%d %H:%M:%S") | eval lastTime=strftime(lastTime,"%Y-%m-%d %H:%M:%S") | eval recentTime=strftime(recentTime,"%Y-%m-%d %H:%M:%S") | sort - totalCount
+
+-------------------------------------------------------------------------------------------------------------------------
+
+100 series questions 
+
