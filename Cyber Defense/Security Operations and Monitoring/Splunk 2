@@ -5,6 +5,10 @@ SPL (Splunk Search Processing Langauage)
 eg metadata command:
 | metadata type=sourcetypes index=botsv2 | eval firstTime=strftime(firstTime,"%Y-%m-%d %H:%M:%S") | eval lastTime=strftime(lastTime,"%Y-%m-%d %H:%M:%S") | eval recentTime=strftime(recentTime,"%Y-%m-%d %H:%M:%S") | sort - totalCount
 
+
+settings > addData > monitor > [datasetfile location] ... start searching
+
+
 -------------------------------------------------------------------------------------------------------------------------
 
 100 series questions 
@@ -31,3 +35,43 @@ What is Amber's personal email address?
 ambersthebest@yeastiebeastie.com
 
 ----------------------------------------------------------------------------------------------
+
+Series 200 Questions
+
+What version of TOR Browser did Amber install to obfuscate her web browsing? Answer guidance: Numeric with one or more delimiter.
+index="botsv2" amber tor
+-image field
+-install 7.0.4_en-US.exe
+
+What is the public IPv4 address of the server running www.brewertalk.com?
+index="botsv2" brewertalk.com
+-dest_ip field
+52.42.208.228
+
+Provide the IP address of the system used to run a web vulnerability scan against www.brewertalk.com.
+index="botsv2" brewertalk.com
+-src_ip field
+45.77.65.211
+
+The IP address from Q#2 is also being used by a likely different piece of software to attack a URI path. What is the URI path? Answer guidance: Include the leading forward slash in your answer. Do not include the query string or other parts of the URI. Answer example: /phpinfo.php
+index="botsv2" brewertalk.com sourcetype="stream:http" src_ip="45.77.65.211"
+-uri_path field
+/member.php
+
+What SQL function is being abused on the URI path from the previous question?
+index="botsv2" brewertalk.com sourcetype="stream:http" src_ip="45.77.65.211" uri_path="/member.php" | dedup form_data | table form_data
+-updatexml
+
+What was the value of the cookie that Kevin's browser transmitted to the malicious URL as part of an XSS attack? Answer guidance: All digits. Not the cookie name or symbols like an equal sign.
+index="botsv2" kevin sourcetype="stream:http" tag=error | table cookie
+-1502408189
+
+What brewertalk.com username was maliciously created by a spear phishing attack?
+-homograph attack impersonate domain names
+index="botsv2" 1bc3eab741900ab25c98eee86bf20feb sourcetype="stream:http" brewertalk.com
+-form_data field
+username: kIagerfield
+
+
+
+
