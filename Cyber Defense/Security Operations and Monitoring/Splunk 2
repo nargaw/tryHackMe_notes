@@ -75,5 +75,25 @@ username: kIagerfield
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Mallory's critical PowerPoint presentation on her MacBook gets encrypted by ransomware on August 18. What is the name of this file after it was encrypted?
-index="botsv2" mallory (*.pptx or *.ppt)
+index="botsv2" host="MACLORY-AIR13" (*.pptx or *.ppt)
 -Frothly_marketing_campaign_Q317.pptx.crypt_
+
+
+There is a Games of Thrones movie file that was encrypted as well. What season and episode is it? 
+index="botsv2" host="MACLORY-AIR13" *.crypt sourcetype=ps
+-S07E02
+
+Kevin Lagerfield used a USB drive to move malware onto kutekitten, Mallory's personal MacBook. She ran the malware, which obfuscates itself during execution. Provide the vendor name of the USB drive Kevin likely used. Answer Guidance: Use time correlation to identify the USB drive.
+Find malware
+index="botsv2" host="kutekitten" sourcetype=osquery_results
+-Alcore Micro Corp.
+columns.path= /users/mkraeusen/Library
+find md5 hash for the malware - look up on virus total
+-Perl Script: programming language
+-2017-01-17: first seen
+-Hybrid Analysis to look up contant domains using the hash
+-"eidk.duckdns.org"
+-"eidk.hopto.org"
+
+
+
