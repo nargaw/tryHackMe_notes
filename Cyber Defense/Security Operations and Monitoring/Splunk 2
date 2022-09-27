@@ -95,5 +95,40 @@ find md5 hash for the malware - look up on virus total
 -"eidk.duckdns.org"
 -"eidk.hopto.org"
 
+---------------------------------------------------------------------------------------------
+
+400
+
+A Federal law enforcement agency reports that Taedonggang often spear phishes its victims with zip files that have to be opened with a password. What is the name of the attachment sent to Frothly by a malicious Taedonggang actor?
+index="botsv2" sourcetype="stream:smtp" *.zip | reverse 
+-invoice.zip
+
+What is the password to open the zip file?
+content of email
+-912345678
+
+The Taedonggang APT group encrypts most of their traffic with SSL. What is the "SSL Issuer" that they use for the majority of their traffic? Answer guidance: Copy the field exactly, including spaces.
+index="botsv2" sourcetype="stream:tcp" 45.77.65.211
+SSL issuer field
+-C = US
+
+What unusual file (for an American company) does winsys32.dll cause to be downloaded into the Frothly environment?
+index="botsv2" sourcetype="stream:ftp" method=RETR | reverse
+-나는_데이비드를_사랑한다.hwp
+
+
+What is the first and last name of the poor innocent sap who was implicated in the metadata of the file that executed PowerShell Empire on the first victim's workstation? Answer example: John Smith
+Virus Total
+-Ryan Kovar
+
+Within the document, what kind of points is mentioned if you found the text?
+App.any.run
+CyberEastEgg
+
+To maintain persistence in the Frothly network, Taedonggang APT configured several Scheduled Tasks to beacon back to their C2 server. What single webpage is most contacted by these Scheduled Tasks? Answer example: index.php or images.html
+index="botsv2" schtasks.exe sourcetype="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" | dedup ParentCommandLine | table Parent Command Line Command Line
+index="botsv2" source=WinRegistry "\\Software\\Microsoft\\Network"| reverse
+-data base64 - cyberchef
+-process.php
 
 
