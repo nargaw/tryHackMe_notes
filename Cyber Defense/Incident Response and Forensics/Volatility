@@ -1,0 +1,27 @@
+Volatility - Free Memory forensics tool developed and maintained by Volatility labs
+-expandable via plugins 
+
+------------------------------------------------------------------------------------------------------
+
+Obtaining Memory Samples
+-Memory captured using following tools:
+FTK imager: https://accessdata.com/product-download/ftk-imager-version-4-2-0
+RedLine: https://www.fireeye.com/services/freeware/redline.html *requires registration
+DumpIt.exe
+Win32dd.exe / Win64dd.exe *psexec support
+
+-tools output a .raw file
+-memory can be pulled from offline (without encryption): %SystemDrive%/hiberfil.sys
+hiberfil.sys: Windows hibernation file = contains a compressed memory image from the previous boot
+-used to provide faster boot-up time
+
+-virtual machines:
+VMware - .vmem file
+Hyper-V - .bin file
+Parallels - .mem file
+VirtualBox - .sav file *only partial memory file
+
+--------------------------------------------------------------------------------------------------------------
+
+
+
