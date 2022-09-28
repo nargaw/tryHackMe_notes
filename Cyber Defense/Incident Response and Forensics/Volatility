@@ -23,5 +23,11 @@ VirtualBox - .sav file *only partial memory file
 
 --------------------------------------------------------------------------------------------------------------
 
+Examining Our Patient
+
+cd home/voluser
+unzip cridex_memdump.zip
+volatility -f cridex.vmem imageinfo
+-
 
 
