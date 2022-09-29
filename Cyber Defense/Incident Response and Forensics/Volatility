@@ -28,6 +28,17 @@ Examining Our Patient
 cd home/voluser
 unzip cridex_memdump.zip
 volatility -f cridex.vmem imageinfo
--
+-information
 
+volatility -f cridex.vmem --profile=WinXPSP2x86 pslist
+WinXPSP2x86
+
+smss.exe
+-PID: 368
+
+active network connections
+
+find processes via psxview
+volatility -f cridex.vmem --profile=WinXPSP2x86 psxview
+-csrss.exe 
 
