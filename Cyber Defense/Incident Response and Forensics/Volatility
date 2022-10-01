@@ -56,3 +56,6 @@ volatility -f cridex.vmem --profile=WinXPSP2x86 --pid=584 dlldump -D /tmp
 Virus Total - https://www.virustotal.com/gui/home/upload
 Hybrid Analysis - https://www.hybrid-analysis.com/
 
+------------------------------------------------------------------------------------------------------------------------------
+
+Extra Credit - "Memory Forensics with Vol(a|u)tility" - A great talk on learning the basics of Volatility and the GUI plugin VolUtility made by @chupath1ngee
