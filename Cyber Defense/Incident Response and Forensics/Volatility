@@ -40,5 +40,19 @@ active network connections
 
 find processes via psxview
 volatility -f cridex.vmem --profile=WinXPSP2x86 psxview
--csrss.exe 
+-csrss.exe
+
+volatility -f cridex.vmem --profile=WinXPSP2x86 ldrmodules
+-csrss.exe
+
+volatility -f cridex.vmem --profile=WinXPSP2x86 malfind -D /tmp
+-12
+
+volatility -f cridex.vmem --profile=WinXPSP2x86 --pid=584 dlldump -D /tmp
+-12
+
+--------------------------------------------------------------------------------------------------------------------------
+
+Virus Total - https://www.virustotal.com/gui/home/upload
+Hybrid Analysis - https://www.hybrid-analysis.com/
 
