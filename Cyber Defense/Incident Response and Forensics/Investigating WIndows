@@ -1,3 +1,23 @@
 Whats the version and year of the windows machine?
--setting > about
--Windows Server 2016
+open command prompt
+systeminfo
+-Microsoft Windows Server 2016
+
+Which user logged in last?
+net user
+-list all users
+net user Administrator
+-Administator Logged in last at 
+-03/02/2019 5:48:32 PM
+
+What IP does the system connect to when it first starts?
+C:\TMP\p.exe
+-10.34.2.3
+
+What two accounts had administrative privileges (other than the Administrator user)?
+-member of the group administartor
+Jenny, Guest
+
+What is the name of the scheduled task that is malicious?
+server manager > task scheduler>
+-Clean file system
