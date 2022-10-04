@@ -21,3 +21,45 @@ Jenny, Guest
 What is the name of the scheduled task that is malicious?
 server manager > task scheduler>
 -Clean file system
+
+What file was the task trying to run daily?
+-actions
+nc.ps1
+
+What port did this file listen locally for?
+"-l" flag
+-1348
+
+When did Jenny last logon?
+net user Jenny
+-never
+
+What time did the compromise take place?
+C:\TMP
+-date modified: 03/02/2019
+
+At what time did windows first assign special privileges to a new logon?
+Event Viewer > Windows Logs > Security
+-03/02/2019 4:04:49 PM
+special privileges assigned to new logon
+
+What tool was used to get Windows passwords?
+mim-out
+-Mimikatz
+
+What was the attackers external control and command servers IP?
+-"hosts" file
+76.32.97.132
+
+What was the extension name of the shell uploaded via the servers website?
+server - C\intetpub\wwwroot
+-.jsp
+
+What was the last port the attacker opened?
+Windows Firewall and Advanced Security > Inbound Rules > Allow Outside Communication
+-1337
+
+Check for DNS poisoning, what site was targeted?
+hosts file > 
+-google.com
+
