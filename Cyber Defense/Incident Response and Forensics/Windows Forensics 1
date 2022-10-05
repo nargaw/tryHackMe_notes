@@ -1,0 +1,41 @@
+Introduction to Windows Forensics
+-Computer forensics: gathering evidence of activities performed on computers
+-part of wider Digital Forensics
+-80% of desktop computers run Microsoft Windows
+
+Forensic Artifacts
+-Artifact: essential pieces of information that provide evidence of human activity.
+-footprints of activity left on the computer system
+-windows system creates artifacts for a given activity
+-originated as effort to improve user experience
+
+-----------------------------------------------------------------------------------------------
+
+Windows Registry
+-Windows Registry: collection of databases that contain the system config data
+-data about hardware, software or user info
+-data about recently used files, programs, devices connected
+-read data using regedit.exe (built-in windows utility to view and edit the registry)
+-consists of key and values
+-Five root keys
+1. HKEY_CURRENT_USER: root config info for user who is currently logged on 
+-user's folders, screen colors, control panel settings are stored here
+-associated with the user's profilie
+-abbreviated HKCU
+
+2. HKEY_HKEY_USERS: all actively loaded user profiles on the computer
+-HKEY_CURRENT_USER is a subkey of HKEY_USERS. 
+-abbreviated HKU
+
+3. HKEY_LOCAL_MACHINE: info particular to a computer for any user
+-abbreviated HKLM
+
+4. HKEY_CLASSES_ROOT: subkey of HKEY_LOCAL_MACHINE\software
+-info stored here makes sure that correct program opens using windows explorer
+-abbreviated HKCR 
+-merges the information from two sources: HKLM\Software\Classes & HKCU\Software\Classes
+-merged view for programs that are designed for earlier versions of windows
+
+5. HKEY_CURRENT_CONFIG: info about the hardware profile used by the local computer at system startup
+
+-run (Windows key + R) > regedit.exe 
