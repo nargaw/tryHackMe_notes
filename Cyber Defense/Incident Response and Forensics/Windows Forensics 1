@@ -38,4 +38,46 @@ Windows Registry
 
 5. HKEY_CURRENT_CONFIG: info about the hardware profile used by the local computer at system startup
 
--run (Windows key + R) > regedit.exe 
+-run (Windows key + R) > regedit.exe
+
+-----------------------------------------------------------------------------------------------
+
+Accessing Registry Hives Offline
+-live system access - regedit.exe
+-disk image C:\Windows\System32\Config
+1. Default - HKEY_USERS\DEFAULT
+2. SAM - HKEY_LOCAL_MACHINE\SAM
+3. SECURITY - HKEY_LOCAL_MACHINE\Security
+4. SOFTWARE - HKEY_LOCAL_MACHINE\Software
+5. SYSTEM - HKEY_LOCAL_MACHINE\System
+
+user profile directory: C:\Users\<username>\
+1. NTUSER.DAT - HKEY_CURRENT_USER when user logs in
+2. USRCLASS.DAT - HKEY_CURRENT_USER\Software\CLASSES
+-USRCLASS.DAT is located C:\USERS\<username>\AppData\Local\Microsoft\Windows
+
+Amcache hive
+-AmCache - located in C:\Windows\AppCompat\Programs\AmCache.hve
+-windows creates this hive to save information on programs that were recently run on the system
+
+Transaction Logs and Backups
+-registry transaction logs and backups - vital sources of forensic data
+-transaction logs - changelog of the registry hive 
+-windows uses transaction logs when writing data to registry hives
+-stored in .LOG file extension
+-SAM hive transaction log - C:\Windows\System32\Config - SAM.LOG
+-multiple logs can be present .LOG1, .LOG2 etc
+
+-Registry backups located in C:\Windows\System32\Config
+-copied to C:\Windows\System32\Config\RegBack - every ten days
+
+What is the path for the five main registy hives: Defautl, SAM, Security, Software and System?
+-C:\Windows\System32\Config
+
+What is the path for AmCache hive?
+-C:\Windows\AppCompat\Programs\AmCache.hve
+
+--------------------------------------------------------------------------------------------
+
+Data Acquisition
+
