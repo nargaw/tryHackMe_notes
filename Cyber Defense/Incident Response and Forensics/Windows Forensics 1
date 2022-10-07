@@ -80,4 +80,40 @@ What is the path for AmCache hive?
 --------------------------------------------------------------------------------------------
 
 Data Acquisition
+-image the system or make copy of the data and perform forensics on the copy
+-use tools
+1. KAPE:
+-live data acquisition and analysis tool
+-used to acquire registry data
+-Command-line also comes with GUI
+-extract the registry data 
+
+2. Autopsy:
+-option to acqurie data from both live systems or disk image
+-add data source > find location of files to extract > right-click and extract file
+
+3. FTK Imager
+-extract files from disk image or live system by mounting the disk image or drive in FTK imager
+-export files
+-live systems: can extract registry files from FTK Imager using 'Obtain Protected Files' option
+-will not copy AmCache.hve
+
+------------------------------------------------------------------------------------------------
+
+Exploring Windows Registry
+-After extraction we need a tool to view files 
+1. Registry Viewer:
+-AccessData's Registry Viewer: https://accessdata.com/product-download/registry-viewer-2-0-0
+-loads one hive at a time
+
+2. Zimmerman's Registry Explorer:
+-Registry Explorer
+-can load multiple hives simulataneously
+-Bookmarks option - go straight to the interesting registry keys and values
+
+3. RegRipper:
+-utility that takes a registry hive as input and outputs a report
+-shows results in sequential orger
+-CLI and GUI options
+-Doesn't take transactionlogs into account
 
