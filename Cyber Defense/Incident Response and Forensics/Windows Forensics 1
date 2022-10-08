@@ -117,3 +117,43 @@ Exploring Windows Registry
 -CLI and GUI options
 -Doesn't take transactionlogs into account
 
+----------------------------------------------------------------------------------------------------------
+
+System information
+
+OS version:
+-SOFTWARE\Microsoft\Windows NT\CurrentVersion
+
+Current control set:
+-machine's configuration data used for controlling system startup
+-two control sets: ControlSet001 and ControlSet002
+-ControlSet001 - points control set the machine booted with - SYSTEM\ControlSet001
+-ControlSet002 - last known good configuration - SYSTEM\ControlSet002
+-Volatile Control set when machine is live - CurrentControlSet (HKLM\SYSTEM\CurrentControlSet)
+-SYSTEM\Select\Current
+
+Computer name:
+-SYSTEM\CurrentControlSet\Control\ComputerName\ComputerName
+
+Time Zone info:
+-SYSTEM\CurrentControlSet\Control\TimeZoneInformation
+
+Network Interfaces and Past Networks
+-SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces
+-each interface is represented by a unique identifier (GUID)
+-past networks:
+SOFTWARE\Microsoft\Windows NT\CurrentVersion\NetworkList\Signatures\Unmanaged
+SOFTWARE\Microsoft\Windows NT\CurrentVersion\NetworkList\Signatures\managed
+
+Autostart Programs (Autoruns):
+-NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Run
+-NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\RunOnce
+-SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce
+-SOFTWARE\Microsoft\Windows\CurrentVersion\policies\Explorer\Run
+-SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+-information about services: SYSTEM\CurrentControlSet\Services
+-Start key is set to 0x02 - service start at boot
+
+SAM hive and user information:
+-user account info, login info, group info
+-SAM\Domains\Account\Users
