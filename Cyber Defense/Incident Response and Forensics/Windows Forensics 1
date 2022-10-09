@@ -157,3 +157,17 @@ Autostart Programs (Autoruns):
 SAM hive and user information:
 -user account info, login info, group info
 -SAM\Domains\Account\Users
+
+-----------------------------------------------------------------------------------------
+
+Recent files
+NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs
+-windows maintains a list of recently opened files for each user
+
+-registry key with different keys with file extension
+-.pdf, .jpg, .docx
+
+
+EZtools 2021-12-01 13:00:34
+My Computer 2021-12-01 13:06:47
+Notepad My Computer \C:\Program Files\Amazon\Ec2
