@@ -167,7 +167,26 @@ NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs
 -registry key with different keys with file extension
 -.pdf, .jpg, .docx
 
+Office recent Files
+-MS office maintains a list of recently opened docs 
+NTUSER.DAT\Software\Microsoft\Office\
+
+ShellBags:
+-USRCLASS.DAT\Local Settings\Software\Microsoft\Windows\Shell\Bags
+
+Open/Save and LastVisited Dialog MRUs:
+-dialog box where to save or open file from 
+-can find recently used files
+NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\ComDlg32\OpenSavePIDlMRU
+NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\ComDlg32\LastVisitedPidlMRU
+
+Windows Explorer adress/serch bars
+-way to identify a user's recent activity by looking at the paths typed in the windows explorer address bar
+NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\TypedPaths
+NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\WordWheelQuery
+
 
 EZtools 2021-12-01 13:00:34
 My Computer 2021-12-01 13:06:47
-Notepad My Computer \C:\Program Files\Amazon\Ec2
+Notepad My Computer \C:\Program Files\Amazon\Ec2ConfigService\Settings 2021-11-30 10:56:19
+
