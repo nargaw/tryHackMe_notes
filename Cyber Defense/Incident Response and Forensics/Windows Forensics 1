@@ -190,3 +190,62 @@ EZtools 2021-12-01 13:00:34
 My Computer 2021-12-01 13:06:47
 Notepad My Computer \C:\Program Files\Amazon\Ec2ConfigService\Settings 2021-11-30 10:56:19
 
+---------------------------------------------------------------------------------------------------------------------------------
+
+Evidence of exeution
+
+User Assist:
+-Windows keeps track of apps launched by the user using Windows Explorer
+-info about programs launched, number of times executed
+-mapped to each user's GUID
+-not programs run with command line 
+NTUSER.DAT\Software\Microsoft\Windows\Currentversion\Explorer\UserAssist\{GUID}\Count
+
+ShimCache:
+-keep track of app compatibility with the os
+-tracks all apps lunch on machine
+-ensure backward compatibility (AppCompatCache)
+SYSTEM\CurrentControlSet\Control\Session Manager\AppCompatCache
+-AppCompatCache Parser - Eric Zimmerman's tools - csv file for human-readable format
+
+AmCache:
+-artifact related to ShimCache
+-additional data related to program executions 
+-path, installation, execution, deletion times
+-SHA1 hashes 
+C:\Windows\appcompat\Programs\Amcache.hve
+-info about last executed programs
+Amcache.hve\Root\File\{Volume GUID}\
+
+BAM/DAM:
+-saves full path of executed programs
+-Background Activity Monitor (BAM): activity of background apps
+SYSTEM\CurrentControlSet\Services\bam\UserSettings\{SID}
+-Desktop Activity Monitor (DAM): power consumption optimization
+SYSTEM\CurrentControlSet\Services\dam\UserSettings\{SID}
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+External Devices/USB device forensics
+-identification of any USB or removable drives attached to the machine
+
+Device identification:
+-vendor id, product id, version of USB
+SYSTEM\CurrentControlSet\Enum\USBSTOR
+SYSTEM\CurrentControlSet\Enum\USB
+
+First/Last Times:
+-first time the device was connected
+-last time it was connected 
+SYSTEM\CurrentControlSet\Enum\USBSTOR\Ven_Prod_Version\USBSerial#\Properties\{83da6326-97a6-4088-9453-a19231573b29}\####
+0064 -	First Connection time
+0066 -	Last Connection time
+0067 -	Last removal time
+
+USB device volume name:
+-device name of the connected drive 
+SOFTWARE\Microsoft\Windows Portable Devices\Devices
+
+Serial #: 1C6F654E59A3B0C179D366AE&0
+name: Kingston DataTraveler 2.0 USB Device
+friendly name: USB
