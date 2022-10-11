@@ -249,3 +249,22 @@ SOFTWARE\Microsoft\Windows Portable Devices\Devices
 Serial #: 1C6F654E59A3B0C179D366AE&0
 name: Kingston DataTraveler 2.0 USB Device
 friendly name: USB
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+Hands-on challenge
+
+1. How many user created accounts are present on the system?
+Registry Explorer > load hive > Desktop\triage\C\Windows\System32\config\SAM > open
+-user created accounts >1000
+-3
+
+2. username of account that has never logged in?
+-Total login count: 0
+-thm-user2
+
+3. Password hint for THM-4n6
+-count
+
+
+
