@@ -266,5 +266,20 @@ Registry Explorer > load hive > Desktop\triage\C\Windows\System32\config\SAM > o
 3. Password hint for THM-4n6
 -count
 
+4. Load hive
+triage\C\Users\THM-4n6\NTUSER.DAT
+NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs
+-2021-11-24 18:18:48
+
+5. Complete path from where the python 3.8.2 installer was run?
+NTUSER.DAT\Software\Microsoft\Windows\Currentversion\Explorer\UserAssist\{GUID}\Count
+python-3.8
+-Z:\setups\python-3.8.2.exe
+
+6. USB device with friendly name 'USB' last connected?
+SYSTEM\CurrentControlSet\Enum\USBSTOR
+-Ven_kingston last connected 2021-11-24 18:40:06
+
+
 
 
