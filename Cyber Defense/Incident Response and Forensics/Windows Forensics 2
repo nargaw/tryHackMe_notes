@@ -1,0 +1,27 @@
+-Identify Locations and artifacts to prove evidence of execution
+-File/folder usage or knowledge
+-External device usage
+-Basics of recovering deleted files
+
+--------------------------------------------------------------------------------------------------------------------
+
+The FAT file systems
+-storage device in computer system (hard disk or USB)
+-FAT (File Allocation Table)
+-default file system for Microsoft OS 
+-no longer default
+-indexes location of bits that are allocated to different files
+
+Clusters: basic storage unit of FAT file system
+Directory: information about file identification, name, starting cluster and filename length
+FAT: linked list of all clusters, contains status of cluster and pointer to the next cluster in the chain
+
+FAT12: 12-bit cluster addressing max of 4096 clusters (2^12)
+FAT16: 16-bit cluster addressing max of 65,536 clusters (2^16)
+FAT32: 32-bit cluster addressing max of 268,435,456 clusters (2^28) - windows limits formatting to only 32 GB - 28 addressible bits
+-max file supported by FAT32: 4GB
+
+exFAT file system: default for SD cards larger than 32GB
+-reduces overhead of FAT file system, lighter and more efficient
+
+-------------------------------------------------------------------------------------------------------------------------------
