@@ -25,3 +25,25 @@ exFAT file system: default for SD cards larger than 32GB
 -reduces overhead of FAT file system, lighter and more efficient
 
 -------------------------------------------------------------------------------------------------------------------------------
+
+NTFS file system
+-New Technology File System
+-adds security, reliability and recovery
+
+Journaling: NTFS keeps a log of changes to metadata in the volume, help system recovery from a crash or degragmentation
+-$LOGFILE
+
+Access Controls: gives access to defined owner of a file/directory and permissions for each user
+Volume Shadow Copy: restore previous file versions for recovery or system restore to recover data loss
+Alternate Data Streams: ADS - allow multiple streams of data stored in a single file
+
+Master File Table:
+-structured database that tracks the objects stored in a volume
+-$MFT: first record in volume, Volumen Boot Record (VBR)
+-$LOGFILE: logging
+-$UsnJrnl: update sequence number (USN) - info about file that were changed and reason for change
+
+MFT explorer
+-EZTools: CLI
+MFTECmd.exe - parses data from different files created by the NTFS file system like $MFT, $Boot, etc
+MFTECmd.exe -f <path-to-$MFT-file> --csv <path-to-save-results-in-csv>
