@@ -47,3 +47,24 @@ MFT explorer
 -EZTools: CLI
 MFTECmd.exe - parses data from different files created by the NTFS file system like $MFT, $Boot, etc
 MFTECmd.exe -f <path-to-$MFT-file> --csv <path-to-save-results-in-csv>
+-open in ezviewer and find file size
+MFTECmd.exe -f <path-to-$BOOT-file> --csv <path-to-save-results-in-csv>
+-open in ezviewer and find cluster size
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+Recovering deleted Files
+-When a file is deleted from the file system, the file system deletes the entries that store the file's location on the disk
+-The location where the file existed is now available for writing or unallocated
+-The file contents on disk are still present as long as they are not overwritten
+
+Disk Image
+-file that contains a bit-by-bit copy of a disk drive
+-a bit by bit copy saves all the data in a disk image file including metadata, in a single file
+-original evidence is not contaminated
+-disk image file can be copied to another disk and analyzed without using specialized hardware
+
+Autopsy
+-Autopsy used to recover deleted files
+Autopsy > new case > enter directory and additional information, data type etc
+
