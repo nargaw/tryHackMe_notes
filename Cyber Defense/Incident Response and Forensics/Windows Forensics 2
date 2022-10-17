@@ -68,3 +68,16 @@ Autopsy
 -Autopsy used to recover deleted files
 Autopsy > new case > enter directory and additional information, data type etc
 
+-usb.001
+
+
+There is another xlsx file that was deleted. What is the full name of that file?
+tryhackme.xlsx
+
+Name of the txt file that was deleted from the disk?
+tryhackme2.txt
+
+Recover the txt file from Question #2.
+THM-4n6-2-4
+
+
