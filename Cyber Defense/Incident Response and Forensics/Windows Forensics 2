@@ -80,4 +80,38 @@ tryhackme2.txt
 Recover the txt file from Question #2.
 THM-4n6-2-4
 
+----------------------------------------------------------------------------------------------------
+
+Windows Prefetch fiiles
+
+-When program is run, info is stored for future use
+-stored info is used for quick loading 
+C:\Windows\Prefetch
+.pf file
+-prefetch files contain the last run times of the app, number of times the app was run and files and device handles used by the file
+-use prefetch parser (PECmd.exe) - EZTools
+
+PECmd.exe
+PECmd.exe -f <path-to-Prefetch-files> --csv <path-to-save-csv> -file
+PECmd.exe -d <path-to-Prefetch-directory> --csv <path-to-save-csv> -directory
+
+Windows Jump lists
+
+-help users go directly to their recently used files
+C:\Users\<username>\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations
+-use JLECmd.exe
+JLECmd.exe -f <path-to-Jumplist-file> --csv <path-to-save-csv>
+
+C:\users\thm-4n6\Desktop\triage\C\Windows
+
+1 & 2. PECmd.exe -f triage\C\Windows\GKAPE.EXE-E945EF56.pf --csv [path]
+open in EZ viewer
+times run: 2
+last run: 12/1/2021 13:04
+
+
+
+
+
+
 
