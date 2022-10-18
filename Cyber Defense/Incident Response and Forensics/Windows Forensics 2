@@ -153,7 +153,7 @@ first opened?
 Setup API dev logs for usb devices
 -when any new device is attached to a system, info about setup of device is stored in Setupapi.dev.log
 C:\Windows\inf\setupapi.dev.log
-
+ 
 
 
 
