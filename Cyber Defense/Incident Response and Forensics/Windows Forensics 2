@@ -95,6 +95,11 @@ PECmd.exe
 PECmd.exe -f <path-to-Prefetch-files> --csv <path-to-save-csv> -file
 PECmd.exe -d <path-to-Prefetch-directory> --csv <path-to-save-csv> -directory
 
+Windows 10 Timeline
+-info about last executed programs
+C:\Users\<username>\AppData\Local\ConnectedDevicesPlatform\{randomfolder}\ActivitiesCache.db
+WxTCmd.exe -f <path to timeline> --csv <path to save csv>
+
 Windows Jump lists
 
 -help users go directly to their recently used files
@@ -108,6 +113,19 @@ C:\users\thm-4n6\Desktop\triage\C\Windows
 open in EZ viewer
 times run: 2
 last run: 12/1/2021 13:04
+
+3. WxTCmd.exe -f <path> --csv <path to save csv>
+open in EZ viewer
+Notepad in focus for 00:00:41 on 11/30/2021
+
+4. JLECmd.exe -d <directory> --csv <path to save csv>
+open file in EZ viewer
+notepad.exe
+
+-----------------------------------------------------------------------------------------------
+
+
+
 
 
 
