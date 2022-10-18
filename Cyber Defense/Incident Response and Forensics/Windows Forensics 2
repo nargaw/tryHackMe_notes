@@ -124,6 +124,35 @@ notepad.exe
 
 -----------------------------------------------------------------------------------------------
 
+Shortcut files
+-windows creates shortcut files for each file opened either locally or remotely
+-info contained in shortcut files: first and last opened times, path of opened file, etc
+C:\Users\<username>\AppData\Roaming\Microsoft\Windows\Recent\
+C:\Users\<username>\AppData\Roaming\Microsoft\Office\Recent\
+use: LECmd.exe
+LECmd.exe -f <path-to-shortcut-files> --csv <path-to-save-csv>
+
+IE/Edge history
+-includeds files opened in the system as well
+-whether those files were opened using browser or not
+C:\Users\<username>\AppData\Local\Microsoft\Windows\WebCache\WebCacheV*.dat
+
+Jump Lists
+-create a list of last opened files
+-used to identify both last executed programs and last opened files in a system
+C:\Users\<username>\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations
+
+Regripper last opened?
+12/1/2021 13:01
+
+first opened?
+12/1/2021 12:31
+
+------------------------------------------------------------------------------------------
+
+Setup API dev logs for usb devices
+-when any new device is attached to a system, info about setup of device is stored in Setupapi.dev.log
+C:\Windows\inf\setupapi.dev.log
 
 
 
