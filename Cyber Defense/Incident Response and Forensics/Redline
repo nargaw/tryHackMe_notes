@@ -1,0 +1,24 @@
+Redline 
+-FireEye tool
+-high level view of Windows, Linux and MacOS endpoint
+-GUI
+
+use:
+-Collect registry data
+-collect running process
+-collect memory images
+-collect browser history
+-look of suspicious strings
+-more
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Data Collection
+
+1. Standard: minimum amount of data, fastest
+2. Comprehensive: most data, 1hr + 
+3. IOC Search: data matching IOCs (created with help of IOC editor) - Indicators of Compromise
+
+Runredlineaudit.bat: script run to initiate data collection process
+Disk enumeration: collect the data on disk an volumes
+prefetch: windows cache for recently executed code
