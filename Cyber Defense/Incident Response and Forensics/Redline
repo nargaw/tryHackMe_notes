@@ -22,3 +22,26 @@ Data Collection
 Runredlineaudit.bat: script run to initiate data collection process
 Disk enumeration: collect the data on disk an volumes
 prefetch: windows cache for recently executed code
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+Redline interface
+
+System information: info about the machine, BIOS (windows), OS, USER info
+Processes: Process name, PID, Path, Arguments, Parent processes, username etc
+
+A handle: connection from a process to an object/resource in Windows OS
+-reference internal objects like file, reg keys, resources etc
+
+Memory Sections: investigate unsigned memory sections used by some processes
+-most processes use legitimate dynamic link libraries (DLLs) - which will be signed
+-unsigned DLLs are worth taking a closer look
+
+Strings: captured strings
+
+Ports: Malware initiates outbound or inbound connections to communicate to (C2 - command and control server)
+-review suspicious connections from  ports and IP addresses
+-could hide under system processes
+
+Timeline: help better understand when the compromise happened
+-record of every action on file creation, change, modification and access
