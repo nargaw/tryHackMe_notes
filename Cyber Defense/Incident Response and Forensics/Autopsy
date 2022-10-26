@@ -1,0 +1,44 @@
+Autopsy: forensics open-source tool
+-analyze mobile devices and digital media
+-used in law enforcement, national security, litigation support and corp investigation
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Installation:
+https://www.autopsy.com/download
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Workflow overview
+-Basic workflow
+1. Create case for data source = new case
+2. Select data source to analyze
+3. congi the ingest modules to extract specific artifacts
+4. Review artifacts extracted by the ingest modules
+5. Create Report
+
+-autopsy files extension: .aut
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Data Sources
+-Disk image or vm file
+-documentation: http://sleuthkit.org/autopsy/docs/user-docs/4.12.0/ds_page.html
+Raw Single (For example: *.img, *.dd, *.raw, *.bin)
+Raw Split (For example: *.001, *.002, *.aa, *.ab, etc)
+EnCase (For example: *.e01, *.e02, etc)
+Virtual Machines (For example: *.vmdk, *.vhd)
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Ingest Modules
+-Autopsy plug-ins
+-configure ingest modules
+-some ingest modules have pre-run settings and some do not
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+User interface
+
+
+
