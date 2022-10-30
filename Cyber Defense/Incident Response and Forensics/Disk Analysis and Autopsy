@@ -24,26 +24,43 @@ What was the MAC address of the computer?
 
 
 Name the network cards on this computer
-
+Results > Operating system information > software > Application > 
+Intel(R) PRO/1000 MT Desktop Adapter
 
 
 Name of the network monitoring tool?
-
+Results > Installed Programs > Software
+Look@LAN
 
 
 user bookmarked google maps location?
-
+Results > Web Bookmarks
+12°52'23.0"N 80°13'25.0"E
 
 
 Full name printed on desktop wallpaper?
-
+HASAN2.E01 > Vol3 > Users > Joshwa
+Anto Joshwa
 
 
 Changed flag from file in desktop. original flag?
-
+-Data Sources > HASAN2.E01 > Vol3 > Users > shreya > AppData > Roaming > Microsoft > Windows > PowerShell > PSReadLine > ConsoleHost_history.txt
+flag{HarleyQuinnForQueen}
 
 
 message to the device owner?
-
+-Data Sources > HASAN2.E01 > Vol3 > Users > shreya > Desktop > exploit.ps1
+flag{I-hacked-you}
 
 2 hack tools focused on passwords. what are the two tools?
+Data Sources > HASAN2.E01 > Vol3 > Program Data > Microsoft > Windows Defender > Scans > History > Service > DetectionHistory > 02
+lazagne,mimikatz
+
+Yara file on the computer. name of the author?
+-Data Sources > HASAN2.E01 > Vol3 > Users > H4S4N > Downloads
+Benjamin DELPY (gentilkiwi)
+
+exploit domain controller using MS-NRPC. What is the file name of the archive found?
+-Results > Recent Documents 
+2.2.0 20200918 Zerologon encrypted.zip
+
