@@ -1,0 +1,41 @@
+Windows Domains
+-a group of users and computers under the administration of a given business
+Active Directory (AD)
+-certalize the administration of common components of a windows computer network in a single repo
+Domain controller (DC)
+-The server that runs the active direcotry services
+
+Centralized identity management: all users across the network can be configured from active directory with min effort
+Managing security policies: can configure security policies directly from the active direcotry and apply them to users and computers across the network as needed
+
+
+In a Windows domain, credentials are stored in a centralised repository called...
+-Active Directory
+
+The server in charge of running the Active Directory services is called...
+-Domain Controller
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Active Directory Domain Service (AD DS)
+-catalogue that holds the information of all the objects that exist on the network
+
+Users - one of the objects - security principals - authenticated by the domain and can be assigned privileges over resources. Two entities
+People: persons in the organization
+Services: users used by services - only have privileges needed to run their specific service
+
+Machines - every computer that joins the AD domain
+-machine accounts are themselves local adminis
+-passwords: 120 random characters
+-account name: computer name  + dollar sign: DC01$
+
+Security Groups
+-user groups assigned access to rights
+-better managebility
+Domain Admins	 - Users of this group have administrative privileges over the entire domain. By default, they can administer any computer on the domain, including the DCs.
+Server Operators -	Users in this group can administer Domain Controllers. They cannot change any administrative group memberships.
+Backup Operators -	Users in this group are allowed to access any file, ignoring their permissions. They are used to perform backups of data on computers.
+Account Operators -	Users in this group can create or modify other accounts in the domain.
+Domain Users -	Includes all existing user accounts in the domain.
+Domain Computers -	Includes all existing computers in the domain.
+Domain Controllers -	Includes all existing DCs on the domain.
