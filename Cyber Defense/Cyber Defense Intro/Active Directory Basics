@@ -39,3 +39,12 @@ Account Operators -	Users in this group can create or modify other accounts in t
 Domain Users -	Includes all existing user accounts in the domain.
 Domain Computers -	Includes all existing computers in the domain.
 Domain Controllers -	Includes all existing DCs on the domain.
+
+Builtin: Contains default groups available to any Windows host.
+Computers: Any machine joining the network will be put here by default. You can move them if needed.
+Domain Controllers: Default OU that contains the DCs in your network.
+Users: Default users and groups that apply to a domain-wide context.
+Managed Service Accounts: Holds accounts used by services in your Windows domain.
+
+Organizational units: used to group users together so that policies can be applied consistently the users within the group
+
