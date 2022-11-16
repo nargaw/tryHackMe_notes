@@ -48,3 +48,31 @@ Managed Service Accounts: Holds accounts used by services in your Windows domain
 
 Organizational units: used to group users together so that policies can be applied consistently the users within the group
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Managing uses in AD
+
+-delegation: give specific user some control over some OUs
+
+flag: THM{thanks_for_contacting_support}
+
+-------------------------------------------------------------------------------------------------
+
+Managing Computers in AD
+
+1. Workstations: most common - not privileged user
+2. Servers: second most common - provide service to users or other servers
+3. Domain Controllers: third most common - manage AD domain (most sensitive - contain hashed pw)
+
+------------------------------------------------------------------------------------------------
+
+Group Policies
+-GPO(Group Policy Objects) - collection of settings that can be applied to OUs
+-linked to OUs
+-security filtering to GPO to be applied to only specific users
+-Settings > includes actual contents of the GPO
+-right click and edit
+-change min password length
+
+
+
