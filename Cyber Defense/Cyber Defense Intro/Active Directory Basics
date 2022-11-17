@@ -74,5 +74,50 @@ Group Policies
 -right click and edit
 -change min password length
 
+--------------------------------------------------------------------------------------------------
 
+Authentication Methods
+-credentials are stored in the domain controllers
+-when user attempts to authenticate, it needs to be verified by the domain controller
+-two protocols are used: 
+1. Kerberos: default
+2. NetNTLM: legacy
+
+1. Kerberos Authentication
+-default for any recent version of Windows
+-assigned tickets - proof of previous authentication
+-steps:
+A. User sends username and key(derived from pw) to Key Distribution Center (KDC)
+B. KDC will create and send back Ticket Granting Ticket (TGT - allows user to request additional tickets)
+C. KDC will send Additional Session Key to the user
+*TGT is encrypted using krbtgt
+D. User uses TGT to request Ticket Granting Service (TGS) to access network, website or database
+E. User also sends username, timestamp and service principal name (SPN) - sevice and server name to access
+F. KDC will send User a TGS and Service session key
+*TGS is encrypted using Service owner hash
+G. TGS + Username and timestamp: sent to desired service to authenticate and establish connection
+
+2. NetNTLM Authentication
+A. Client sends an authentication request to server
+B. Server generates a random number and sends it as a challenge to the client
+C. Client combines NTLM password hash with challenge to generate a response and send back to server
+D. Server forwards challenge and resopnse to Domain controller
+E. Domain controller recalculates the correct response with client response and generates allow or deny authentication
+F. Server forwards authentication result to client
+* user pw is not transmitted through the network for security
+
+-------------------------------------------------------------------------------------------------
+
+Trees
+-two domains that share the same namespace can be jointed into a Tree
+eg. thm.local could be split into uk.thm.local and us.thm.local
+-enterprise admins group will grant user administrative privileges over all of an enterprise's domains
+
+Forests
+-additional domains can be added into a forest
+eg. merge with another company
+
+-Trees and forests allow for compartmentalized network in terms of management and resources
+-allow the authorization of a user from one domain to another domain
+-could be one-way or two-way trust relationships
 
