@@ -83,6 +83,26 @@ abc%: match all within-level starting with "abc"
 What is the query to show the username field from the users table where the username is 3 characters long and ends with 'en'?
 SELECT username FROM users WHERE username like '%en';
 
+
+How many programs are installed on this host?
+SELECT count(*) FROM programs;
+
+What is the description for the user 'James'?
+SELECT * FROM users WHERE username='James';
+
+What is the full SID of the user with RID '1009'?
+SELECT path, key, name FROM registry WHERE key='HKEY_USERS';
+
+What is the IE browser extension installed on the machine?
+SELECT * FROM ie_extensions;
+
+After running the following query, what is the full name of the program returned?
+Query: select name,install_location from programs where name LIKE '%wireshark%';
+
+
+
+
+
 ---------------------------------------------------------------------------------------------------------------------------------------------
 
 Kolide Fleet
