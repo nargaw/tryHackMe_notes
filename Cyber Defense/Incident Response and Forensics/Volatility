@@ -3,6 +3,12 @@ Volatility - Free Memory forensics tool developed and maintained by Volatility l
 
 ------------------------------------------------------------------------------------------------------
 
+Overview
+-Extraction of samples/digital artifacts from volatile memoray (RAM) samples
+-python2 and python3
+
+------------------------------------------------------------------------------------------------------
+
 Obtaining Memory Samples
 -Memory captured using following tools:
 FTK imager: https://accessdata.com/product-download/ftk-imager-version-4-2-0
@@ -59,3 +65,13 @@ Hybrid Analysis - https://www.hybrid-analysis.com/
 ------------------------------------------------------------------------------------------------------------------------------
 
 Extra Credit - "Memory Forensics with Vol(a|u)tility" - A great talk on learning the basics of Volatility and the GUI plugin VolUtility made by @chupath1ngee
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+NEW Volatility Room
+
+python3 vol.py -h
+
+
+
