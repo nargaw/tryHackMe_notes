@@ -73,5 +73,46 @@ NEW Volatility Room
 
 python3 vol.py -h
 
+identify image info and profiles
+python3 vol.py -f <file> windows.info
+
+List processes and connectinos
+python3 vol.py -f <file> windows.pslist
+
+-for rootkits that hide their processes
+python3 vol.py -f <file> windows.psscan
+
+-list all processes based on their parent process ID
+python3 vol.py -f <file> windows.pstree
+
+-list network connections present at time of extraction
+python3 vol.py -f <file> windows.netstat
+
+-list dlls associated with processes at time of extraction
+python3 vol.py -f <file> windows.dlllist
+
+-attempt to identify injected processes and their PIDs
+python3 vol.py -f <file> windows.malfind
+
+-compare memory file against YARA rules
+python3 vol.py -f <file> windows.yarascan
+
+-search for hooking SSDT - system service descriptor table
+python3 vol.py -f <file> windows.ssdt
+
+-search for malicious driver files
+python3 vol.py -f <file> windows.modules
+
+-scan for drivers present at time of extraction
+python3 vol.py -f <file> windows.driverscan
+
+other useful plugins: 
+modscan
+driverirp
+callbacks
+idt
+apihooks
+moddump
+handles
 
 
