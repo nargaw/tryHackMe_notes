@@ -1,0 +1,28 @@
+Intro
+
+-Red Team engagements
+-Id main components and stakeholders
+-Understand main differences b/n red teaming and other cybersecurity engagements
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Vuln Assessments
+-Goal is to identify security deficiencies and deployment of effective security measures to protect the network
+-use of automated tools w/out exploiting vulnerabilities
+
+Penetration Tests
+-start by scanning for vulns
+-Attempt to exploit the vulnerabilities found on each system
+-conduct post-exploitation on compromised host
+-focus remains in identifying vulns and protecting network and also show impact an attacker could have on network
+
+APT (advanced persistent threats)
+-regular pentesting is not enough
+1. Pen tests are loud - not much effort in trying to go undetected
+2. Non-technical attack vectors might be overlooked - such as social engineering
+3. Relaxation of security mechanisms - some security mechanisms might be disabled or relaxed for pentesting to be effective
+-APTs are highly skilled
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Red Team Engagements
