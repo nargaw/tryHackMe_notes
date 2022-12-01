@@ -26,3 +26,39 @@ APT (advanced persistent threats)
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Red Team Engagements
+-take role of red team to simulate real world adversary strategies to test blue team's ability to defend against the threat
+-define flags (crown jewels) such as compromise a critical host or gain sensetive information
+-considering several attack surfaces
+1. Technical Infrastructure: technical vulns - stealth and evasion
+2. Social Engineering: Target people through phishing campaigns, phone calls or social media
+3. Physical Intrusion: using techniques such as lockpicking, RFID cloning
+types of red team exercises
+1. Full engagement: simulate an attacker
+2. Assumed Breach: assuming attacker has already gained control over some assets
+3. Table-top exercise: simulation of certain scenarios
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Teams and Functions of an Engagement
+1. Red: Offensive
+2. Blue: Defensive
+3. White: Referee
+Roles
+1. Red Team Lead: delegates, assitant lead and operators engagement assignments
+2. Read Team Assistant Lead: assists in writing engagment plans and documentation, assist in overseeing operations and operators
+3. Red Team Operator: executes assignments delegated by team leads
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Engagement Structure
+-Cyber Kill Chain
+1. Recon -> 2. Weaponization -> 3. Delivery -> 4. Exploitation -> 5.Installation -> 6.Command and Control -> 7.Actions on Objectives
+1.Reconnaissance -	Obtain information on the target	Harvesting emails, OSINT
+2.Weaponization -	Combine the objective with an exploit. Commonly results in a deliverable payload.	Exploit with backdoor, malicious office document
+3.Delivery -	How will the weaponized function be delivered to the target	Email, web, USB
+4.Exploitation -	Exploit the target's system to execute code	MS17-010, Zero-Logon, etc.
+5.Installation -	Install malware or other tooling	Mimikatz, Rubeus, etc.
+6.Command & Control -	Control the compromised asset from a remote central controller	Empire, Cobalt Strike, etc.
+7.Actions on Objectives -	Any end objectives: ransomware, data exfiltration, etc.	Conti, LockBit2.0, etc.
+
+
