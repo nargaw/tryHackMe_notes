@@ -1,0 +1,50 @@
+Scope and Objectives
+
+-Clearly defined client objectives and goals
+-scope defines what can and cannot be a target (set by the client)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Rules of Engagement (ROE)
+
+-legally binding contract that outlines the clinet objects and scope with engagement expectations b/n both parties
+
+Executive Summary	 - Overarching summary of all contents and authorization within RoE document
+Purpose	 - Defines why the RoE document is used
+References -	Any references used throughout the RoE document (HIPAA, ISO, etc.)
+Scope	- Statement of the agreement to restrictions and guidelines
+Definitions -	Definitions of technical terms used throughout the RoE document
+Rules of Engagement and Support Agreement -	Defines obligations of both parties and general technical expectations of engagement conduct
+Provisions -	Define exceptions and additional information from the Rules of Engagement
+Requirements, Restrictions, and Authority -	Define specific expectations of the red team cell
+Ground Rules -	Define limitations of the red team cell's interactions
+Resolution of Issues/Points of Contact -	Contains all essential personnel involved in an engagement
+Authorization	- Statement of authorization for the engagement
+Approval - 	Signatures from both parties approving all subsections of the preceding document
+Appendix -	Any further information from preceding subsections
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Campaign Planning
+
+Type of Plan	| Explanation of Plan |	Plan Contents
+Engagement Plan	- An overarching description of technical requirements of the red team. - CONOPS, Resource and Personnel Requirements, Timelines
+CONOPS - concept operations: non-technically written overview
+Resource plan - timelines and information required for red team to be succesful
+
+Operations Plan	 - An expansion of the Engagement Plan. Goes further into specifics of each detail. - Operators, Known Information, Responsibilities, etc.
+Stopping conditions: how and why red team stop during the engagement
+Technical Requirements
+
+Mission Plan -	The exact commands to run and execution time of the engagement. - Commands to run, Time Objectives, Responsible Operator, etc.
+Command Playbook - exact commands and tools to run
+Execution times: time to being stages of engagement
+Responsibilities
+
+Remediation Plan -	Defines how the engagement will proceed after the campaign is finished. - Report, Remediation consultation, etc.
+Report - Summary of engagement details and reports of findings
+Remediation/consultation - how can client improve their security
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 
