@@ -47,4 +47,40 @@ Remediation/consultation - how can client improve their security
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+ CONOPS 
  
+ -part of engagement plan that details a high-level overview of the engagement
+ -semi-technical (assuming target audience has zero to minimal technical knowledge)
+ -included: client, service provider, time frame, general objectives, other objectives, high level tools and techniques, Threat group to emulate
+ 
+ -------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 
+ Resource Plan
+ 
+ 1. Header: Personal writing, Dates, Customer
+ 2. Engagement Dates: Recon dates, initial compromise dates, post-exploitation and persistence dates, misc dates
+ 3. Knowledge Required(optional): Recon, inital compromise, post-exploitation 
+ 4. Resource Requirements: personnel, hardware, cloud, misc.
+ 
+ --------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 
+ Operations plan
+ 
+ -flexible document that provides specific details of the engagement and actions occuring
+ 1. Header: personal writing, Dates, customer
+ 2. Halting/Stopping Conditions
+ 3. Required/assigned Personnel
+ 4. Specific TTPs and attacks planned
+ 5. Communications plan
+ 6. Rules of engagement
+ 
+ -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 
+ Mission Plan
+ 
+ -cell-specific document that details exact actions 
+ 1. objectives
+ 2. operators
+ 3. exploits/attacks
+ 4. targets (users/machine/objectives)
+ 5. execution plan variations
