@@ -10,3 +10,16 @@ Threat Intelligence is attributed to an adversary, commonly used by defenders to
 -Mandiant Advantage
 -Ontic
 -CrowdStrike Falcon
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+THM{7HR347_1N73L_12 _4w35om3}
+
+What web shell is APT 41 known to use? 
+-ASPXSpy
+
+What LOLBAS (Living Off The Land Binaries and Scripts) tool does APT 41 use to aid in file transfers? 
+-certutil
+
+What tool does APT 41 use to mine and monitor SMS traffic? 
+-MESSAGETAPc
