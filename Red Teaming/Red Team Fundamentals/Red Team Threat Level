@@ -1,0 +1,12 @@
+Threat Intelligence is attributed to an adversary, commonly used by defenders to aid in detection measures.
+-can be used in adversary emulation
+-collection of indicators of compromise (IOCs): Domains, IPs, files, strings, etc
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-Red team will use threat intelligence to craft tooling, modify traffic and behavior to emulate target adversary 
+-TTP mapping: aids the red team in planning an engagement to emulate an adversary (Target industry, employted attack vectors, country and other factors)
+-MITRE ATT&CK 
+-Mandiant Advantage
+-Ontic
+-CrowdStrike Falcon
