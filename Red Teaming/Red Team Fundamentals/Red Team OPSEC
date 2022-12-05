@@ -1,0 +1,13 @@
+OPSEC (Operations Security) - five-step process to deny adversaries from gaining access to any critical information
+-Five steps
+1. Identify critical info
+2. Analyze threats
+3. Analyze Vulns
+4. Assess risks
+5. Apply apporopriate countermeasures
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Critical information identification
+-From Red team perspective, what information does blue team need to thrwart the plans of the red team
+-
