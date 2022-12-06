@@ -10,4 +10,26 @@ OPSEC (Operations Security) - five-step process to deny adversaries from gaining
 
 Critical information identification
 -From Red team perspective, what information does blue team need to thrwart the plans of the red team
--
+-Includes: intentions, capabilities, activities and limitations
+-OS, cloud hosting orovider or C2 framework
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Threat Analysis
+-Identify potential adversaries, Goals, Tectics/Techniques and Procedures, Critical Information
+threat = adversary + intent + capability
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Vulnerability Analysis
+
+-OPSEC vulnerability: when an adversary can obtain critical information, analyze the findings and act in a way that would affect the teams plan
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Risk Assesement
+
+-The process of identifying risk to 
+1. organizational operations - including mission, functions, image and reputation
+2. organizational assets
+3. individuals, other organizations and the Nation 
