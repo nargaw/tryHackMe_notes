@@ -36,4 +36,8 @@ Risk Assesement
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Critical Information: 
+Critical Information: Programs, OS, VM 
+Threat Analysis: Activity such as OS version and VM host that blue team is looking for
+Vulnerability Analysis: what makes activity stand out to blue team
+Risk Assesement: services connected to
+Counter Measures: make necessary changes to camouflage activity
