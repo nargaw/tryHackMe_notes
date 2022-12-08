@@ -14,4 +14,49 @@ Agents / Payloads
 -configurable with adjustments on timing of how often C2 agents becon out to a Listener on a C2 Server and more
 
 Listeners
--
+-application running on C2 server that waits for a callback
+
+Beacons
+-process of a C2 Agent calling back to the listner running on a C2 Server
+
+Obfuscating Agent Callbacks
+-Sleep Timers: C2 traffic beaconing rate forms a pattern forming a sleep timer
+-Jitter: takes sleep timer and adds variation - create normal traffic apperance
+
+Payload Types
+-Staged and Stageless payloads
+-Stageless Payloads: 
+A. Victim workstation downloads and executes the Dropper
+B. The beaconing to the C2 Server begins
+
+-Staged: requires additional files from the C2 Server
+A. Victim workstation downloads and executes the Dropper
+B. Dropper calls back to C2 Server for Stage 2
+C. C2 Server receives message and sends Stage 2 to victim workstation
+D. Stage 2 is loaded into memory of victim workstation
+E. The beconing to the C2 Server begins
+
+Payload Formats: 
+1. PowerShell Scripts
+2. HTA Files
+3. JS files
+4. Visual Basic Apps/Scripts
+5. MS Office Docs
+
+Modules
+-Written in multiple languages, give more flexibility
+-Post Exploitation Modules: modules after inital compromise. Eg. finding paths for lateral movement and parsing credentials etc
+-Pivoting Modules: SMB pivot to communicate with restricted network segment from computer with admin access
+
+Domain Fronting
+-utilize a good host
+-make it appear a workstation is communicating with a known, trusted IP address
+-victim only communicates with trusted site
+-commands are proxied through trusted site to the victim stations
+
+C2 Profiles
+-Server looks at user agent to determine if HTTp request came from a becon or other device
+-if from a compromised device, it returns a C2 command
+-if from a non compromised device, it returns normal webpage
+https://blog.zsec.uk/cobalt-strike-profiles/ - C2 Profiles
+
