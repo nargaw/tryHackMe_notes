@@ -60,3 +60,46 @@ C2 Profiles
 -if from a non compromised device, it returns normal webpage
 https://blog.zsec.uk/cobalt-strike-profiles/ - C2 Profiles
 
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Common C2 Frameworks
+-free frameworks are well understood, and signatures can be easily developed.
+
+Free C2 Frameworks
+1. Metasploit - developed by Rapid7 - most popuar exploit and post-exploitation framework
+2. Armitage - extension of metasploit - adds a GUI - written in Java - fast and easy
+3. Powershell Empire/Starkiller - developed by the Veris Group - updated by BC Security team - versitile (THM ROOM )
+4. Covenant - developed by Ryan Cobb - written in C# - used in Post-exploit and lateral movement w/ HTTP, HTTPS, SMB
+5. Silver - developed by Bishop Fox - written in Go - various protocols for communication - mask communications and encrypted communication 
+
+Paid C2 Frameworks
+1. Cobalt Strike - developed by Help Systems Raphael Mudge - written in Java - flexible
+2. Brute Ratel - developed by Chetan Nayak - customizable command and control center
+
+Other C2 Frameworks
+1. C2 Matrix - developed by Jorge Orchilles and Bryson Bort
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Setting up Armitage
+
+1. git clone https://gitlab.com/kalilinux/packages/armitage.git
+2. cd armitage
+3. bash package.sh
+
+Teamserver - takes IP address and Shared Password arguments
+Armitage - enter host, port, username, password
+
+preparing env
+systemctl start postgresqul && stemctl status postgresql
+msfdb --use-defaults delete
+msfdb --use-defaults init
+
+connecting to Armitage
+cd /artimage/release/unix && ./teamserver <yourIP> <Password>
+-must listen with tun0/eth0 IP address not local host
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Accessing and managing your C2 infrastructure
+-SSH port-forwarding
