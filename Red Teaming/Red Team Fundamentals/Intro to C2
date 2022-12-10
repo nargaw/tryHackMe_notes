@@ -103,3 +103,8 @@ cd /artimage/release/unix && ./teamserver <yourIP> <Password>
 
 Accessing and managing your C2 infrastructure
 -SSH port-forwarding
+
+Standard: TCP or UDP
+HTTP/HTTPS: firewall with protocol inspection, Domain fronting or malleable c2 profiles
+DNS: device that cannont easily access internet; - https://2017.zeronights.org/wp-content/uploads/materials/ZN17_SintsovAndreyanov_MeterpreterReverseDNS.pdf
+SMB: flexible pivoting, accessing restricted network segment
