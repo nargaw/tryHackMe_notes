@@ -1,0 +1,24 @@
+-More knowledge on target infrastructure and personnel, betteer orchestrate attacks
+-Reconnaissance (Recon)
+-objectives:
+1. Discovering subdomains related to target company
+2. Gathering publicly available information about a host and IP addresses
+3. Finding email addresses related to the target
+4. Discovering login credentials and leaked passwords
+5. Locating leaked documents and spreadsheets
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Taxonomy of Reconnaissance
+1. Passive Recon: carried out by watching passively
+OSINT - open source intelligence - used to collect information about target 
+eg: target's publicly available social media profile
+-domain names, Ip address blocks, email addresses, employee names and job posts
+
+2. Active Recon: requires interacting with the target to provoke it in order to observe its response
+A. External Recon - conducted outside the target's network and focuses on externallly facing assets assessable from the internet (eg. Nikto)
+B. Internal Recon - conducted from within the company's network, using exploited host on the target's network (eg. Nessus to scan internal network)
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
