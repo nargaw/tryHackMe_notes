@@ -21,4 +21,34 @@ B. Internal Recon - conducted from within the company's network, using exploited
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+Built-in Tools
+
+1. whois
+-request and response protocol (RFC 3912) specification
+-listens on TCP port 43 fro incoming requests
+whois google.com
+-gain a lot of valuble information such as: Registry Domain ID, Registrar WHOIS server, update & creation date, server name
+-also names, email addresses, postal addresses and phone numbers could be found
+
+2. nslookup
+nslookup google.com
+-uses default DNS server toget the A and AAAA records related to the domain
+-returns the IP addresses
+
+3. dig
+-Domain information Groper
+-provides query options and also allows to specify a different DNS server to use
+eg. cloudflare DNS is 1.1.1.1
+dig @1.1.1.1 tryhackme.com
+
+4. host
+host google.com
+-another useful alternative for querying DNS servers for DNS records
+
+5. traceroute (UNIX) or tracert (Windows)
+-routers (hops) connecting us to the target system
+-somerouters don't respond to packets sent by traceroute - their IP is not visible
+traceroute google.com
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
