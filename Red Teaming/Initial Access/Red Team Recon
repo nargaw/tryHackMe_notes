@@ -52,3 +52,86 @@ traceroute google.com
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+Advanced Searching
+"search phrase" - find results with exact search phrase
+OSINT filetype:pdf - find files of type PDF related to a certain term (doc, docx, ppt, pptx, xls, xlsx)
+salary site:blog.tryhackme.com - limit search results to a specific site
+pentest -site:example.com - exclude a specific site from results
+walkthrough intitle:TryHackMe - find pages with specific term in page title
+challenge inurl:tryhackme - find pages with a specific term in the page url
+
+Advanced search 
+Google: https://support.google.com/websearch/answer/2466433
+DuckDuckGo: https://help.duckduckgo.com/duckduckgo-help-pages/results/syntax/
+Bing: https://help.bing.microsoft.com/apex/index/18/en-US/10002
+
+Search engines could index confidential information such as:
+-documents for internal company use
+-confidential spreadsheets with usernames, email addresses and even passwords
+-Files containing usernames
+-Sensitive directories
+-Service version number
+-Error messages
+
+Google Hacking Database (GHDB): collect search terms that could reveal sensitive information or vulnerable web servers
+https://www.exploit-db.com/google-hacking-database
+
+examples
+-Footholds: GHDB-ID 6364 - intitle:"index of" "nginx.log" - reveal server misconfigs
+-Files w/Usernames: GHDB-7047 - intitle:"index of" "contacts.txt"
+-Sensitive directories: GHDB-6768 - inurl:/certs/server.key - find private RSA key
+-Web server: GHDB-6876 - intitle:"GlassFish Server - Server Running" - detect GlassFish Server info
+-Vulnerable files: GHDB-7786 - intitle:"index of" "*.php" - locate PHP files
+-Vulnerable Servers: GHDB-6728 - intext:"user name" intext:"orion core" -solarwinds.com - SolarWinds Orion web consoles
+-Error messages: GHDB-5963 - intitle:"index of" errors.log - find log files related to errors
+
+Google Dorking: https://tryhackme.com/room/googledorking
+
+Social Media
+-Reveal a lot of information about a target
+-many users overshare details about themselves and their work
+
+Job Ads
+-may reveal names and email addresses
+-reveals a company's system and infrastructure
+
+Wayback Machine is helpful to retriieve previous versions of a job opening page https://archive.org/web/
+
+Search Google for xls file in http://clinic.thmredteam.com
+Ans: filetype:xls site:clinic.thmredteam.com
+
+How would you search Google for files with the word passwords for http://clinic.thmredteam.com?
+Ans: "passwords" site:clinic.thmredteam.com
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+Specialized Search Engines
+-paid services for historical WHOIS data - WHOIS history
+-Free advanced DNS Services: viewDNS.info, Threat intelligence Platform
+
+ViewDNS.info
+-reverse IP lookup
+-Ip address does not necessarily lead to a single website
+
+Threat Intelligence Platform
+-takes domain name or IP address
+-returns results from malware checks to WHOIS and DNS queries
+-lists other domains on the same IP
+
+Sepcialized Search Engines
+1. Censys: https://search.censys.io/
+-info about IP addresses and domains
+
+2. Shodan: https://cli.shodan.io/
+-configure shodan to use API key
+shodan init API_KEY
+
+What is the shodan command to get internet-facing IP address?
+Ans: shodan myip
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
