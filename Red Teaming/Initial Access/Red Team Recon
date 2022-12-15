@@ -131,7 +131,44 @@ Ans: shodan myip
 
 ------------------------------------------------------------------------------------------------------------------------------------
 
+Recon-ng
+-framework that helps automate OSINT work
+recon-ng
+-create workspace
+workspaces create thmredteam
+-start workspace
+recon-ng -w thmredteam
+-insert domain name into domains table
+db insert domains
+thmredteam.com
 
+-install modules
+marketplace search KEYWORD
+marketplace info MODULE
+marketplace install MODULE
+marketplace remove MODULE
 
+marketplace search domains-
+-if K column has *: requires a key
+-if D column has *: requires dependencies
+
+-more information on module
+marketplace info MODULE
+marketplace info google_site_web
+
+-install module
+marketplace install google_site_web
+
+-load modules
+modules search - lists all installed modules
+modules load MODULE - load specific module into memory
+
+-----------------------------------------------------------------------------------------------------4
+
+Maltego
+
+-application that blends mind-mapping with OSINT
+-information collected in Maltego can be used for later stages - legitimate looking phishing emails
+-maps out IPs, users etc 
 
 
