@@ -1,0 +1,33 @@
+Weaponization
+-Second stage after Recon
+-attacker generates and develops their own malicious code using deliverable payloads such as word documents, pdf etc
+-aims to gain inital access
+-use phishing campaigns, social engineering, browser or software exploitation, USB or web methods
+
+---------------------------------------------------------------------------------------------------------
+
+Deploy
+
+xfreerdp /v:[IP] /u:thm /p:TryHackM3 +clipboard
+
+---------------------------------------------------------------------------------------------------
+
+Windows Scripting Host (WSH)
+-built-in windows admin tool that runs batch files to automate and manage tasks
+-cscript.exe(command-line scripts) and wscript.exe(UI scripts): are responsible for executing Microsoft Visual Basic Scripts (VBScript)
+-VBScript: https://en.wikipedia.org/wiki/VBScript
+
+-open text document
+Dim message
+message = "Welcome to THM"
+MsgBox message
+-save as hello.vbs
+
+-command prompt
+hello.vbs
+-pop up message appears
+
+-if vbs files are blacklisted, it can be named a text file, and use following command
+wscript /e:VBScript C:\Users\thm\Desktop\payload.txt
+
+-----------------------------------------------------------------------------------------------------
