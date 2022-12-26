@@ -1,0 +1,30 @@
+Social Engineering: psychological manipulation of people into performing or divulging information by exploiting weaknesses in human nature.
+Weaknesses can be curiosity, jealousy, greed and kindness.
+-Phishing: source of social engineering delivered through email to trick someone into either revealing personal info or executing malicious code
+-emails appear from a trusted source
+-Spear-phishing: target a certain individual, business or organization
+
+-Smishing: phishing through SMS messages
+-Vishing: phishing through phone calls
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Writing Convincing Phishing emails
+
+1. Sender's Address: OSINT to find brands or people victim interacts with
+-social media account for brands or friends they talk to
+-search google for vitim's name and location
+-victim's business website to find suppliers
+-linkedin to find coworkers
+
+2. Subject: get attention and acts quickly and impulsively. eg:
+-Your account has been compromised
+-Your package has been shipped
+-Payroll information (do not forward)
+-Your photos have been published
+
+3. Content: 
+-research standard email template of brand being spoofed (logo's, style etc)
+-links disguised using anchor text eg "Click Here" or "Change it to the correct looking link hiding the link behind business you are spoofing
+
+
