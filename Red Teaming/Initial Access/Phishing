@@ -27,4 +27,28 @@ Writing Convincing Phishing emails
 -research standard email template of brand being spoofed (logo's, style etc)
 -links disguised using anchor text eg "Click Here" or "Change it to the correct looking link hiding the link behind business you are spoofing
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Phishing Infrastructure
+
+-Domain name: mimic identitity 
+-SSL/TLS certificate: extra layer of authenticity
+-Email Server/Account: register SMTP email provider or setup email server
+-DNS Records: SPF, DKIM, DMARC improve deliverability
+-Web Server: setup webservers or purchase web hosting from a company 
+-Analytics: track of emails sent
+
+Useful software/automation
+
+GoPhish
+-open source
+-store SMTP server settings for sending emails
+-email templates
+-schedule send times
+-analytics to show how many emails have been sent, opened or clicked
+
+SET - (Social Engineering Toolkit)
+-ability to create spear-phishing attacks 
+-deploy fake versions of common websites to trick victims
+
 
