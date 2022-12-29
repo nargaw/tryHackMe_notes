@@ -51,4 +51,34 @@ SET - (Social Engineering Toolkit)
 -ability to create spear-phishing attacks 
 -deploy fake versions of common websites to trick victims
 
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Using GoPhish
+
+https://[IP]
+login - user: admin, password: tryhackme
+
+brian credentials
+username: brian
+password: p4$$w0rd!
+
+--------------------------------------------------------------------------------------------------------------------------
+
+Droppers
+-software that phishing victims tend to be tricked into downloading and running on their system
+-usually pass antivirus checks
+-once installed malware is unpacked or downloaded from a server and installed onto the victim's computer
+
+--------------------------------------------------------------------------------------------------------------------------
+
+Choosing a phishing domain
+
+Expired Domains: spam filters tend to not trust brand new domains
+TypoSquatting: misspelling, addtional period, numbers switched for letters, phrasing or additional word
+Top Level domain (.com, .net, .co.uk, .org etc) Alternatives: using a different TLD
+IDN Homograph Attack/script spoofing: eg. Cyrillic small letter 'a' (U+0430) is identical to standard latin small letter 'a' (U+0061)
+
+
+
+
 
