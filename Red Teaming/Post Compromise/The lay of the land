@@ -1,0 +1,52 @@
+Post compromise enumeration
+
+xfreerdp /v:[IP] /u:kkidd /p:Pass123321@
+
+-------------------------------------------------------------------
+
+Network Infrastructure
+-enumeration of compromised machine is key to finding out what to do net
+-VLAN - hosts within VLAN can only communicate with other hosts in the same VLAN network
+
+Internal Networks
+-subnetworks that are segmented and separated based on importance of the internal device
+-share information faster and easier tools with in an organization
+-use segmentation to control traffic, optimize performance and improve security posture
+
+Demiliterized Zone (DMZ)
+-edge of network that protects and adds an extra security layer to a corporation's internal LAN from untrusted traffic
+
+Network Enumeration
+-check TCP and UDP open ports
+netstat -na
+-ARP table - contains the IP and physical address of the computers
+arp -a
+
+Internal Network Services
+-provides private and internal network communication access for internal network devices
+-not accessible outside the network
+
+----------------------------------------------------------------------------------------------
+
+Active Directory
+-Windows based directory service that stores and provides data objects to the internal network environment
+-allows for centralized mangement of authentication and authorization
+-contains: users, computers, printers etc
+-details: job title, phone numbers, address, passwords, groups, permissions, etc
+
+Domain Controller: windows server that provides AD services and controls entire domain
+-encryption of user data
+-control access to network
+-enables resource access and sharing
+-lot of high-value information
+
+Organizational Units (OU's): containers within the AD domain with a hierarchical structure
+
+AD objects: single user or group or hardware component
+
+AD domains: collection of Microsoft components within an AD network
+
+AD Forest: collection of domains that trust each other
+
+systeminfo | findstr Domain
+-thmredteam.com
