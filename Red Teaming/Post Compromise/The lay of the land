@@ -50,3 +50,19 @@ AD Forest: collection of domains that trust each other
 
 systeminfo | findstr Domain
 -thmredteam.com
+
+-------------------------------------------------------------------------------------------
+
+AD Enum
+
+-get all AD user accounts
+Get-ADUser -Filter *
+-LDAP hierarchical tree structure: find a user within AD environment
+-CN: common name
+-OU: organizational Unit Name
+-DC: Domain component
+Get-ADUser -Filter * -SearchBase "CN=Users,DC=THMREDTEAM,DC=COM"
+
+6
+thmadmin@thmredteam.com
+
