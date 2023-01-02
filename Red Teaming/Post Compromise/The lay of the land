@@ -66,3 +66,15 @@ Get-ADUser -Filter * -SearchBase "CN=Users,DC=THMREDTEAM,DC=COM"
 6
 thmadmin@thmredteam.com
 
+---------------------------------------------------------------------
+
+Host Security Solution #1
+-enumerate antivirus and security detection methods to remain undetected as possible and avoid detection
+
+1. Antivirus Software
+-monitor, detect and pervent malicious softawre from being executed in the host
+-perform: background scanning, full system scanning, virus definitions
+-detection techniques:
+a. Signature-based: 
+b. Heuristic-based:
+c. Behavior-based:
