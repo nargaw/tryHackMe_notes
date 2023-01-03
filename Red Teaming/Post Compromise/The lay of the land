@@ -75,6 +75,38 @@ Host Security Solution #1
 -monitor, detect and pervent malicious softawre from being executed in the host
 -perform: background scanning, full system scanning, virus definitions
 -detection techniques:
-a. Signature-based: 
-b. Heuristic-based:
-c. Behavior-based:
+a. Signature-based: signature of malicious software is registered in database and antivirus scan checks signature if file being scanned matches a malicious signature
+b. Heuristic-based: machine learning to decide if file is malicious or not
+c. Behavior-based: relies on monitoring and examining the execution of applications to find abnormal behaviors
+
+check if antivirus exists
+wmic /namespace:\\root\securitycenter2 path antivirusproduct
+Get-CimInstance -Namespace root/SecurityCenter2 -ClassName AntivirusProduct
+
+2. Windows Defender
+-preinstalled antivirus security tool
+-uses various algorithms in detection
+-Active: runs as primary antivirus protection and remediation
+-Passive: 3rd party antivirus is installed
+-Disable: diabled or uninstalled from the system
+
+check state of windows defender
+Get-Service WinDefend
+Get-MpComputerStatus | select RealTimeProtectionEnabled
+
+3. Host-based Firewall
+-security tool installed and run on host machine that can prevent and block attack attempts
+-control inbound and outbound traffic
+-analyze traffic including packet analysis
+
+Get-NetFirewallProfile | Format-Table Name, Enabled
+
+-disable firewall in admin privileges
+Set-NetFirewallProfile -Profile Domain, Public, Private -Enabled False
+
+-see rules
+Get-NetFirewallRule | select DisplayName, Enabled, Description
+
+
+
+
