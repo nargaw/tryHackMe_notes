@@ -107,6 +107,55 @@ Set-NetFirewallProfile -Profile Domain, Public, Private -Enabled False
 -see rules
 Get-NetFirewallRule | select DisplayName, Enabled, Description
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Host Security Solution #2
+
+Event Logging and Monitoring
+Get-EventLog -List
+
+Sysmon-gathering and logging events
+-useful in trouble shooting
+
+-check to see if 'Sysmon' is running:
+Get-Process | Where-Object { $_.ProcessName -eq "Sysmon"}
+
+-check services
+Get-CimInstance win32_service -Filter "Description = 'System Monitor service'" # or Get-Service | Where-Object {$_.DisplayName -like "*sysm*"}
+
+-check windows registry
+reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-Windows-Sysmon/Operational
+
+Host-Based intrusion Detection/Prevention Systems (HIDS/HIPS)
+-HIDS detect suspicious activity
+a. Signature-based: look at checksums and message authentication
+b. Anomaly-based: unexpected activity, abnormal bandwidth, protocols and ports
+-HIPS secure operating system - detection and prevention
+
+Endpoint Detection and Response (EDR)
+-defend against malware and other threats
+-Malware: virsuses, trojans, adware, keyloggers
+-Exploit chains
+-Ransomware
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Network Security Solutions
+1. Network Firewall
+-packet-filtering
+-proxy firewalls
+-NAT firewalls
+-Web Application firewalls
+
+2. SIEM
+-monitor and analyze events and track and log data in real time
+-log management
+-event analytics
+-incident monitoring and security alerts
+-compliance management
+eg. Splunk
+
+
 
 
 
