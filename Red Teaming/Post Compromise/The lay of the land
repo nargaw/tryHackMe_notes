@@ -155,6 +155,37 @@ Network Security Solutions
 -compliance management
 eg. Splunk
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Applications and Services
+
+-Enumerate installed apps to find vulnerabilities
+wmic product getname,version
+-look for particular text strings, hidden directories, backup files
+Get-ChildItem -Hidden -Path C:\Users\kkidd\Desktop
+
+-services and processes
+-list services
+net start
+-list more info about service
+wmic service where "name like 'service'" get Name,PathName
+-get process
+Get-Process -Name 'service'
+-use process ID to find network usage
+netstat -noa | findstr "LISTENING" | findstr "[processID]"
+
+13337
+http://127.0.0.1:13337
+THM{S3rv1cs_1s_3numerat37ed}
+
+nslookup.exe
+-provide DNS server
+-DNS zone transfer
+ls -d thmredteam.com
+
+THM{DNS-15-Enumerated!}
+
+
 
 
 
