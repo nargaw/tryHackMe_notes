@@ -1,0 +1,9 @@
+-switch to powershell from cmd
+powershell.exe
+
+-post-exploitation enumeration is to gather as much information about the system and its network
+-gain formation to be able to pivot to other systems on the network
+-gain access to private ssh key to generate a public and private ssh key pair
+-look for sensitive data such as 'passwords.txt'
+
+----------------------------------------------------------------------------------------------------
