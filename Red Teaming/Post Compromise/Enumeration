@@ -7,3 +7,72 @@ powershell.exe
 -look for sensitive data such as 'passwords.txt'
 
 ----------------------------------------------------------------------------------------------------
+
+Linux Enumeration
+
+ssh user@[IP]
+password: THM6877
+
+-get more information about the linux distribution and release version
+ls /etc/*-release
+cat /etc/os-release
+
+*Ubuntu
+*20.04.4 LTS (Focal Fossa)
+
+-get hostname
+hostname
+
+-useful information in /etc/passwd, /etc/group, and /etc/shadow
+cat /etc/passwd
+cat /etc/group
+cat /etc/shadow
+
+-mail directories
+ls -lh /var/mail/
+
+-find installed applications
+ls -lh /usr/bin/
+ls -lh /sbin/
+-query all packages in RPM-based Linux systems
+rpm -qa
+-list installed packages in Debian-based Linux system
+dpkg -l
+
+-USERS
+-show who is logged in 
+who
+-shows who is logged in and what they are doing
+w
+-list of last logged-in users
+last
+*randa
+-print the real and effective user and group IDs 
+id
+-list the allowed command for the invoking user
+sudo -l
+
+-NETWORKING
+-show ip address
+ip a s
+-show DNS servers
+cat /etc/resolv.conf
+-return programs listening on TCP sockets
+netstat -plt
+-show all TCp and UDP listening and established connections and program names with addresses and ports 
+netstat -atupn
+*6667
+sudo netstat -atupn
+*inspircd
+
+-RUNNING SERVICES
+-snapshot of running processes
+ps
+-list all processes 
+ps -e
+-list all processes with full format
+ps -ef
+-visual out print process tree
+ps axjf
+ps axjf | grep THM
+*THM-24765.sh
