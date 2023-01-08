@@ -76,3 +76,55 @@ ps -ef
 ps axjf
 ps axjf | grep THM
 *THM-24765.sh
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Windows Enumeration
+
+SYSTEM
+-information about the system, such as build number and installed patches
+systeminfo
+*Microsoft Windows Server 2019 Datacenter
+*10.0.17763
+*30 hotfixes
+-check installed updates 
+wmic qfe get Caption, Description
+-check installed and started Windows services 
+net start
+-check installed apps
+wmic product get name,version,vendor
+
+USERS
+-get who the current user is 
+whoami
+-get group current user is in
+whoami /groups
+-view users
+net user
+-discover available groups 
+net localgroup
+-list users belonging to local administrators' group
+net localgroup administrators
+-see local settings on a machine
+net accounts
+-see if machine belongs to a domain
+net accounts /domain
+
+NETWORKING
+-learn more about system network configuration
+ipconfig
+-all network related settings
+ipconfig /all
+-get various information such as active ports the system is litening on
+-a: display all listening ports and active connections
+-b: find bnary involved in the connection
+-n: avaoid resolving IP addresses and port numbers
+-o: display process ID
+netstat -abno
+*22
+*sshd.exe
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
