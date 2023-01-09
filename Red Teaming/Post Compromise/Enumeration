@@ -126,5 +126,11 @@ netstat -abno
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
+DNS
+-Domain name system - look up A, AAAA, CName and TXT records
+DNS in detail room: https://tryhackme.com/room/dnsindetail
+-dig command covered in the passive recon room: https://tryhackme.com/room/passiverecon
+dig -t AXFR DOMAIN_NAME @DNS_SERVER
+-t AXFR: request zone transfer
 
 
