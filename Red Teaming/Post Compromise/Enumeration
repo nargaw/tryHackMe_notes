@@ -132,5 +132,32 @@ DNS in detail room: https://tryhackme.com/room/dnsindetail
 -dig command covered in the passive recon room: https://tryhackme.com/room/passiverecon
 dig -t AXFR DOMAIN_NAME @DNS_SERVER
 -t AXFR: request zone transfer
+*THM{DNS_ZONE}
+
+SMB 
+-Server Message Block: communication protocol provides access to files and printers
+net share
+*THM{829738}
+
+SNMP
+-Simple Network Management Protocol: help collection info about different devices on the network
+cd /opt/snmpcheck
+ruby snmpcheck.rb [IP] -c [Community String] | more
+*THM{SNMP_SERVICE}
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+More Tools for Windows
+1. SysInternals Suite: CLI and GUI tools
+a. process explorer: shows processes along with open files and reg keys
+b. process monitor: monitor file system, processes and reg
+c. pslist: provide info about processes
+d. psloggedon: shows logged-in users
+
+2. process hacker
+-GUI tool, gather info about running processes
+
+3. ghostpack seatbelt
+-C#, self compile using visual studio
 
 
