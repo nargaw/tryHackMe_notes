@@ -1,3 +1,22 @@
 Windows Users
 1. Admnistrators: change any system configs parameter and access any file
 2. Standard Users: access computer to only perform limited tasks, can not make permanent or essential changes to the system
+
+------------------------------------------------------------------------------------------------------------------------------
+
+HARVERST PASSWORDS
+
+Unattended Windows Installations
+-Windows Deployment Services: allows for a single OS image to be deployed to several hosts through the network => unattended installations
+-use Admin account to perform initial setup
+-stored in: 
+-C:\Unattend.xml
+-C:\Windows\Panther\Unattend.xml
+-C:\Windows\Panther\Unattend\Unattend.xml
+-C:\Windows\system32\sysprep.inf
+-C:\Windows\system32\sysprep\sysprep.xml
+
+
+Powershell History
+cmd: type %userprofile%\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt
+powershell: type $Env:userprofile\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt
