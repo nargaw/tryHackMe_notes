@@ -109,6 +109,6 @@ nc -lvp [PORT]
 -stop and restart windows scheduler
 sc stop windowsscheduler
 sc start windowsscheduler
-
+*THM{AT_YOUR_SERVICE}
 
 
