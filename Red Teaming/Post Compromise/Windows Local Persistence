@@ -217,3 +217,18 @@ move revshell.exe C:\Windows
 go to HKLM\Software\Microsoft\Windows\CurrentVersion\Run
 -add REG_EXPAND_SZ with value C:\Windows\revshell.exe
 *THM{LET_ME_HOLD_THE_DOOR_FOR_YOU}
+
+WinLogon
+-use reg keys under HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\
+-gain persistence using 'userinit' points to userinit.exe
+-shell points to system's shell explorer.exe
+-append payload by adding comma  after original data
+-grab shell
+*THM{I_INSIST_GO_FIRST}
+
+Logon scripts
+-userinit.exe checks for env variable called UserInitMprLogonScript
+-use env variable to assign a logon script to a user 
+-each user has its own env variable so has to backdoor separately
+*THM{USER_TRIGGERED_PERSISTENCE_FTW}
+
