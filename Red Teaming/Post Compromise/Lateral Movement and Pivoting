@@ -1,0 +1,26 @@
+Connecting to the network
+-AttackBOx
+-test
+systemd-resolve --interface lateralmovement --set-dns [IP] --set-domain za.tryhackme.com
+nclookup thmdc.za.tryhackme.com
+-http://distributor.za.tryhackme.com/creds
+-get credentials
+ssh za\\<AD Username>@thmjmp2.za.tryhackme.com
+-get ip
+ip add show lateralmovement
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Lateral Movement
+-group of techniques used by attackers to move around a network
+-useful for bypassing network restrictions, establish additional points of entry, create confusion and avoid detection
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Spawning Processes Remotely
+
+1. Psexec - execute processes remotely
+-sysinternals tools
+a. connecto to Admin@ share and upload a service binary -> psexesvc.exe
+b. connect to service control manager to create and run a service named psexesvc and associate the service binary with C:\Windows\psexesvc.exe
+c. create some named pipes to handle stdin/stdout/stderr
