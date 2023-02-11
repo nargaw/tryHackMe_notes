@@ -1,0 +1,16 @@
+Data Exfiltration
+-steal and transfer sensitive data
+-relies on network protocols such as DNS, HTTP, SSH etc
+
+-----------------------------------------------------------
+
+connect
+ssh thm@[IP]
+password: tryhackme
+
+----------------------------------------------------------------
+
+-Data Exfiltration: unauthorized copy and export of data from inside an organization to the outside
+1. traditional: attacker -> server <-- firewall <-- data ( one direction_
+2. c2: establish a channel to send commands and receive responses from victim machine
+3. tunneling: establish communication channel b/n victim and attacker - continnueous traffic
