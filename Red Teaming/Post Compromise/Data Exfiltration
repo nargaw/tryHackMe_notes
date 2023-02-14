@@ -58,3 +58,7 @@ Exfiltrate using HTTPS
 2. don't remain in browser history
 3. can't be bookmarked
 4. no restriction on data length
+
+HTTP Tunneling
+-using Neo-reGeorg tool to establish communication channel to access internal network devices
+
