@@ -110,3 +110,32 @@ shell: getFlag
 thm@icmp-host:~$ cd /tmp
 thm@icmp-host:/tmp$ cat flag.txt
 *THM{g0t-1cmp-p4k3t!}
+
+------------------------------------------------------------------------------------------
+
+DNS Configuration
+-go to "https://[IP].p.thmlabs.com"
+-add attacker.thm.com 172.20.0.120
+-Type A
+-go to jumpbox
+ssh thm@[IP]
+dig +short test.thm.com
+dig +short flag.thm.com
+*172.20.0.120
+
+-----------------------------------------------------------------------------------------
+
+Exfiltration over DNS
+-DNS: protcol used to resolve domain names to IP addresses
+-can be used to exfiltrate data 
+-not usually monitored
+-max length of 255 characters
+-subdomain name not to exceed 63 characters
+-steps
+a. attacker registers a domain name (tunnel.com)
+b. point tunnel.com's NS record to a server that attacker controls
+c. attacker sends sensitive datat from vicitm machine to domain name 
+d. DNS request is sent through the local DNS server and is forwarded through the internet
+e. attacker's DNS receives DNS request
+f. attacker extracts data from domain name
+
