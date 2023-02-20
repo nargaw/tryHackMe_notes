@@ -1,0 +1,27 @@
+Processes
+-A process maintains and represents the execution of a program
+-An application can contain one or more processes
+-has a virtual address space, executable code, open handles to system objects, a security context etc
+-eg:
+1. MsMpEng(microsoft defender)
+2. wininit(keyboard and mouse)
+3. lsass(cred storage)
+-attackers can target processes to evade detection and hide malware as legitimate processes
+a. process injection
+b. process hollowing
+c. process masquerading
+Private Virtual Address Space -> Virtual memory addresses that the process is allocated.
+Executable Program -> Defines code and data stored in the virtual address space.
+Open Handles -> Defines handles to system resources accessible to the process.
+Security Context -> The access token defines the user, security groups, privileges, and other security information.
+Process ID -> Unique numerical identifier of the process.
+Threads -> Section of a process scheduled for execution.
+
+open procmon
+-open Logfile.pml
+-filter by process name notepad.exe
+5984
+-go to event properties -> process
+3412
+-event properties -> process
+High
