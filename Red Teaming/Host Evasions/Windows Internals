@@ -25,3 +25,20 @@ open procmon
 3412
 -event properties -> process
 High
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+Threads
+-A thread: is an executable unit employed by a process
+-scheduled based on CPU and memory specs, priority and logical factors etc
+-controls execution of process
+Stack -> All data relevant and specific to the thread (exceptions, procedure calls, etc.)
+Thread Local Storage -> Pointers for allocating storage to a unique data environment
+Stack Argument -> Unique value assigned to each thread
+Context Structure -> Holds machine register values maintained by the kernel
+open procmon
+-open Logfile.pml
+-threadId created by notepad.exe
+5908
+-stack argument of previous thread?
+6584
