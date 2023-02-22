@@ -50,3 +50,11 @@ Virtual Memory
 -provides each process with private virtual address space
 -memory manager translates virual to physical addresses
 -apps may use more virtual memory vs physical memory
+-theoretical maximum virtual address space is 4GB on a 32-bit x86 system
+-theoretical maximum virtual address space is 256TB on 64-bit system
+-flag used to reallocate user process address space: increaseUserVA
+-open procmon
+-open file Logfile.PML
+-filter for process name: notepad.exe
+-search for "load image"
+-image base: 0x7ff652ec0000
