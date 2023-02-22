@@ -42,3 +42,11 @@ open procmon
 5908
 -stack argument of previous thread?
 6584
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+Virtual Memory
+-allows other internal components to interact with memory as if it was physical memory without risk of collisions b/n applications
+-provides each process with private virtual address space
+-memory manager translates virual to physical addresses
+-apps may use more virtual memory vs physical memory
