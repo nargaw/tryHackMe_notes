@@ -58,3 +58,21 @@ Virtual Memory
 -filter for process name: notepad.exe
 -search for "load image"
 -image base: 0x7ff652ec0000
+
+-------------------------------------------------------------------------------------------------------------------------
+
+Dynamic Link Libraries
+DLL: library that contains code and data that can be used by more than one program at the same time
+-modularize code
+-reuse code
+-efficient memory usage 
+-reduced disk space
+-DLL is assigned as dependency
+-attackers target DLL instead of application because it is required 
+-loaded into program using load-time dynamic linking(.h header) or run-time dynamic linking (LoadLibrary and GetProcAddress)
+open Logfile.PML in procmon
+-filter by process name: notepad.exe
+-search for ntdll.dll
+base address: 0x7ffd0be20000
+process: size of ntdll.dll - 0x1ec000
+filter by operation: Load Image - 51
