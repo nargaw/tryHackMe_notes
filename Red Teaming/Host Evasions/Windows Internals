@@ -103,3 +103,19 @@ virtual address: 00024000
 string: Microsoft.Notepad
 
 ----------------------------------------------------------------------------------------------------------------------------------------
+ 
+ Interacting with Windows Internals
+ -through Windows API calls
+ -contains Win32 API and Win64 API
+ -intereact with phsical hardware and memory
+ -Windows kernel bridge all software and hardware interactions
+ -Application requires an interface to interact with kernel or modify physical hardware using processor mode and access levels
+ -user mode vs kernel mode
+No direct hardware access vs Direct hardware access
+Creates a process in a private virtual address space vs Ran in a single shared virtual address space
+Access to "owned memory locations" vs Access to entire physical memory
+-use OpenProcess
+open cmd.exe
+cd Desktop/Process Injection POC
+inject-poc.exe
+flag: THM{1Nj3c7_4lL_7H3_7h1NG2}
