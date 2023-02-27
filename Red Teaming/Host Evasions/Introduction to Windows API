@@ -1,1 +1,6 @@
+Subsystem and Hardware Interaction
+-Programs need to access or modify windows subsystems or hardware (restricted)
+-Win32 API library to interface between user-mode applications and the kernel
+User-mode: No direct hardware access, access to "owned" memory locations
+Kernel-mode: Direct hardware access, access entire physical memory
 
