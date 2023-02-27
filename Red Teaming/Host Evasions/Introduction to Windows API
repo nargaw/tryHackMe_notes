@@ -4,3 +4,14 @@ Subsystem and Hardware Interaction
 User-mode: No direct hardware access, access to "owned" memory locations
 Kernel-mode: Direct hardware access, access entire physical memory
 
+Components of Windows API
+1. API: A top-level/general term or theory used to describe any call found in the win32 API structure.
+2. Header files or imports: Defines libraries to be imported at run-time, defined by header files or library imports. Uses pointers to obtain the function address.
+3. Core DLLs: A group of four DLLs that define call structures. (KERNEL32, USER32, and ADVAPI32). These DLLs define kernel and user services that are not contained in a single subsystem.
+4. Supplemental DLLs: Other DLLs defined as part of the Windows API. Controls separate subsystems of the Windows OS. ~36 other defined DLLs. (NTDLL, COM, FVEAPI, etc.)
+5. Call Structures: Defines the API call itself and parameters of the call.
+6. API Calls: The API call used within a program, with function addresses obtained from pointers.
+7. In/Out Parameters: The parameter values that are defined by the call structures. 
+
+header file imports and defines the user32 DLL: winuser.h
+parent header file contains all other required child and core header files: windows.h
