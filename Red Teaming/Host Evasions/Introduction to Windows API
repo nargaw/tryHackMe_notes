@@ -28,3 +28,14 @@ ASLR: Address Space Layout Randomization
 
 What overarching namespace provides P/Invoke to .NET? system
 What memory protection solution obscures the process of importing API calls? ASLR
+
+------------------------------------------------------------------------------------------
+
+API Call Structure
+-API calls are the second main component of the win32 library
+-extended by modifying the naming scheme and appending a representational character 
+A: Represents and 8-bit character set with ANSI encoding
+W: Represents a Unicode encoding
+Ex: Provides extended functionality or in/out parameters to the API call
+
+Memory allocation type of 0x00080000 in the VirtualAlloc API call: MEM_RESET
