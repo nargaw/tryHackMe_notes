@@ -1,4 +1,4 @@
-Subsystem and Hardware Interaction
+  Subsystem and Hardware Interaction
 -Programs need to access or modify windows subsystems or hardware (restricted)
 -Win32 API library to interface between user-mode applications and the kernel
 User-mode: No direct hardware access, access to "owned" memory locations
@@ -39,3 +39,53 @@ W: Represents a Unicode encoding
 Ex: Provides extended functionality or in/out parameters to the API call
 
 Memory allocation type of 0x00080000 in the VirtualAlloc API call: MEM_RESET
+
+------------------------------------------------------------------------------------------
+
+C API Implementations 
+
+-microsoft provides low-level programming languages such as C and C++ with pre-configured set of libraries
+eg. #include <windows.h>
+-create pop-up window
+HWND CreateWindowExA(..params..);
+HWND hwnd = CreateWindowEx(..values..);
+
+-----------------------------------------------------------------------------------------
+
+.NET and PowerShell API Implementations
+
+class Win32 {
+	[DllImport("kernel32")]
+	public static extern IntPtr GetComputerNameA(StringBuilder lpBuffer, ref uint lpnSize);
+}
+
+static void Main(string[] args) {
+	bool success;
+	StringBuilder name = new StringBuilder(260);
+	uint size = 260;
+	success = GetComputerNameA(name, ref size);
+	Console.WriteLine(name.ToString());
+}
+
+class: stores defined API calls and a definition to reference in future methods
+DllImport: import a specific DLL 
+intPtr: create a new pointer to the API call
+
+powershell
+-method instead of class and add aditional operators
+$MethodDefinition = @"
+    [DllImport("kernel32")]
+    public static extern IntPtr GetProcAddress(IntPtr hModule, string procName);
+    [DllImport("kernel32")]
+    public static extern IntPtr GetModuleHandle(string lpModuleName);
+    [DllImport("kernel32")]
+    public static extern bool VirtualProtect(IntPtr lpAddress, UIntPtr dwSize, uint flNewProtect, out uint lpflOldProtect);
+"@;
+-must create a new type for the pointer of each Win32 DLL using Add-Type function 
+$Kernel32 = Add-Type -MemberDefinition $MethodDefinition -Name 'Kernel32' -NameSpace 'Win32' -PassThru;
+-use the required API calls with 
+[Win32.Kernel32]::<Imported Call>()
+
+-Method used to import required DLL: DllImport
+-type of method used to reference the API call to obtain a struct: external
+
