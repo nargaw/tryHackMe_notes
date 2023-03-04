@@ -102,5 +102,25 @@ GetModuleHandle -> Returns a module handle for the specified module if mapped in
 GetProcAddress -> Returns the address of a specified exported DLL  function
 VirtualProtect -> Changes the protection on a region of memory in the virtual address space of the calling process
 
+-----------------------------------------------------------------------------------------
+
+Malware Case Study
+
+What Win32 API call is used to obtain a pseudo handle of our current process in the keylogger sample?
+-GetCurrentProcess()
+What Win32 API call is used to set a hook on our current process in the keylogger sample?
+-SetWindowsHookEx
+What Win32 API call is used to obtain a handle from the pseudo handle in the keylogger sample?
+-GetModuleHandle
+What Win32 API call is used to unset the hook on our current process in the keylogger sample?
+-UnhookWindowsHookEx
+What Win32 API call is used to allocate memory for the size of the shellcode in the shellcode launcher sample?
+-VirtualAlloc
+What native method is used to write shellcode to an allocated section of memory in the shellcode launcher sample?
+-Marshal.Copy
+What Win32 API call is used to create a new execution thread in the shellcode launcher sample?
+-CreateThread
+What Win32 API call is used to wait for the thread to exit in the shellcode launcher sample?
+-WaitForSingleObject
 
 
