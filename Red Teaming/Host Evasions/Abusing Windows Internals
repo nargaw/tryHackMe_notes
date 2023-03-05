@@ -1,0 +1,22 @@
+-Windows Internals: back-end of windows os
+-processes, file formats, COM, task scheduling, I/O, DLLs and PE
+connect through RDP:
+IP, THM-Attacker, Tryhackme!
+
+-----------------------------------------------------------------------------------------------------
+
+Abusing Processes
+-Processes maintain and represent a program being executed
+-processes have sub-components
+Private Virtual Address Space -> Virtual memory addresses the process is allocated.
+Executable Program -> Defines code and data stored in the virtual address space
+Open Handles -> Defines handles to system resources accessible to the process
+Security Context -> The access token defines the user, security groups, privileges, and other security information.
+Process ID -> Unique numerical identifier of the process
+Threads -> Section of a process scheduled for execution
+
+Process Injection: injection of malicious code into a process through legitimate functionality or components
+1. Process Hollowing: inject code into a suspended/hollowed target process
+2. Thread Execution hijacking: inject code into suspended target thread
+3. DLL injection: inject a DLL into process memory
+4. PE injection: self-inject a PE image pointing to a malicious function into a target process
