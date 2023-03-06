@@ -20,3 +20,13 @@ Process Injection: injection of malicious code into a process through legitimate
 2. Thread Execution hijacking: inject code into suspended target thread
 3. DLL injection: inject a DLL into process memory
 4. PE injection: self-inject a PE image pointing to a malicious function into a target process
+
+-search of task manager
+-go to details > click User name
+-find THM-Attacker
+-look for PID of dllhost.exe: xxxx
+cd \Desktop\Injectors
+.\shellcode-injector.exe xxxx
+flag: THM{1nj3c710n_15_fun!}
+
+-------------------------------------------------------------------------------------------------------------
