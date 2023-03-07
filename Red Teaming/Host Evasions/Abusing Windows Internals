@@ -30,3 +30,22 @@ cd \Desktop\Injectors
 flag: THM{1nj3c710n_15_fun!}
 
 -------------------------------------------------------------------------------------------------------------
+
+Hollowing
+-inject an entire malicious file into a process
+-unmapping the process and inject specific PE (Portable Executable)
+-steps:
+1. Create a target process in a suspended state
+2. open a malicious image
+3. unmap legitimate code from process memory
+4. Allocate memory location for malicious code and write each section into the address space
+5. set an entry point for the malicious code
+6. take the taget process out of a suspended state
+
+-search of task manager
+-go to details > click User name
+-find THM-Attacker
+-look for PID of dllhost.exe: xxxx
+cd \Desktop\Injectors
+.\hollowing-injector.exe xxxx
+flag: THM{7h3r35_n07h1n6_h3r3}
