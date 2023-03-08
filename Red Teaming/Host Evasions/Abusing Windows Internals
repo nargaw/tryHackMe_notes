@@ -49,3 +49,25 @@ Hollowing
 cd \Desktop\Injectors
 .\hollowing-injector.exe xxxx
 flag: THM{7h3r35_n07h1n6_h3r3}
+
+-----------------------------------------------------------------------------------------------------------
+
+High-level thread hijacking
+1.Locate and open a target process to control.
+2.Allocate memory region for malicious code.
+3.Write malicious code to allocated memory.
+4.Identify the thread ID of the target thread to hijack.
+5.Open the target thread.
+6.Suspend the target thread.
+7.Obtain the thread context.
+8.Update the instruction pointer to the malicious code.
+9.Rewrite the target thread context.
+10.Resume the hijacked thread.
+
+-search of task manager
+-go to details > click User name
+-find THM-Attacker
+-look for PID of dllhost.exe: xxxx
+cd \Desktop\Injectors
+.\thread-injector.exe xxxx
+flag: THM{w34p0n1z3d_53w1n6}
