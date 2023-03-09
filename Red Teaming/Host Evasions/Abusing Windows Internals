@@ -71,3 +71,20 @@ High-level thread hijacking
 cd \Desktop\Injectors
 .\thread-injector.exe xxxx
 flag: THM{w34p0n1z3d_53w1n6}
+
+--------------------------------------------------------------------------------------------------------------
+
+Abusing DLLs
+1. Locate a target process to inject
+2. Open the target process
+3. Allocate memory region for malicious DLL
+4. Write malicious DLL to allocated memory
+5. Load and execute the malicious DLL
+
+-search of task manager
+-go to details > click User name
+-find THM-Attacker
+-look for rdpclip
+cd \Desktop\Injectors
+.\dll-injector.exe rdpclip .\evil.dll
+flag: THM{n07_4_m4l1c10u5_dll}
