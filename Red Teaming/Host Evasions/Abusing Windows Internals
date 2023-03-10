@@ -88,3 +88,24 @@ Abusing DLLs
 cd \Desktop\Injectors
 .\dll-injector.exe rdpclip .\evil.dll
 flag: THM{n07_4_m4l1c10u5_dll}
+
+----------------------------------------------------------------------------------------------------------------------
+
+Memory Execution Alternatives
+-Invoking Function Pointers: relies on typecasting
+-> executed on locally allocated memory
+-> doesn't rely on API calls
+((void(*)())addressPointer)();
+
+-Asynchronous Procedure Calls:
+-> APC (async procedure call) through QueueUserAPC
+-> must be in "alertable state" waiting for a callback such as WaitForSingleObject or Sleep
+
+-Section Manipulation
+-> PE (portable executable) and section manipulation commonly seen in malware
+-.data and .text, tables and pointers to sections are commonly used
+-> obtaining a PE dump is done commonly using DLL or other malicious file fed into xxd
+-> use math through the physical hex data which is translated to PE data
+-> RVA entry point parsing, section mapping, and relocation table parsing
+
+
