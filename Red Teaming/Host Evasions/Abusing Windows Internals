@@ -108,4 +108,25 @@ Memory Execution Alternatives
 -> use math through the physical hex data which is translated to PE data
 -> RVA entry point parsing, section mapping, and relocation table parsing
 
+----------------------------------------------------------------------------------------------------------------------
+
+-TrickBot: well known banking malware
+-browser hooking - allows malware to hook interesting API calls that can be used to intercept credentials
+-OpenProcess: hanlde common browser paths
+-steps taken
+1. OpenProcess - open target process
+2. VirtualAllocEx - allocate memory
+3. WriteProcessMemory - copy function into allocated memory
+4. WriteProcessMemory - copy shellcode into allocated memory
+5. FlushIntructionCache - Flush cache to commit changes
+6. RemoteThread - create remote thread
+7. ResuemThread or RtlCreateUserThread - resume thread or fallback to create a new user thread
+
+
+What alternative Windows API call was used by TrickBot to create a new user thread?
+-RtlCreateUserThread
+Was the injection reflective? Y
+what function name was used to manually write hooks?
+-write_hook_iter
+
 
