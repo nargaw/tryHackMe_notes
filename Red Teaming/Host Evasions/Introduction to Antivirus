@@ -12,3 +12,12 @@ Endpoint Detection and Response (EDR): security solution that provides real-time
 -modern AV has EDR functionality
 
 -first AV software - VirusScan used to remove a virus called "Brain" - John McAfee (PC antivirus vendor McAfee)
+
+----------------------------------------------------------------------------------------------------------------------
+
+Antivirus Engines
+-scanner: GUI or command prompt
+-Detection techniques: signature based(pre-defined), heuristic(behavioral), dynamic detection
+-Compressors and Archives: zip, TGZ, 7z, xar, rar etc
+-PE parsing unpackers: unpack most known packers (upx, armadillo, ASPack etc), DLLs, Iconfiles, font files anc core dumps
+-Emulators: monitor API calls, memory dumps, filesystem mods, log events, running processes, web requests in a controlled env
