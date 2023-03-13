@@ -1,0 +1,14 @@
+AV - Antivirus
+-host based security solution
+-extra layer of security that aims to detect and prevent the execution and spread of malicious files in a target OS
+-runs in real-time to monitor and check current and newly downloaded files
+-decides if files are malicious using different techniques
+
+-looks for malware with predefined malicious patterns or signatures
+-malware can: gain access to target and steal/encrypt/destroy files, inject other malicious software or takeover machine
+
+Endpoint Detection and Response (EDR): security solution that provides real-time protection based on behavioral analytics
+-checks file activities, memory, network connections, registry, processes, etc
+-modern AV has EDR functionality
+
+-first AV software - VirusScan used to remove a virus called "Brain" - John McAfee (PC antivirus vendor McAfee)
