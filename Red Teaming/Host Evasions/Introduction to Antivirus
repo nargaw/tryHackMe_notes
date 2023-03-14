@@ -21,3 +21,17 @@ Antivirus Engines
 -Compressors and Archives: zip, TGZ, 7z, xar, rar etc
 -PE parsing unpackers: unpack most known packers (upx, armadillo, ASPack etc), DLLs, Iconfiles, font files anc core dumps
 -Emulators: monitor API calls, memory dumps, filesystem mods, log events, running processes, web requests in a controlled env
+
+---------------------------------------------------------------------------------------------------------------------------
+
+AV static detection
+-pattern matching techniques in detection such as checksums, bytecode/hex values, cypto hashes
+-check against signatures considered malicious
+-clamAV antivirus
+-check files EICAR: test file for AV software
+
+c:\Program Files\ClamAV\clamscan.exe c:\Users\thm\Desktop\Samples
+-after checking against db
+-detects backdoor 1 but doesn't detect backdoor 2
+
+-
