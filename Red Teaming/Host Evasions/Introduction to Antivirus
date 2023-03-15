@@ -34,4 +34,22 @@ c:\Program Files\ClamAV\clamscan.exe c:\Users\thm\Desktop\Samples
 -after checking against db
 -detects backdoor 1 but doesn't detect backdoor 2
 
--
+-create signature db 
+1. generate MD5 signature for the file
+sigtool.exe --md5 backdoor2.exe
+2. Add the generated signature into db with extension ".hdb"
+sigtool.exe --md5 backdoor2.exe > thm.hdb
+3. rescan
+clamscan.exe thm.hdb backdoor2.exe
+-result: UNOFFICIAL FOUND
+
+MD5 of AV-Check.exe
+f4a974b0cf25dca7fbce8701b7ab3a88:6144:AV-Check.exe
+
+-yara: create rules to detect and classify malware
+-rules-based detection
+
+clamscan.exe -d Desktop\Files\thm-demo-1.yara Desktop\Samples
+
+find strings: strings AV-Check.exe | findstr THM
+THM{Y0uC4nC-5tr16s}
