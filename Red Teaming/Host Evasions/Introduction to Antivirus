@@ -53,3 +53,11 @@ clamscan.exe -d Desktop\Files\thm-demo-1.yara Desktop\Samples
 
 find strings: strings AV-Check.exe | findstr THM
 THM{Y0uC4nC-5tr16s}
+
+--------------------------------------------------------------------------------------------------
+
+Other Detection Techniques
+-Dynamic: check files at runtime ( windows API monitoring or sandboxing)
+-Heuristic and Behavioral: 
+1. Static Heuristic: decompile and extract sourcce code and compare to other known virus source codes
+2. Dynamic Heuristic: analyze suspicious software in isolated and secured environments
