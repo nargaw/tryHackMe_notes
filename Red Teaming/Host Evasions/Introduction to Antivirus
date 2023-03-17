@@ -61,3 +61,11 @@ Other Detection Techniques
 -Heuristic and Behavioral: 
 1. Static Heuristic: decompile and extract sourcce code and compare to other known virus source codes
 2. Dynamic Heuristic: analyze suspicious software in isolated and secured environments
+
+---------------------------------------------------------------------------------------
+
+AV Testing and Fingerprinting
+-AV vendors - firewall, encryption, anti-spam, EDR, vuln scanning, vpn etc
+-AV Testing
+-Virus Total: web based scanning platform for checking suspicious files
+-SharpEDRChecker: C#, public tool, check processes, metadata, dll, reg keys, services, directories and files
