@@ -3,3 +3,44 @@ Evade Anti-virus software
 
 Which Antivirus software is running on the vm?
 -Windows Defender
+
+-------------------------------------------------------------------------------------------------
+
+PE: Windows Executable file format
+-has various sections 
+1. Headers: metadata, data pointers, entry point, section tables
+2. Sections: code, imports and data
+
+example of windows loader reads an executable binary and runs it as a process
+1. type of file, file signature, compiled for x86 or x64, creation timestamp
+2. parse number of sections the file contains
+3. mapping file contents into memory based on entrypoint address or relative virtual address
+4. import dlls, and other objects into memory
+5. entrypoint address is located and main function runs
+
+-malware analysts analyze exe files based on information in the PE header
+-control data section to store shellcode
+1. shellcode as local variable in the main function (.TEXT)
+2. shellcode as global vairable (.Data)
+3. shellcode as raw binary in an icon image (.rsrc)
+
+PE-Bear
+-tool used to parse EXE files and read details
+File -> Load PEs
+thm-intro2PE.exe
+->General->MD5
+530949
+
+->DOS Hdr->Magic number->value
+5A4D
+
+-Optional Hdr->Entry Point
+12E4
+
+-File Hdr->Sections Count
+7
+
+name of the extra section
+.flag
+
+
