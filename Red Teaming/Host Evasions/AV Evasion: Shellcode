@@ -48,5 +48,18 @@ THM{PE-N3w-s3ction!}
 
 -------------------------------------------------------------------------------------------------------------------------------------------
 
-Introduction to shell code
+Introduction to shellcode
+-crafted machine code instructions that tell the vulnerable program to run additional function
+-access to a system shell or create a reverse command shell
+-modifies the code run flow to update registers and functions of the program
+-generally written in assembly language and translated into hexadecimal opcodes
+-unique shellcode helps in evading AV software
 
+-understanding of x86 and x64 CPU architectures
+-assembly language
+-strong knowledge of C programming language
+-familiarity with linux and windows os
+
+Syscall: program requests the kernel to do something
+-each OS has a different calling convention regarding syscalls
+Linux: https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/
