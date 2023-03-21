@@ -63,3 +63,23 @@ Introduction to shellcode
 Syscall: program requests the kernel to do something
 -each OS has a different calling convention regarding syscalls
 Linux: https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/
+
+grab the thm.asm code
+nasm -f elf64 thm.asm
+nasm: compile .asm code
+-f elf64: 64bit linux
+-returns thm.o : object code
+ld thm.o -o thm
+ld: link object and obtain final executable
+-o: output
+./thm
+-returns "THM,Rocks!"
+
+objdump -d thm
+-dumps .text section of the compiled binary
+objcopy -j .text -O binary thm thm.text
+-extract the text section into a new file thm.text
+xxd -i thm.text
+-output binary file in a C string directly
+
+
