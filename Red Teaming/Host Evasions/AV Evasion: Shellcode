@@ -82,4 +82,14 @@ objcopy -j .text -O binary thm thm.text
 xxd -i thm.text
 -output binary file in a C string directly
 
+grab thm.c
+gcc -g -Wall -z execstack thm.c -o thmx
+./thmx
+returns: "THM, Rocks!"
+
+grab flag.c
+gcc -g -Wall -z execstack flag.c -o flagx
+./flagx
+retuns flag: THM{y0ur-1s7-5h311c0d3}
+
 
