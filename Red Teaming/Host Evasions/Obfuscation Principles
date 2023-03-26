@@ -1,0 +1,38 @@
+-evade modern detection engineering
+-understand obfuscation
+-implement obfuscation methods
+
+Machine IP,
+user: Student
+pass: TryHackMe!
+
+-software related fields to protect intellectual property
+layers of obfuscation
+Software Obfuscation > Code-Element, Software-Component, Inter-Component, Application Layer
+Code-Element > 
+  Obfuscating Layout >
+    >Junk Code
+    >Seperation of Related Codes
+    >Stripping Redundant Symbols
+    >Meaningless Identifiers
+  Obfuscating Controls >
+    >Implicit Controls
+    >Dispatcher-based Controls
+    >Probablisitic Control Flows
+    >Bogus Control Flows
+  Obfuscating Data >
+    >Array Transformation -  transforms an array by splitting, merging, folding and flattening
+    >Data Encoding - encodes data with mathematical functions or ciphers
+    >Data Procedurization - substitutes static data with procedure calls
+    >Data Splitting/Merging - distributes info of one var into several new var
+  Obfuscating Methods >
+    >Method Proxy
+    >Method Scattering/Aggregation
+    >Method Clone
+    >Method Inline/Outline
+  Obfuscating Classes >
+    >Class Hierarchy flattening
+    >Class Splitting/coalescing
+    >Dropping Modifiers
+Signature Evasion Room    
+    
