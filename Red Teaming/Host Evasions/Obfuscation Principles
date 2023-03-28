@@ -53,3 +53,17 @@ THM{koNC473n473_4LI_7H3_7H1n95}
 
 ------------------------------------------------------------------------------------------------------------------------------------------
 
+Obfuscation for Analysis Deception
+
+Junk Code -> Add junk instructions that are non-functional, also known as a code stubs
+Separation of Related Code -> Separate related codes or instructions to increase difficulty in reading the program
+Stripping Redundant Symbols -> Strips symbolic information such as debug information or other symbol tables
+Meaningless Identifiers -> Transform a meaningful identifier to something meaningless
+Implicit Controls -> Converts explicit controls instructions to implicit instructions
+Dispatcher-based Controls -> Determines the next block to be executed during the runtime
+Probabilistic Control Flows -> Introduces replications of control flows with the same semantics but different syntax
+Bogus Control Flows -> Control flows deliberately added to a program but will never be executed
+
+Junk code -> Code stubs
+manipulate code flow and abstract syntax trees -> Obfuscating Controls
+
