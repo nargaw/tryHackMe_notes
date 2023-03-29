@@ -67,3 +67,19 @@ Bogus Control Flows -> Control flows deliberately added to a program but will ne
 Junk code -> Code stubs
 manipulate code flow and abstract syntax trees -> Obfuscating Controls
 
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Code flow and logic
+-control flow: critical component of a program's execution that determines how a program logically proceeds
+-Logic: significant part of an app's control flow determines which steps it will take as it proceeds through the program
+-eg logic (if/else, try/catch, switch case, for loops, while loops)
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Arbitrary Controls flow patterns
+-Arbitrary control flow patterns - leverage math, logic and algorithms to inject a different control flow into a malicious function
+-Predicates - decision-making input function
+-Opaque predicates - used to control known output and input (https://etda.libraries.psu.edu/files/final_submissions/17513)
+-example: Collatz Conjecture: if two arithmetic operations are repeated, they will return one from every positive integer
+
+THM{D!}
