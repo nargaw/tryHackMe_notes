@@ -85,3 +85,19 @@ Arbitrary Controls flow patterns
 THM{D3Cod3d!!!}
 
 -------------------------------------------------------------------------------------------------------------------------------------
+
+Protecting and Stripping identifiable info
+
+Object names
+-can reveal exact purpose of a function
+-Interpreted language(python or powershell)- all objects must be modified
+-Compiled(c or c#) - only objects appearing in the strings
+
+\strings.exe "\Injector.exe"
+-junk code and reordering code used as additional measures to add complexity to an itnerpreted program
+
+-remove symbols from a compiler like VS, change compilation target from Debug to Release or use mingw
+-remove symbols from precompiled image using command-line utility: strip
+
+flag: THM{Y0Ur_1NF0_15_M1N3}
+
