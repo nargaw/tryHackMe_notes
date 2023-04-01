@@ -1,0 +1,8 @@
+1.Find signatures in malicious code
+2.Implement documented obfuscation methodology to break signatures
+3. non-obfuscation-based techniques to break non-function oriented signatures
+
+----------------------------------------------------------------------------------
+
+head, dd, or split: split a compiled binary
+eg. head --bytes 29 example.exe > half.exe
