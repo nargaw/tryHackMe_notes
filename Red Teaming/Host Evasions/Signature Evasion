@@ -6,4 +6,38 @@
 
 head, dd, or split: split a compiled binary
 eg. head --bytes 29 example.exe > half.exe
-k
+
+ThreatChecker.exe -f shell.exe -e ASMI
+-round to nearest thousand
+51000
+
+
+-----------------------------------------------------------------------------------
+
+Automating Signature Identification
+-Find-AVSignature will split a provided range of bytes through a given interval
+-need to set appropriate interval
+
+ThreatCheck
+-fork of DefenderCheck 
+-most widely used/reliable 
+-used to id signatures
+ThreatCheck.exe --help
+-f: file
+-u: url
+-e: scanning engine (options: Defender(default), AMSI)
+-false positives could occur
+
+AMSITrigger
+-runtime
+-makes signatures harder to id and resolve
+amsitrigger.exe --help
+-i: input value, inputfile
+-u: url
+-f: format
+-d: debug
+-m: maximum signature length, default 2048
+-c: chunk size default 4096
+
+ThreatChecker.exe -f shell.exe -e ASMI
+-bad byte at offset: 0xC544
