@@ -6,3 +6,4 @@
 
 head, dd, or split: split a compiled binary
 eg. head --bytes 29 example.exe > half.exe
+k
