@@ -41,3 +41,18 @@ amsitrigger.exe --help
 
 ThreatChecker.exe -f shell.exe -e ASMI
 -bad byte at offset: 0xC544
+
+--------------------------------------------------------------------------------------------------------
+
+Obfuscating methods
+1. Method Proxy: Creates a proxy method or a replacement object
+2. Method Scattering/Aggregation: COmbine multiple methods into one or scatter a method into several
+3. Method Clone: Create replicas of methhod and randomly call each
+
+Obfuscating classes:
+1. Class Hierarchy Flattening: create proxies of classes using interfaces
+2. Class Splitting/Coalescing: transfer local variables or instruction groups to another class
+3. Dropping Modifiers: Remove class modifiers (public, private) and make all members public
+
+Splitting and Merging Objects
+
