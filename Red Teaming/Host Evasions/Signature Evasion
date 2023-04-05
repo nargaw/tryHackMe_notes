@@ -55,4 +55,8 @@ Obfuscating classes:
 3. Dropping Modifiers: Remove class modifiers (public, private) and make all members public
 
 Splitting and Merging Objects
+-original string is detected
+-obfuscated using a new class that breaks down the string to smaller chunks and concatinates them back to the original string when the new class is called
 
+Removing identifiable information
+-the string that causes an alert is replaced by any random identifier changed throughout all instances of the string
