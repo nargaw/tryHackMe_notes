@@ -43,7 +43,6 @@ ThreatChecker.exe -f shell.exe -e ASMI
 -bad byte at offset: 0xC544
 
 --------------------------------------------------------------------------------------------------------
-
 Obfuscating methods
 1. Method Proxy: Creates a proxy method or a replacement object
 2. Method Scattering/Aggregation: COmbine multiple methods into one or scatter a method into several
@@ -60,3 +59,21 @@ Splitting and Merging Objects
 
 Removing identifiable information
 -the string that causes an alert is replaced by any random identifier changed throughout all instances of the string
+
+----------------------------------------------------------------------------------------------------------------
+
+Static Property based signatures
+-signatures attached to file properties such as hash, entropy, author, name or other identifiable information
+-properties used in rule sets such as YARA or Sigma
+
+File Hashes
+-checksum: verify authenticiy or known purpose
+-can modify aribitry section of code and re-compile it to create a new hash
+-bit-flipping: cryptographic attack that will mutate a given application by flipping and testing each possible bit until it find a viable bit
+-signtool used to search for a file with usable certificate - file not broken and maintain signed attribution
+
+Entropy
+-randomness of the data
+-to lower entropy - replace random identifiers with randomly selected english words
+-use CyberChef to see changes in entropy
+-suspicious entropy is value greater than 6.8
