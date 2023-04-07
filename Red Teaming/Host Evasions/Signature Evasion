@@ -77,3 +77,15 @@ Entropy
 -to lower entropy - replace random identifiers with randomly selected english words
 -use CyberChef to see changes in entropy
 -suspicious entropy is value greater than 6.8
+
+------------------------------------------------------------------------------------------------------------------------
+
+Behavioral Signatures
+-observing imports and hooking known malicious calls: trigger AV engines
+-import libraries such as kernel32 or ntdll
+-Windows loader - IAT (Import Address Table) - store function addresses for all imported functions that can assign a pointer for the function
+-IAT is stored in the PE (Portable Executable) header IMAGE_OPTIONAL_HEADER
+-Windows loader obtains the function addresses (Thunk) from thunk table
+-Can also obtain pointer for function addres using dynamic loading to avoid IAT and minimize use of Windows Loader
+-Steps: Define the structure of the call, obtain handle of the module, obtain process address, use the newly created call
+-PIC (Position Independent Code) - hook specific function and mom
