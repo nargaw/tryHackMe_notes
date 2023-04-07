@@ -88,4 +88,6 @@ Behavioral Signatures
 -Windows loader obtains the function addresses (Thunk) from thunk table
 -Can also obtain pointer for function addres using dynamic loading to avoid IAT and minimize use of Windows Loader
 -Steps: Define the structure of the call, obtain handle of the module, obtain process address, use the newly created call
--PIC (Position Independent Code) - hook specific function and mom
+-PIC (Position Independent Code) - hook specific function
+
+
