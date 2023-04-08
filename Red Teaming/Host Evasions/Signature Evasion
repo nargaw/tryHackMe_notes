@@ -92,3 +92,8 @@ Behavioral Signatures
 
 THM{N0_1MP0r75_F0r_Y0U}
 
+--------------------------------------------------------------------------------------------------------
+
+get challenge.c change ip and port
+install mingw: sudo apt install mingw-w64
+compile: 
