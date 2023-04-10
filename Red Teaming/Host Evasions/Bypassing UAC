@@ -1,0 +1,8 @@
+UAC: User Account Control - Windows security feature that forces any new process to run in the security context of a non-privileged account by default
+-processes started by any user including admin are run as non-privileged
+-if UAC is disabled, malicious app can gain admin privileges if malicious app is run by the admin user
+-provides a way to elevate privileges (dialog box)
+-Integrity Levels: Low, Medium, High, System
+-Filtered Tokens: treats regular users and admins in a slightly different way during logon
+-non-admins: single access token to perform all tasks
+-admins: two tokens a. filtered token(used for reg operations) b. elevated token(full admin privileges)
