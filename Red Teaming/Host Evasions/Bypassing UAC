@@ -6,3 +6,15 @@ UAC: User Account Control - Windows security feature that forces any new process
 -Filtered Tokens: treats regular users and admins in a slightly different way during logon
 -non-admins: single access token to perform all tasks
 -admins: two tokens a. filtered token(used for reg operations) b. elevated token(full admin privileges)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+UAC: GUI based bypasses
+xfreerdp /v:MachineIP /u:attacker /p:Password321
+
+msconfig
+-auto elevation allows specific binaries to elevate without requiring the user's interaction
+-run> msconfig
+-go to tools > command prompt > launch
+-go to C:\flags\GetFlag-msconfig.exe
+THM{UAC_HELLO_WORLD}
