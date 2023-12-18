@@ -41,3 +41,11 @@ $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
 $credential = New-Object System.Management.Automation.PSCredential $username, $securePassword;
 -create interactive session
 Enter-PSSession -Computername TARGET -Credential $credential
+
+3. Windows Management Instrumentation
+WMI - implementation of web-based enterprise management
+-allows admins to perform standard managemnt tasks that attckers can abuse to perform lateral movement
+
+connecting to wmi from powershell
+-create PSCredential object with our user and password - stored in $credential variable 
+
