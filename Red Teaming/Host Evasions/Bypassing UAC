@@ -18,3 +18,13 @@ msconfig
 -go to tools > command prompt > launch
 -go to C:\flags\GetFlag-msconfig.exe
 THM{UAC_HELLO_WORLD}
+
+run: azman.msc
+-go to help
+-help topics > right click > view source
+-search for cmd
+-right click > open 
+-go to C:\flags\GetFlag-azman.exe
+THM{GUI_UAC_BYPASSED_AGAIN}
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
