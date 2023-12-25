@@ -1,0 +1,27 @@
+Runtime Detections
+-CLR(common language runtime) and DLR(dynamic lanuage runtime) - runtimes for .NET
+-executing code or application flows through a runtime
+-runtime detection will scan code before execution to determine if malicious
+-if code is suspected of being malicious it is assigned a value 
+-if that value is within a specific range it will be quarantined or deleted
+-scan from memory and runtime
+-AMSI(anti-malware can interface) - shipped natively with windows
+
+---------------------------------------------------------------------------------------------------------------
+
+AMSI overview
+-powershell security feature - integrate directly into anti-malware products
+-scan payloads and scripts before execution inside the .NET runtime
+-integrated with UAC, powershell, windows script host, javascript, vbscript, office vba macros
+
+AMSI_RESULT_CLEAN = 0
+AMSI_RESULT_NOT_DETECTED = 1
+AMSI_RESULT_BLOCKED_BY_ADMIN_START = 16384
+AMSI_RESULT_BLOCKED_BY_ADMIN_END = 20479
+AMSI_RESULT_DETECTED = 32768
+
+-AMSI instrumented from System.Management.Automation.dll - .NET assembly developed by Windows
+-AMSI is only insturmented when loaded from memory when executed from the common langauge runtime
+-Windows Defender (MsMpEng.exe) - assumed to be running
+-most known bypasses are in Win32 API layer in AmsiScanBuffer API call
+-insecure powershell: PowerShell with security features removed
