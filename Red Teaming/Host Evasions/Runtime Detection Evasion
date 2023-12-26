@@ -25,3 +25,51 @@ AMSI_RESULT_DETECTED = 32768
 -Windows Defender (MsMpEng.exe) - assumed to be running
 -most known bypasses are in Win32 API layer in AmsiScanBuffer API call
 -insecure powershell: PowerShell with security features removed
+
+-------------------------------------------------------------------------------------------------------------------
+
+Powershell Downgrade
+-powershell downgrade attack - low-hanging fruit- modify current powershell version to remove security features
+Powershell -Version 2 
+-(eg Unicorn)
+-easy to mitigate
+
+steps: 
+->run cmd
+PowerShell -Version 2
+cd Desktop
+type flag.txt
+
+------------------------------------------------------------------------------------------------------------
+
+PowerShell Reflection
+-Reflection - allows user or admin to access and interact with .NET assemblies
+-.NET assmeblies: fundamental units of deployment, version control, reuse, activation scoping and security permissions
+-PowerShell reflection can be abused to modify and identify information from valuable DLLs
+-AMSIutils : AMSI utilities for powershell
+-System.Management.Automation.AmsiUtils: .NET assembly
+
+steps: 
+PowerShell
+cd Desktop
+[Ref].Assembly.GetType('System.Management.Automation.AmsiUtils').GetField('amsiInitFailed','NonPublic,Static').SetValue($null,$true) .\bypass.ps1
+type flag-1.txt
+
+------------------------------------------------------------------------------------------------------------------------
+
+Patching AMSI
+-loaded from amsi.dll
+-amsi.dll can be abused and forced to point to a response code of choosing
+-AmsiScanBuffer function provides the hooks and functionality to access pointer/buffer
+-amsi.dll is loaded into powershell process at startup
+-AmsiScanBuffer will scan the suspected code and report it to amsi.dll to determine response
+-the buffer is then overwritten with a clean return code 
+
+----------------------------------------------------------------------------------------------------------------------
+
+Automating for Fun and Profit
+amsi.fail: compile and generate a PowerShell bypass from a collection of known bypasses
+AMSITrigger: allows attachkers to automatically identify strings that are flagging signatures to modify and break them
+
+
+
