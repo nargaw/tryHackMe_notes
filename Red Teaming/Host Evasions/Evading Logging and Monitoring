@@ -1,0 +1,47 @@
+-SIEM (Security Information and Event Manager)
+-primary target for an attacker is event logs managed by ETW
+-ETW (Envent Tracing for Windows)
+
+--------------------------------------------------------------------------
+
+Event tracing
+-ETW handle logging at application and kernel levels
+-event Ids are core feature of windows logging
+-events are sent and transferred in XML (Extensible Markup Language)
+-events that could be generated when carrying out operation can disrupt goals of attacker
+
+componenets
+-Controllers: build and configure sessions
+-Providers: generate events
+-Consumer: interpret events
+
+Windows event id log list 
+https://www.ultimatewindowssecurity.com/securitylog/encyclopedia/default.aspx
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+Approaches to log evasion
+-typical log forwarding is employed 
+-log forwarding: move logs from the host machine to a central server or indexer so they won't be modified later
+1102: logs when the windows security audit log was cleared
+104: logs when the log file was cleared
+1100: logs when the windows event log service was shut down
+-process of deleting logs risks operational security
+
+----------------------------------------------------------------------------------------------------------------------
+
+Tracing instrumentation
+-controller define size and location of the log file, start and stop event tracing sessions, enable providers, manage size of buffer pool, obtain execution stats
+-providers contain event tracing instrumentation
+four types of providers
+1. MOF (managed object format): defines events from MOF classes. Enabled by one trace session at a time
+2. WPP (windows software trace preprocessor): associated with TMF (trace message format) files to decode info. enabled by one trace session at a time.
+3. Manifest-Based: Defines events from a manifest. enabled by up to eight trace sessions at a time
+4. TraceLogging: self-describing events containing all required information. enabled by up to eight trace sessions at a time
+-consumers are applications that select one or more event tracig sessions as a source of events. can get stored or real time events
+
+techniques to target each ETW component
+Provider -> PSEtwLogProvider Modification, Group Policy Takeover, Log Pipeline Abuse, Type Creation
+Controller -> Patching EtwEventWrite, Runtime Tracing Tampering, 
+Consumers -> Log Smashing, Log Tampering
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
