@@ -148,3 +148,16 @@ $snap.LogPipelineExecutionDetails = $false # Set ps-snapin execution details to 
 
 ----------------------------------------------------------------------------------------------------------------------------------
 
+Real world scenario
+
+steps: run powershell
+.\gpo-bypass.ps1
+-clear logs from event viewer and disable logs
+.\agent.exe
+
+THM{51l3n7_l1k3_4_5n4k3}
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+Real World Scenario
+
