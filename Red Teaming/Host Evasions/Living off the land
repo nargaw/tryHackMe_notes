@@ -1,0 +1,36 @@
+Living off the land - use what is given - built-in tools and utilities
+-recon
+-file ops
+-arbitrary code exe
+-lateral movement
+-security product bypass
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Windows Sysinternals
+-set of tools and advanced sys utilities
+-manage, troubleshoot, diagnose
+-accept microsoft license agreement to use tools
+use command: -accepteula
+
+AccessChk: help admins check specified access for files, dir, reg keys, global obj, win serv
+PsExec: executes programs on remote system
+ADExplorer: AD tool to help view and manage AD database
+ProcDump: monitor running processes for CPU spikes and dump memory for analysis
+ProcMon: process monitoring
+TCPView: lists all TCP and UDP connections
+PsTools: list detailed info
+Portmon: monitor serial and parallel port activity
+Whois: info for a specified domain name or IP
+
+-access Sysinternals: web, windows share, command prompt
+
+C:\Users\thm> C:\Tools\SysinternalsSuite\PsExec64.exe
+
+Red Team = useful because they are trusted by OS
+-tools useful for evading detection
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+LOLBAS
+
