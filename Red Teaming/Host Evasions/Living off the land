@@ -157,6 +157,12 @@ python3 -m http.server [IP]
 C:\Users\thm> c:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe c:\Users\thm\Desktop\liv0ff.csproj
 THM{23005dc4369a0eef728aa39ff8cc3be2}
 
+---------------------------------------------------------------------------------------------------------------------------
+
+Further reading
+
+Astraroth: https://www.armor.com/resources/threat-intelligence/astaroth-banking-trojan/
+
 
 
 
