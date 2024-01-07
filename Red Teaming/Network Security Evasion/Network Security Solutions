@@ -1,1 +1,36 @@
 Introduction
+
+Intrusion Detection System (IDS): detects nework or system intrusions. 
+Intrusion Detection and Prevension System (IDPS): detect and prevent system intrusions
+
+Snort - network intrusion and detection system
+-can drop offending connections
+-set up as inline and to bridge two or more network cards
+
+1. Host-based IDS: installed on an OS along with other running apps
+2. Network-based IDS: server to monitor the network traffic
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+IDS Engine Types
+1. Benign traffic: no alert
+2. Malicious traffic: IDS detect
+
+IDS detection recognition
+1. Signature-based: requires full knowledge of malicious traffic using explicit rules to match against (anti-virus)
+2. Anomaly-based: requires knowledge of regular traffic and anything outside that is flagged as absnormal (track abnormal behavior)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+IDS/IPS Rule Triggering
+
+Rule Header - Rule Options
+1. Action: alert, log, pass, drop, reject
+2. Protocol: TCP, UDP, ICMP, IP
+3. Source IP/PORT: [IP/port or IP/any]
+4. Direction of flow: -> (source to destination), <> (bidirectional)
+5. Destination IP/PORT: [IP/port or IP/any]
+
+example: drop icmp any any -> any any (msg: "ICMP Ping Scan"; dsize:0; sid:1000020; rev: 1;)
+
+
