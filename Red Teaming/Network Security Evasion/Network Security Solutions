@@ -33,4 +33,19 @@ Rule Header - Rule Options
 
 example: drop icmp any any -> any any (msg: "ICMP Ping Scan"; dsize:0; sid:1000020; rev: 1;)
 
+ASCII: written between 2 pipe characters 
+example: "|6e 63 61 74|" -  similar to "ncat"
 
+flow:established -> look at streams by a TCP 3-way handshake (established connections)
+
+10.14.17.226
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Evasion via protocol manipulation
+
+-requires manipulation of traffic so it doesn't match any IDS/IPS signatures
+1. Protocol manipulation
+2. Payload manipulation
+3. Route Manipulation
+4. Tactical Denial of Service (Dos)
