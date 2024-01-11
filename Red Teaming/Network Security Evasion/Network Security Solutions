@@ -50,3 +50,69 @@ Evasion via protocol manipulation
 2. Payload manipulation
 3. Route Manipulation
 4. Tactical Denial of Service (Dos)
+
+
+Rely on a Different Protocol:
+-IDS/IPS can be configured to block certain protocols
+-web browser ports 80 and 443
+Ncat
+-default uses TCP connection 
+-can use UDP with -u option
+-listen using TCP
+ncat -lvnp [PORT_NUM]
+-connect to ncat instance
+ncat [Target IP] [PORT]
+-(-l): listen
+-(-v): verbose
+-(-n): avoid resolving hostnames
+-(-p): port number
+-connect using UDP
+ncat -ulvnp [PORT_num]
+-connect to ncat instance on UDP port
+nc -u [Target IP] [PORT_num]
+
+Manipulate (Source) TCP/UDP Port
+-TCP and UDP source and destination ports are inspected by most security solutions
+-eg TCP port 22 would be interpreted as SSH traffic unless the data can be analyzed with deep packet inspection
+-make port scanning traffic resemble web browsing
+-(-g) [Port_num] or --source-port [Port Number]
+-use scanning target to appear as HTTP server exchange
+nmap -sS -Pn -g 80 -F [IP]
+-use scanning target to appear as DNS server exhange
+nmap -sU -Pn -g 53 -F [IP]
+-connect using ncat but appear as HTTP server
+-attacker machine: ncat -lvnp 80
+-target machine: nc [Attacker_IP] 80
+-connect using ncat but appear as DNS server
+-attacker machine: ncat -ulvnp 53
+-target machine: ncat -u [Attacker_IP] 53
+
+Use Session Splicing (IP Packet Fragmentation)
+-break packet(s) related to an attack into smaller packets -> avoid matching IDS signatures
+-nmap offers options to fragment packets
+-f: set data in IP packet to 8 bytes
+-ff: set data in IP packet to 16 bytes
+--mtu SIZE: provide a custom size for data carried (multiple of 8)
+-program Fragroute: fragmetn packets into specific sizes
+fragroute.conf > ip_frag 16
+fragroute -f fragroute.conf [HOST] 
+
+Sending Invalid Packets
+-scan target using packets that have invalid TCP/UDP checksum
+-scan target using packets that have invalid TCP flags
+-send packets with wrong tcp/udp checksum using --badsum
+-send with custom TCP flags --scanflags 
+URG - urgent
+ACK - Acknowledge
+PSH - push
+RST - reset
+SYN - Synchronize
+FIN - Finish
+-eg set flag to synchornize, reset, finish
+--scanflags SYNRSTFIN
+-craft your packets with custom fields using hping3
+-(-t) or (--ttl): Time to live 
+-(-b) or (--badsum): send packets with a bad UDP/TCP checksum
+-(-S) TCP SYN, (-A) ACK, (-P) PUSH, (-U) URG, (-F) FIN, (-R) RST flags
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
