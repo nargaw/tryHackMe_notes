@@ -1,0 +1,14 @@
+Firewall is a software or hardware that monitors the network traffic and compares it against a set of rules before passing or blocking it
+-basic firewall should inspect: Protocol, Source Address and Destination Address
+-Protocols: TCP, UDP, ICMP
+-TCP or UDP: source port number and destination port number
+
+Telnet TCP: 23
+HTTPS TCP: 443
+TCP HTTP Alternate: 8080
+SNMPSSH: 5161
+
+----------------------------------------------------------------------------------------------------
+
+Types of Firewalls
+
