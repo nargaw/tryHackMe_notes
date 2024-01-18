@@ -8,7 +8,25 @@ HTTPS TCP: 443
 TCP HTTP Alternate: 8080
 SNMPSSH: 5161
 
-----------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Types of Firewalls
+1. Hardware Firewall: network traffic goes through ex. Cisco ASA, WatchGuard Firebox, Netgate pfSense Plus appliance
+2. Software Firewall: software that comes bundled with the OS or as an additional service
+
+1. Personal firewall: protect single system
+2. Commercial firewall: protect medium to large networks - higher reliability and processing power
+
+Firewall types: 
+1. Packet-filtering firewall: most basic type - inspect protocol, source and destination IP addresses and ports in TCP and UDP datagrams
+2. Circuit-level Gateway: In addition to packet-filtering can provide TCP three-way handshake 
+3. Stateful Inspect Firewall: keeps track of established TCP sessions block packets outside of established TCP sessions
+4. Proxy Firewall: check contents of a packet paylload instead of packet headers
+5. Next-Generation Firewall: highest firewall protection from OSI Layer 2 to OSI Layer 7
+6. Cloud Firewall: firewall as a service, replace hardware firewall in a cloud environment
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
 
