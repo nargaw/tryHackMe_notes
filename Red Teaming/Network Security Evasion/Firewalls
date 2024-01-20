@@ -27,6 +27,30 @@ Firewall types:
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+Evasion via Controlling the source MAC/IP/Port
+
+Nmap allows: Decoys, Proxy, Spoofed Mac Address, Spoofed Source IP, Fixed Source Port Number
+
+-Pn: force scan even if no ping reply is received
+-Pn: skip host discovery and testing whether the host is live = spped up scan, limit to 100 most common ports with -F
+nmap -sS -Pn -F [Machine IP]
+caputred using WireShark
+
+-Decoys
+-hide scan with decoys - mix IP address with other decoy IP addresses
+-D option
+nmap -sS -Pn -D RND,RND,ME - F [Machine IP]
+
+-Proxy
+-use an HTTP/SOCKS4 proxy
+'--proxies PROXY_URL' option
+nmap -sS -Pn --proxies [spoofIP] [machineIP]
+
+-Spoofed Mac Address
+-spoof mac address
+'--spoof-mac MAC_ADDRESS'
+-spoofing works if the system is on the same network segment as the target host
+
 
 
 
