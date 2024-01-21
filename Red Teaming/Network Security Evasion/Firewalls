@@ -52,5 +52,16 @@ nmap -sS -Pn --proxies [spoofIP] [machineIP]
 -spoofing works if the system is on the same network segment as the target host
 
 
+-Spoofed IP address
+'-S IP_ADDRESS' option
+
+-fixed Source port number
+-set port number: '-g' or '--source-port'
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Evasion via Forcing Fragmentation, MTU, Data Length
+
+-
 
 
