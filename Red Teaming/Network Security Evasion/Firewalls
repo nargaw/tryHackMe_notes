@@ -61,7 +61,11 @@ nmap -sS -Pn --proxies [spoofIP] [machineIP]
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Evasion via Forcing Fragmentation, MTU, Data Length
+-'--mtu [value]': specifies the number of bytes per IP packet without IP header size included
+-set to multiple of 8
+-max IP packet over ethernet is 1500 bytes
+-IP header bytes: 20 + mtu option: max byte size
 
--
+-----------------------------------------------------------------------------------------------------
 
 
