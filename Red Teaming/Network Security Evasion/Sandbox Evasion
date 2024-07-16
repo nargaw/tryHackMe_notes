@@ -1,0 +1,15 @@
+Malware Analysis: analyze suspicious file to determine what it does
+
+Static: Disassemblers - IDA or Ghidra
+Dynamic: Observe execution - EDR software, Sysmon, ProcMon, ProcessHacker and Debuggers(OllyDebug, WinDbg, x64Dbg)
+
+Sandboxes
+-Dynamic analysis using virtual environment
+-safe and effective
+
+1. Firewalls - execute to see network connection in email attachements
+2. Mail Servers - check if it triggers protocol such as SMB
+3. Workstations
+
+Sandboxes are a form of dynamic analysis
+Mail Sandboxes analyze attachments attached to emails
