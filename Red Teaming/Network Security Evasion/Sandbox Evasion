@@ -13,3 +13,6 @@ Sandboxes
 
 Sandboxes are a form of dynamic analysis
 Mail Sandboxes analyze attachments attached to emails
+
+Geolocation Filtering - reaching out to a host to identify your IP address
+Sleeping - burning compute-time to escape sandbox
