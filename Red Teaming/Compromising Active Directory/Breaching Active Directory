@@ -9,3 +9,7 @@ Osint
 Phishing
 -entice users to provide credentials
 -open apps that install Remote Access Trojan (RAT) in background
+
+NTLM and NetNTLM
+-NTLM: suite of security protocols to authenticate uers' identities in AD
+-NetNTLM: exposed to the internet - challenge-response authentication
