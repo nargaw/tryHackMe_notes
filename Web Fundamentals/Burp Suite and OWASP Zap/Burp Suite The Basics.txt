@@ -12,7 +12,7 @@ Installation: (pre-packaged with Kali Linux)
 Application Interface: 
 1. Tasks: define background tasks Burp Suite will run 
 2. Event Log: information about connections made through Burp
-3. Issue Activity (pro only)
+3. Issue Activity (pro only): shows vulns id'd
 4. Advisory: information about the vulnerabilities found and suggested remediations
 
 Navigation: 
@@ -25,8 +25,8 @@ ctrl + shift + P -> switch to Proxy tab
 ctrl + shift + I -> switch to Intruder tab
 ctrl + shift + R -> switch to repeater tab
 
-Global settings - User options tab
-Project settings - Project options tab
+Global settings - User options tab - applied everytime the application runs
+Project settings - Project options tab - applied only to current project
 can't save projects so Burp will reset during close
 
 User options: 
