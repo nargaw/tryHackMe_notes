@@ -1,0 +1,16 @@
+Learning Objectives
+1. Diplay Basic Sys information
+2. Check and troubleshoot network configs
+3. Manage files and folders
+4. Check running processes
+
+Steps
+1. Start Machine
+2. Start Attackbox
+3. Terminal
+  a. "ssh user@[IP]"
+  b. "Yes"
+  c. "Tryhackme123!"
+
+ver -> version
+systeminfo -> lot of system information
