@@ -14,3 +14,68 @@ Steps
 
 ver -> version
 systeminfo -> lot of system information
+[x] | more -> view page by page, press space to move on to next page and ctrl + c to exit
+
+-------------------------------------------------------------------------------------------
+
+ipconfig -> see network config
+ipconfig | all -> see lot more network configs
+
+check network access
+ping [target]
+example ping google.com
+
+tracert -> traces network route traversed to reach the target
+
+nslookup -> looks up host or domain and return IP
+netstat -> display current network connections and listening ports
+-a -> display all established connections and listening ports
+-b -> shows programs associated w/ listening port
+-o -> reveals the process ID (PID)
+-n -> uses a numerical form for addresses and port numbers
+
+--------------------------------------------------------------------------------------------
+
+File and disk management
+
+cd -> display current drive and directory
+cd [target] -> change to target directory
+cd .. -> go up one level
+dir -> show child directories
+dir /a -> display hidden and sys files
+dir /s -> display files in the current dir and all sub dirs
+tree -> visual representation of child dirs and sub dirs
+mkdir [dir name] -> create dir
+rmdir [dir name] -> delete dir
+type -> view text files
+more -> view for longer text files (spacebar to filp through pages or enter to move by one line)
+copy -> copy files from one location to another
+move -> move files from one location to another
+del -> delete file
+erase -> delete file
+* -> refer to multiple files (eg: copy * .md C:\Markdown -> copy all files with extension md to C:\Markdown)
+
+-------------------------------------------------------------------------------------------------
+
+Task and Process Management
+
+tasklist -> list running processes
+tasklist /FI "imagename eq [process.exe]" -> search for process by image name
+taskkill /PID [targetPID] -> kill process with target PID
+
+--------------------------------------------------------------------------------------------
+
+Additional commands
+
+chkdsk -> check sys disk volumes for errors and bad sectors
+drivequery -> display list of installed device drivers
+sfc /scannow -> scan sys for corrpution and repairs them if possible
+
+/? -> show help with most commands
+more file.txt -> display text files
+[command] | more -> page by page
+
+shutdown /s -> shutdown
+shutdown /r -> restart
+shutdown /a -> abort shutdown
+
