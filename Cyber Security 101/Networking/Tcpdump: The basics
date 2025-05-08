@@ -1,0 +1,35 @@
+Libpcap - foundation for various networking tools
+winpcap - MS window version of libpcap
+
+specify network interface
+-i INTERFACE: select specific interface
+-i any: listen on all available
+
+eg: -i eth0
+
+ip address show (ip a s) - list all available network interfaces
+ens5 - network card
+
+-w FILE - save to file
+.pcap file
+-saved packets can be inspected on wireshark
+-w option blocks packet scrolling
+
+-r FILE - read file
+-c COUNT - limit the number of captured packets
+-n - avoid DNS lookups
+-nn - avoid DNS lookups and port number lookups
+-v - verbose, vv - increased verbosity
+
+Filtering by Host
+host IP or host HOSTNAME
+src host IP - limit packets from a particular IP
+dst host IP - limit packets sent to particular IP
+
+Filter by port
+port 53 - limit captured packets to a particular port
+src port [num] - limit packets from particular host port
+dst port [num] - limit packets to particular destination port
+
+Filter by protocol
+ip, ip6, udp, tcp, icmp
